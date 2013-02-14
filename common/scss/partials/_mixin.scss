@@ -1,0 +1,278 @@
+
+//　MIXIN　モジュール用SCSS
+//　共有用モジュールのみ記述　基本プロジェクトに影響するものは記述しない
+
+//　メディアクエリ
+//　CSS3
+//　レイアウト
+//　IE対応 etc
+
+
+
+// MIXIN メディアクエリ系モジュール ///////////////////////////////////////
+
+		//iphone用メディアクエリ
+		@mixin iphone {
+			@media screen and (min-width: 0px) and (max-device-width: 640px){
+				@content;
+			}
+		}
+		
+		//ipad用メディアクエリ
+		@mixin ipad {
+			@media only screen and
+			(min-device-width : 768px) and
+			(max-device-width : 1024px){
+				 @content;
+			}
+		}
+	
+
+
+
+// MIXIN CSS3系モジュール ///////////////////////////////////////
+
+		//透明度（アルファ値をパーセンテージで入力）
+		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")";}
+		
+		//トランジション（イージング,秒数,プロパティ）
+		@mixin transition($e:ease-out,$n:0.2s,$p:all){
+			@if $e == none {
+				-webkit-transition:none; -moz-transition:none; -o-transition:none; transition:none;
+			}@else if $p == box-shadow{
+				-webkit-transition:$e $n -webkit-box-shadow; -moz-transition:$e $n box-shadow; -o-transition:$e $n box-shadow; transition:$e $n box-shadow;
+			}@else if $p == transform{
+				-webkit-transition:$e $n -webkit-transform; -moz-transition:$e $n -moz-transform; -o-transition:$e $n transform; transition:$e $n transform;
+			}@else{
+				-webkit-transition:$e $n $p; -moz-transition:$e $n $p; -o-transition:$e $n $p; transition:$e $n $p;
+			}
+		}
+		
+		//カスタムイージング：CSS3アニメーションのイージングを細かく指定したい時に使用するhttp://cubic-bezier.comを利用すると便利
+		@mixin easing($a,$b,$c,$d,$pro:all,$s:1000ms){
+			@if $pro == transform{
+				-webkit-transition: -webkit-transform $s cubic-bezier($a,$b,$c,$d);
+					 -moz-transition: -moz-transform $s cubic-bezier($a,$b,$c,$d);
+					-ms-transition: -ms-transform $s cubic-bezier($a,$b,$c,$d);
+					 -o-transition: transform $s cubic-bezier($a,$b,$c,$d);
+						transition: transform $s cubic-bezier($a,$b,$c,$d);
+			}@else{
+				-webkit-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+					 -moz-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+					-ms-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+					 -o-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+						transition: $pro $s cubic-bezier($a,$b,$c,$d);
+			}
+			-webkit-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+				 -moz-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+				-ms-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+				 -o-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+					transition-timing-function: cubic-bezier($a,$b,$c,$d);
+		}
+
+		//トランスフォーム　一式（プロパティセット）
+		@mixin transform($set)	{ -o-transform:$set; -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
+			
+		//トランスフォーム　回転（角度を単位degを付けて入力）
+		@mixin rotate($r)	{ -o-transform: rotateZ($r); -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
+	
+		//角丸（プロパティセット）
+		@mixin radius($r)	{ -webkit-border-radius:$r; -moz-border-radius:$r; -o-border-radius:$r; -ms-border-radius:$r; border-radius:$r;}
+		
+		//ボックスシャドウ（影のプロパティは幾つでもセット可能）
+		@mixin box-shadow($shadows...){
+			-moz-box-shadow: $shadows; -webkit-box-shadow: $shadows; box-shadow: $shadows;
+		}
+		
+		//ボックスモデル（プロパティ）	基本はボーダーボックス状態にするために使う
+		@mixin sizing($r:border-box) { -moz-box-sizing:$r; -webkit-box-sizing:$r; box-sizing:$r;}
+
+		//選択範囲テキスト（文字色、背景色）
+		@mixin select-color($color,$bg){
+			p::selection,h1::selection,h2::selection,h3::selection,h4::selection,a::selection,img::selection,em::selection,strong::selection,dd::selection,dt::selection,u::selection,dfn::selection,li::selection{ color:$color; background:$bg;}
+			*::-moz-selection { color:$color; background:$bg; }
+		}
+
+
+
+
+// MIXIN CSS3系スマートフォン用モジュール ///////////////////////////////////////
+
+		//ボックス内テキスト中央揃え
+		//スマートフォンのボタンなどに使用
+		@mixin center	{ display:table-cell; vertical-align:middle; text-align:center;}
+		
+		//ボックス内テキスト上下揃え
+		//スマートフォンのボタンなどに使用
+		@mixin v-center	{ display:table-cell; vertical-align:middle;}
+		
+			
+		
+		
+// MIXIN CSS2系レイアウトモジュール ///////////////////////////////////////
+
+		//幅と高さ指定（width,height,overflow）
+		//幅と高さの引数はpx,%で入力
+		//第三引数にoverflowを指定できる
+		//pxは省略可能
+		@mixin wh($w:auto,$h:auto,$overflow:auto){
+			
+			$w_02:auto;
+			$h_02:auto;
+			
+			//幅の指定
+			@if unitless($w) == true{
+				$w_02:$w+px;
+			}@else if unit($w) == "px"{
+				$w_02:$w;
+			}@else if unit($w) == "%"{
+				$w_02:$w;
+			}
+			
+			//高さの指定
+			@if unitless($h) == true{
+				$h_02:$h+px;
+			}@else if unit($h) == "px"{
+				$h_02:$h;
+			}@else if unit($h) == "%"{
+				$h_02:$h;
+			}
+			
+			width:$w_02;
+			height:$h_02;
+			overflow:$overflow;
+			display:block;
+		}
+
+		//絶対配置　上左（top,left,z-index,absolute or fixed）
+		@mixin top-left($t:0,$l:0,$z:auto,$pos:absolute)	{
+
+			//topの指定
+			@if unitless($t) == true{
+				top:$t+px;
+			}@else if unit($t) == "px"{
+				top:$t;
+			}@else if unit($t) == "%"{
+				top:$t;
+			}
+
+			//leftの指定
+			@if unitless($l) == true{
+				left:$l+px;
+			}@else if unit($l) == "px"{
+				left:$l;
+			}@else if unit($l) == "%"{
+				left:$l;
+			}
+			
+			position:$pos;
+			z-index:$z;
+		}
+
+		//絶対配置　下左（top,left,z-index,absolute or fixed）
+		@mixin bottom-left($t:0,$l:0,$z:auto,$pos:absolute){
+			
+			//bottomの指定
+			@if unitless($t) == true{
+				bottom:$t+px;
+			}@else if unit($t) == "px"{
+				bottom:$t;
+			}@else if unit($t) == "%"{
+				bottom:$t;
+			}
+
+			//leftの指定
+			@if unitless($l) == true{
+				left:$l+px;
+			}@else if unit($l) == "px"{
+				left:$l;
+			}@else if unit($l) == "%"{
+				left:$l;
+			}
+			
+			position:$pos;
+			z-index:$z;		
+		}
+		
+		//絶対配置　上右（top,left,z-index,absolute or fixed）
+		@mixin top-right($t:0,$l:0,$z:auto,$pos:absolute)	{
+			
+			//topの指定
+			@if unitless($t) == true{
+				top:$t+px;
+			}@else if unit($t) == "px"{
+				top:$t;
+			}@else if unit($t) == "%"{
+				top:$t;
+			}
+
+			//rightの指定
+			@if unitless($l) == true{
+				right:$l+px;
+			}@else if unit($l) == "px"{
+				right:$l;
+			}@else if unit($l) == "%"{
+				right:$l;
+			}
+			
+			position:$pos;
+			z-index:$z;		
+		}
+				
+		//絶対配置　下右（top,left,z-index,absolute or fixed）
+		@mixin bottom-right($t:0,$l:0,$z:auto,$pos:absolute)	{
+			
+			//bottomの指定
+			@if unitless($t) == true{
+				bottom:$t+px;
+			}@else if unit($t) == "px"{
+				bottom:$t;
+			}@else if unit($t) == "%"{
+				bottom:$t;
+			}
+
+			//rightの指定
+			@if unitless($l) == true{
+				right:$l+px;
+			}@else if unit($l) == "px"{
+				right:$l;
+			}@else if unit($l) == "%"{
+				right:$l;
+			}
+			
+			position:$pos;
+			z-index:$z;		
+		}
+		
+		//絶対配置のマスク配置（マスクの色,z-index）
+		@mixin mask($color:none,$z:auto)	{ width:100%; height:100%; display:block; position:absolute; top:0; left:0; z-index:$z; background:$color;}		
+		
+		//クリアフィックス
+		@mixin clearfix {
+			zoom: 1;
+			&:before,
+			&:after {
+				display: block;
+				height: 0;
+				visibility: hidden;
+				content: "\0020";
+			}
+			&:after { clear: both;}
+		}
+
+
+
+
+// MIXIN IE対応レイアウトモジュール ///////////////////////////////////////
+
+		//IE用　インラインブロック適用
+		@mixin inline-block {
+			display: inline-block;
+			
+			//IE対応
+			@if $ie6 or $ie7 {
+				*display: inline;
+				*zoom: 1;
+			}
+		}		
+		
