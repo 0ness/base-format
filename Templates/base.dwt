@@ -3,10 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>@@(Title)@@</title>
+<title>@@(ページタイトル)@@</title>
 <meta name="description" content="@@(Description)@@">
 <meta name="keywords" content="@@(Keyword)@@">
 <meta name="author" content="">
+<!--
+//SNS対応する際に使用
+<meta property="og:site_name" content="0000000">
+<meta property="og:title" content="0000000">
+<meta property="og:description" content="0000000">
+<meta property="og:url" content="0000000">
+<meta property="og:image" content="0000000">
+-->
 <!--
 //コピーライト部分が無い場合によって使用する
 <meta name="copyright" content="" />
@@ -23,14 +31,14 @@
 <script src="common/js/html5.js"></script>
 <![endif]-->
 <!-- TemplateEndEditable -->
-<!-- TemplateParam name="Title" type="text" value="" -->
+<!-- TemplateParam name="ページタイトル" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->
 <!-- TemplateParam name="Description" type="text" value="" -->
-<!-- TemplateParam name="id" type="text" value="" -->
-<!-- TemplateParam name="class" type="text" value="" -->
+<!-- TemplateParam name="ページid" type="text" value="" -->
+<!-- TemplateParam name="ページclass" type="text" value="" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
 </head>
-<body id="@@(id)@@"@@((class == '')?'' : ' class="' + class + '"';)@@>
+<body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
 <!-- ============= wrapper ============= -->
 <div id="wrapper"> 
 	<!-- header -->
@@ -39,11 +47,11 @@
 		<!-- 基本はnavが親だが、構成がシンプルな場合はulを親にする-->
 		<nav id="gnav">
 			<ul>
-				<li id="gn_01"@@((id != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_02"@@((id != 'category_id_02') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_03"@@((id != 'category_id_03') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_04"@@((id != 'category_id_04') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_05"@@((id != 'category_id_05') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_01"@@((ページid != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_02"@@((ページid != 'category_id_02') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_03"@@((ページid != 'category_id_03') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_04"@@((ページid != 'category_id_04') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_05"@@((ページid != 'category_id_05') ? '' : ' class="current"';)@@><a href="#header"></a></li>
 			</ul>
 		</nav>
 		<!-- /gnav --> 
@@ -63,13 +71,13 @@
 				<!-- subNav-about -->
 				<dl>
 					<dt>カテゴリータイトル</dt>
-					<dd@@((id != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
 				</dl>
 				<!-- /subNav-about --> 
@@ -91,6 +99,7 @@
 	<!-- /footer --> 
 	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>
 <!-- /============= wrapper ============= --> 
+<script type="text/javascript" src="../common/js/pageInfo.js"></script> 
 <script type="text/javascript" src="../common/js/jquery/jquery.js"></script> 
 <script type="text/javascript" src="../common/js/ie/selectivizr-min.js"></script> 
 <script type="text/javascript" src="../common/js/jquery/easing.js"></script> 

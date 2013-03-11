@@ -10,10 +10,16 @@
 
 
 
+//ページ情報取得　必須///////////////////////////////////////
+page.idCheck();
+
+
+
+
+//SCRIPT START////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(function(){
 	
 	
-	//SCRIPT START////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	function init(){
 		
 
@@ -21,84 +27,6 @@ $(function(){
 		//	共通変数　このJS内部でグローバルに使う変数をまとめる
 		//=============================================================		
 
-		
-			
-
-
-		//=============================================================
-		//	ページ情報
-		//	IDやCLASSでの関数振り分けやブラウザ対応に使用する
-		//=============================================================		
-		var PageContent = function(){
-
-
-			//ユーザー情報///////////////////////////////////////
-			var user = {
-				UA:"",					//ユーザーエージェント
-				VER:"not IE",			//ブラウザバージョン 基本IEのみに使用
-				check:function(){		//ブラウザ判定
-					var wn = window.navigator;
-					var userAgent = wn.userAgent.toLowerCase();
-					var appVersion = wn.appVersion.toLowerCase();
-					if (userAgent.indexOf("msie") != -1) {						
-						this.UA = "ie";
-						if (appVersion.indexOf("msie 8.") != -1) {
-							this.VER = 'ie8';
-						} else if (appVersion.indexOf("msie 7.") != -1) {
-							this.VER =  'ie7';
-						} else if (appVersion.indexOf("msie 6.") != -1) {
-							this.VER = 'ie6';
-						}
-					}else if(userAgent.indexOf("firefox") != -1){
-						this.UA = "firefox";
-						alert(0);
-					}else {
-						this.UA = "webkit";				
-					}
-					return false;
-				}
-			}
-			user.check();	
-
-			
-			//ページ情報///////////////////////////////////////
-			var content = {
-				ID:"",
-				Category:"",
-				check:function(){ //ページid・classの取得
-					var bodys = $("body");
-					this.ID = bodys.attr("id");
-					this.Category = bodys.attr("class");
-					return false;
-				}
-			}
-			content.check();//ページ内容チェック
-
-
-			//暗黙型 Getterメソッド///////////////////////////////////////
-			return {
-				UA:function(){	//ユーザーエージェント
-					return user.UA;
-				},
-				VER:function(){ //IEブラウザバージョン
-					return user.VER;
-				},
-				ID:function(){	//ページid
-					return content.ID;
-				},
-				Category:function(){	//ページclass
-					return content.Category;
-				},
-				Status:function(){
-					console.log("UA："+user.UA+"　VER："+user.VER+"　ID："+content.ID+"　Category："+content.Category);
-					return false;
-				}
-			}					
-		}
-	
-		var page = new PageContent();	
-		page.Status();
-		
 		
 
 		
@@ -119,10 +47,12 @@ $(function(){
 				function Gnav(){}
 				
 				Gnav.prototype = {
-					over:function(obj){//ロールオーバー
+					over:function(obj){//ロールオーバー用　引数にオブジェクト
+						//処理
 						return false;
 					},
-					out:function(obj){//ロールアウト
+					out:function(obj){//ロールアウト　引数にオブジェクト
+						//処理
 						return false;
 					},
 					ancher:function(){//アンカーリンク
@@ -132,14 +62,13 @@ $(function(){
 						var position = target.offset().top;// 移動先を数値で取得
 						var tag = "body";
 						
-						//Firefox対応
-						if (navigator.userAgent.indexOf("Firefox") > 1){
+						//Firefox・IE対応
+						if (page.UA() === "firefox"){
+							tag = "html";
+						}else if(page.UA() === "ie"){
 							tag = "html";
 						}
-						//IE対応
-						if(strUA.indexOf("msie") != -1){
-							tag = "html";
-						}
+						
 						$(tag).animate({scrollTop:position}, speed, 'easeInOutExpo');
 						return false;
 					}
@@ -155,9 +84,8 @@ $(function(){
 			}();
 
 
-
-
 			//サブナビ///////////////////////////////////////
+			//無い場合は削除
 			var subNav = function(){
 				var parent = $(document.getElementById("sub"));
 				return false;
@@ -177,37 +105,41 @@ $(function(){
 		//=============================================================
 		//	IE透過処理　使用時にバグを伴うリスクがあるので、慎重に使う
 		//=============================================================
-		var alphaCheck = function(){
-			
-			//ブロックごとアルファ値適応
-			var pointCheck = function(obj){
-				var o = obj,img;
+
+		//	引数：処理を行いたい画像
+		//	個別の対応にs使う
+		//	IE8.7のみ適用
+		function alphaCheck(obj){			
+			if(page.VER() === "ie8" || page.VER() === "ie7"){
+				var img = obj;
+				img.css({'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");'});
+			}
+			return false;
+		}
+
+		//	引数：処理を行いたい画像の親要素
+		//	ページ全体の画像を処理したいい時使う
+		//	IE8.7のみ適用
+		function alphaAllCheck(obj){			
+			if(page.VER() === "ie8" || page.VER() === "ie7"){
+				var o = obj;
 				o.each(
 					function(){
 						img = $(this);
-						if(img.attr('src').indexOf('.png') != -1) {
+						if(img.attr('src').indexOf('.png') !== -1) {
 							img.css({'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");'});
 						}
 					}
 				)
-				return false;
 			}
-			
-			//pointCheck($(document.getElementById("wrapper")));
 			return false;
 		}
 		
 		
-		
-				
-		
-		
-		
 	}
-	//SCRIPT END////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
+	$(window).on("load",init);
 	
-	
-	$(window).ready(init);
 })
+//SCRIPT END////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -11,6 +11,14 @@
 <meta name="keywords" content="@@(Keyword)@@" />
 <meta name="author" content="" />
 <!--
+//SNS対応する際に使用
+<meta property="og:site_name" content="0000000">
+<meta property="og:title" content="0000000">
+<meta property="og:description" content="0000000">
+<meta property="og:url" content="0000000">
+<meta property="og:image" content="0000000">
+-->
+<!--
 //コピーライト部分が無い場合によって使用する
 <meta name="copyright" content="" />
 //スマートフォン対応時にコメントアウト
