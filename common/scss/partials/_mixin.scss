@@ -121,7 +121,9 @@
 			$h_02:auto;
 			
 			//幅の指定
-			@if unitless($w) == true{
+			@if $w == auto{
+				$w_02:auto;
+			}@else if unitless($w) == true{
 				$w_02:$w+px;
 			}@else if unit($w) == "px"{
 				$w_02:$w;
@@ -130,7 +132,9 @@
 			}
 			
 			//高さの指定
-			@if unitless($h) == true{
+			@if $h == auto{
+				$h_02:auto;
+			}@else if unitless($h) == true{
 				$h_02:$h+px;
 			}@else if unit($h) == "px"{
 				$h_02:$h;

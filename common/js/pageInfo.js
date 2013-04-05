@@ -19,6 +19,7 @@ function PageContent(){
 		UA:"",				//ユーザーエージェント
 		VER:"not IE",		//ブラウザバージョン IE用
 		mobile:false,		//スマートフォン判定
+		device:"pc",
 		check:function(){	//ブラウザ判定		
 			var _qs = "id=PC";
 			var _ua = navigator.userAgent;
@@ -27,7 +28,11 @@ function PageContent(){
 			var _appVersion = _wn.appVersion.toLowerCase();
 
 			//スマートフォン UA確認
-			if (_ua.indexOf('iPhone') !== -1 || _ua.indexOf('Android') !== -1) {
+			if(_ua.indexOf('iPhone') !== -1){
+				this.device = "iphone";
+				this.mobile = true;
+			}else if(_ua.indexOf('Android') !== -1){
+				this.device = "Android";
 				this.mobile = true;
 			}
 			
@@ -141,6 +146,7 @@ function PageContent(){
 		UA:function(){		return user.UA; },//ユーザーエージェント
 		VER:function(){ 	return user.VER; },//ブラウザバージョン
 		ID:function(){		return content.ID; },//ページid
+		device:function(){return user.device; },//スマートフォンOS
 		idCheck:function(){ 	return content.check(); },//ページid情報取得
 		Category:function(){	return content.Category; },//ページclass
 		width:function(){		return size.check(); },//ページ幅
