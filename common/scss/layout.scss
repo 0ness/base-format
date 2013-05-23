@@ -53,9 +53,9 @@ NAVIGATION
 --------------------------------------------------------------------------------------------------*/
 //入れ子を減らすために並列に記述
 #gnav	{
-	ul{ overflow:hidden;}
-	li{ float:left;}
-	a	{ display:block;}
+	ul	{ overflow:hidden;}
+	li	{ float:left;}
+	a 	{ display:block;}
 	a:hover{}
 }
 

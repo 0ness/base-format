@@ -30,6 +30,10 @@
 <link rel="stylesheet" type="text/css" href="common/style/ie.css">
 <script src="common/js/html5.js"></script>
 <![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script>
+<script>DD_belatedPNG.fix('img');</script>
+<![endif]-->
 <!-- TemplateEndEditable -->
 <!-- TemplateParam name="ページタイトル" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->

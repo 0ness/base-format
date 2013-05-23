@@ -10,13 +10,13 @@
 
 
 
-//ページ情報取得　必須///////////////////////////////////////
+//ページ情報取得　必須
 page.idCheck();
 
 
 
 
-//SCRIPT START////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SCRIPT START
 $(function(){
 	
 	
@@ -25,75 +25,78 @@ $(function(){
 
 		//=============================================================
 		//	共通変数　このJS内部でグローバルに使う変数をまとめる
-		//=============================================================		
-
+		//=============================================================
+		//流用オブジェクト
+		var $main = $(document.getElementById("main"));
 		
+		//ページ情報
+		var s_pageUA = page.UA();					//ユーザーエージェント保持
+		var s_pageVER = page.VER();				//IEのバージョン保持
+		var s_pageID = page.ID();					//ページID
+		var s_pageClass = page.Category(); 		//ページclass
+		var s_pageMobile = page.mobile();		//モバイル判定
+	
 
 		
 		
 		//=============================================================
 		//	共通要素
 		//=============================================================
-		function commonNavigation(){
-			
+		function commonNavigation(){			
 			
 			//メインナビ　宣言と同時に実行///////////////////////////////////////
 			var mainNav = function(){
 								
-				var parent = $(document.getElementById("gnav"));			//ナビゲーション
-				var ancherLink = $(document.getElementById("top_back"));	//トップに戻るボタン
+				var $gnav = $(document.getElementById("gnav"));//ナビゲーション			
 				
-				//Gnavオブジェクト
-				function Gnav(){}
-				
+				function Gnav(){}//Gnavオブジェクト
 				Gnav.prototype = {
 					over:function(obj){//ロールオーバー用　引数にオブジェクト
-						//処理
-						return false;
 					},
 					out:function(obj){//ロールアウト　引数にオブジェクト
-						//処理
-						return false;
-					},
-					ancher:function(){//アンカーリンク
-						var speed = 800;
-						var href= "#header";
-						var target = $(href == "#" || href == "" ? 'html' : href);
-						var position = target.offset().top;// 移動先を数値で取得
-						var tag = "body";
-						
-						//Firefox・IE対応
-						if (page.UA() === "firefox"){
-							tag = "html";
-						}else if(page.UA() === "ie"){
-							tag = "html";
-						}
-						
-						$(tag).animate({scrollTop:position}, speed, 'easeInOutExpo');
-						return false;
 					}
-				}
-				
-				//Gnavインスタンス
+				}				
 				var g = new Gnav();
 				
-				//アンカーリンク指定
-				ancherLink.on("click",g.ancher);
-				
-				return false;
 			}();
 
 
 			//サブナビ///////////////////////////////////////
-			//無い場合は削除
-			var subNav = function(){
-				var parent = $(document.getElementById("sub"));
-				return false;
-			}
+			var subNav = function(){//無い場合は削除
+			}();
 					
 			if($(document.getElementById("sub"))[0]){
 				subNav();
 			}
+
+
+			//アンカーリンク///////////////////////////////////////
+			var $ancher = $(document.getElementById("top_back"));	//トップに戻るボタン
+			var AncherLink = function(){ //トップに戻る処理
+				var speed = 800;
+				var href= "#header";
+				var target = $(href == "#" || href == "" ? 'html' : href);
+				var position = target.offset().top;// 移動先を数値で取得
+				var tag = "body";
+				
+				//Firefox・IE対応				
+				if(s_pageUA === "firefox" || s_pageUA === "ie") tag = "html";
+				
+				
+				$(tag).animate({scrollTop:position}, speed, 'easeInOutExpo');
+			};
+			
+			//アンカーリンク指定
+			$ancher.on("click",AncherLink);
+
+
+			//コピーライト年数　自動化///////////////////////////////////////
+			var year = function(){
+				var d = new Date();
+				var now_year = d.getFullYear();
+				$(document.getElementById("nowYear")).text(now_year);
+			};
+			
 			
 			return false;
 		}
@@ -106,22 +109,18 @@ $(function(){
 		//	IE透過処理　使用時にバグを伴うリスクがあるので、慎重に使う
 		//=============================================================
 
-		//	引数：処理を行いたい画像
-		//	個別の対応にs使う
-		//	IE8.7のみ適用
+		//	引数：処理を行いたい画像 //	個別の対応にs使う //	IE8.7のみ適用
 		function alphaCheck(obj){			
-			if(page.VER() === "ie8" || page.VER() === "ie7"){
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
 				var img = obj;
 				img.css({'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");'});
 			}
 			return false;
 		}
 
-		//	引数：処理を行いたい画像の親要素
-		//	ページ全体の画像を処理したいい時使う
-		//	IE8.7のみ適用
+		//	引数：処理を行いたい画像の親要素 //	ページ全体の画像を処理したいい時使う //	IE8.7のみ適用
 		function alphaAllCheck(obj){			
-			if(page.VER() === "ie8" || page.VER() === "ie7"){
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
 				var o = obj;
 				o.each(
 					function(){
@@ -142,4 +141,4 @@ $(function(){
 	$(window).on("load",init);
 	
 })
-//SCRIPT END////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SCRIPT END
