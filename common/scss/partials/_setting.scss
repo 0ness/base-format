@@ -1,5 +1,5 @@
 
-//　SETTING　各プロジェクト毎の仕様に対応する変数・MIXINを記述
+//　SETTING　各プロジェクト毎の仕様に対応する変数・MIXIN・関数を記述
 
 //　コーポレートカラー
 //　カラム幅
@@ -34,22 +34,59 @@
 
 
 
-// Vairable 色・テキスト系変数 ///////////////////////////////////////
+// Vairable カラースキーム・テキスト系変数 ///////////////////////////////////////
+//よく使われる色が複数だった場合、もう一つ作る
 
 		//案件キーカラー
 		$key-color:#09c;
 
 		//HTMLテキストカラー
-		$text-color:#09c;
+		$text-color:#111;
+		$text-color_02:#333;
+		$text-color_03:#555;
 		
 		//リンクカラー
-		$main-color:#1e2380;
+		$link-color:#09c;
 		
 		//ロールオーバーカラー
-		$hover-color:#454aa3;
+		$hover-color:#369;
 		
 		//クリック時カラー
 		$active-color:#999;
+
+
+
+
+// FUNCTION カラースキームモジュール ///////////////////////////////////////
+
+		//カラースキーム適用
+		//引数には用途・目的など意味が伝わる言葉を使う
+		
+		@function scheme($type){
+			
+			@if $type == keyColor{
+				@return $key-color;
+				
+			}@elseif $type == text{
+				@return $text-color;
+				
+			}@elseif $type == text_02{
+				@return $text-color_02;
+				
+			}@elseif $type == text_03{
+				@return $text-color_03;
+				
+			}@elseif $type == link{
+				@return $link-color;
+				
+			}@elseif $type == hover{
+				@return $hover-color;
+				
+			}@elseif $type == active{
+				@return $active-color;
+				
+			}
+		}
 
 
 
@@ -59,16 +96,15 @@
 
 
 
-
 // MIXIN 色・テキスト系MIXIN ///////////////////////////////////////
 	
 		//基本のテキストスタイル 引数(font-size , line-height , color , letter-spacing)
 		//ベースの変更は引数の値で指定しておく
 		//基本使用する時は引数を使わないイメージで 例：@include text-base;
-		@mixin text-base($size:100%,$lh:26px,$tc:$text-color){ font-size:$size; line-height:$lh; color:$tc;}
+		@mixin text-base($size:100%,$lh:26px,$tc:scheme(text)){ font-size:$size; line-height:$lh; color:$tc;}
 		
  		//リンクテキスト
-		@mixin text-link		{ text-decoration:underline; color:$main-color;}
+		@mixin text-link		{ text-decoration:underline; color:$link-color;}
 		
 		//ロールオーバーテキスト
 		@mixin text-hover		{ text-decoration:underline; color:$hover-color;}
@@ -83,3 +119,6 @@
 			&:active{ @include text-active;}
 		}
 		
+
+
+

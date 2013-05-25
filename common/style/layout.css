@@ -25,18 +25,23 @@ body #wrapper {
 /*-------------------------------------------------------------------------------------------------*
 HEADER
 --------------------------------------------------------------------------------------------------*/
+/* line 46, ../scss/layout.scss */
+#header p {
+  color: #999999;
+}
+
 /*-------------------------------------------------------------------------------------------------*
 NAVIGATION
 --------------------------------------------------------------------------------------------------*/
-/* line 56, ../scss/layout.scss */
+/* line 57, ../scss/layout.scss */
 #gnav ul {
   overflow: hidden;
 }
-/* line 57, ../scss/layout.scss */
+/* line 58, ../scss/layout.scss */
 #gnav li {
   float: left;
 }
-/* line 58, ../scss/layout.scss */
+/* line 59, ../scss/layout.scss */
 #gnav a {
   display: block;
 }
@@ -44,11 +49,11 @@ NAVIGATION
 /*-------------------------------------------------------------------------------------------------*
 CONTENTS
 --------------------------------------------------------------------------------------------------*/
-/* line 69, ../scss/layout.scss */
+/* line 70, ../scss/layout.scss */
 #contents {
   position: relative;
 }
-/* line 71, ../scss/layout.scss */
+/* line 72, ../scss/layout.scss */
 #contents #top_back {
   bottom: 10px;
   right: 50px;

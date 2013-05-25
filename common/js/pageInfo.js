@@ -14,6 +14,8 @@
 
 function PageContent(){
 	
+	var doc = document;
+	
 	//ユーザー情報///////////////////////////////////////
 	var user = {
 		UA:"",				//ユーザーエージェント
@@ -80,7 +82,7 @@ function PageContent(){
 		ID:"",				//ページid
 		Category:"",		//ページclass
 		check:function(){ //ページid・classの取得
-			var bodys = document.getElementsByTagName("body")[0];
+			var bodys = doc.getElementsByTagName("body")[0];
 			this.ID = bodys.getAttribute('id');
 			this.Category = bodys.getAttribute("class");
 			return false;
@@ -93,11 +95,11 @@ function PageContent(){
 		pcCSS:function(css){	//PC用	css記述
 			var _STR = css;
 			if(user.mobile !== true){
-				var link = document.createElement('link');
+				var link = doc.createElement('link');
 				link.href = _STR;
 				link.type = 'text/css';
 				link.rel = 'stylesheet';
-				var head = document.getElementsByTagName('head');
+				var head = doc.getElementsByTagName('head');
 				head.item(0).appendChild(link);
 			}
 			return false;
@@ -105,35 +107,35 @@ function PageContent(){
 		mobileCSS:function(css){	//モバイル用css記述
 			var _STR = css;
 			if(user.mobile === true){
-				var link = document.createElement('link');
+				var link = doc.createElement('link');
 				link.href = _STR;
 				link.type = 'text/css';
 				link.rel = 'stylesheet';
-				var head = document.getElementsByTagName('head');
+				var head = doc.getElementsByTagName('head');
 				head.item(0).appendChild(link);
 			}
 			return false;
 		},
 		responseViewPort:function(){	//viewport記述
 			var _str = 'width=950px';
-			var meta = document.createElement('meta');
+			var meta = doc.createElement('meta');
 			meta.setAttribute('name','viewport');
 			if(user.mobile === true) _str = 'width=device-width';		
 			meta.setAttribute('content',_str);
-			document.getElementsByTagName('head')[0].appendChild(meta);
+			doc.getElementsByTagName('head')[0].appendChild(meta);
 		},
 		IE:function(css,js){	//IE分岐コメント記述　テスト中
 			if(user.VER === "ie8" || user.VER === "ie7" || user.VER === "ie6"){
-				var link = document.createElement('link');
+				var link = doc.createElement('link');
 				link.href = css;
 				link.type = 'text/css';
 				link.rel = 'stylesheet';
 				
-				var script = document.createElement("script");
+				var script = doc.createElement("script");
 				script.src = js;
 				script.type = "text/javascript";
 				
-				var head = document.getElementsByTagName('head');
+				var head = doc.getElementsByTagName('head');
 				head.item(0).appendChild(link);
 				head.item(0).appendChild(script);
 			}
