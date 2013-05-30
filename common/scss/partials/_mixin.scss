@@ -26,7 +26,55 @@
 				 @content;
 			}
 		}
+
+		//Androidの高精細画面も含めた指定
+		@mixin mobile {
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {	@content;}
+		}
 	
+		//IE6用対応
+		@mixin ie6	{
+			html.ie6 &{ @content; }
+		}
+		
+		//IE7用対応
+		@mixin ie7	{
+			html.ie7 &{ @content; }
+		}
+
+		//IE8用対応
+		@mixin ie8	{
+			html.ie8 &{ @content; }
+		}
+
+		//IE7、8用対応
+		@mixin ie78	{
+			html.ie7 &{ @content; }
+			html.ie8 &{ @content; }
+		}
+
+		//IE6、7、8用対応
+		@mixin ie78	{
+			html.ie6 &{ @content; }
+			html.ie7 &{ @content; }
+			html.ie8 &{ @content; }
+		}
+
+		//IE6用　ハック対応
+		@mixin hack_ie6	{
+			* html &{ @content;}
+		}	
+
+		//IE7用　ハック対応
+		@mixin hack_ie7	{
+			*+html &{ @content;}
+		}	
+
+		//IE6、7用　ハック対応
+		@mixin hack_ie67	{
+			* html &{ @content;}
+			*+html &{ @content;}
+		}	
 
 
 

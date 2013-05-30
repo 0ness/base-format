@@ -13,6 +13,8 @@
 //ページ情報取得　必須
 page.idCheck();
 
+//htmlにclassを追加
+page.uaClass();
 
 
 
@@ -79,10 +81,8 @@ $(function(){
 				var position = target.offset().top;// 移動先を数値で取得
 				var tag = "body";
 				
-				//Firefox・IE対応				
+				//Firefox・IE対応
 				if(s_pageUA === "firefox" || s_pageUA === "ie") tag = "html";
-				
-				
 				$(tag).animate({scrollTop:position}, speed, 'easeInOutExpo');
 			};
 			
@@ -96,7 +96,6 @@ $(function(){
 				var now_year = d.getFullYear();
 				$(document.getElementById("nowYear")).text(now_year);
 			};
-			
 			
 			return false;
 		}

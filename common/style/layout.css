@@ -1,65 +1,27 @@
 @charset "UTF-8";
-/* line 28, ../scss/layout.scss */
-html {
-  height: 100%;
-  -webkit-text-size-adjust: none;
-}
+html { height: 100%; -webkit-text-size-adjust: none; }
 
-/* line 29, ../scss/layout.scss */
-body {
-  height: 100%;
-  text-align: left;
-}
-/* line 30, ../scss/layout.scss */
-body > #wrapper {
-  height: auto;
-}
-/* line 31, ../scss/layout.scss */
-body #wrapper {
-  position: relative;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-}
+body { height: 100%; text-align: left; }
+body > #wrapper { height: auto; }
+body #wrapper { position: relative; min-height: 100%; height: auto !important; height: 100%; }
 
 /*-------------------------------------------------------------------------------------------------*
 HEADER
 --------------------------------------------------------------------------------------------------*/
-/* line 46, ../scss/layout.scss */
-#header p {
-  color: #999999;
-}
+#header p { color: #999999; }
 
 /*-------------------------------------------------------------------------------------------------*
 NAVIGATION
 --------------------------------------------------------------------------------------------------*/
-/* line 57, ../scss/layout.scss */
-#gnav ul {
-  overflow: hidden;
-}
-/* line 58, ../scss/layout.scss */
-#gnav li {
-  float: left;
-}
-/* line 59, ../scss/layout.scss */
-#gnav a {
-  display: block;
-}
+#gnav ul { overflow: hidden; }
+#gnav li { float: left; }
+#gnav a { display: block; }
 
 /*-------------------------------------------------------------------------------------------------*
 CONTENTS
 --------------------------------------------------------------------------------------------------*/
-/* line 70, ../scss/layout.scss */
-#contents {
-  position: relative;
-}
-/* line 72, ../scss/layout.scss */
-#contents #top_back {
-  bottom: 10px;
-  right: 50px;
-  position: absolute;
-  z-index: auto;
-}
+#contents { position: relative; }
+#contents #top_back { bottom: 10px; right: 50px; position: absolute; z-index: auto; }
 
 /*-------------------------------------------------------------------------------------------------*
 FOOTER

@@ -70,7 +70,6 @@ function PageContent(){
 			
 			//2/4に削除
 			//this.mobile = false;
-									
 			return false;
 		}
 	};
@@ -85,6 +84,16 @@ function PageContent(){
 			var bodys = doc.getElementsByTagName("body")[0];
 			this.ID = bodys.getAttribute('id');
 			this.Category = bodys.getAttribute("class");
+			return false;
+		},
+		classSet:function(){	//ブラウザ名をhtmlタグにclassとして付加
+			var bodys= doc.getElementsByTagName("html")[0];
+			var classStr = user.UA;
+			var defaultclass = bodys.getAttribute("class");
+						
+			//ブラウザ分岐
+			if(user.UA === "ie") classStr = user.VER;			
+			bodys.setAttribute("class",classStr);
 			return false;
 		}
 	}
@@ -156,6 +165,7 @@ function PageContent(){
 		pcCSS:function(css){			return HEAD.pcCSS(css); },//CSS動的読み込み
 		mobileCSS:function(css){	return HEAD.mobileCSS(css); },//CSS動的読み込み
 		viewport:function(){ return HEAD.responseViewPort(); },//viewport動的変更
+		uaClass:function(){ return content.classSet();},//UAをクラス名としてhtmlに付加する
 		ie:function(css,js){ return HEAD.IE(css,js); }
 	}					
 }
