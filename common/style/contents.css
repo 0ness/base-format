@@ -2,3 +2,7 @@
 /*============================================
 	トップページ：index.html
 =============================================*/
+#test.ie7 { background: blue; font-size: 100px; }
+#test.ie7 #header { width: 100px; height: 100px; background: #333; }
+
+.firefox { background: red; }

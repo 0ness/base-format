@@ -64,8 +64,8 @@ $(function(){
 
 
 			//サブナビ///////////////////////////////////////
-			var subNav = function(){//無い場合は削除
-			}();
+			var subNav = function(){};//無い場合は削除
+			
 					
 			if($(document.getElementById("sub"))[0]){
 				subNav();

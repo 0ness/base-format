@@ -28,8 +28,13 @@
 /*============================================
 	トップページ：index.html
 =============================================*/
-#top	{
+#top	{	
 }
+
+#test.ie7 { background: blue; font-size:100px;
+	#header	{ width:100px; height:100px; background:#333;}
+}
+.firefox{ background:red;}
 
 
 

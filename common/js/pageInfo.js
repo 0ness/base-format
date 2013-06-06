@@ -87,12 +87,17 @@ function PageContent(){
 			return false;
 		},
 		classSet:function(){	//ブラウザ名をhtmlタグにclassとして付加
-			var bodys= doc.getElementsByTagName("html")[0];
+			var bodys= doc.getElementsByTagName("body")[0];
 			var classStr = user.UA;
 			var defaultclass = bodys.getAttribute("class");
 						
 			//ブラウザ分岐
-			if(user.UA === "ie") classStr = user.VER;			
+			if(user.UA === "ie") classStr = user.VER;
+					
+			if(defaultclass !== null){
+				classStr += " "+defaultclass;
+			}
+			
 			bodys.setAttribute("class",classStr);
 			return false;
 		}
