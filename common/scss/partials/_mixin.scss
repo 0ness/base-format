@@ -47,6 +47,16 @@
 			html.ie8 &{ @content; }
 		}
 
+		//Firefox用対応
+		@mixin firefox	{
+			html.firefox &{ @content; }
+		}
+
+		//webkit用対応
+		@mixin webkit	{
+			html.webkit &{ @content; }
+		}
+
 		//IE7、8用対応
 		@mixin ie78	{
 			html.ie7 &{ @content; }
@@ -54,8 +64,14 @@
 		}
 
 		//IE6、7、8用対応
-		@mixin ie78	{
+		@mixin ie678	{
 			html.ie6 &{ @content; }
+			html.ie7 &{ @content; }
+			html.ie8 &{ @content; }
+		}
+
+		//IE7、8用対応
+		@mixin ie78	{
 			html.ie7 &{ @content; }
 			html.ie8 &{ @content; }
 		}
@@ -74,7 +90,7 @@
 		@mixin hack_ie67	{
 			* html &{ @content;}
 			*+html &{ @content;}
-		}	
+		}
 
 
 
@@ -326,5 +342,15 @@
 				*display: inline;
 				*zoom: 1;
 			}
-		}		
+		}
+		
+		//liタグの画像を使ったナビのバグを修正する
+		@mixin listBugFix	{
+			line-height:normal; vertical-align:bottom; font-size:1%;
+			a	{ line-height:normal; vertical-align:bottom; font-size:1%;}
+			img	{ line-height:normal; vertical-align:bottom; font-size:1%;}
+		}
+		
+		
+		
 		

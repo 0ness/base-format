@@ -87,18 +87,16 @@ function PageContent(){
 			return false;
 		},
 		classSet:function(){	//ブラウザ名をhtmlタグにclassとして付加
-			var bodys= doc.getElementsByTagName("body")[0];
+			//var bodys= doc.getElementsByTagName("html")[0];
+			var bodys= doc.getElementById("wrapper")[0];
 			var classStr = user.UA;
-			var defaultclass = bodys.getAttribute("class");
-						
-			//ブラウザ分岐
-			if(user.UA === "ie") classStr = user.VER;
-					
-			if(defaultclass !== null){
-				classStr += " "+defaultclass;
-			}
+			//var defaultclass = bodys.getAttribute("class");
 			
-			bodys.setAttribute("class",classStr);
+			//ブラウザ分岐
+			//if(user.UA === "ie") classStr = user.VER;
+			//if(defaultclass !== null) classStr += " "+defaultclass;		
+			if(user.UA !== "ie") doc.getElementById("wrapper").className = classStr;
+			//bodys.setAttribute("class",classStr);
 			return false;
 		}
 	}
@@ -138,7 +136,7 @@ function PageContent(){
 			meta.setAttribute('content',_str);
 			doc.getElementsByTagName('head')[0].appendChild(meta);
 		},
-		IE:function(css,js){	//IE分岐コメント記述　テスト中
+		IE:function(css,js){		//IE分岐コメント記述　テスト中
 			if(user.VER === "ie8" || user.VER === "ie7" || user.VER === "ie6"){
 				var link = doc.createElement('link');
 				link.href = css;
@@ -179,3 +177,4 @@ function PageContent(){
 
 //インスタンス///////////////////////////////////////	
 var page = new PageContent();
+

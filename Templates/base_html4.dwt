@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" class="ie6"><![endif]-->
+<!--[if IE 7]><html xmlns="http://www.w3.org/1999/xhtml" class="ie7"><![endif]-->
+<!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" class="ie8"><![endif]-->
+<!--[if !IE]>-->
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>@@(Title)@@</title>
@@ -43,6 +48,7 @@
 <!-- TemplateParam name="id" type="text" value="" -->
 <!-- TemplateParam name="class" type="text" value="" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
+<!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
 </head>
 <body id="@@(id)@@"@@((class == '')?'' : ' class="' + class + '"';)@@>
 <!-- ============= wrapper ============= -->

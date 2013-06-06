@@ -10,11 +10,9 @@
 
 
 
-//ページ情報取得　必須
-page.idCheck();
 
-//htmlにclassを追加
-page.uaClass();
+page.idCheck();//ページ情報取得　必須
+page.uaClass();//htmlにclassを追加
 
 
 
@@ -28,8 +26,9 @@ $(function(){
 		//=============================================================
 		//	共通変数　このJS内部でグローバルに使う変数をまとめる
 		//=============================================================
-		//流用オブジェクト
-		var $main = $(document.getElementById("main"));
+		//共通オブジェクト
+		var doc = document;
+		var $main = $(doc.getElementById("main"));
 		
 		//ページ情報
 		var s_pageUA = page.UA();					//ユーザーエージェント保持
@@ -49,14 +48,16 @@ $(function(){
 			//メインナビ　宣言と同時に実行///////////////////////////////////////
 			var mainNav = function(){
 								
-				var $gnav = $(document.getElementById("gnav"));//ナビゲーション			
+				var $gnav = $(doc.getElementById("gnav"));//ナビゲーション			
 				
 				function Gnav(){}//Gnavオブジェクト
 				Gnav.prototype = {
-					over:function(obj){//ロールオーバー用　引数にオブジェクト
-					},
-					out:function(obj){//ロールアウト　引数にオブジェクト
-					}
+					
+					//ロールオーバー用　引数にオブジェクト
+					over:function(obj){},
+					
+					//ロールアウト　引数にオブジェクト
+					out:function(obj){}
 				}				
 				var g = new Gnav();
 				
@@ -65,15 +66,11 @@ $(function(){
 
 			//サブナビ///////////////////////////////////////
 			var subNav = function(){};//無い場合は削除
-			
-					
-			if($(document.getElementById("sub"))[0]){
-				subNav();
-			}
+			if($(doc.getElementById("sub"))[0]) subNav();
 
 
 			//アンカーリンク///////////////////////////////////////
-			var $ancher = $(document.getElementById("top_back"));	//トップに戻るボタン
+			var $ancher = $(doc.getElementById("top_back"));	//トップに戻るボタン
 			var AncherLink = function(){ //トップに戻る処理
 				var speed = 800;
 				var href= "#header";
@@ -94,7 +91,7 @@ $(function(){
 			var year = function(){
 				var d = new Date();
 				var now_year = d.getFullYear();
-				$(document.getElementById("nowYear")).text(now_year);
+				$(doc.getElementById("nowYear")).text(now_year);
 			};
 			
 			return false;

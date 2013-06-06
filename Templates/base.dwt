@@ -1,5 +1,10 @@
 <!DOCTYPE HTML>
+<!--[if IE 6]><html lang="ja" class="ie6"><![endif]-->
+<!--[if IE 7]><html lang="ja" class="ie7"><![endif]-->
+<!--[if IE 8]><html lang="ja" class="ie8"><![endif]-->
+<!--[if !IE]>-->
 <html lang="ja">
+<!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -41,6 +46,7 @@
 <!-- TemplateParam name="ページid" type="text" value="" -->
 <!-- TemplateParam name="ページclass" type="text" value="" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
+<!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
 </head>
 <body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
 <!-- ============= wrapper ============= -->

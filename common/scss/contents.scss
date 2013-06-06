@@ -31,11 +31,14 @@
 #top	{	
 }
 
-#test.ie7 { background: blue; font-size:100px;
-	#header	{ width:100px; height:100px; background:#333;}
+#wrapper	{
+	@include ie678	{
+		background:#0C0;
+	}
 }
-.firefox{ background:red;}
 
+.firefox	{ background:red;}
+.webkit	{ background:black;}
 
 
 
