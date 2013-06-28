@@ -99,54 +99,53 @@
 		//透明度（アルファ値をパーセンテージで入力）
 		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")";}
 		
-		//トランジション（イージング,秒数,プロパティ）
-		@mixin transition($e:ease-out,$n:0.2s,$p:all){
+		//トランジション（イージング,秒数,プロパティ,ディレイ）
+		@mixin transition($e:ease-out,$n:0.2s,$p:all,$delay:0s){
 			@if $e == none {
-				-webkit-transition:none; -moz-transition:none; -o-transition:none; transition:none;
+				-webkit-transition:none; -moz-transition:none; transition:none;
 			}@else if $p == box-shadow{
-				-webkit-transition:$e $n -webkit-box-shadow; -moz-transition:$e $n box-shadow; -o-transition:$e $n box-shadow; transition:$e $n box-shadow;
+				-webkit-transition:$e $n -webkit-box-shadow; -moz-transition:$e $n box-shadow; transition:$e $n box-shadow;
 			}@else if $p == transform{
-				-webkit-transition:$e $n -webkit-transform; -moz-transition:$e $n -moz-transform; -o-transition:$e $n transform; transition:$e $n transform;
+				-webkit-transition:$e $n -webkit-transform; -moz-transition:$e $n -moz-transform; transition:$e $n transform;
 			}@else{
-				-webkit-transition:$e $n $p; -moz-transition:$e $n $p; -o-transition:$e $n $p; transition:$e $n $p;
+				-webkit-transition:$e $n $p; -moz-transition:$e $n $p; transition:$e $n $p;
 			}
+			-moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;
 		}
+
+		//トランジションdelay（ディレイ）
+		@mixin delay($delay:0s){-moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;}
 		
 		//カスタムイージング：CSS3アニメーションのイージングを細かく指定したい時に使用するhttp://cubic-bezier.comを利用すると便利
 		@mixin easing($a,$b,$c,$d,$pro:all,$s:1000ms){
 			@if $pro == transform{
 				-webkit-transition: -webkit-transform $s cubic-bezier($a,$b,$c,$d);
-					 -moz-transition: -moz-transform $s cubic-bezier($a,$b,$c,$d);
-					-ms-transition: -ms-transform $s cubic-bezier($a,$b,$c,$d);
-					 -o-transition: transform $s cubic-bezier($a,$b,$c,$d);
-						transition: transform $s cubic-bezier($a,$b,$c,$d);
+				-moz-transition: -moz-transform $s cubic-bezier($a,$b,$c,$d);
+				-ms-transition: -ms-transform $s cubic-bezier($a,$b,$c,$d);
+				transition: transform $s cubic-bezier($a,$b,$c,$d);
 			}@else{
 				-webkit-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-					 -moz-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-					-ms-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-					 -o-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-						transition: $pro $s cubic-bezier($a,$b,$c,$d);
+				-moz-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+				-ms-transition: $pro $s cubic-bezier($a,$b,$c,$d);
+				transition: $pro $s cubic-bezier($a,$b,$c,$d);
 			}
 			-webkit-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-				 -moz-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-				-ms-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-				 -o-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-					transition-timing-function: cubic-bezier($a,$b,$c,$d);
+			-moz-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+			-ms-transition-timing-function: cubic-bezier($a,$b,$c,$d);
+			transition-timing-function: cubic-bezier($a,$b,$c,$d);
 		}
 
 		//トランスフォーム　一式（プロパティセット）
-		@mixin transform($set)	{ -o-transform:$set; -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
+		@mixin transform($set)	{ -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
 			
 		//トランスフォーム　回転（角度を単位degを付けて入力）
-		@mixin rotate($r)	{ -o-transform: rotateZ($r); -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
+		@mixin rotate($r)	{ -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
 	
 		//角丸（プロパティセット）
-		@mixin radius($r)	{ -webkit-border-radius:$r; -moz-border-radius:$r; -o-border-radius:$r; -ms-border-radius:$r; border-radius:$r;}
+		@mixin radius($r)	{ -webkit-border-radius:$r; -moz-border-radius:$r; -ms-border-radius:$r; border-radius:$r;}
 		
 		//ボックスシャドウ（影のプロパティは幾つでもセット可能）
-		@mixin box-shadow($shadows...){
-			-moz-box-shadow: $shadows; -webkit-box-shadow: $shadows; box-shadow: $shadows;
-		}
+		@mixin box-shadow($shadows...){ -moz-box-shadow: $shadows; -webkit-box-shadow: $shadows; box-shadow: $shadows;}
 		
 		//ボックスモデル（プロパティ）	基本はボーダーボックス状態にするために使う
 		@mixin sizing($r:border-box) { -moz-box-sizing:$r; -webkit-box-sizing:$r; box-sizing:$r;}

@@ -71,8 +71,9 @@ $(function(){
 
 			//アンカーリンク///////////////////////////////////////
 			var $ancher = $(doc.getElementById("top_back"));	//トップに戻るボタン
-			var AncherLink = function(){ //トップに戻る処理
-				var speed = 800;
+			var AncherLink = function(e){ //トップに戻る処理
+				e.preventDefault();
+				var speed = 600;
 				var href= "#header";
 				var target = $(href == "#" || href == "" ? 'html' : href);
 				var position = target.offset().top;// 移動先を数値で取得

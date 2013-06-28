@@ -21,10 +21,13 @@
 @import "partials/_setting";
 @import "partials/_mixin";
 @import "partials/_function";
+@import "partials/_reset";
 
 
 
-
+/*============================================================
+LAYOUT用スタイル　
+============================================================*/
 html	{ height:100%;}
 body	{ height:100%; text-align:left;
 

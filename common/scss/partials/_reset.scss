@@ -1,9 +1,7 @@
-/*
-YUI 3.10.1 (build 8bc088e)
-Copyright 2013 Yahoo! Inc. All rights reserved.
-Licensed under the BSD License.
-http://yuilibrary.com/license/
-*/
+/*============================================================
+RESET用スタイル　
+============================================================*/
+//YUI 3.10.1 (build 8bc088e)
 
 html { color: #000; background: #FFF }
 body,
@@ -56,7 +54,8 @@ h2,
 h3,
 h4,
 h5,
-h6 { font-size: 100%; font-weight: normal }
+h6,
+small { font-size: 100%; font-weight: normal }
 q:before,
 q:after { content: '' }
 abbr,
@@ -65,11 +64,9 @@ sup { vertical-align: text-top }
 sub { vertical-align: text-bottom }
 input,
 textarea,
-select { font-family: inherit; font-size: inherit; font-weight: inherit }
-input,
-textarea,
-select { *font-size:100%}
+select { font-family: inherit; font-size: inherit; font-weight: inherit; *font-size:100%;}
 legend { color: #000 }
+main,
 header,
 footer,
 section,
@@ -78,13 +75,9 @@ aside,
 nav,
 address,
 article,
-figure { display: block; }
-/*
-YUI 3.10.1 (build 8bc088e)
-Copyright 2013 Yahoo! Inc. All rights reserved.
-Licensed under the BSD License.
-http://yuilibrary.com/license/
-*/
+figure { display: block; margin:0; padding:0;}
+
+//YUI 3.10.1 (build 8bc088e)
 /*
 [77% = 10px]
 [85% = 11px]
