@@ -64,27 +64,27 @@
 		
 		@function scheme($type){
 			
-			@if $type == keyColor{
-				@return $key-color;
+			@if $type == key{	//アクセントとなるキーカラー
+				@return #008cda;
 				
-			}@elseif $type == text{
-				@return $text-color;
+			}@elseif $type == text{	//テキストカラー
+				@return #2c2f33;
+								
+			}@elseif $type == link{	//リンク色　テキストカラーのリンクのホバー色
+				@return #008cda;
 				
-			}@elseif $type == text_02{
-				@return $text-color_02;
+			}@elseif $type == linkHover{	//リンク色　テキストカラーのリンクのホバー色
+				@return #09c;
 				
-			}@elseif $type == text_03{
-				@return $text-color_03;
+			}@elseif $type == linkActive{	//リンク色　テキストカラーのリンクのアクティブ色
+				@return #09c;
 				
-			}@elseif $type == link{
-				@return $link-color;
-				
-			}@elseif $type == hover{
-				@return $hover-color;
-				
-			}@elseif $type == active{
-				@return $active-color;
-				
+			}@elseif $type == bg{	//HTML背景色
+				@return #ccc;
+								
+			}@elseif $type == mainBG{	//メイン部分背景色
+				@return #fdfdfd;
+							
 			}
 		}
 
@@ -104,13 +104,13 @@
 		@mixin text-base($size:100%,$lh:26px,$tc:scheme(text)){ font-size:$size; line-height:$lh; color:$tc;}
 		
  		//リンクテキスト
-		@mixin text-link		{ text-decoration:underline; color:$link-color;}
+		@mixin text-link		{ text-decoration:underline; color:scheme(link);}
 		
 		//ロールオーバーテキスト
-		@mixin text-hover		{ text-decoration:underline; color:$hover-color;}
+		@mixin text-hover		{ text-decoration:underline; color:scheme(linkHover);}
 		
 		//クリックテキスト
-		@mixin text-active		{ text-decoration:underline; color:$active-color;}
+		@mixin text-active		{ text-decoration:underline; color:scheme(linkActive);}
 		
 		//通常のリンクテキストの指定
 		@mixin link-set		{

@@ -45,11 +45,11 @@ body	{ height:100%; text-align:left;
 
 /*HEADER
 --------------------------------------------------------------------*/
-#header	{ 
+#header	{ @include ellipse(300,500,#366);
 
 	/* ロゴ・CI・サイトタイトル */
 	#ci	{}
-	p		{ color:scheme(active);}
+	p		{}
 }
 
 

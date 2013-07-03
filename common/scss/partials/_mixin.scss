@@ -155,7 +155,48 @@
 			p::selection,h1::selection,h2::selection,h3::selection,h4::selection,a::selection,img::selection,em::selection,strong::selection,dd::selection,dt::selection,u::selection,dfn::selection,li::selection{ color:$color; background:$bg;}
 			*::-moz-selection { color:$color; background:$bg; }
 		}
+		
+		//ボックスで円を描く（サイズ、背景色）
+		@mixin circle($size:100px,$bgcolor:#333) {
+			
+			//幅の指定
+			@if unitless($size) == true{
+				width: $size+px; height: $size+px;
+			}@else if unit($size) == "px"{
+				width: $size; height: $size;
+			}@else if unit($size) == "%"{
+				width: $size; height: $size;
+			}
+			 
+			 @include radius(100%); background:$bgcolor;
+		}
 
+		//ボックスで楕円を描く（幅、高さ、背景色,ぼかし）
+		@mixin ellipse($w:100px,$h:100px,$bgcolor:#333,$blur:false) {
+
+			$w_02:$w;
+			$h_02:$h;
+			
+			//幅の指定
+			@if unitless($w) == true{
+				$w_02:$w+px;
+			}
+			
+			//高さの指定
+			@if unitless($h) == true{
+				$h_02:$h+px;
+			}
+			
+			//ぼかし
+			@if $blur == true{
+				@include box-shadow(0 20px 20px $bgcolor,0 -20px 20px $bgcolor,-20px 0 20px $bgcolor,20px 0 20px $bgcolor);
+				border:1px solid $bgcolor;
+			}
+			
+			width:$w_02;
+			height:$h_02;
+			 @include radius(100%); background:$bgcolor;
+		}
 
 
 
@@ -180,18 +221,14 @@
 		//pxは省略可能
 		@mixin wh($w:auto,$h:auto,$overflow:auto){
 			
-			$w_02:auto;
-			$h_02:auto;
+			$w_02:$w;
+			$h_02:$h;
 			
 			//幅の指定
 			@if $w == auto{
 				$w_02:auto;
 			}@else if unitless($w) == true{
 				$w_02:$w+px;
-			}@else if unit($w) == "px"{
-				$w_02:$w;
-			}@else if unit($w) == "%"{
-				$w_02:$w;
 			}
 			
 			//高さの指定
@@ -199,10 +236,6 @@
 				$h_02:auto;
 			}@else if unitless($h) == true{
 				$h_02:$h+px;
-			}@else if unit($h) == "px"{
-				$h_02:$h;
-			}@else if unit($h) == "%"{
-				$h_02:$h;
 			}
 			
 			width:$w_02;

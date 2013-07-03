@@ -2,7 +2,7 @@
 /*============================================================
 RESET用スタイル　
 ============================================================*/
-html { color: #000; background: #FFF; }
+html { color: #2c2f33; background: #cccccc; }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
 
@@ -16,7 +16,7 @@ ol, ul, li { list-style: none; }
 
 caption, th { text-align: left; }
 
-h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+h1, h2, h3, h4, h5, h6, small { font-size: 100%; font-weight: normal; }
 
 q:before, q:after { content: ''; }
 
@@ -30,7 +30,7 @@ input, textarea, select { font-family: inherit; font-size: inherit; font-weight:
 
 legend { color: #000; }
 
-header, footer, section, hgroup, aside, nav, address, article, figure { display: block; }
+main, header, footer, section, hgroup, aside, nav, address, article, figure { display: block; margin: 0; padding: 0; }
 
 /*
 [77% = 10px]
@@ -71,8 +71,7 @@ body #wrapper { position: relative; min-height: 100%; height: auto !important; h
 
 /*HEADER
 --------------------------------------------------------------------*/
-#header { /* ロゴ・CI・サイトタイトル */ }
-#header p { color: #999999; }
+#header { width: 300px; height: 500px; -webkit-border-radius: 100%; -moz-border-radius: 100%; -ms-border-radius: 100%; border-radius: 100%; background: #336666; /* ロゴ・CI・サイトタイトル */ }
 
 /*NAVIGATION
 --------------------------------------------------------------------*/
