@@ -23,19 +23,12 @@
 <meta property="og:url" content="0000000">
 <meta property="og:image" content="0000000">
 -->
-<!--
-//コピーライト部分が無い場合によって使用する
-<meta name="copyright" content="" />
-//スマートフォン対応時にコメントアウト
-<meta name="viewport" content="width=1280px,user-scalable=yes" />
--->
+<meta name="viewport" content="@@(viewport)@@" />
 <link rel="stylesheet" type="text/css" href="../common/style/layout.css" />
 <link rel="stylesheet" type="text/css" href="../common/style/contents.css" />
 <link rel="stylesheet" type="text/css" href="../common/style/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
-<!--[if lt IE 9]>
-<link rel="stylesheet" type="text/css" href="common/style/ie.css">
-<![endif]-->
+<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
 <!--[if IE 6]>
 <script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script>
 <script>DD_belatedPNG.fix('img');</script>
@@ -46,6 +39,7 @@
 <!-- TemplateParam name="Description" type="text" value="" -->
 <!-- TemplateParam name="id" type="text" value="" -->
 <!-- TemplateParam name="class" type="text" value="" -->
+<!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
 <!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
 </head>
@@ -109,12 +103,13 @@
 	</div>
 	<!-- /footer --> 
 	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>
-<!-- /============= wrapper ============= --> 
+<!-- /============= wrapper ============= -->
+<script type="text/javascript" src="../common/js/pageInfo.js"></script> 
 <script type="text/javascript" src="../common/js/jquery/jquery.js"></script> 
 <script type="text/javascript" src="../common/js/ie/selectivizr-min.js"></script> 
 <script type="text/javascript" src="../common/js/jquery/easing.js"></script> 
-<script type="text/javascript" src="../common/js/main.js"></script> 
 <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
+<script type="text/javascript" src="../common/js/main.js"></script> 
 <script type="text/javascript" src="../common/js/ga.js"></script>
 </body>
 </html>

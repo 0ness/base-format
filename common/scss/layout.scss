@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-//CSS Priority
 //
 //記述はレイアウトの構造優先
 //-----------------------------
@@ -18,10 +16,16 @@
 //フォントサイズ：%表示（20px以降はpxで可）
 
 
+
 @import "partials/_setting";
 @import "partials/_mixin";
 @import "partials/_function";
 @import "partials/_reset";
+
+
+
+
+
 
 
 
@@ -33,23 +37,25 @@ body	{ height:100%; text-align:left;
 
 	& > #wrapper { height:auto;}
 	
-	#wrapper { position:relative; min-height:100%; height:auto !important; height:100%;
+	#wrapper { min-width:1080px; min-height:100%; height:auto !important; height:100%; position:relative;
 		@include iphone	{ -webkit-text-size-adjust: none;}
 		
 		//ページトップに戻る
 		#top_back	{}
 	}
+
+	@include select-color(#fff,scheme(key));
 }
+
 
 
 
 /*HEADER
 --------------------------------------------------------------------*/
-#header	{ @include ellipse(300,500,#366);
+#header	{
 
 	/* ロゴ・CI・サイトタイトル */
 	#ci	{}
-	p		{}
 }
 
 
@@ -94,23 +100,6 @@ body	{ height:100%; text-align:left;
 	//copyright
 	small	{}
 }
-
-
-
-
-/*iPhone
---------------------------------------------------------------------*/
-@include iphone	{}
-
-
-
-
-/*iPad
---------------------------------------------------------------------*/
-@include ipad	{}
-
-
-
 
 
 

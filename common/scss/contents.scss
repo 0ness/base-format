@@ -21,24 +21,16 @@
 @import "partials/_setting";
 @import "partials/_mixin";
 @import "partials/_function";
+@import "partials/_helper";
 
 
 
 
-/*============================================
-	トップページ：index.html
-=============================================*/
+/*トップページ：index.html
+--------------------------------------------------------------------*/
 #top	{	
 }
 
-#wrapper	{
-	@include ie678	{
-		background:#0C0;
-	}
-}
-
-//.firefox	{ background:red;}
-//.webkit	{ background:black;}
 
 
 
@@ -46,5 +38,3 @@
 
 
 
-
-//@import "contents";

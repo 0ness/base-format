@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 //　MIXIN　モジュール用SCSS
 //　共有用モジュールのみ記述　基本プロジェクトに影響するものは記述しない
@@ -135,12 +136,29 @@
 			transition-timing-function: cubic-bezier($a,$b,$c,$d);
 		}
 
+		//アニメーションanimation（プロパティセット）
+		@mixin animation($prop){ -moz-animation:$prop; -webkit-animation:$prop; -ms-animation:$prop; animation:$prop;}
+		
+		//キーフレームkeyframes(関数名)
+		@mixin keyframes($name){
+			@-moz-keyframes $name{ @content; };
+			@-ms-keyframes $name{ @content; };
+			@-webkit-keyframes $name{ @content; };
+			@keyframes $name{ @content; };
+		}
+
 		//トランスフォーム　一式（プロパティセット）
 		@mixin transform($set)	{ -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
 			
 		//トランスフォーム　回転（角度を単位degを付けて入力）
 		@mixin rotate($r)	{ -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
-	
+
+		//トランスレート　座標（x,y）
+		@mixin translate($x:0,$y:0)	{ -ms-transform: translate($x+px,$y+px); -moz-transform: translate($x+px,$y+px); -webkit-transform: translate($x+px,$y+px); transform: translate($x+px,$y+px);}
+
+		//トランスレート　座標（x,y,z）
+		@mixin translate3d($x:0,$y:0,$z:0)	{ -ms-transform: translate3d($x+px,$y+px,$z+px); -moz-transform: translate3d($x+px,$y+px,$z+px); -webkit-transform: translate3d($x+px,$y+px,$z+px); transform: translate3d($x+px,$y+px,$z+px);}
+
 		//角丸（プロパティセット）
 		@mixin radius($r)	{ -webkit-border-radius:$r; -moz-border-radius:$r; -ms-border-radius:$r; border-radius:$r;}
 		
@@ -213,14 +231,13 @@
 			
 		
 		
-// MIXIN CSS2系レイアウトモジュール ///////////////////////////////////////
+// MIXIN CSS2系スタイルモジュール ///////////////////////////////////////
 
 		//幅と高さ指定（width,height,overflow）
 		//幅と高さの引数はpx,%で入力
 		//第三引数にoverflowを指定できる
 		//pxは省略可能
-		@mixin wh($w:auto,$h:auto,$overflow:auto){
-			
+		@mixin wh($w:auto,$h:auto,$overflow:visible){
 			$w_02:$w;
 			$h_02:$h;
 			
@@ -359,7 +376,12 @@
 			}
 			&:after { clear: both;}
 		}
-
+		
+		//両端揃え
+		@mixin text-justify	{
+			text-align:justify;
+			text-justify:inter-ideograph; 
+		}
 
 
 

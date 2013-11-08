@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*============================================================
 RESET用スタイル　
 ============================================================*/
@@ -99,9 +100,7 @@ figure { display: block; margin:0; padding:0;}
 */
 
 
-body { font: 13px/1.231; font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; *font-size:small;
-*font:x-small;
-}
+body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$fontGothic;}
 select,
 input,
 button,

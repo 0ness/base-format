@@ -11,8 +11,7 @@
 
 
 
-page.idCheck();//ページ情報取得　必須
-page.uaClass();//htmlにclassを追加
+page.idCheck();
 
 
 
@@ -24,68 +23,219 @@ $(function(){
 		
 
 		//=============================================================
-		//	共通変数　このJS内部でグローバルに使う変数をまとめる
+		//NOTE	共通変数　このJS内部でグローバルに使う変数
 		//=============================================================
-		//共通オブジェクト
+		//DOMオブジェクト
+        var win = window;
 		var doc = document;
-		var $main = $(doc.getElementById("main"));
-		
+        		
 		//ページ情報
-		var s_pageUA = page.UA();					//ユーザーエージェント保持
-		var s_pageVER = page.VER();				//IEのバージョン保持
-		var s_pageID = page.ID();					//ページID
-		var s_pageClass = page.Category(); 		//ページclass
-		var s_pageMobile = page.mobile();		//モバイル判定
-	
+		var pages = page;
+        
+        //文字列
+		var s_pageUA = pages.UA();            //ユーザーエージェント保持
+		var s_pageVER = pages.VER();          //IEのバージョン保持
+		var s_pageID = pages.ID();		      //ページID
+		var s_pageClass = pages.Category();   //ページclass
+		var s_pageMobile = pages.mobile();    //モバイル判定
 
-		
-		
+        //数値 
+        var n_iw = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
+        var n_ih = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+        
+        //jQueryオブジェクト
+		var $main = $(doc.getElementById("main"));
+        var $ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
+        
+        
+        
 		//=============================================================
-		//	共通要素
+		//NOTE	共通関数　多用する関数
 		//=============================================================
-		function commonNavigation(){			
+
+        //アンカーリンクの移動
+        var ancher = function(_href){
+            var speed = 600;
+            var href = _href;
+            var target = $(href == "#" || href == "" ? 'html' : href);
+            var position = target.offset().top-30;// 移動先を数値で取得
+            $ancherTag.stop().animate({scrollTop:0}, speed, 'easeInOutQuad');
+            return false;
+        }
+        
+        //IE8,7で透過処理を個別に対応
+		//引数：処理を行いたい画像（jQueryオブジェクト）
+		var alphaCheck = function(obj){			
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
+				var img = obj;
+                var imgPass = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");';
+				img.css('filter',imgPass);
+			}
+			return false;
+		}
+        
+        //IE8,7で透過処理を入れ子に対応
+		//引数：処理を行いたい画像の親要素（jQueryオブジェクト）
+		var alphaAllCheck = function(obj){			
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
+                var o = obj;
+                o.each(
+                    function(){
+						var img = $(this);
+						if(img.attr('src').indexOf('.png') !== -1) {
+                            var cssPass = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");';
+							img.css('filter',cssPass);
+						}
+					}
+				)
+			}
+			return false;
+		}
+		
+        //IE8以下　HTML5 placeholder対応
+        var placeholder = function(){
+            var supportsInputAttribute = function (attr) {
+                var input = document.createElement('input');
+                return attr in input;
+            };
+            if (!supportsInputAttribute('placeholder')) {
+                
+                $('[placeholder]').each(function () {
+                    var input = $(this);
+                    var placeholderText = input.attr('placeholder');
+                    var placeholderColor = 'GrayText';
+                    var defaultColor = input.css('color');
+                    
+                    input.on({
+                        "focus":function(){
+                            if (input.val() === placeholderText) {
+                                input.val('').css('color', defaultColor);
+                            }
+                        },
+                        "blur":function(){
+                            if (input.val() === '') {
+                                input.val(placeholderText).css('color', placeholderColor);
+                            } else if (input.val() === placeholderText) {
+                                input.css('color', placeholderColor);
+                            }
+                        }
+                    }).parents('form').submit(function () {
+                        if (input.val() === placeholderText) {
+                            input.val('');
+                        }
+                    });
+                    /*input.
+                    focus(function () {
+                      if (input.val() === placeholderText) {
+                        input.val('').css('color', defaultColor);
+                      }
+                    }).
+                    blur(function () {
+                      if (input.val() === '') {
+                        input.val(placeholderText).css('color', placeholderColor);
+                      } else if (input.val() === placeholderText) {
+                        input.css('color', placeholderColor);
+                      }
+                    }).
+                    blur().
+                    parents('form').
+                      submit(function () {
+                        if (input.val() === placeholderText) {
+                          input.val('');
+                        }
+                    });*/
+                });
+            }
+            return false;
+        }
+
+        
+        
+        
+		//=============================================================
+		//NOTE UI用関数　UI毎の処理を指定
+		//=============================================================
+		var commonNavigation = function(){
 			
 			//メインナビ　宣言と同時に実行///////////////////////////////////////
-			var mainNav = function(){
-								
-				var $gnav = $(doc.getElementById("gnav"));//ナビゲーション			
-				
-				function Gnav(){}//Gnavオブジェクト
-				Gnav.prototype = {
-					
-					//ロールオーバー用　引数にオブジェクト
-					over:function(obj){},
-					
-					//ロールアウト　引数にオブジェクト
-					out:function(obj){}
-				}				
-				var g = new Gnav();
-				
-			}();
+			var mainNav = function(){};
 
 
 			//サブナビ///////////////////////////////////////
 			var subNav = function(){};//無い場合は削除
-			if($(doc.getElementById("sub"))[0]) subNav();
-
-
+			if(doc.getElementById("sub")) subNav();
+            
+            
 			//アンカーリンク///////////////////////////////////////
-			var $ancher = $(doc.getElementById("top_back"));	//トップに戻るボタン
-			var AncherLink = function(e){ //トップに戻る処理
-				e.preventDefault();
-				var speed = 600;
-				var href= "#header";
-				var target = $(href == "#" || href == "" ? 'html' : href);
-				var position = target.offset().top;// 移動先を数値で取得
-				var tag = "body";
-				
-				//Firefox・IE対応
-				if(s_pageUA === "firefox" || s_pageUA === "ie") tag = "html";
-				$(tag).animate({scrollTop:position}, speed, 'easeInOutExpo');
-			};
-			
-			//アンカーリンク指定
-			$ancher.on("click",AncherLink);
+			var pageTop = doc.getElementById("topBack");
+			var $ancherBtn = $(pageTop);	//トップに戻るボタン
+
+			//固定リンクボタン
+			var FixLinkBtn = function(){
+				var $win = $(window);
+				var $wrapper = $(doc.getElementById("wrapper"));
+				var h = 0;
+				var b = 0;
+				var cls = "static";
+				var old_flg = false;
+				var now_flg = false;
+
+				//高さ確認
+				var SizeCheck = function(){
+					h = $win.height();
+					b = ($wrapper.height()-h)-40;
+				};
+				SizeCheck();
+				var num_scroll;
+				var timer;
+
+				//FixLinkクラス
+				var FixLink = function(){};
+				FixLink.prototype = {
+					scrollCheck:function(){//スクロール時の位置判定
+						num_scroll = $win.scrollTop();
+
+						//位置のフラグ
+						if(num_scroll > 500) now_flg = true;
+						else now_flg = false;
+
+						//フッターとの位置調整
+						cls = (num_scroll >= b) ? "static" : "";
+						pageTop.className = cls;
+						timer = setTimeout(fa.scrollCheck,80);
+
+						//表示の切り替え
+						if(now_flg !== old_flg){
+							if(now_flg === true){
+								$ancherBtn.fadeTo(200,1,"linear");
+								old_flg = true;
+							}else{
+								$ancherBtn.fadeTo(200,0,"linear");
+								old_flg = false;
+							}
+						}
+						return false;
+					},
+					resize:function(){//リサイズ時の位置調整
+						SizeCheck();
+						if(s_pageVER !== 2) fa.scrollCheck();
+						return false;
+					}
+				};
+
+				//FixAncherインスタンス
+				if(s_pageMobile === false){
+					var fa = new FixLink();
+					//ページ全体のイベント
+					$win.on({"load":fa.resize,"resize":fa.resize});
+					timer = setTimeout(fa.scrollCheck,80);
+				}
+
+				$ancherBtn.on("click",function(e){
+					e.preventDefault();
+					$ancherTag.stop().animate({scrollTop:0},600, 'easeInOutQuad');
+				});
+            };
 
 
 			//コピーライト年数　自動化///////////////////////////////////////
@@ -96,46 +246,60 @@ $(function(){
 			};
 			
 			return false;
-		}
-		commonNavigation();
-		
+		}();
 
-		
-		
+        
+        
+        
 		//=============================================================
-		//	IE透過処理　使用時にバグを伴うリスクがあるので、慎重に使う
+		//NOTE コンテンツ毎の関数
 		//=============================================================
+        //TOPページ
+        function topPage(){
+            
+            return false;
+        }
+        
+        //aboutページ
+        function aboutPage(){
+            
+            return false;
+        }
 
-		//	引数：処理を行いたい画像 //	個別の対応にs使う //	IE8.7のみ適用
-		function alphaCheck(obj){			
-			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
-				var img = obj;
-				img.css({'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");'});
-			}
-			return false;
-		}
-
-		//	引数：処理を行いたい画像の親要素 //	ページ全体の画像を処理したいい時使う //	IE8.7のみ適用
-		function alphaAllCheck(obj){			
-			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
-				var o = obj;
-				o.each(
-					function(){
-						img = $(this);
-						if(img.attr('src').indexOf('.png') !== -1) {
-							img.css({'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");'});
-						}
-					}
-				)
-			}
-			return false;
-		}
-		
-		
+        
+        
+        
+		//=============================================================
+		//NOTE 関数分岐　ID・Classで処理を変更
+		//=============================================================        
+        //PC用関数
+        var screenFunc = function(){
+            if(s_pageID === "top") topPage();
+            return false;
+        }
+        
+        //モバイル用関数
+        var mobileFunc = function(){
+            if(s_pageID === "top") topPage();
+            return false;
+        }
+        
+        //タブレット用関数
+        var tabletFunc = function(){
+            return false;
+        }
+        
+        //デバイス分岐
+		if( s_pageMobile === true) mobieFunc();
+        else screenFunc();
+        
+        
+        
+        return false;
 	}
 	
 	
-	$(window).on("load",init);
-	
+    
+	$(window).on("ready",init);
 })
 //SCRIPT END

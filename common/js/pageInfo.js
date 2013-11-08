@@ -28,6 +28,7 @@ function PageContent(){
 			var _wn = window.navigator;
 			var _userAgent = _wn.userAgent.toLowerCase();
 			var _appVersion = _wn.appVersion.toLowerCase();
+			var _ls = location.search;
 
 			//スマートフォン UA確認
 			if(_ua.indexOf('iPhone') !== -1){
@@ -39,37 +40,28 @@ function PageContent(){
 			}
 			
 			//クエリ確認
-			if (location.search.length !== 0) {
-				_qs = location.search.substr(1).split("&");	
-				if(_qs == "id=PC"){
-					this.mobile = false;
-				}else if(_qs == "id=SP"){
-					this.mobile = true;
-				}
+			if (_ls.length !== 0) {
+				_qs = _ls.substr(1).split("&").toString();	
+				if(_qs === "id=PC") this.mobile = false;
+				else if(_qs === "id=SP") this.mobile = true;
 			}
 			
 			//ブラウザ確認
 			if(_userAgent.indexOf("msie") !== -1){
-				this.UA = "ie";				
-				if (_appVersion.indexOf("msie 8.") !== -1) {
-					this.VER = 'ie8';
-				} else if (_appVersion.indexOf("msie 7.") !== -1) {
-					this.VER =  'ie7';
-				} else if (_appVersion.indexOf("msie 6.") !== -1) {
-					this.VER = 'ie6';
-				}else{
-					this.VER = "ie9";	//IE9以上
-				};
+				this.UA = "ie";
+				if (_appVersion.indexOf("msie 8.") !== -1) this.VER = 'ie8';
+				else if (_appVersion.indexOf("msie 7.") !== -1) this.VER =  'ie7';
+				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = 'ie6';
+				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = "ie9";	//IE9以上
+                else this.VER = "ie10";
+            }else if(_userAgent.indexOf('trident/7') != -1){
+				this.UA = "ie";
+                this.VER = 'ie11';
 			}else{
-				if(_userAgent.indexOf("firefox") !== -1){
-					this.UA = "firefox";
-				}else {
-					this.UA = "webkit";				
-				}
-			}
+				if(_userAgent.indexOf("firefox") !== -1) this.UA = "firefox";
+				else this.UA = "webkit";				
+			};
 			
-			//2/4に削除
-			//this.mobile = false;
 			return false;
 		}
 	};
@@ -82,21 +74,12 @@ function PageContent(){
 		Category:"",		//ページclass
 		check:function(){ //ページid・classの取得
 			var bodys = doc.getElementsByTagName("body")[0];
+			var classStr = user.UA;
+            
 			this.ID = bodys.getAttribute('id');
 			this.Category = bodys.getAttribute("class");
-			return false;
-		},
-		classSet:function(){	//ブラウザ名をhtmlタグにclassとして付加
-			//var bodys= doc.getElementsByTagName("html")[0];
-			var bodys= doc.getElementById("wrapper")[0];
-			var classStr = user.UA;
-			//var defaultclass = bodys.getAttribute("class");
-			
-			//ブラウザ分岐
-			//if(user.UA === "ie") classStr = user.VER;
-			//if(defaultclass !== null) classStr += " "+defaultclass;		
-			if(user.UA !== "ie") doc.getElementById("wrapper").className = classStr;
-			//bodys.setAttribute("class",classStr);
+            
+			if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 			return false;
 		}
 	}
@@ -105,25 +88,25 @@ function PageContent(){
 	//HEAD要素　動的記述///////////////////////////////////////
 	var HEAD = {
 		pcCSS:function(css){	//PC用	css記述
-			var _STR = css;
-			if(user.mobile !== true){
+			if(user.mobile === false){
+				var _STR = css;
 				var link = doc.createElement('link');
+				var head = doc.getElementsByTagName('head');
 				link.href = _STR;
 				link.type = 'text/css';
 				link.rel = 'stylesheet';
-				var head = doc.getElementsByTagName('head');
 				head.item(0).appendChild(link);
 			}
 			return false;
 		},
 		mobileCSS:function(css){	//モバイル用css記述
-			var _STR = css;
 			if(user.mobile === true){
+				var _STR = css;
 				var link = doc.createElement('link');
+				var head = doc.getElementsByTagName('head');
 				link.href = _STR;
 				link.type = 'text/css';
 				link.rel = 'stylesheet';
-				var head = doc.getElementsByTagName('head');
 				head.item(0).appendChild(link);
 			}
 			return false;
@@ -135,42 +118,24 @@ function PageContent(){
 			if(user.mobile === true) _str = 'width=device-width';		
 			meta.setAttribute('content',_str);
 			doc.getElementsByTagName('head')[0].appendChild(meta);
-		},
-		IE:function(css,js){		//IE分岐コメント記述　テスト中
-			if(user.VER === "ie8" || user.VER === "ie7" || user.VER === "ie6"){
-				var link = doc.createElement('link');
-				link.href = css;
-				link.type = 'text/css';
-				link.rel = 'stylesheet';
-				
-				var script = doc.createElement("script");
-				script.src = js;
-				script.type = "text/javascript";
-				
-				var head = doc.getElementsByTagName('head');
-				head.item(0).appendChild(link);
-				head.item(0).appendChild(script);
-			}
 		}
 	}
 	
 
 	//明示型 Getterメソッド///////////////////////////////////////
 	return {
-		UA:function(){		return user.UA; },//ユーザーエージェント
-		VER:function(){ 	return user.VER; },//ブラウザバージョン
-		ID:function(){		return content.ID; },//ページid
-		device:function(){return user.device; },//スマートフォンOS
-		idCheck:function(){ 	return content.check(); },//ページid情報取得
-		Category:function(){	return content.Category; },//ページclass
-		width:function(){		return size.check(); },//ページ幅
-		mobile:function(){ 	return user.mobile; },//モバイル判定
-		pcCSS:function(css){			return HEAD.pcCSS(css); },//CSS動的読み込み
-		mobileCSS:function(css){	return HEAD.mobileCSS(css); },//CSS動的読み込み
-		viewport:function(){ return HEAD.responseViewPort(); },//viewport動的変更
-		uaClass:function(){ return content.classSet();},//UAをクラス名としてhtmlに付加する
-		ie:function(css,js){ return HEAD.IE(css,js); }
-	}					
+		UA:function(){    return user.UA; },//ユーザーエージェント
+		VER:function(){   return user.VER; },//ブラウザバージョン
+		ID:function(){    return content.ID; },//ページid
+		Category:function(){  return content.Category; },//ページclass
+		device:function(){    return user.device; },//スマートフォンOS
+		idCheck:function(){   return content.check(); },//ページid情報取得
+		mobile:function(){    return user.mobile; },//モバイル判定
+		pcCSS:function(css){  return HEAD.pcCSS(css); },//CSS動的読み込み
+		mobileCSS:function(css){  return HEAD.mobileCSS(css); },//CSS動的読み込み
+		viewport:function(){  return HEAD.responseViewPort(); },//viewport動的変更
+		uaClass:function(){   return content.uaClass();},//UAをクラス名としてhtmlに付加する
+	}
 }
 
 
