@@ -17,7 +17,10 @@ page.idCheck();
 
 //SCRIPT START
 $(function(){
-	
+
+    
+    $.fx.interval = 20;
+    
 	
 	function init(){
 		
@@ -300,6 +303,6 @@ $(function(){
 	
 	
     
-	$(window).on("ready",init);
+	$(window).on("load",init);
 })
 //SCRIPT END

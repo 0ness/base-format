@@ -32,11 +32,17 @@ function PageContent(){
 
 			//スマートフォン UA確認
 			if(_ua.indexOf('iPhone') !== -1){
-				this.device = "iphone";
 				this.mobile = true;
-			}else if(_ua.indexOf('Android') !== -1){
+                var height_num = screen.height * window.devicePixelRatio;
+                if( height_num === 1136) this.device = "iphone5";
+                else this.device = "iphone";
+            }else if(_ua.indexOf('Android') !== -1){
 				this.device = "Android";
 				this.mobile = true;
+			}else if(_ua.indexOf('iPad') !== -1){
+                var height_num = screen.height * window.devicePixelRatio;
+                if( height_num === 2048) this.device = "ipad3";
+                else this.device = "ipad";
 			}
 			
 			//クエリ確認
@@ -49,7 +55,7 @@ function PageContent(){
 			//ブラウザ確認
 			if(_userAgent.indexOf("msie") !== -1){
 				this.UA = "ie";
-				if (_appVersion.indexOf("msie 8.") !== -1) this.VER = 'ie8';
+				if(_appVersion.indexOf("msie 8.") !== -1) this.VER = 'ie8';
 				else if (_appVersion.indexOf("msie 7.") !== -1) this.VER =  'ie7';
 				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = 'ie6';
 				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = "ie9";	//IE9以上

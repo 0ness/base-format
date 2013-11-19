@@ -2,6 +2,7 @@
 <!--[if IE 6]><html lang="ja" class="ie6"><![endif]-->
 <!--[if IE 7]><html lang="ja" class="ie7"><![endif]-->
 <!--[if IE 8]><html lang="ja" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="ja" class="ie9"><![endif]-->
 <!--[if !IE]>-->
 <html lang="ja">
 <!--<![endif]--><head>
@@ -58,7 +59,7 @@
 	<!-- ============= contents ============= -->
 	<div id="contents"> 
 		<!-- main -->
-		<main id="main"></main>
+		<main id="main"><!-- TemplateBeginEditable name="メイン部分" -->メイン部分<!-- TemplateEndEditable --></main>
 		<!-- /main --> 
 		<!-- sub -->
 		<div id="sub"> 

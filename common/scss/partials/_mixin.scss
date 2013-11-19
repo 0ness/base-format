@@ -30,7 +30,7 @@
 
 		//Androidの高精細画面も含めた指定
 		@mixin mobile {
-			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {	@content;}
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {	@content; }
 		}
 	
 		//IE6用対応
@@ -46,6 +46,11 @@
 		//IE8用対応
 		@mixin ie8	{
 			html.ie8 &{ @content; }
+		}
+
+		//IE8用対応
+		@mixin ie9	{
+			html.ie9 &{ @content; }
 		}
 
 		//Firefox用対応
@@ -71,10 +76,25 @@
 			html.ie8 &{ @content; }
 		}
 
+		//IE6、7、8、9用対応
+		@mixin ie6789	{
+			html.ie6 &{ @content; }
+			html.ie7 &{ @content; }
+			html.ie8 &{ @content; }
+			html.ie9 &{ @content; }
+		}
+
 		//IE7、8用対応
 		@mixin ie78	{
 			html.ie7 &{ @content; }
 			html.ie8 &{ @content; }
+		}
+
+		//IE7、8、9用対応
+		@mixin ie789	{
+			html.ie7 &{ @content; }
+			html.ie8 &{ @content; }
+			html.ie9 &{ @content; }
 		}
 
 		//IE6用　ハック対応
@@ -98,7 +118,7 @@
 // MIXIN CSS3系モジュール ///////////////////////////////////////
 
 		//透明度（アルファ値をパーセンテージで入力）
-		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")";}
+		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")"; zoom:1;}
 		
 		//トランジション（イージング,秒数,プロパティ,ディレイ）
 		@mixin transition($e:ease-out,$n:0.2s,$p:all,$delay:0s){
@@ -115,7 +135,7 @@
 		}
 
 		//トランジションdelay（ディレイ）
-		@mixin delay($delay:0s){-moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;}
+		@mixin delay($delay:0s){ -moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;}
 		
 		//カスタムイージング：CSS3アニメーションのイージングを細かく指定したい時に使用するhttp://cubic-bezier.comを利用すると便利
 		@mixin easing($a,$b,$c,$d,$pro:all,$s:1000ms){
