@@ -90,6 +90,12 @@
 			html.ie8 &{ @content; }
 		}
 
+		//IE8、9用対応
+		@mixin ie89	{
+			html.ie8 &{ @content; }
+			html.ie9 &{ @content; }
+		}
+
 		//IE7、8、9用対応
 		@mixin ie789	{
 			html.ie7 &{ @content; }
