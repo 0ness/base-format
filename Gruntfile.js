@@ -184,6 +184,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-play");
     
     grunt.initConfig({
         concat:{
@@ -216,12 +217,17 @@ module.exports = function(grunt){
                     "<%= concat.baseJS.src %>",
                     "<%= uglify.mainJS.src %>"
                 ],
-                tasks:["concat","uglify","clean"]
+                tasks:["concat","uglify","clean","play"]
+            }
+        },
+        play:{
+            fanfare:{
+                file:"node_modules/grunt-play/sounds/sound.mp3"
             }
         }
     });
     
-    grunt.registerTask("default",["concat","uglify","clean"]);
+    grunt.registerTask("default",["concat","uglify","clean","play"]);
 
 }
 

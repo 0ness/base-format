@@ -174,7 +174,7 @@
 		}
 
 		//トランスフォーム　一式（プロパティセット）
-		@mixin transform($set)	{ -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
+		@mixin transform($set...)	{ -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
 			
 		//トランスフォーム　回転（角度を単位degを付けて入力）
 		@mixin rotate($r)	{ -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
