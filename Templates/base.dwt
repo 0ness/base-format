@@ -5,7 +5,8 @@
 <!--[if IE 9]><html lang="ja" class="ie9"><![endif]-->
 <!--[if !IE]>-->
 <html lang="ja">
-<!--<![endif]--><head>
+<!--<![endif]-->
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>@@(ページタイトル)@@</title>
@@ -35,14 +36,14 @@
 <!-- TemplateParam name="ページclass" type="text" value="" -->
 <!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
-<!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
+<!-- TemplateInfo codeOutsideHTMLIsLocked="true" -->
 </head>
 <body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
 <!-- ============= wrapper ============= -->
 <div id="wrapper"> 
 	<!-- header -->
 	<header id="header"> 
-		<!-- gnav --> 
+		<!-- gnav -->
 		<nav id="gNav">
 			<ul>
 				<li id="gn_01"@@((ページid != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
@@ -91,7 +92,7 @@
 			<li><a href="#header">個人情報のお取扱いについて</a></li>
 			<li><a href="#header">サイトポリシー</a></li>
 		</ul> -->
-		<p><small>Copylight &copy;</small></p> 
+		<p><small>Copylight &copy;</small></p>
 	</footer>
 	<!-- /footer --> 
 	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>

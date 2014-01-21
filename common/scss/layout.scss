@@ -26,14 +26,11 @@
 
 
 
-
-
-
 /*============================================================
 LAYOUT用スタイル　
 ============================================================*/
 html	{ height:100%;}
-body	{ height:100%; text-align:left;
+body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left top;
 
 	& > #wrapper { height:auto;}
 	

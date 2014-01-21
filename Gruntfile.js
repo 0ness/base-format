@@ -1,23 +1,4 @@
-
-//シングルタスクの登録
-/*module.exports
-Node.js固有の名前空間、この中に登録されたオブジェクトをGruntが処理する*/
-//module.exports = function(grunt){
-//    
-//    /*grunt.registerTask（タスク名、タスクの説明、実行関数）*/
-//    grunt.registerTask("hallo","description here",function(){
-//        grunt.log.writeln("関数呼ばれてます！！");
-//    });
-//    
-//    grunt.registerTask("test_02","テスト用関数_02",function(){
-//        grunt.log.writeln("関数呼ばれてます_02！！");
-//    })
-//    
-//    /*defaultタスク
-//    defaultの名前がついたタスクは、gruntコマンド呼び出し時に実行される*/
-//    grunt.registerTask("default",["hallo","test_02"]);
-//    
-//};
+w//};
 
 //マルチタスクの登録
 //module.exports = function(grunt){
@@ -211,6 +192,11 @@ module.exports = function(grunt){
         clean:{
             js:"<%= concat.baseJS.dest %>"
         },
+        play:{
+            fanfare:{
+                file:"node_modules/grunt-play/sounds/sound.mp3"
+            }
+        },
         watch:{
             js:{
                 files:[
@@ -218,11 +204,6 @@ module.exports = function(grunt){
                     "<%= uglify.mainJS.src %>"
                 ],
                 tasks:["concat","uglify","clean","play"]
-            }
-        },
-        play:{
-            fanfare:{
-                file:"node_modules/grunt-play/sounds/sound.mp3"
             }
         }
     });

@@ -6,56 +6,63 @@
 	・機能実装→演出実装→最適化処理のフローで構築
 	
 ==============================================================================*/
-
-
-
-
-
 page.idCheck();
 
 
 
 //SCRIPT START
-$(function(){
+function init(){
 
-    
-    $.fx.interval = 20;
-    
 	
-	function init(){
+	/*const 共通定数　このJS内部でグローバルに使う定数
+	--------------------------------------------------------------------*/
+	//DOMオブジェクト
+	var win = window;
+	var doc = document;
+			
+	//ページ情報
+	var pages = page;
+	
+	//文字列
+	var s_pageUA = pages.UA();            //ユーザーエージェント保持
+	var s_pageVER = pages.VER();          //IEのバージョン保持
+	var s_pageID = pages.ID();		      //ページID
+	var s_pageClass = pages.Category();   //ページclass
+	var s_pageMobile = pages.mobile();    //モバイル判定
+
+	
+	/*const 拡張関数　requestAnimFrame()
+	--------------------------------------------------------------------*/
+    win.requestAnimFrame = (function(){
+		return	win.requestAnimFrame ||
+				win.webkitRequestAnimFrame ||
+				win.mozRequestAnimFrame ||
+				win.msRequestAnimFrame ||
+				function(callback,element){
+					win.setTimeout(callback,1000/60);
+				};
+	})();
+
+	
+	
+	/*var 共通変数　このJS内部でグローバルに使う変数
+	--------------------------------------------------------------------*/
+	//数値 
+	var n_iw = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
+	var n_ih = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+
+	
+	//jquery開始
+	$(function(){
 		
-
-		//=============================================================
-		//NOTE	共通変数　このJS内部でグローバルに使う変数
-		//=============================================================
-		//DOMオブジェクト
-        var win = window;
-		var doc = document;
-        		
-		//ページ情報
-		var pages = page;
-        
-        //文字列
-		var s_pageUA = pages.UA();            //ユーザーエージェント保持
-		var s_pageVER = pages.VER();          //IEのバージョン保持
-		var s_pageID = pages.ID();		      //ページID
-		var s_pageClass = pages.Category();   //ページclass
-		var s_pageMobile = pages.mobile();    //モバイル判定
-
-        //数値 
-        var n_iw = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
-        var n_ih = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+		$.fx.interval = 20;
         
         //jQueryオブジェクト
-		var $main = $(doc.getElementById("main"));
         var $ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
         
-        
-        
-		//=============================================================
-		//NOTE	共通関数　多用する関数
-		//=============================================================
-
+		
+		/*function 共通関数　多用する関数
+		--------------------------------------------------------------------*/
         //アンカーリンクの移動
         var ancher = function(_href){
             var speed = 600;
@@ -127,49 +134,26 @@ $(function(){
                             input.val('');
                         }
                     });
-                    /*input.
-                    focus(function () {
-                      if (input.val() === placeholderText) {
-                        input.val('').css('color', defaultColor);
-                      }
-                    }).
-                    blur(function () {
-                      if (input.val() === '') {
-                        input.val(placeholderText).css('color', placeholderColor);
-                      } else if (input.val() === placeholderText) {
-                        input.css('color', placeholderColor);
-                      }
-                    }).
-                    blur().
-                    parents('form').
-                      submit(function () {
-                        if (input.val() === placeholderText) {
-                          input.val('');
-                        }
-                    });*/
                 });
             }
             return false;
         }
 
         
-        
-        
-		//=============================================================
-		//NOTE UI用関数　UI毎の処理を指定
-		//=============================================================
+		/*function UI用関数　UI毎の処理を指定
+		--------------------------------------------------------------------*/
 		var commonNavigation = function(){
 			
-			//メインナビ　宣言と同時に実行///////////////////////////////////////
+			//メインナビ　宣言と同時に実行
 			var mainNav = function(){};
 
 
-			//サブナビ///////////////////////////////////////
+			//サブナビ
 			var subNav = function(){};//無い場合は削除
 			if(doc.getElementById("sub")) subNav();
             
             
-			//アンカーリンク///////////////////////////////////////
+			//アンカーリンク
 			var pageTop = doc.getElementById("topBack");
 			var $ancherBtn = $(pageTop);	//トップに戻るボタン
 
@@ -252,29 +236,19 @@ $(function(){
 		}();
 
         
-        
-        
-		//=============================================================
-		//NOTE コンテンツ毎の関数
-		//=============================================================
+		/*contents コンテンツ毎の処理
+		--------------------------------------------------------------------*/
         //TOPページ
         function topPage(){
             
+			var test = function(){};
+			
             return false;
         }
         
-        //aboutページ
-        function aboutPage(){
-            
-            return false;
-        }
-
         
-        
-        
-		//=============================================================
-		//NOTE 関数分岐　ID・Classで処理を変更
-		//=============================================================        
+		/*contents 関数分岐　ID・Classで処理を変更
+		--------------------------------------------------------------------*/
         //PC用関数
         var screenFunc = function(){
             if(s_pageID === "top") topPage();
@@ -294,15 +268,15 @@ $(function(){
         
         //デバイス分岐
 		if( s_pageMobile === true) mobieFunc();
-        else screenFunc();
-        
-        
-        
-        return false;
-	}
+        else screenFunc();        	
+	});
+
 	
-	
-    
-	$(window).on("load",init);
-})
+	return false;
+};
+
+
+//contents スクリプト動作開始
+if(window.addEventListener) window.addEventListener("load",init, false);
+else window.attachEvent("onload",init);
 //SCRIPT END
