@@ -1,4 +1,3 @@
-w//};
 
 //マルチタスクの登録
 //module.exports = function(grunt){
@@ -161,12 +160,15 @@ w//};
 //Gruntプラグインの導入（watchの場合）
 module.exports = function(grunt){
     
-    grunt.loadNpmTasks("grunt-contrib-concat");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-play");
+	grunt.loadNpmTasks("grunt-contrib-concat");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-contrib-clean");
+	grunt.loadNpmTasks("grunt-autoprefixer");
+	grunt.loadNpmTasks("grunt-sass");
+	grunt.loadNpmTasks("grunt-play");
     
+	//基本的なタスクセット
     grunt.initConfig({
         concat:{
             baseJS:{
@@ -197,6 +199,25 @@ module.exports = function(grunt){
                 file:"node_modules/grunt-play/sounds/sound.mp3"
             }
         },
+		/*sass:{
+			dist:{
+				files: {
+					'common/style/layout.css': 'common/scss/layout.scss',
+					'common/style/contents.css': 'common/scss/contents.scss'
+				}
+			}
+		},*/
+		autoprefixer:{
+			options:{
+				browsers:["last 3 versions","ie 8","ios 4","android 2.3"]
+			},
+			file:{
+				expand: true,
+				flatten: true,
+				src:'common/style/*.css',
+				dest:'common/style/'
+			}
+		},
         watch:{
             js:{
                 files:[
@@ -204,12 +225,20 @@ module.exports = function(grunt){
                     "<%= uglify.mainJS.src %>"
                 ],
                 tasks:["concat","uglify","clean","play"]
-            }
+            },
+			css:{
+				options: {
+					spawn: false
+				},
+				files:"<%= autoprefixer.file.src %>",
+                tasks:["autoprefixer"]
+			}
         }
-    });
-    
+	});
+	
     grunt.registerTask("default",["concat","uglify","clean","play"]);
+	
 
-}
+};
 
 

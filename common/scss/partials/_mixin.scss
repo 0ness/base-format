@@ -166,11 +166,11 @@
 		@mixin animation($prop){ -moz-animation:$prop; -webkit-animation:$prop; -ms-animation:$prop; animation:$prop;}
 		
 		//キーフレームkeyframes(関数名)
-		@mixin keyframes($name){
-			@-moz-keyframes $name{ @content; };
-			@-ms-keyframes $name{ @content; };
-			@-webkit-keyframes $name{ @content; };
-			@keyframes $name{ @content; };
+		@mixin keyframes($name){			
+			@-moz-keyframes $name{ @content; }
+			@-ms-keyframes $name{ @content; }
+			@-webkit-keyframes $name{ @content; }
+			@keyframes $name{ @content; }
 		}
 
 		//トランスフォーム　一式（プロパティセット）
