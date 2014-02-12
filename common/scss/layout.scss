@@ -30,18 +30,13 @@
 LAYOUT用スタイル　
 ============================================================*/
 html	{ height:100%;}
-body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left top;
-
-	& > #wrapper { height:auto;}
+body	{ height:100%; text-align:left; @include select-color(#fff,scheme(key));}
+body > #wrapper { height:auto;}
+#wrapper { min-width:1080px; min-height:100%; height:auto !important; height:100%; position:relative;
+	@include iphone	{ -webkit-text-size-adjust: none;}
 	
-	#wrapper { min-width:1080px; min-height:100%; height:auto !important; height:100%; position:relative;
-		@include iphone	{ -webkit-text-size-adjust: none;}
-		
-		//ページトップに戻る
-		#top_back	{}
-	}
-
-	@include select-color(#fff,scheme(key));
+	//ページトップに戻る
+	#topBack	{ @include bottom-left(300,0); color:#fff;}
 }
 
 
@@ -52,7 +47,9 @@ body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left 
 #header	{
 
 	/* ロゴ・CI・サイトタイトル */
-	#ci	{}
+	#ci	{
+		a:hover img	{ opacity:0.6;}
+	}
 }
 
 
@@ -63,8 +60,10 @@ body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left 
 #gNav	{//入れ子を減らすために並列に記述
 	ul	{ overflow:hidden;}
 	li	{ float:left;}
-	a 	{ display:block;}
-	a:hover{}
+	a 	{ display:block;
+		&:hover	{}
+	}
+	img	{ display:block;}
 }
 
 
@@ -74,11 +73,7 @@ body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left 
 --------------------------------------------------------------------*/
 
 /* コンテンツ部分 */
-#contents	{ position:relative;
-
-	//ページトップに戻る
-	#top_back	{ @include bottom-right(10,50);}
-}
+#contents	{ padding:0 0 2100px; overflow:hidden; position:relative; background:#ccc;}
 
 
 /* メインコンテンツ */
@@ -93,9 +88,8 @@ body	{ height:100%; text-align:left; background:url(../../test.gif) repeat left 
 
 /*FOOTER
 --------------------------------------------------------------------*/
-#footer	{
-	//copyright
-	small	{}
+#footer	{width:100%; height:100px; @include bottom-left;  background:blue;
+	#copyright	{}
 }
 
 

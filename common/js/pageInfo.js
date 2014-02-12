@@ -10,9 +10,7 @@
 	・viewportなどを操作する
 	
 ==============================================================================*/
-
-
-function PageContent(){
+var PageInfo = function(){
 	
 	var doc = document;
 	
@@ -89,7 +87,7 @@ function PageContent(){
             
 			if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 			return false;
-		}
+		}()
 	}
 
 
@@ -128,10 +126,10 @@ function PageContent(){
 			meta.setAttribute('content',_str);
 			doc.getElementsByTagName('head')[0].appendChild(meta);
 		}
-	}
+	};
 	
-
-	/*method 戻り値関数
+	
+	/*function 戻り値関数
 	--------------------------------------------------------------------*/
 	return {
 		UA:function(){    return user.UA; },//ユーザーエージェント
@@ -146,10 +144,4 @@ function PageContent(){
 		viewport:function(){  return HEAD.responseViewPort(); },//viewport動的変更
 		uaClass:function(){   return content.uaClass();},//UAをクラス名としてhtmlに付加する
 	}
-}
-
-
-
-//インスタンス///////////////////////////////////////	
-var page = new PageContent();
-
+};

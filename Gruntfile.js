@@ -176,7 +176,8 @@ module.exports = function(grunt){
                     "common/js/pageInfo.js",
                     "common/js/jquery/jquery.js",
                     "common/js/jquery/easing.js",
-                    "common/js/ie/selectivizr-min.js"
+                    "common/js/ie/selectivizr-min.js",
+                    "common/js/library.js"
                 ],
                 dest:"common/js/base.js"
             }
