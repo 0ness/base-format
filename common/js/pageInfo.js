@@ -87,8 +87,9 @@ var PageInfo = function(){
             
 			if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 			return false;
-		}()
-	}
+		}
+	};
+	content.check();
 
 
 	/*object HEAD要素　動的記述
