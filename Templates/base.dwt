@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="../common/style/contents.css">
 <link rel="stylesheet" type="text/css" href="../common/style/temp.css">
 <!-- TemplateBeginEditable name="head" -->
-<!--[if lt IE 9]><script src="common/js/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="common/js/ie/html5.js"></script><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
 <!-- TemplateParam name="ページタイトル" type="text" value="" -->
