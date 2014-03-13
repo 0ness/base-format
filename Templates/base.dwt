@@ -99,7 +99,7 @@
 <!-- /============= wrapper ============= --> 
 <script type="text/javascript" src="../common/js/minify/base.js"></script> 
 <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
-<script type="text/javascript" src="../common/js/minify/main.js"></script> 
+<script type="text/javascript" src="../common/js/main.js"></script> 
 <script type="text/javascript" src="../common/js/ga.js"></script>
 </body>
 </html>

@@ -30,10 +30,7 @@
 <link rel="stylesheet" type="text/css" href="../common/style/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
-<!--[if IE 6]>
-<script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script>
-<script>DD_belatedPNG.fix('img');</script>
-<![endif]-->
+<!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
 <!-- TemplateParam name="Title" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->
@@ -107,7 +104,7 @@
 <!-- /============= wrapper ============= -->
 <script type="text/javascript" src="../common/js/minify/base.js"></script> 
 <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
-<script type="text/javascript" src="../common/js/minify/main.js"></script> 
+<script type="text/javascript" src="../common/js/main.js"></script> 
 <script type="text/javascript" src="../common/js/ga.js"></script>
 </body>
 </html>
