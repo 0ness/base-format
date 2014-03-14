@@ -143,6 +143,6 @@ var PageInfo = function(){
 		pcCSS:function(css){  return HEAD.pcCSS(css); },//CSS動的読み込み
 		mobileCSS:function(css){  return HEAD.mobileCSS(css); },//CSS動的読み込み
 		viewport:function(){  return HEAD.responseViewPort(); },//viewport動的変更
-		uaClass:function(){   return content.uaClass();},//UAをクラス名としてhtmlに付加する
+		uaClass:function(){   return content.uaClass();}//UAをクラス名としてhtmlに付加する
 	}
 };

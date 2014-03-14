@@ -242,6 +242,11 @@
 			 @include radius(100%); background:$bgcolor;
 		}
 
+		//フォームのスタイル変更
+		@mixin appearance($prop:none) {
+			-webkit-appearance:$prop; -moz-appearance:$prop; appearance:$prop;
+		}
+
 
 
 // MIXIN CSS3系スマートフォン用モジュール ///////////////////////////////////////
