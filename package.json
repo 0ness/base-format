@@ -9,6 +9,7 @@
     "grunt-play": "~0.1.0",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-autoprefixer": "~0.7.2",
-    "grunt-sass": "~0.10.0"
+    "grunt-sass": "~0.10.0",
+    "grunt-shell": "~0.6.4"
   }
 }

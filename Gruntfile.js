@@ -167,6 +167,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-autoprefixer");
 	grunt.loadNpmTasks("grunt-sass");
 	grunt.loadNpmTasks("grunt-play");
+	grunt.loadNpmTasks("grunt-shell");
     
 	//基本的なタスクセット
     grunt.initConfig({
@@ -220,6 +221,13 @@ module.exports = function(grunt){
 				dest:'common/style/'
 			}
 		},
+		shell:{
+			styledocco:{
+				command: function () {
+					return ' styledocco --preprocessor "sass" common/scss/module.scss';
+				}
+			}
+		},
         watch:{
             js:{
                 files:[
@@ -234,6 +242,10 @@ module.exports = function(grunt){
 				},
 				files:"<%= autoprefixer.file.src %>",
                 tasks:["autoprefixer"]
+			},
+			styleguide:{
+				files:"common/scss/module.scss",
+                tasks:["shell:styledocco"]
 			}
         }
 	});
