@@ -124,7 +124,8 @@
 // MIXIN CSS3系モジュール ///////////////////////////////////////
 
 		//透明度（アルファ値をパーセンテージで入力）
-		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")"; zoom:1;}
+		//zoom:1;はIE
+		@mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")"; zoom:1;  background:#fff;}
 		
 		//トランジション（イージング,秒数,プロパティ,ディレイ）
 		@mixin transition($e:ease-out,$n:0.2s,$p:all,$delay:0s){

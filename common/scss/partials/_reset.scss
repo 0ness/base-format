@@ -5,6 +5,7 @@ RESET用スタイル　
 //YUI 3.10.1 (build 8bc088e)
 
 html { color: scheme(text); background:scheme(bg);}
+a	{ @include link-set;}
 body,
 div,
 dl,

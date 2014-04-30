@@ -164,11 +164,13 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-contrib-clean");
+	grunt.loadNpmTasks("grunt-contrib-sass");
 	grunt.loadNpmTasks("grunt-autoprefixer");
-	grunt.loadNpmTasks("grunt-sass");
 	grunt.loadNpmTasks("grunt-play");
 	grunt.loadNpmTasks("grunt-shell");
-    
+	grunt.loadNpmTasks("grunt-utf8tosjis" );
+	
+	
 	//基本的なタスクセット
     grunt.initConfig({
         concat:{
@@ -193,7 +195,16 @@ module.exports = function(grunt){
                 dest:"common/js/minify/main.js"
             }
         },
-        clean:{
+		utf8tosjis:{
+			dist:{
+				expand:true,
+				flatten: true,
+//				cwd:'./common/js/minify',
+				src:'common/js/main.js',
+				dest:'common/js/minify'
+		  }
+		},		
+		clean:{
             js:"<%= concat.baseJS.dest %>"
         },
         play:{
@@ -201,14 +212,17 @@ module.exports = function(grunt){
                 file:"node_modules/grunt-play/sounds/sound.mp3"
             }
         },
-		/*sass:{
+		sass:{
+			options:{
+				style: 'compact'
+			},
 			dist:{
-				files: {
+				files:{
 					'common/style/layout.css': 'common/scss/layout.scss',
 					'common/style/contents.css': 'common/scss/contents.scss'
 				}
 			}
-		},*/
+		},
 		autoprefixer:{
 			options:{
 //				browsers:["last 2 versions","ie 7"]
@@ -234,8 +248,12 @@ module.exports = function(grunt){
                     "<%= concat.baseJS.src %>",
                     "<%= uglify.mainJS.src %>"
                 ],
-                tasks:["concat","uglify","clean","play"]
+                tasks:["concat","uglify"/*,"clean",*//*"utf8tosjis"*/,"play"]
             },
+			sass:{
+				files:"common/scss/*.scss",
+				tasks:["sass"]
+			},
 			css:{
 				options: {
 					spawn: false
