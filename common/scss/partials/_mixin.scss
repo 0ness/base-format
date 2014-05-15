@@ -55,12 +55,12 @@
 
 		//Firefox用対応
 		@mixin firefox	{
-			html.firefox &{ @content; }
+			#wrapper.firefox &{ @content; }
 		}
 
 		//webkit用対応
 		@mixin webkit	{
-			html.webkit &{ @content; }
+			#wrapper.webkit &{ @content; }
 		}
 
 		//IE7、8用対応

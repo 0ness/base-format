@@ -9,7 +9,7 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>@@(Title)@@</title>
+<title>@@((ページid !== 'top') ? ' ｜ '+ページタイトル : 'TOPタイトル' )@@</title>
 <meta http-equiv="Content-Language" content="ja" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -19,7 +19,7 @@
 <!--
 //SNS対応する際に使用
 <meta property="og:site_name" content="0000000">
-<meta property="og:title" content="0000000">
+<meta property="og:title" content="@@((ページid !== 'top') ? ' ｜ '+ページタイトル : 'TOPタイトル' )@@">
 <meta property="og:description" content="0000000">
 <meta property="og:url" content="0000000">
 <meta property="og:image" content="0000000">
@@ -32,11 +32,11 @@
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
-<!-- TemplateParam name="Title" type="text" value="" -->
+<!-- TemplateParam name="ページタイトル" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->
 <!-- TemplateParam name="Description" type="text" value="" -->
-<!-- TemplateParam name="id" type="text" value="" -->
-<!-- TemplateParam name="class" type="text" value="" -->
+<!-- TemplateParam name="ページid" type="text" value="" -->
+<!-- TemplateParam name="ページclass" type="text" value="" -->
 <!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
 <!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
@@ -50,11 +50,11 @@
 		<!-- 基本はnavが親だが、構成がシンプルな場合はulを親にする-->
 		<div id="gnav">
 			<ul>
-				<li id="gn_01"@@((id != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_02"@@((id != 'category_id_02') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_03"@@((id != 'category_id_03') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_04"@@((id != 'category_id_04') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_05"@@((id != 'category_id_05') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_01"@@((ページid != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_02"@@((ページid != 'category_id_02') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_03"@@((ページid != 'category_id_03') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_04"@@((ページid != 'category_id_04') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_05"@@((ページid != 'category_id_05') ? '' : ' class="current"';)@@><a href="#header"></a></li>
 			</ul>
 		</div>
 		<!-- /gnav --> 
@@ -74,13 +74,13 @@
 				<!-- subNav-about -->
 				<dl>
 					<dt>カテゴリータイトル</dt>
-					<dd@@((id != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
-					<dd@@((id != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>
+					<dd@@((ページid != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>
 					</dd>
 				</dl>
 				<!-- /subNav-about --> 
