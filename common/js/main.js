@@ -21,7 +21,7 @@ function init(){
 	//オブジェクト
 	var pages = new PageInfo();
 	var lib = new Library();
-	
+
 	//文字列
 	var strPageUA = pages.UA();           //ユーザーエージェント保持
 	var strPageVER = pages.VER();         //IEのバージョン保持
@@ -82,9 +82,9 @@ function init(){
 		if( flgPageMobile === true) mobieFunc();
         else screenFunc();
 	});
-	
-	
-	
+
+
+
 	return false;
 };
 
