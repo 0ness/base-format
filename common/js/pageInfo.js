@@ -1,19 +1,19 @@
 /*==============================================================================
 
 	コンテンツ共通　ページ情報オブジェクト
-	
+
 	・基本の状態を維持する必要は無く、プロジェクトによってカスタマイズする
-	
+
 	・head内で読み込ませて使用
 	・戻り値の関数は分岐処理などに利用する
 	・CSS読み込み
 	・viewportなどを操作する
-	
+
 ==============================================================================*/
 var PageInfo = function(){
-	
+
 	var doc = document;
-	
+
 	/*object ユーザー情報
 	--------------------------------------------------------------------*/
 	var user = {
@@ -21,7 +21,7 @@ var PageInfo = function(){
 		VER:"not IE",		//ブラウザバージョン IE用
 		mobile:false,		//スマートフォン判定
 		device:"pc",
-		check:function(){	//ブラウザ判定		
+		check:function(){	//ブラウザ判定
 			var _qs = "id=PC";
 			var _ua = navigator.userAgent;
 			var _wn = window.navigator;
@@ -43,14 +43,14 @@ var PageInfo = function(){
                 if( height_num === 2048) this.device = "ipad3";
                 else this.device = "ipad";
 			}
-			
+
 			//クエリ確認
 			if (_ls.length !== 0) {
-				_qs = _ls.substr(1).split("&").toString();	
+				_qs = _ls.substr(1).split("&").toString();
 				if(_qs === "id=PC") this.mobile = false;
 				else if(_qs === "id=SP") this.mobile = true;
 			}
-			
+
 			//ブラウザ確認
 			if(_userAgent.indexOf("msie") !== -1){
 				this.UA = "ie";
@@ -64,15 +64,15 @@ var PageInfo = function(){
                 this.VER = 'ie11';
 			}else{
 				if(_userAgent.indexOf("firefox") !== -1) this.UA = "firefox";
-				else this.UA = "webkit";				
+				else this.UA = "webkit";
 			};
-			
+
 			return false;
 		}
 	};
 	user.check();
-	
-	
+
+
 	/*object ページ情報
 	--------------------------------------------------------------------*/
 	var content = {
@@ -81,10 +81,10 @@ var PageInfo = function(){
 		check:function(){ //ページid・classの取得
 			var bodys = doc.getElementsByTagName("body")[0];
 			var classStr = user.UA;
-            
+
 			this.ID = bodys.getAttribute('id');
 			this.Category = bodys.getAttribute("class");
-            
+
 			if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 			return false;
 		}
@@ -123,13 +123,13 @@ var PageInfo = function(){
 			var _str = 'width=950px';
 			var meta = doc.createElement('meta');
 			meta.setAttribute('name','viewport');
-			if(user.mobile === true) _str = 'width=device-width';		
+			if(user.mobile === true) _str = 'width=device-width';
 			meta.setAttribute('content',_str);
 			doc.getElementsByTagName('head')[0].appendChild(meta);
 		}
 	};
-	
-	
+
+
 	/*function 戻り値関数
 	--------------------------------------------------------------------*/
 	return {
