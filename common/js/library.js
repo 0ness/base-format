@@ -1,7 +1,7 @@
 /*==============================================================================
 
 	汎用処理ライブラリ
-	
+
 	・基本DOM操作の自動化
 	・HTML5対応
 	・IE対応
@@ -11,6 +11,8 @@
 
 //SCRIPT START
 var Library = function(){
+
+
 
 
 	/*const 定数　このJS内部でグローバルに使う定数
@@ -30,6 +32,8 @@ var Library = function(){
 	var flgPageMobile = pages.mobile();   //モバイル判定
 
 
+
+
 	/*function 拡張　requestAnimFrame()
 	--------------------------------------------------------------------*/
     win.requestAnimFrame = (function(){
@@ -41,23 +45,191 @@ var Library = function(){
 					win.setTimeout(callback,1000/60);
 				};
 	})();
-	
-	
+
+
+
+
+	/*method テーブルソート機能（テーブル01_id、行番号、ソートタイプ:str,num）
+	--------------------------------------------------------------------*/
+	var table_sort = {
+		exec: function(tid,idx,type){
+			var table = document.getElementById(tid);
+			var tbody = table.getElementsByTagName('tbody')[0];
+			var rows  = tbody.getElementsByTagName('tr');
+			var sbody = document.createElement('tbody');
+
+			//save array
+			var srows = new Array();
+			for(var i=0;i<rows.length;i++){
+				srows.push({
+					row: rows[i],
+					cel: rows[i].getElementsByTagName('td')[idx].innerHTML,
+					idx: i
+				});
+			}
+
+			//sort array
+			srows.sort(function(a,b){
+				if(type == 'str')
+					return a.cel < b.cel ? 1 : -1;
+				else
+					return b.cel - a.cel;
+			});
+			if(this.flag == 1) srows.reverse();
+
+			//replace
+			for(var i=0;i<srows.length;i++){
+				sbody.appendChild(srows[i].row)
+			}
+			table.replaceChild(sbody,tbody);
+			this.replaceText(table,idx);
+
+			//set flag
+			this.flag = this.flag > 0 ? 0 : 1;
+		},
+
+		replaceText: function(table,idx){
+			var thead = table.getElementsByTagName('a');
+
+			//preset header-text
+			if(!this.exp){
+				this.text = new Array();
+				for(var i=0;i<thead.length;i++){
+					this.text.push(thead[i].firstChild.nodeValue);
+				}
+				this.exp = 1;
+			}
+
+			//set&remove suffix
+			for(var i=0;i<thead.length;i++){
+				if(i == idx){
+					thead[i].firstChild.nodeValue = this.flag == 0
+						? this.text[i] + this.suffix[0]
+						: this.text[i] + this.suffix[1];
+				}
+				else {
+					thead[i].firstChild.nodeValue = this.text[i];
+				}
+			}
+		},
+
+		suffix: ['▽','△'],
+		flag: 0
+	}
+
+
+
+
+	/*method テーブルソート機能　2つのテーブル同期（テーブル01_id、テーブル02_id、行番号、ソートタイプ:str,num）
+	--------------------------------------------------------------------*/
+	var table_sort_02 = {
+		exec: function(tid_01,tid_02,idx,type){
+
+			var table = document.getElementById(tid_01);
+			var f_table = document.getElementById(tid_02);
+
+			var tbody = table.getElementsByTagName('tbody')[0];
+			var rows  = tbody.getElementsByTagName('tr');
+			var sbody = document.createElement('tbody');
+
+			var f_tbody = f_table.getElementsByTagName('tbody')[0];
+			var f_rows  = f_tbody.getElementsByTagName('tr');
+			var f_sbody = document.createElement('tbody');
+
+			//save array
+			var srows = new Array();
+			var f_srows = new Array();
+
+			for(var i=0;i<rows.length;i++){
+				srows.push({
+					row: rows[i],
+					cel: rows[i].getElementsByTagName('td')[idx].innerHTML,
+					idx: i
+				});
+				f_srows.push({
+					row: f_rows[i],
+					//cel: f_rows[i].getElementsByTagName('td')[0].innerHTML,
+					idx: i
+				});
+			}
+
+			//sort array
+			srows.sort(function(a,b){
+				if(type === 'str')
+					return a.cel < b.cel ? 1 : -1;
+				else
+					var obj = b.cel - a.cel;
+					return obj;
+			});
+
+
+			if(this.flag == 1){
+				srows.reverse();
+			}
+
+			//replace
+			for(var i=0;i<srows.length;i++){
+				sbody.appendChild(srows[i].row)
+				var num = srows[i].idx;
+				f_sbody.appendChild(f_srows[num].row);
+			}
+
+			table.replaceChild(sbody,tbody);
+			f_table.replaceChild(f_sbody,f_tbody);
+
+			//set flag
+			this.flag = this.flag > 0 ? 0 : 1;
+		},
+
+		replaceText: function(table,idx){
+			var thead = table.getElementsByTagName('a');
+
+			//preset header-text
+			if(!this.exp){
+				this.text = new Array();
+				for(var i=0;i<thead.length;i++){
+					this.text.push(thead[i].firstChild.nodeValue);
+				}
+				this.exp = 1;
+			}
+
+			//set&remove suffix
+			for(var i=0;i<thead.length;i++){
+				if(i == idx){
+					thead[i].firstChild.nodeValue = this.flag == 0
+						? this.text[i] + this.suffix[0]
+						: this.text[i] + this.suffix[1];
+				}
+				else {
+					thead[i].firstChild.nodeValue = this.text[i];
+				}
+			}
+		},
+
+		suffix: ['▽','△'],
+		flag: 0
+	}
+
+
+
+
 	/*method jQuery アンカーアニメーション（jQueryオブジェクト）
 	--------------------------------------------------------------------*/
-	var ancher = function(_obj){
+	var ancher = function(_href){
 		$(function(){
 			$.fx.interval = 20;
 			var $ancherTag = (strPageUA === "webkit") ? $("body"):$("html");
-			var href = _obj.attr("href");
-			var target = $(href == "#" || href == "" ? 'html' : href);
-			var position = target.offset().top-30;// 移動先を数値で取得
-			$ancherTag.stop().animate({scrollTop:0}, 600, 'easeInOutQuad');
+			var href = _href || _obj.attr("href");
+			var target = $(href === "#" || href === "" ? 'html' : href);
+			var position = target.offset().top;// 移動先を数値で取得
+			$ancherTag.stop().animate({scrollTop:position}, 600, 'easeInOutQuad');
 		});
 		return false;
 	};
-	
-	
+
+
+
+
 	/*method jQuery トップへ戻るリンク
 	--------------------------------------------------------------------*/
 	var topBackAncher = function(){
@@ -70,13 +242,15 @@ var Library = function(){
 		})
 		return false;
 	}();
-	
+
+
+
 
 	/*method jQuery 固定アンカーリンク
 	--------------------------------------------------------------------*/
 	var fixedLinkAncher = function(){
 		$(function(){
-			
+
 			$.fx.interval = 20;
 
 			var $win = $(win);
@@ -190,7 +364,10 @@ var Library = function(){
 		return false;
 	};
 
-	
+
+
+
+
 	/*method IE8,7で透過処理を個別に対応
 	引数：処理を行いたい画像（jQueryオブジェクト）
 	--------------------------------------------------------------------*/
@@ -205,7 +382,9 @@ var Library = function(){
 		return false;
 	}
 
-	
+
+
+
 	/*method IE8,7で透過処理を入れ子に対応
 	引数：処理を行いたい画像の親要素（jQueryオブジェクト）
 	--------------------------------------------------------------------*/
@@ -227,7 +406,9 @@ var Library = function(){
 		return false;
 	}
 
-	
+
+
+
 	/*method 自動化 コピーライト年数
 	--------------------------------------------------------------------*/
 	var yearAdjust = function(){
@@ -237,29 +418,21 @@ var Library = function(){
 		return false;
 	};
 
-	
-	/*test テスト
-	--------------------------------------------------------------------*/
-	var test = function(obj){
-		$(function(){
-			var o = obj;
-			o.fadeOut(300);
-			console.log("library test test");
-		})
-		return false;
-	};
 
-	
+
+
 	/*function 戻り値関数
 	--------------------------------------------------------------------*/
 	return {
 		test:function(obj){ test(obj); },
 		ancher:function(obj){ ancher(obj); },
-		yearAdjust:function(){ yearAdjust()},
-		placeholder:function(){ placeholder() },
-		ieAlphaImg:function(obj){alphaCheck(obj)},
-		ieAlphaAllImg:function(obj){ alphaAllCheck(obj)}
+		yearAdjust:function(){ yearAdjust();},
+		placeholder:function(){ placeholder();},
+		ieAlphaImg:function(obj){alphaCheck(obj);},
+		ieAlphaAllImg:function(obj){ alphaAllCheck(obj);},
+		tableSort:function(tid,idx,type){ tableSort(tid,idx,type); },
+		tableSort_02:function(tid,tid_02,idx,type){ tableSort(tid,tid_02,idx,type); }
 	};
-	
-	
+
+
 };

@@ -1,7 +1,7 @@
 
 //マルチタスクの登録
 //module.exports = function(grunt){
-//    
+//
 //    /*grunt.initConfig({
 //        タスク１：{
 //            ターゲット1：データ1,
@@ -26,16 +26,16 @@
 //            target2:"very cool"
 //        }
 //    });
-//    
+//
 //    /*grunt.registerMultiTask
 //    registerTaskと基本的な記述は同じ、this.targetとthis.dataが利用できる*/
 //    grunt.registerMultiTask("mygreattask","マルチタスクのテスト_01",function(){
 //        grunt.log.writeln("target: "+this.target);
 //        grunt.log.writeln("data: "+this.data);
 //    });
-//    
+//
 //    grunt.registerMultiTask("mycooltask","マルチタスクのテスト_02",function(){
-//        
+//
 //        /*async()
 //        実行した際、そのタスクは非同期であることをgrunt側が判断する
 //        完了時に関数を返し、その関数の実行によってタスク完了をgurnt側が判断する
@@ -44,23 +44,23 @@
 //        var self = this;
 //        setTimeout(function(){
 //            grunt.log.writeln("target: "+self.target);
-//            grunt.log.writeln("data: "+self.data);            
+//            grunt.log.writeln("data: "+self.data);
 //            done();
 //        },1000);
 //    });
-//    
+//
 //    grunt.registerTask("default",["mygreattask","mycooltask"]);
-//    
+//
 //}
 
 
 //タスクの外部ファイル化
 //module.exports = function(grunt){
-//    
+//
 //    /*grunt.task.loadTasks（ディレクトリ）
 //    ディレクトリ内のファイルを読み込む*/
 //    grunt.task.loadTasks("mytasks");
-//    
+//
 //    grunt.initConfig({
 //        mygreattask:{
 //            target1:"so great",
@@ -71,22 +71,22 @@
 //            target2:"very cool"
 //        }
 //    });
-//    
+//
 //    grunt.registerTask("default",["mygreattask","mycooltask"]);
-//    
+//
 //};
 
 
 //Gruntプラグインの導入（uglifyの場合）
 //module.exports = function(grunt){
-//    
+//
 //    /*grunt.loadNpmTask(インストールするプラグイン名)
 //    gruntにプラグインをインストールする*/
 //    grunt.loadNpmTasks("grunt-contrib-uglify");
-//    
+//
 //    //uglifyの設定を追加
 //    grunt.initConfig({
-//        uglify:{            
+//        uglify:{
 //            /*options
 //            プラグインそれぞれのオプション機能*/
 //            options:{
@@ -102,7 +102,7 @@
 //            }
 //        }
 //    });
-//    
+//
 //    //処理を実行
 //    grunt.registerTask("default",["uglify"]);
 //}
@@ -112,7 +112,7 @@
 //module.exports = function(grunt){
 //
 //    grunt.loadNpmTasks("grunt-contrib-concat");
-//    
+//
 //    grunt.initConfig({
 //        //concatの設定を追加
 //        concat:{
@@ -126,17 +126,17 @@
 //            }
 //        }
 //    });
-//    
+//
 //    grunt.registerTask("default",["concat"]);
 //}
 
 
 //Gruntプラグインの導入（watchの場合）
 //module.exports = function(grunt){
-//    
+//
 //    grunt.loadNpmTasks("grunt-contrib-uglify");
 //    grunt.loadNpmTasks("grunt-contrib-watch");
-//    
+//
 //    grunt.initConfig({
 //        uglify:{
 //            test:{
@@ -151,7 +151,7 @@
 //            }
 //        }
 //    });
-//    
+//
 //    grunt.registerTask("default",["uglify"]);
 //
 //}
@@ -159,7 +159,7 @@
 
 //Gruntプラグインの導入（watchの場合）
 module.exports = function(grunt){
-    
+
 	grunt.loadNpmTasks("grunt-contrib-concat");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-watch");
@@ -169,8 +169,9 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-play");
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks("grunt-utf8tosjis" );
-	
-	
+	grunt.loadNpmTasks("grunt-remove-logging");
+
+
 	//基本的なタスクセット
     grunt.initConfig({
         concat:{
@@ -185,13 +186,23 @@ module.exports = function(grunt){
                 dest:"common/js/base.js"
             }
         },
+		removelogging:{
+			baseJS:{
+				src: "common/js/base.js",
+				dest:"common/js/minify/base.js"
+			},
+            mainJS:{
+                src: "common/js/main.js",
+                dest:"common/js/minify/main.js"
+            }
+		},
         uglify:{
-            baseJS:{
-                src:"common/js/base.js",
+			baseJS:{
+                src:"common/js/minify/base.js",
                 dest:"common/js/minify/base.js"
             },
             mainJS:{
-                src:"common/js/main.js",
+                src:"common/js/minify/main.js",
                 dest:"common/js/minify/main.js"
             }
         },
@@ -203,7 +214,7 @@ module.exports = function(grunt){
 				src:'common/js/main.js',
 				dest:'common/js/minify'
 		  }
-		},		
+		},
 		clean:{
             js:"<%= concat.baseJS.dest %>"
         },
@@ -225,7 +236,6 @@ module.exports = function(grunt){
 		},
 		autoprefixer:{
 			options:{
-//				browsers:["last 2 versions","ie 7"]
 				browsers: ['last 2 version','ie 7','ie 8','ie 9','ios 5']
 			},
 			file:{
@@ -246,9 +256,9 @@ module.exports = function(grunt){
             js:{
                 files:[
                     "<%= concat.baseJS.src %>",
-                    "<%= uglify.mainJS.src %>"
+                    "<%= removelogging.mainJS.src %>"
                 ],
-                tasks:["concat","uglify"/*,"clean",*//*"utf8tosjis"*/,"play"]
+                tasks:["concat","removelogging","uglify"/*,"clean",*//*"utf8tosjis"*/]
             },
 			sass:{
 				files:"common/scss/*.scss",
@@ -267,9 +277,9 @@ module.exports = function(grunt){
 			}
         }
 	});
-	
+
     grunt.registerTask("default",["concat","uglify","clean","play"]);
-	
+
 
 };
 

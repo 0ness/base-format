@@ -22,14 +22,16 @@ function init(){
 	var pages = new PageInfo();
 	var lib = new Library();
 
+	//正否値
+	var flgPageMobile = pages.mobile();    //モバイル判定
+
 	//文字列
 	var strPageUA = pages.UA();           //ユーザーエージェント保持
 	var strPageVER = pages.VER();         //IEのバージョン保持
 	var strPageID = pages.ID();		      //ページID
 	var strPageClass = pages.Category();  //ページclass
+	var strClickEvt = (flgPageMobile === true) ? "touchend" : "click";
 
-	//正否値
-	var flgPageMobile = pages.mobile();    //モバイル判定
 
 
 	/*var 変数　このJS内部でグローバルに使う変数
@@ -42,7 +44,7 @@ function init(){
 	//jquery開始
 	$(function(){
 
-		$.fx.interval = 20;
+		$.fx.interval = (flgPageMobile === true) ? 18 : 14;
 
         //jQueryオブジェクト
         var $ancherTag = (strPageUA === "webkit") ? $("body"):$("html");
@@ -84,6 +86,7 @@ function init(){
 	});
 
 
+	console.log("test test");
 
 	return false;
 };
