@@ -55,8 +55,6 @@ function init(){
         //TOPページ
         function topPage(){
 
-			var test = function(){};
-
             return false;
         }
 
