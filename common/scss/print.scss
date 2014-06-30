@@ -16,7 +16,7 @@ img	{ display:block; border:none;}
 
 	img#printNormal	{ display:block !important;}
 	img#printMedical	{ display:none !important;}
-	
+
 	//メディカルオノマトペ表示時
 	&.medical	{
 		img#printMedical	{ display:block !important;}
@@ -26,3 +26,16 @@ img	{ display:block; border:none;}
 
 
 
+//IE8 + modernBrowser対応
+//floatをtableに代えてレイアウト崩れを減らす
+#contents { display: table;}
+#main { display: table-cell; float: none;}
+#sub { display: table-cell; float: none;}
+#header { display: table;}
+#footer { display: table;}
+
+
+//IE8以上　改ページ設定
+.bforeBreak { page-break-before: always;} //要素直前に改ページ
+.afterBreak { page-break-after: always;} //要素直後に改ページ
+.insideNotBreak { page-break-inside: avoid;} //要素内は改ページさせない
