@@ -168,8 +168,9 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-autoprefixer");
 	grunt.loadNpmTasks("grunt-play");
 	grunt.loadNpmTasks("grunt-shell");
-	grunt.loadNpmTasks("grunt-utf8tosjis" );
+//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 	grunt.loadNpmTasks("grunt-remove-logging");
+	grunt.loadNpmTasks("grunt-newer");
 
 
 	//基本的なタスクセット
@@ -206,15 +207,15 @@ module.exports = function(grunt){
                 dest:"common/js/minify/main.js"
             }
         },
-		utf8tosjis:{
-			dist:{
-				expand:true,
-				flatten: true,
-//				cwd:'./common/js/minify',
-				src:'common/js/main.js',
-				dest:'common/js/minify'
-		  }
-		},
+//		utf8tosjis:{
+//			dist:{
+//				expand:true,
+//				flatten: true,
+////				cwd:'./common/js/minify',
+//				src:'common/js/main.js',
+//				dest:'common/js/minify'
+//		  }
+//		},
 		clean:{
             js:"<%= concat.baseJS.dest %>"
         },
@@ -254,11 +255,14 @@ module.exports = function(grunt){
 		},
         watch:{
             js:{
+				options: {
+					spawn: false
+				},
                 files:[
                     "<%= concat.baseJS.src %>",
                     "<%= removelogging.mainJS.src %>"
                 ],
-                tasks:["concat","removelogging","uglify"/*,"clean",*//*"utf8tosjis"*/]
+                tasks:["newer:concat","newer:removelogging","newer:uglify"/*,"clean",*//*"utf8tosjis"*/]
             },
 			sass:{
 				files:"common/scss/*.scss",
@@ -278,7 +282,7 @@ module.exports = function(grunt){
         }
 	});
 
-    grunt.registerTask("default",["concat","uglify","clean","play"]);
+    //grunt.registerTask("default",["concat","uglify","clean","play"]);
 
 
 };

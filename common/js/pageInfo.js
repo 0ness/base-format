@@ -125,7 +125,7 @@ var PageInfo = function(){
 			meta.setAttribute('name','viewport');
 			if(user.mobile === true) _str = 'width=device-width';
 			meta.setAttribute('content',_str);
-			doc.getElementsByTagName('head')[0].appendChild(meta);
+			doc.getElementsByTagName('head')[0].appendChild(meta); 
 		}
 	};
 
