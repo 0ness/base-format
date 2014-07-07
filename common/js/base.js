@@ -22,11 +22,11 @@ var PageInfo = function(){
 		mobile:false,		//スマートフォン判定
 		device:"pc",
 		check:function(){	//ブラウザ判定
+			
 			var _qs = "id=PC";
 			var _ua = navigator.userAgent;
-			var _wn = window.navigator;
-			var _userAgent = _wn.userAgent.toLowerCase();
-			var _appVersion = _wn.appVersion.toLowerCase();
+			var _userAgent = window.navigator.userAgent.toLowerCase();
+			var _appVersion = window.navigator.appVersion.toLowerCase();
 			var _ls = location.search;
 
 			//スマートフォン UA確認
@@ -59,7 +59,7 @@ var PageInfo = function(){
 				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = 'ie6';
 				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = "ie9";	//IE9以上
                 else this.VER = "ie10";
-            }else if(_userAgent.indexOf('trident/7') != -1){
+            }else if(_userAgent.indexOf('trident/7') !== -1){
 				this.UA = "ie";
                 this.VER = 'ie11';
 			}else{
