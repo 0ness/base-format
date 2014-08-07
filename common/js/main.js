@@ -38,7 +38,7 @@ function init(){
 	//数値
 	var numWinWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
 	var numWinHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
-
+	
 
 	//jquery開始
 	$(function(){

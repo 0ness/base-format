@@ -231,7 +231,8 @@ module.exports = function(grunt){
 			dist:{
 				files:{
 					'common/style/layout.css': 'common/scss/layout.scss',
-					'common/style/contents.css': 'common/scss/contents.scss'
+					'common/style/contents.css': 'common/scss/contents.scss',
+					'common/style/module.css': 'common/scss/module.scss'
 				}
 			}
 		},
@@ -246,10 +247,25 @@ module.exports = function(grunt){
 				dest:'common/style/'
 			}
 		},
+		styleguide: {
+			dist: {
+				options: {
+					framework: {
+						name: 'compornents',
+						options:{
+							preprocessor:"scss"
+						}
+					}
+				},
+				files: {
+				  'docs': 'common/scss/module.scss'
+				}
+			}
+		},
 		shell:{
 			styledocco:{
 				command: function () {
-					return ' styledocco --preprocessor "sass" common/scss/module.scss';
+					return ' styledocco --o "common/style/compornents" --preprocessor "scss" common/scss/module.scss';
 				}
 			}
 		},

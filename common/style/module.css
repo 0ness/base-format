@@ -1,0 +1,13 @@
+.box-column-2 { width: 610px; overflow: hidden; zoom: 1; }
+.box-column-2:before, .box-column-2:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.box-column-2:after { clear: both; }
+.box-column-2 div { width: 252px; float: left; margin: 0 30px 0 0; padding: 20px 18px 20px 20px; }
+.box-column-2 div:last-child { margin: 0; }
+.box-column-2 + .box-column-2 { margin-top: 20px; }
+
+.box-column-3 { width: 610px; overflow: hidden; zoom: 1; }
+.box-column-3:before, .box-column-3:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.box-column-3:after { clear: both; }
+.box-column-3 div { width: 152px; float: left; margin: 0 20px 0 0; padding: 20px 18px 20px 20px; }
+.box-column-3 div:nth-child(3n) { margin: 0; }
+.box-column-3 + .box-column-3 { margin-top: 20px; }
