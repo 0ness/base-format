@@ -4,10 +4,6 @@ RESET用スタイル　
 ============================================================*/
 html { color: #555555; background: white; }
 
-a { text-decoration: underline; color: #008cda; }
-a:hover { text-decoration: underline; color: #0099cc; }
-a:active { text-decoration: underline; color: #0099cc; }
-
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
 
 table { border-collapse: collapse; border-spacing: 0; }
@@ -16,7 +12,7 @@ fieldset, img { border: 0; }
 
 address, caption, cite, code, dfn, em, strong, th, time, b, u, var { font-style: normal; font-weight: normal; }
 
-ol, ul, li { list-style: none; }
+ol, ul, ol, li { list-style: none; }
 
 caption, th { text-align: left; }
 
@@ -36,6 +32,9 @@ legend { color: black; }
 
 main, header, footer, section, hgroup, aside, nav, address, article, figure { display: block; margin: 0; padding: 0; }
 
+/*============================================================
+FONT用スタイル　
+============================================================*/
 /*
 [77% = 10px]
 [85% = 11px]
@@ -64,6 +63,19 @@ table { font-size: inherit; font: 100%; }
 pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
 
 /*============================================================
+デフォルトスタイル　
+============================================================*/
+a { text-decoration: underline; color: #008cda; }
+a:hover { text-decoration: underline; color: #0ea9ff; }
+a:active { text-decoration: underline; color: #0099cc; }
+
+p { font-size: 100%; line-height: 1.8; color: #555555; }
+p + p { margin-top: 1.2em; }
+
+li { font-size: 100%; line-height: 1.8; color: #555555; }
+li + p { margin-top: 1.2em; }
+
+/*============================================================
 LAYOUT用スタイル　
 ============================================================*/
 html { height: 100%; }
@@ -75,13 +87,13 @@ body *::-moz-selection { color: white; background: #0797de; }
 
 body > #wrapper { height: auto; }
 
-#wrapper { min-width: 1080px; min-height: 100%; height: auto !important; height: 100%; position: relative; }
+#wrapper { /*min-width:$width;*/ min-height: 100%; height: auto !important; height: 100%; position: relative; }
 @media screen and (min-width: 0px) and (max-device-width: 640px) { #wrapper { -webkit-text-size-adjust: none; } }
 #wrapper #topBack { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
 
 /*HEADER
 --------------------------------------------------------------------*/
-#header { /* ロゴ・CI・サイトタイトル */ }
+#header { height: 50px; background: #fff; }
 #header #ci a:hover img { opacity: 0.6; }
 
 /*NAVIGATION
@@ -94,10 +106,10 @@ body > #wrapper { height: auto; }
 /*CONTENTS
 --------------------------------------------------------------------*/
 /* コンテンツ部分 */
-#contents { padding: 0 0 2100px; overflow: hidden; position: relative; }
+#contents { /*width:$width;*/ margin: 0 auto; padding: 0 0 500px; overflow: hidden; position: relative; }
 
 /* メインコンテンツ */
 /* サブコンテンツ */
 /*FOOTER
 --------------------------------------------------------------------*/
-#footer { width: 100%; height: 100px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: blue; }
+#footer { width: 100%; height: 50px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: #fff; }

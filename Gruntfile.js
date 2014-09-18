@@ -281,7 +281,7 @@ module.exports = function(grunt){
                 tasks:["newer:concat","newer:removelogging","newer:uglify"/*,"clean",*//*"utf8tosjis"*/]
             },
 			sass:{
-				files:"common/scss/*.scss",
+				files:["common/scss/*.scss","common/scss/partials/*.scss"],
 				tasks:["sass"]
 			},
 			css:{
@@ -292,8 +292,8 @@ module.exports = function(grunt){
                 tasks:["autoprefixer"]
 			},
 			styleguide:{
-				files:"common/scss/module.scss",
-                tasks:["shell:styledocco"]
+				files:["common/scss/module.scss","common/scss/README.md"],
+                tasks:["newer:sass","shell:styledocco"]
 			}
         }
 	});

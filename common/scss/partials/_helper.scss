@@ -8,28 +8,21 @@
 
 // Clearfix (.group)
 .gp:before,
-.gp:after {
-content: "";
-display: table !important;
-}
+.gp:after {content: "";display: table !important;}
 .gp:after { clear: both; }
 
 // Image Replacement
-.ir {
-overflow: hidden;
-white-space: nowrap;
-text-indent: 100%;
-}
+.ir {overflow: hidden;white-space: nowrap;text-indent: 100%;}
 
 // Ellipsis
-.elps {
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-}
+.elps {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 
 .fl { float: left; }
 .fr { float: right; }
+
+.tal { text-align: left;}
+.tac { text-align: center;}
+.tar { text-align: right;}
 
 .full { width: 100%; }
 .half { width: 50%; }

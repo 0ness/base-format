@@ -11,6 +11,12 @@
 
 .fr { float: right; }
 
+.tal { text-align: left; }
+
+.tac { text-align: center; }
+
+.tar { text-align: right; }
+
 .full { width: 100%; }
 
 .half { width: 50%; }

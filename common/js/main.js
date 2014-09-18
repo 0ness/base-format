@@ -22,31 +22,32 @@ function init(){
 	var lib = new Library();
 
 	//正否値
-	var flgPageMobile = pages.mobile();    //モバイル判定
+	var f_pageMobile = pages.mobile();    //モバイル判定
 
 	//文字列
-	var strPageUA = pages.UA();           //ユーザーエージェント保持
-	var strPageVER = pages.VER();         //IEのバージョン保持
-	var strPageID = pages.ID();		      //ページID
-	var strPageClass = pages.Category();  //ページclass
-	var strClickEvt = (flgPageMobile === true) ? "touchend" : "click";
+	var s_pageUA = pages.UA();           //ユーザーエージェント保持
+	var s_pageVER = pages.VER();         //IEのバージョン保持
+	var s_pageID = pages.ID();		      //ページID
+	var s_pageClass = pages.Category();  //ページclass
+	var s_clickEvt = (f_pageMobile === true) ? "touchend" : "click";
 
 
 
 	/*var 変数　このJS内部でグローバルに使う変数
 	--------------------------------------------------------------------*/
+	
 	//数値
-	var numWinWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
-	var numWinHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+	var n_winWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
+	var n_winHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+	var n_jQueryAnimInterval = (f_pageMobile === true) ? 18 : 14;
+
 	
 
 	//jquery開始
 	$(function(){
 
-		$.fx.interval = (flgPageMobile === true) ? 18 : 14;
-
-        //jQueryオブジェクト
-        var $ancherTag = (strPageUA === "webkit") ? $("body"):$("html");
+		$.fx.interval = n_jQueryAnimInterval;
+        var $ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
 
 
 		/*contents コンテンツ毎の処理
@@ -62,13 +63,13 @@ function init(){
 		--------------------------------------------------------------------*/
         //PC用関数
         var screenFunc = function(){
-            if(strPageID === "top") topPage();
+            if(s_pageID === "top") topPage();
             return false;
         };
 
         //モバイル用関数
         var mobileFunc = function(){
-            if(strPageID === "top") topPage();
+            if(s_pageID === "top") topPage();
             return false;
         };
 
@@ -78,7 +79,7 @@ function init(){
         };
 
         //デバイス分岐
-		if( flgPageMobile === true) mobieFunc();
+		if( f_pageMobile === true) mobieFunc();
         else screenFunc();
 	});
 

@@ -32,7 +32,7 @@ LAYOUT用スタイル　
 html	{ height:100%;}
 body	{ height:100%; text-align:left; @include select-color(#fff,scheme(key));}
 body > #wrapper { height:auto;}
-#wrapper { min-width:1080px; min-height:100%; height:auto !important; height:100%; position:relative;
+#wrapper { /*min-width:$width;*/ min-height:100%; height:auto !important; height:100%; position:relative;
 	@include iphone	{ -webkit-text-size-adjust: none;}
 	
 	//ページトップに戻る
@@ -44,9 +44,7 @@ body > #wrapper { height:auto;}
 
 /*HEADER
 --------------------------------------------------------------------*/
-#header	{
-
-	/* ロゴ・CI・サイトタイトル */
+#header	{ height:50px; background:#fff;
 	#ci	{
 		a:hover img	{ opacity:0.6;}
 	}
@@ -57,7 +55,7 @@ body > #wrapper { height:auto;}
 
 /*NAVIGATION
 --------------------------------------------------------------------*/
-#gNav	{//入れ子を減らすために並列に記述
+#gNav	{
 	ul	{ overflow:hidden;}
 	li	{ float:left;}
 	a 	{ display:block;
@@ -71,9 +69,8 @@ body > #wrapper { height:auto;}
 
 /*CONTENTS
 --------------------------------------------------------------------*/
-//test
 /* コンテンツ部分 */
-#contents	{ padding:0 0 2100px; overflow:hidden; position:relative;}
+#contents	{ /*width:$width;*/ margin:0 auto; padding:0 0 500px; overflow:hidden; position:relative;}
 
 
 /* メインコンテンツ */
@@ -88,7 +85,7 @@ body > #wrapper { height:auto;}
 
 /*FOOTER
 --------------------------------------------------------------------*/
-#footer	{ width:100%; height:100px; @include bottom-left; background:blue;
+#footer	{ width:100%; height:50px; @include bottom-left; background:#fff;
 	#copyright	{}
 }
 

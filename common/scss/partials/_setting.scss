@@ -23,10 +23,10 @@
 // Vairable レイアウト系変数 ///////////////////////////////////////
 
 		//サイトの幅
-		$width:1280px;
+		$width:1080px;
 
 		//メイン・コンテンツの幅
-		$main-width:700px;
+		$main-width:780px;
 
 		//サブ・コンテンツの幅
 		$sub-width:300px;
@@ -140,13 +140,18 @@
 		//基本のテキストスタイル 引数(font-size , line-height , color , letter-spacing)
 		//ベースの変更は引数の値で指定しておく
 		//基本使用する時は引数を使わないイメージで 例：@include text-base;
-		@mixin text-base($size:100%,$lh:26px,$tc:scheme(text)){ font-size:$size; line-height:$lh; color:$tc;}
+		@mixin text-base($size:100%,$lh:1.8,$tc:scheme(text)){ font-size:$size; line-height:$lh; color:$tc;
+									
+			//white space
+			& + p {margin-top:1.2em;}			
+			
+		};
 
  		//リンクテキスト
 		@mixin text-link		{ text-decoration:underline; color:scheme(link);}
 
 		//ロールオーバーテキスト
-		@mixin text-hover		{ text-decoration:underline; color:scheme(linkHover);}
+		@mixin text-hover		{ text-decoration:underline; color:lighten(scheme(link),10%);}
 
 		//クリックテキスト
 		@mixin text-active		{ text-decoration:underline; color:scheme(linkActive);}
