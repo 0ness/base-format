@@ -13,8 +13,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<!--
-//SNS対応する際に使用
+<!-- SNS対応する際に使用　不必要な場合は削除
 <meta property="og:site_name" content="">
 <meta property="og:title" content=" ｜ サイト名">
 <meta property="og:description" content="">
@@ -26,19 +25,20 @@
 <link rel="stylesheet" type="text/css" href="common/style/contents.css">
 <link rel="stylesheet" type="text/css" href="common/style/temp.css">
 <!-- InstanceBeginEditable name="head" -->
-<!--[if lt IE 9]><script src="common/js/html5.js"></script><![endif]-->
+<!-- レガシーブラウザ用スクリプト　不必要な場合は削除 -->
+<!--[if lt IE 9]><script src="common/js/ie/html5.js"></script><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- InstanceEndEditable -->
 <!-- InstanceParam name="ページタイトル" type="text" value="" -->
 <!-- InstanceParam name="Keyword" type="text" value="" -->
 <!-- InstanceParam name="Description" type="text" value="" -->
-<!-- InstanceParam name="ページid" type="text" value="test" -->
+<!-- InstanceParam name="ページid" type="text" value="" -->
 <!-- InstanceParam name="ページclass" type="text" value="" -->
 <!-- InstanceParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
 <!-- InstanceParam name="subNav-contents" type="boolean" value="false" -->
 
 </head>
-<body id="test">
+<body id="">
 <!-- ============= wrapper ============= -->
 <div id="wrapper"> 
 	<!-- header -->
@@ -60,7 +60,13 @@
 	<!-- ============= contents ============= -->
 	<div id="contents"> 
 		<!-- main -->
-		<main id="main"><!-- InstanceBeginEditable name="メイン部分" -->メイン部分<!-- InstanceEndEditable --></main>
+		<main id="main"><!-- InstanceBeginEditable name="メイン部分" -->
+		<div id="test">
+			<li>テスト01</li>
+			<li>テスト02</li>
+			<li>テスト03</li>
+		</div>
+		<!-- InstanceEndEditable --></main>
 		<!-- /main --> 
 		<!-- sub -->
 		<div id="sub"> 
@@ -84,8 +90,7 @@
 	<!-- InstanceBeginEditable name="wrapper-last" --> <!-- InstanceEndEditable --> </div>
 <!-- /============= wrapper ============= --> 
 <script type="text/javascript" src="common/js/minify/base.js"></script> 
-<!-- InstanceBeginEditable name="body-last" -->
-<!-- InstanceEndEditable --> 
+<!-- InstanceBeginEditable name="body-last" --> <!-- InstanceEndEditable --> 
 <script type="text/javascript" src="common/js/minify/main.js"></script> 
 <script type="text/javascript" src="common/js/ga.js"></script>
 </body>

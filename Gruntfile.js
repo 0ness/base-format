@@ -166,11 +166,11 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-clean");
 	grunt.loadNpmTasks("grunt-contrib-sass");
 	grunt.loadNpmTasks("grunt-autoprefixer");
-	grunt.loadNpmTasks("grunt-play");
 	grunt.loadNpmTasks("grunt-shell");
-//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 	grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-newer");
+//	grunt.loadNpmTasks("grunt-play");
+//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
 
 	//基本的なタスクセット
@@ -178,11 +178,11 @@ module.exports = function(grunt){
         concat:{
             baseJS:{
                 src:[
-                    "common/js/pageInfo.js",
+                    "common/js/lib/pageInfo.js",
                     "common/js/jquery/jquery.js",
                     "common/js/jquery/easing.js",
-                    "common/js/ie/selectivizr-min.js",
-                    "common/js/library.js"
+                    "common/js/lib/library.js",
+					"common/js/ie/selectivizr.js"
                 ],
                 dest:"common/js/base.js"
             }
@@ -199,13 +199,16 @@ module.exports = function(grunt){
 		},
         uglify:{
 			baseJS:{
-                src:"common/js/minify/base.js",
+                src:"common/js/base.js",
                 dest:"common/js/minify/base.js"
             },
             mainJS:{
-                src:"common/js/minify/main.js",
+                src:"common/js/main.js",
                 dest:"common/js/minify/main.js"
             }
+        },
+		clean:{
+            js:"<%= concat.baseJS.dest %>"
         },
 //		utf8tosjis:{
 //			dist:{
@@ -216,14 +219,11 @@ module.exports = function(grunt){
 //				dest:'common/js/minify'
 //		  }
 //		},
-		clean:{
-            js:"<%= concat.baseJS.dest %>"
-        },
-        play:{
-            fanfare:{
-                file:"node_modules/grunt-play/sounds/sound.mp3"
-            }
-        },
+//        play:{
+//            fanfare:{
+//                file:"node_modules/grunt-play/sounds/sound.mp3"
+//            }
+//        },
 		sass:{
 			options:{
 				style: 'compact'
@@ -275,10 +275,12 @@ module.exports = function(grunt){
 					spawn: false
 				},
                 files:[
-                    "<%= concat.baseJS.src %>",
-                    "<%= removelogging.mainJS.src %>"
+                    "common/js/*.js",
+                    "common/js/lib/*.js",
+                    "common/js/jquery/*.js",
+                    "common/js/ie/*.js"
                 ],
-                tasks:["newer:concat","newer:removelogging","newer:uglify"/*,"clean",*//*"utf8tosjis"*/]
+                tasks:["concat","removelogging","uglify"/*,"clean",*//*"utf8tosjis"*/]
             },
 			sass:{
 				files:["common/scss/*.scss","common/scss/partials/*.scss"],

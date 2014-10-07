@@ -23,6 +23,7 @@ var PageInfo = function(){
 		device:"pc",
 		check:function(){	//ブラウザ判定
 			
+			
 			var _qs = "id=PC";
 			var _ua = navigator.userAgent;
 			var _userAgent = window.navigator.userAgent.toLowerCase();
@@ -57,7 +58,7 @@ var PageInfo = function(){
 				if(_appVersion.indexOf("msie 8.") !== -1) this.VER = 'ie8';
 				else if (_appVersion.indexOf("msie 7.") !== -1) this.VER =  'ie7';
 				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = 'ie6';
-				else if (_appVersion.indexOf("msie 6.") !== -1) this.VER = "ie9";	//IE9以上
+				else if (_appVersion.indexOf("msie 9.") !== -1) this.VER = "ie9";	//IE9以上
                 else this.VER = "ie10";
             }else if(_userAgent.indexOf('trident/7') !== -1){
 				this.UA = "ie";

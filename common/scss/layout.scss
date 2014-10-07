@@ -81,6 +81,12 @@ body > #wrapper { height:auto;}
 #sub {}
 
 
+#test {
+	li:nth-child(1) { color:red;}
+	li:nth-child(2) { color:blue;}
+	li:nth-child(3) { color:green;}
+}
+
 
 
 /*FOOTER

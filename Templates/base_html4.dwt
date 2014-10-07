@@ -16,8 +16,7 @@
 <meta name="description" content="@@(Description)@@" />
 <meta name="keywords" content="@@(Keyword)@@" />
 <meta name="author" content="" />
-<!--
-//SNS対応する際に使用
+<!-- SNS対応する際に使用
 <meta property="og:site_name" content="0000000">
 <meta property="og:title" content="@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@">
 <meta property="og:description" content="0000000">
@@ -29,6 +28,7 @@
 <link rel="stylesheet" type="text/css" href="../common/style/contents.css" />
 <link rel="stylesheet" type="text/css" href="../common/style/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
+<!-- レガシーブラウザ用スクリプト　不必要な場合は削除 -->
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->

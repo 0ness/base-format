@@ -39,6 +39,7 @@ function init(){
 	//数値
 	var n_winWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
 	var n_winHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
+	
 	var n_jQueryAnimInterval = (f_pageMobile === true) ? 18 : 14;
 
 	
@@ -73,19 +74,15 @@ function init(){
             return false;
         };
 
-        //タブレット用関数
-        var tabletFunc = function(){
-            return false;
-        };
 
         //デバイス分岐
 		if( f_pageMobile === true) mobieFunc();
         else screenFunc();
+		
 	});
 
 
-	console.log("test test");
-
+	
 	return false;
 };
 
