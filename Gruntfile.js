@@ -219,11 +219,6 @@ module.exports = function(grunt){
 //				dest:'common/js/minify'
 //		  }
 //		},
-//        play:{
-//            fanfare:{
-//                file:"node_modules/grunt-play/sounds/sound.mp3"
-//            }
-//        },
 		sass:{
 			options:{
 				style: 'compact'
@@ -270,10 +265,10 @@ module.exports = function(grunt){
 			}
 		},
         watch:{
+			options: {
+				spawn: false
+			},
             js:{
-				options: {
-					spawn: false
-				},
                 files:[
                     "common/js/*.js",
                     "common/js/lib/*.js",
@@ -284,14 +279,11 @@ module.exports = function(grunt){
             },
 			sass:{
 				files:["common/scss/*.scss","common/scss/partials/*.scss"],
-				tasks:["sass"]
+				tasks:"sass"
 			},
 			css:{
-				options: {
-					spawn: false
-				},
 				files:"<%= autoprefixer.file.src %>",
-                tasks:["autoprefixer"]
+                tasks:"autoprefixer"
 			},
 			styleguide:{
 				files:["common/scss/module.scss","common/scss/README.md"],
