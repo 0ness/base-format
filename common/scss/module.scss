@@ -19,6 +19,11 @@
 $marginEM:1.5em;
 $radiusBase:4px;
 
+$easeOut:cubic-bezier(0, .75, .58, 1);
+$easeInOut:cubic-bezier(.4, .01, .23, 1.03);
+$easeOutBack:cubic-bezier(0, .78, .44, 1.19);
+
+
 .blc,
 .section { margin:0 0 60px;
 	&:last-child {margin-bottom: 0;}

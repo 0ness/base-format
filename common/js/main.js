@@ -11,6 +11,7 @@
 //SCRIPT START
 function init(){
 
+	
 	/*const 定数　このJS内部でグローバルに使う定数
 	--------------------------------------------------------------------*/
 	//DOMオブジェクト
@@ -30,20 +31,19 @@ function init(){
 	var s_pageID = pages.ID();		      //ページID
 	var s_pageClass = pages.Category();  //ページclass
 	var s_clickEvt = (f_pageMobile === true) ? "touchend" : "click";
-
-
-
+	
+	
+	
+	
 	/*var 変数　このJS内部でグローバルに使う変数
 	--------------------------------------------------------------------*/
 	
 	//数値
 	var n_winWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
 	var n_winHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
-	
 	var n_jQueryAnimInterval = (f_pageMobile === true) ? 18 : 14;
 
 	
-
 	//jquery開始
 	$(function(){
 
@@ -55,7 +55,7 @@ function init(){
 		--------------------------------------------------------------------*/
         //TOPページ
         function topPage(){
-
+			
             return false;
         }
 
@@ -76,7 +76,7 @@ function init(){
 
 
         //デバイス分岐
-		if( f_pageMobile === true) mobieFunc();
+		if( f_pageMobile === true) mobileFunc();
         else screenFunc();
 		
 	});
