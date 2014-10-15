@@ -17,7 +17,7 @@ function init(){
 	//DOMオブジェクト
 	var win = window;
 	var doc = document;
-
+	
 	//オブジェクト
 	var pages = new PageInfo();
 	var lib = new Library();
@@ -32,7 +32,7 @@ function init(){
 	var s_pageClass = pages.Category();  //ページclass
 	var s_clickEvt = (f_pageMobile === true) ? "touchend" : "click";
 	
-	
+
 	
 	
 	/*var 変数　このJS内部でグローバルに使う変数
