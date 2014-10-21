@@ -19,7 +19,7 @@
 <!-- SNS対応する際に使用
 <meta property="og:site_name" content="0000000">
 <meta property="og:title" content="@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@">
-<meta property="og:description" content="0000000">
+<meta property="og:description" content="@@(Description)@@">
 <meta property="og:url" content="0000000">
 <meta property="og:image" content="0000000">
 -->

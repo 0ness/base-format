@@ -10,9 +10,9 @@
 
 
 //SCRIPT START
-var Library = function(){
+function Library(){
 
-
+	
 
 
 	/*const 定数　このJS内部でグローバルに使う定数
@@ -25,11 +25,11 @@ var Library = function(){
 	var pages = new PageInfo();
 
 	//文字列
-	var strPageUA = pages.UA();			//ユーザーエージェント保持
-	var strPageVER = pages.VER();		//IEのバージョン保持
+	var s_pageUA = pages.UA;			//ユーザーエージェント保持
+	var s_pageVER = pages.VER;		//IEのバージョン保持
 
 	//正否値
-	var flgPageMobile = pages.mobile();   //モバイル判定
+	var b_Mobile = pages.mobile;   //モバイル判定
 
 
 
@@ -218,7 +218,7 @@ var Library = function(){
 	var ancher = function(_href){
 		$(function(){
 			$.fx.interval = 20;
-			var $ancherTag = (strPageUA === "webkit") ? $("body"):$("html");
+			var $ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
 			var href = _href || _obj.attr("href");
 			var target = $(href === "#" || href === "" ? 'html' : href);
 			var position = target.offset().top;// 移動先を数値で取得
@@ -303,13 +303,13 @@ var Library = function(){
 				},
 				resize:function(){//リサイズ時の位置調整
 					SizeCheck();
-					if(strPageVER !== 2) fa.scrollCheck();
+					if(s_pageVER !== 2) fa.scrollCheck();
 					return false;
 				}
 			};
 
 			//FixAncherインスタンス
-			if(flgPageMobile === false){
+			if(b_Mobile === false){
 				var fa = new FixLink();
 				//ページ全体のイベント
 				$win.on({"load":fa.resize,"resize":fa.resize});
@@ -373,7 +373,7 @@ var Library = function(){
 	--------------------------------------------------------------------*/
 	var alphaCheck = function(obj){
 		$(function(){
-			if(strPageVER === "ie8" || strPageVER === "ie7"){
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
 				var img = obj;
 				var imgPass = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");';
 				img.css('filter',imgPass);
@@ -390,7 +390,7 @@ var Library = function(){
 	--------------------------------------------------------------------*/
 	var alphaAllCheck = function(obj){
 		$(function(){
-			if(strPageVER === "ie8" || strPageVER === "ie7"){
+			if(s_pageVER === "ie8" || s_pageVER === "ie7"){
 				var o = obj;
 				o.each(
 					function(){
