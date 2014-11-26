@@ -11,15 +11,17 @@
 
 ==============================================================================*/
 function PageInfo(){
+	this.osCheck();
 	this.uaCheck();
 	this.deviceCheck();
 	return false;
 };
 
 PageInfo.prototype = {
+	OS:"",
 	UA:"",			//ユーザーエージェント
 	ID:"",
-	class:"",	//class
+	Class:"",	//class
 	VER:"not IE",	//ブラウザバージョン IE用
 	mobile:false,	//スマートフォン判定
 	device:"pc",
@@ -31,23 +33,29 @@ PageInfo.prototype = {
 		var classStr = this.UA;
 
 		this.ID = bodys.getAttribute('id');
-		this.class = bodys.getAttribute("class");
+		this.Class = bodys.getAttribute("class");
 
 		if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 		return false;
 	},
-	
-	/* @method
-	*/
+
+	/* @method */
+	osCheck:function(){
+		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
+		else this.OS = "mac";
+		return false;
+	},
+
+	//UAチェック
 	uaCheck:function(){
-		
+
 		var s_UA = "";
 		var s_version = "";
-		
-		var wn = window.navigator;
-		var s_browserUA = wn.userAgent.toLowerCase();
-		var s_ieUA = wn.appVersion.toLowerCase();
-	
+
+		var wn = window.navigator,
+			s_browserUA = wn.userAgent.toLowerCase(),
+			s_ieUA = wn.appVersion.toLowerCase();
+
 		//ブラウザ確認
 		if(s_browserUA.indexOf("msie") !== -1){
 			s_UA = "ie";
@@ -63,43 +71,34 @@ PageInfo.prototype = {
 			if(s_browserUA.indexOf("firefox") !== -1) s_UA = "firefox";
 			else s_UA = "webkit";
 		};
-		
+
 		//値をプロパティに帰属させる
 		this.UA = s_UA;
 		this.VER = s_version;
 
 		return false;
 	},
-	
+
 	//デバイスチェック
 	deviceCheck:function(){
-
 		var n_height = 0;
 		var s_device = "pc";
 		var s_deviceUA = navigator.userAgent;
 		var b_Mobile = false;
-		
-		//スマートフォン UA確認
-		if(s_deviceUA.indexOf('iPhone') !== -1){
+
+		if((s_deviceUA.indexOf('Android') > 0 && s_deviceUA.indexOf('Mobile') == -1) || s_deviceUA.indexOf('A1_07') > 0 || s_deviceUA.indexOf('SC-01C') > 0 || s_deviceUA.indexOf('iPad') > 0){
 			b_Mobile = true;
-			n_height = screen.height * window.devicePixelRatio;
-			if( n_height === 1136) s_device = "iphone5";
-			else s_device = "iphone";
-		}else if(s_deviceUA.indexOf('Android') !== -1){
-			s_device = "Android";
+			s_device = "tablet";
+		}else if ((s_deviceUA.indexOf('iPhone') > 0 && s_deviceUA.indexOf('iPad') == -1) || s_deviceUA.indexOf('iPod') > 0 || (s_deviceUA.indexOf('Android') > 0 && s_deviceUA.indexOf('Mobile') > 0)){
 			b_Mobile = true;
-		}else if(s_deviceUA.indexOf('iPad') !== -1){
-			n_height = screen.height * window.devicePixelRatio;
-			if( n_height === 2048) s_device = "ipad3";
-			else s_device = "ipad";
+			s_device = "sp";
 		};
-		
+
 		this.device = s_device;
 		this.mobile = b_Mobile;
-	
 		return false;
 	},
-	
+
 	//クエリチェック
 	ulrQueryCheck:function(){
 		var s_qs = "id=PC";
@@ -108,8 +107,8 @@ PageInfo.prototype = {
 		//クエリ確認
 		if (s_ls.length === 0) return false;
 		s_qs = s_ls.substr(1).split("&").toString();
-		if(s_qs === "id=PC") b_Mobile = false;
-		else if(s_qs === "id=SP") b_Mobile = true;
+		if(s_qs === "id=PC") this.mobile = false;
+		else if(s_qs === "id=SP") this.mobile = true;
 		return false;
 	},
 
@@ -126,7 +125,7 @@ PageInfo.prototype = {
 		head.item(0).appendChild(link);
 		return false;
 	},
-	
+
 	//モバイル用css記述
 	mobileCSS:function(css){
 		if(this.mobile === false) return false;
@@ -140,7 +139,7 @@ PageInfo.prototype = {
 		head.item(0).appendChild(link);
 		return false;
 	},
-	
+
 	//viewport記述
 	responseViewPort:function(){
 		var doc = document;

@@ -1,0 +1,160 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'grunt-takana' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 warn package.json base-grunt-set@0.1.6 No description
+5 warn package.json base-grunt-set@0.1.6 No repository field.
+6 warn package.json base-grunt-set@0.1.6 No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'grunt-takana', null ]
+9 verbose cache add name=undefined spec="grunt-takana" args=["grunt-takana",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'grunt-takana',
+10 verbose parsed url   path: 'grunt-takana',
+10 verbose parsed url   href: 'grunt-takana' }
+11 silly lockFile 8d446495-grunt-takana grunt-takana
+12 verbose lock grunt-takana /Users/macbookair12/.npm/8d446495-grunt-takana.lock
+13 silly lockFile 8d446495-grunt-takana grunt-takana
+14 silly lockFile 8d446495-grunt-takana grunt-takana
+15 verbose addNamed [ 'grunt-takana', '' ]
+16 verbose addNamed [ null, '*' ]
+17 silly lockFile efe6158a-grunt-takana grunt-takana@
+18 verbose lock grunt-takana@ /Users/macbookair12/.npm/efe6158a-grunt-takana.lock
+19 silly addNameRange { name: 'grunt-takana', range: '*', hasData: false }
+20 verbose url raw grunt-takana
+21 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-takana' ]
+22 verbose url resolved https://registry.npmjs.org/grunt-takana
+23 info trying registry request attempt 1 at 00:01:56
+24 verbose etag "9N6GV27Y92IEFLLKB0HPUHT74"
+25 http GET https://registry.npmjs.org/grunt-takana
+26 http 304 https://registry.npmjs.org/grunt-takana
+27 silly registry.get cb [ 304,
+27 silly registry.get   { date: 'Wed, 29 Oct 2014 15:01:56 GMT',
+27 silly registry.get     server: 'Apache',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     'last-modified': 'Wed, 29 Oct 2014 15:01:56 GMT',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     etag: '"9N6GV27Y92IEFLLKB0HPUHT74"',
+27 silly registry.get     age: '13',
+27 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '1',
+27 silly registry.get     'x-timer': 'S1414594916.311295,VS0,VE0',
+27 silly registry.get     vary: 'Accept',
+27 silly registry.get     'content-length': '0',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 verbose etag grunt-takana from cache
+29 silly addNameRange number 2 { name: 'grunt-takana', range: '*', hasData: true }
+30 silly addNameRange versions [ 'grunt-takana',
+30 silly addNameRange   [ '0.1.0',
+30 silly addNameRange     '0.1.1',
+30 silly addNameRange     '0.1.2',
+30 silly addNameRange     '0.2.0',
+30 silly addNameRange     '0.3.0',
+30 silly addNameRange     '0.3.1',
+30 silly addNameRange     '0.3.2',
+30 silly addNameRange     '0.4.0',
+30 silly addNameRange     '0.4.1',
+30 silly addNameRange     '0.5.0',
+30 silly addNameRange     '0.5.1',
+30 silly addNameRange     '0.5.2',
+30 silly addNameRange     '0.5.3',
+30 silly addNameRange     '1.0.0',
+30 silly addNameRange     '1.0.1',
+30 silly addNameRange     '1.0.2',
+30 silly addNameRange     '1.0.3',
+30 silly addNameRange     '1.0.4' ] ]
+31 verbose addNamed [ 'grunt-takana', '1.0.4' ]
+32 verbose addNamed [ '1.0.4', '1.0.4' ]
+33 silly lockFile 54d099a2-grunt-takana-1-0-4 grunt-takana@1.0.4
+34 verbose lock grunt-takana@1.0.4 /Users/macbookair12/.npm/54d099a2-grunt-takana-1-0-4.lock
+35 silly lockFile 54d099a2-grunt-takana-1-0-4 grunt-takana@1.0.4
+36 silly lockFile 54d099a2-grunt-takana-1-0-4 grunt-takana@1.0.4
+37 silly lockFile efe6158a-grunt-takana grunt-takana@
+38 silly lockFile efe6158a-grunt-takana grunt-takana@
+39 silly resolved [ { name: 'grunt-takana',
+39 silly resolved     description: 'Live edit SCSS stylesheets',
+39 silly resolved     version: '1.0.4',
+39 silly resolved     homepage: 'https://github.com/mechio/grunt-takana',
+39 silly resolved     author: { name: 'Mechio', email: 'code@mech.io' },
+39 silly resolved     repository: { type: 'git', url: 'git://github.com/mechio/grunt-takana.git' },
+39 silly resolved     bugs: { url: 'https://github.com/mechio/grunt-takana/issues' },
+39 silly resolved     licenses: [ [Object] ],
+39 silly resolved     engines: { node: '>= 0.8.0' },
+39 silly resolved     scripts:
+39 silly resolved      { test: 'grunt test',
+39 silly resolved        preinstall: 'npm i -g takana && takana sublime:install' },
+39 silly resolved     devDependencies:
+39 silly resolved      { 'grunt-contrib-jshint': '~0.6.0',
+39 silly resolved        'grunt-contrib-clean': '~0.4.0',
+39 silly resolved        'grunt-contrib-nodeunit': '~0.2.0',
+39 silly resolved        grunt: '~0.4.2',
+39 silly resolved        execSync: '~1.0.1-pre' },
+39 silly resolved     peerDependencies: { grunt: '~0.4.2' },
+39 silly resolved     keywords: [ 'gruntplugin' ],
+39 silly resolved     dependencies: { takana: '0.0.8' },
+39 silly resolved     main: 'Gruntfile.js',
+39 silly resolved     directories: { test: 'test' },
+39 silly resolved     license: 'ISC',
+39 silly resolved     readme: '# grunt-takana\n\n> Live edit SCSS and CSS stylesheets\n\nGrunt plugin for Takana. If you\'re not using grunt, head over to [mechio/takana](https://github.com/mechio/takana) and follow the CLI instructions there.\n\n# Getting started\n\nInstall the plugin\n```\nnpm install grunt-takana\n```\n\nAdd this snippet to your Gruntfile\n```\ngrunt.loadNpmTasks(\'grunt-takana\');\n```\n\nRun takana from the root of your project folder\n\n```\ngrunt takana\n```\n\nAdd the JavaScript snippit to any page you want to live update:\n\n```\n<script type="text/javascript" src="http://localhost:48626/takana.js"></script>\n```\n\nNow just open the web page that you pasted the snippit into. Then open one of its stylesheets in Sublime and start live-editing!\n\n# Options\n\n#### includePaths\n\nType: `Array`   \nDefault: `[]`\n\nImport paths to include, the same option grunt-sass uses.\n\n#### path\n\nType: `String`  \nDefault: `current working directory`\n\nRoot project folder containing the stylesheets.\n',
+39 silly resolved     readmeFilename: 'README.md',
+39 silly resolved     _id: 'grunt-takana@1.0.4',
+39 silly resolved     _from: 'grunt-takana@' } ]
+40 info install grunt-takana@1.0.4 into /Users/macbookair12/Desktop/works/base_format/htdocs
+41 info installOne grunt-takana@1.0.4
+42 info /Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana unbuild
+43 verbose tar unpack /Users/macbookair12/.npm/grunt-takana/1.0.4/package.tgz
+44 silly lockFile ab63a9ae-htdocs-node-modules-grunt-takana tar:///Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana
+45 verbose lock tar:///Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana /Users/macbookair12/.npm/ab63a9ae-htdocs-node-modules-grunt-takana.lock
+46 silly lockFile d52d97d0-m-grunt-takana-1-0-4-package-tgz tar:///Users/macbookair12/.npm/grunt-takana/1.0.4/package.tgz
+47 verbose lock tar:///Users/macbookair12/.npm/grunt-takana/1.0.4/package.tgz /Users/macbookair12/.npm/d52d97d0-m-grunt-takana-1-0-4-package-tgz.lock
+48 silly gunzTarPerm modes [ '755', '644' ]
+49 silly gunzTarPerm extractEntry package.json
+50 silly gunzTarPerm extractEntry .npmignore
+51 silly gunzTarPerm extractEntry README.md
+52 silly gunzTarPerm extractEntry Gruntfile.js
+53 silly gunzTarPerm extractEntry .jshintrc
+54 silly gunzTarPerm extractEntry LICENSE-MIT
+55 silly gunzTarPerm extractEntry tasks/takana.js
+56 silly gunzTarPerm extractEntry test/takana_test.js
+57 silly lockFile ab63a9ae-htdocs-node-modules-grunt-takana tar:///Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana
+58 silly lockFile ab63a9ae-htdocs-node-modules-grunt-takana tar:///Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana
+59 silly lockFile d52d97d0-m-grunt-takana-1-0-4-package-tgz tar:///Users/macbookair12/.npm/grunt-takana/1.0.4/package.tgz
+60 silly lockFile d52d97d0-m-grunt-takana-1-0-4-package-tgz tar:///Users/macbookair12/.npm/grunt-takana/1.0.4/package.tgz
+61 info preinstall grunt-takana@1.0.4
+62 verbose unsafe-perm in lifecycle false
+63 info grunt-takana@1.0.4 Failed to exec preinstall script
+64 info /Users/macbookair12/Desktop/works/base_format/htdocs/node_modules/grunt-takana unbuild
+65 info preuninstall grunt-takana@1.0.4
+66 info uninstall grunt-takana@1.0.4
+67 verbose true,/Users/macbookair12/Desktop/works/base_format/htdocs/node_modules,/Users/macbookair12/Desktop/works/base_format/htdocs/node_modules unbuild grunt-takana@1.0.4
+68 info postuninstall grunt-takana@1.0.4
+69 error grunt-takana@1.0.4 preinstall: `npm i -g takana && takana sublime:install`
+69 error Exit status 3
+70 error Failed at the grunt-takana@1.0.4 preinstall script.
+70 error This is most likely a problem with the grunt-takana package,
+70 error not with npm itself.
+70 error Tell the author that this fails on your system:
+70 error     npm i -g takana && takana sublime:install
+70 error You can get their info via:
+70 error     npm owner ls grunt-takana
+70 error There is likely additional logging output above.
+71 error System Darwin 14.0.0
+72 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "grunt-takana"
+73 error cwd /Users/macbookair12/Desktop/works/base_format/htdocs
+74 error node -v v0.10.26
+75 error npm -v 1.4.3
+76 error code ELIFECYCLE
+77 verbose exit [ 1, true ]

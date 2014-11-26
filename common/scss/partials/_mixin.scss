@@ -32,7 +32,24 @@
 		@mixin mobile {
 			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {	@content; }
 		}
-	
+		
+		//iPhone4 〜 iPhone6
+		@mixin iphone456 {
+			@media screen and (min-width: 320px) and (max-width: 413px){
+				@content;
+			}
+		}
+ 
+		//iPhone6 Plus ~ ちょっと大きいスマホまで
+		@mixin iphone6_plus {
+			@media screen and (min-width: 414px) and (max-width: 499px){ @content; }
+		}
+		
+		//iPHone4,iPhone5,iPhone5s,iPhone6,iPhone6 Plus
+		@mixin iphone456s {
+			@media screen and (min-width: 0px) and (max-width: 499px){ @content; }
+		}
+
 		//IE6用対応
 		@mixin ie6	{
 			html.ie6 &{ @content; }

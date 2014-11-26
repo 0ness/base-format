@@ -169,8 +169,8 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-newer");
-//	grunt.loadNpmTasks("grunt-play");
-//	grunt.loadNpmTasks("grunt-utf8tosjis" );
+	//	grunt.loadNpmTasks("grunt-play");
+	//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
 
 	//基本的なタスクセット
@@ -210,15 +210,6 @@ module.exports = function(grunt){
 		clean:{
             js:"<%= concat.baseJS.dest %>"
         },
-//		utf8tosjis:{
-//			dist:{
-//				expand:true,
-//				flatten: true,
-////				cwd:'./common/js/minify',
-//				src:'common/js/main.js',
-//				dest:'common/js/minify'
-//		  }
-//		},
 		sass:{
 			options:{
 				style: 'compact'
