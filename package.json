@@ -8,12 +8,12 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-play": "^0.1.0",
     "grunt-contrib-uglify": "^0.6.0",
-    "grunt-autoprefixer": "^1.0.1",
+    "grunt-autoprefixer": "^2.0.0",
     "grunt-shell": "^1.1.1",
     "grunt-contrib-sass": "^0.8.1",
     "grunt-utf8tosjis": "0.0.2",
     "grunt-remove-logging": "^0.2.0",
-    "grunt-newer": "^0.7.0",
+    "grunt-newer": "^0.8.0",
     "styledocco": "^0.6.6"
   }
 }
