@@ -6,90 +6,75 @@
 	・機能実装→演出実装→最適化処理のフローで構築
 
 ==============================================================================*/
-
-
-//SCRIPT START
-function init(){
-
-
+$(function(){
+	"use strict";
 
 
 	/*const 定数　このJS内部でグローバルに使う定数
 	--------------------------------------------------------------------*/
 	//DOMオブジェクト
-	var win = window;
-	var doc = document;
+	var win = window,
+		doc = document;
 
 	//オブジェクト
-	var pages = new PageInfo();
-	var lib = new Library();
+	var pages = new PageInfo(),
+		lib = new Library();
 
 	//正否値
 	var b_pageMobile = pages.mobile;    //モバイル判定
 
 	//文字列
-	var s_pageUA = pages.UA;		//ユーザーエージェント保持
-	var s_pageVER = pages.VER;		//IEのバージョン保持
-	var s_pageID = pages.ID;		//ページID
-	var s_pageClass = pages.class;  //ページclass
-	var s_clickEvt = (b_pageMobile === true) ? "touchend" : "click";
-	
+	var s_pageUA = pages.UA,		//ユーザーエージェント保持
+		s_pageVER = pages.VER,		//IEのバージョン保持
+		s_pageID = pages.ID,		//ページID
+		s_pageClass = pages.class,  //ページclass
+		s_clickEvt = (b_pageMobile === true) ? "touchend" : "click",
+		$ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
+
 	
 
 
 	/*var 変数　このJS内部でグローバルに使う変数
 	--------------------------------------------------------------------*/
-
 	//数値
-	var n_winWidth = win.innerWidth || doc.body.clientWidth;  //ウィンドウ幅
-	var n_winHeight = win.innerHeight || doc.body.clientHeight;//ウィンドウ高さ
-	var n_jQueryAnimInterval = (b_pageMobile === true) ? 18 : 14;
+	var n_winWidth = win.innerWidth || doc.body.clientWidth,  //ウィンドウ幅
+		n_winHeight = win.innerHeight || doc.body.clientHeight,//ウィンドウ高さ
+		n_jQueryAnimInterval = (b_pageMobile === true) ? 18 : 14;
+
+	$.fx.interval = n_jQueryAnimInterval;
+
+	
+	
+
+	/*contents コンテンツ毎の処理
+	--------------------------------------------------------------------*/
+	//TOPページ
+	function topPage(){
+
+		return false;
+	};
+	
+	
+	
+	
+	/*contents 関数分岐　ID・Classで処理を変更
+	--------------------------------------------------------------------*/
+	//PC用関数
+	var screenFunc = function(){
+		if(s_pageID === "top") topPage();
+		return false;
+	};
+
+	//モバイル用関数
+	var mobileFunc = function(){
+		if(s_pageID === "top") topPage();
+		return false;
+	};
 
 
-	//jquery開始
-	$(function(){
-
-		$.fx.interval = n_jQueryAnimInterval;
-        var $ancherTag = (s_pageUA === "webkit") ? $("body"):$("html");
-
-
-		/*contents コンテンツ毎の処理
-		--------------------------------------------------------------------*/
-        //TOPページ
-        function topPage(){
-
-            return false;
-        }
-
-
-		/*contents 関数分岐　ID・Classで処理を変更
-		--------------------------------------------------------------------*/
-        //PC用関数
-        var screenFunc = function(){
-            if(s_pageID === "top") topPage();
-            return false;
-        };
-
-        //モバイル用関数
-        var mobileFunc = function(){
-            if(s_pageID === "top") topPage();
-            return false;
-        };
-
-
-        //デバイス分岐
-		if( b_pageMobile === true) mobileFunc();
-        else screenFunc();
-
-	});
-
-
+	//デバイス分岐
+	if( b_pageMobile === true) mobileFunc();
+	else screenFunc();
 
 	return false;
-};
-
-
-//contents スクリプト動作開始
-if(window.addEventListener) window.addEventListener("load",init, false);
-else window.attachEvent("onload",init);
-//SCRIPT END
+});
