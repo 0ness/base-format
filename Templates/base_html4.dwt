@@ -28,7 +28,6 @@
 <link rel="stylesheet" type="text/css" href="../common/style/contents.css" />
 <link rel="stylesheet" type="text/css" href="../common/style/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
-<!-- レガシーブラウザ用スクリプト　不必要な場合は削除 -->
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
@@ -42,25 +41,26 @@
 <!-- TemplateInfo codeOutsideHTMLIsLocked="true" --> 
 </head>
 <body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
-<!-- ============= wrapper ============= -->
 <div id="wrapper"> 
-	<!-- header -->
+
+	<!-- ============= header ============= -->
 	<div id="header"> 
 		<!-- gnav --> 
 		<!-- 基本はnavが親だが、構成がシンプルな場合はulを親にする-->
 		<div id="gnav">
 			<ul>
-				<li id="gn_01"@@((ページid != 'category_id_01') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_02"@@((ページid != 'category_id_02') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_03"@@((ページid != 'category_id_03') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_04"@@((ページid != 'category_id_04') ? '' : ' class="current"';)@@><a href="#header"></a></li>
-				<li id="gn_05"@@((ページid != 'category_id_05') ? '' : ' class="current"';)@@><a href="#header"></a></li>
+				<li id="gn_01"@@((ページid != 'category_id_01') ? 'class="gnBtn"' : ' class="gnBtn current"';)@@><a href="#header"></a></li>
+				<li id="gn_02"@@((ページid != 'category_id_02') ? 'class="gnBtn"' : ' class="gnBtn current"';)@@><a href="#header"></a></li>
+				<li id="gn_03"@@((ページid != 'category_id_03') ? 'class="gnBtn"' : ' class="gnBtn current"';)@@><a href="#header"></a></li>
+				<li id="gn_04"@@((ページid != 'category_id_04') ? 'class="gnBtn"' : ' class="gnBtn current"';)@@><a href="#header"></a></li>
+				<li id="gn_05"@@((ページid != 'category_id_05') ? 'class="gnBtn"' : ' class="gnBtn current"';)@@><a href="#header"></a></li>
 			</ul>
 		</div>
 		<!-- /gnav --> 
 	</div>
-	<!-- /header --> 
-	
+	<!-- /============= header ============= -->
+
+
 	<!-- ============= contents ============= -->
 	<div id="contents"> 
 		
@@ -87,10 +87,11 @@
 				<!-- TemplateEndIf --> </div>
 		</div>
 		<!-- /sub --> 
-		<a href="#header" id="topBack">トップに戻る</a> </div>
+		<a href="#header" id="pageTop">トップに戻る</a> </div>
 	<!-- /============= contents ============= --> 
 	
-	<!-- footer -->
+	
+	<!-- ============= footer ============= -->
 	<div id="footer">
 		<ul>
 			<li><a href="#header">サイトマップ</a></li>
@@ -99,12 +100,12 @@
 		</ul>
 		<p><small>Copylight &copy;</small></p>
 	</div>
-	<!-- /footer --> 
+	<!-- /============= footer ============= -->
+
 	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>
 <!-- /============= wrapper ============= -->
 <script type="text/javascript" src="../common/js/minify/base.js"></script> 
 <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
 <script type="text/javascript" src="../common/js/main.js"></script> 
-<script type="text/javascript" src="../common/js/ga.js"></script>
 </body>
 </html>

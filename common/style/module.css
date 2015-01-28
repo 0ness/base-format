@@ -2,10 +2,22 @@
 /*  
 # Container Compornets
 */
+/* リキッドスタイル　単体用 @param{Number}可変させる要素のwidthのパーセンテージ
+*/
+	/* リキッドスタイル　複数画像格納用 	 * @param{Number}格納する画像の数：初期値2
+	 * @param{Number}画像間のmarginの割合パーセンテージ（全体の合計値）：初期値0
+	 * @param{String}可変させる要素セレクタ：初期値"img"
+	 * @param{Number}可変させる要素のwidthのパーセンテージ：初期値100%
+	*/
+/* フォントサイズのリスト */
+/* フォントサイズをpxから％へ指定を変換 $param{Number}px単位のフォントサイズ
+*/
+/* 相対的なフォントサイズの調整を行う：基本の数値に対して増減した値を指定する @param{Number}px単位で基準となるフォントサイズから何px変わったかを指定
+*/
 /*============================================================
 RESET用スタイル　
 ============================================================*/
-html { color: #555555; background: white; }
+html { color: #555; background: #fff; }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
 
@@ -31,7 +43,7 @@ sub { vertical-align: text-bottom; }
 
 input, textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; *font-size: 100%; }
 
-legend { color: black; }
+legend { color: #000; }
 
 main, header, footer, section, hgroup, aside, nav, address, article, figure { display: block; margin: 0; padding: 0; }
 
@@ -70,12 +82,12 @@ pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height
 ============================================================*/
 a { text-decoration: underline; color: #008cda; }
 a:hover { text-decoration: underline; color: #0ea9ff; }
-a:active { text-decoration: underline; color: #0099cc; }
+a:active { text-decoration: underline; color: #09c; }
 
-p { font-size: 100%; line-height: 1.8; color: #555555; }
+p { font-size: 100%; line-height: 1.8; color: #555; }
 p + p { margin-top: 1.2em; }
 
-li { font-size: 100%; line-height: 1.8; color: #555555; }
+li { font-size: 100%; line-height: 1.8; color: #555; }
 li + p { margin-top: 1.2em; }
 
 /*
@@ -208,10 +220,10 @@ p.prg-small + p, li.prg-small + p, span.prg-small + p, div.prg-small + p, .prgCo
 p > b, li > b, span > b, div > b { font-weight: bold; }
 p > em, li > em, span > em, div > em { color: #0797de; }
 p > strong, li > strong, span > strong, div > strong { color: #0797de; font-weight: bold; }
-p > small, li > small, span > small, div > small { font-size: 93%; padding: 5px 0 0; line-height: 1.6; display: inline-block; *display: inline; *zoom: 1; }
+p > small, li > small, span > small, div > small { font-size: 93%; padding: 5px 0 0; line-height: 1.6; display: inline-block; }
 p > .prg-bg, li > .prg-bg, span > .prg-bg, div > .prg-bg { color: white; background: #0797de; }
-p > .prg-bdrSolid, li > .prg-bdrSolid, span > .prg-bdrSolid, div > .prg-bdrSolid { border-bottom: solid #555555 1px; }
-p > .prg-bdrDotted, li > .prg-bdrDotted, span > .prg-bdrDotted, div > .prg-bdrDotted { border-bottom: dotted #555555 1px; }
+p > .prg-bdrSolid, li > .prg-bdrSolid, span > .prg-bdrSolid, div > .prg-bdrSolid { border-bottom: solid #555 1px; }
+p > .prg-bdrDotted, li > .prg-bdrDotted, span > .prg-bdrDotted, div > .prg-bdrDotted { border-bottom: dotted #555 1px; }
 p.prg-small, li.prg-small, span.prg-small, div.prg-small { display: block; font-size: 93%; padding: 5px 0 0; line-height: 1.6; }
 p.prg-dropCaps, li.prg-dropCaps, span.prg-dropCaps, div.prg-dropCaps { overflow: hidden; zoom: 1; }
 p.prg-dropCaps:first-letter, li.prg-dropCaps:first-letter, span.prg-dropCaps:first-letter, div.prg-dropCaps:first-letter { float: left; line-height: 1; font-size: 330%; padding: 0.25em 0.05em 5px 0; }
@@ -256,10 +268,10 @@ p.prg-dropCaps:first-letter, li.prg-dropCaps:first-letter, span.prg-dropCaps:fir
 .heading.head-subSet .sub a, .head-subSet.headMain .sub a, .head-subSet.headSub .sub a, .head-subSet.headSub-02 .sub a { margin: 0 0 0 15px; }
 
 .headMain { margin-bottom: 2em; font-size: 200%; }
-.headMain.head-subSet .sub { font-size: 59%; }
+.headMain.head-subSet .sub { font-size: 62%; }
 
 .headSub { margin-bottom: 1em; font-size: 153.9%; font-weight: bold; }
-.headSub.head-subSet .sub { font-size: 69%; }
+.headSub.head-subSet .sub { font-size: 70%; }
 
 .headSub-02 { margin-bottom: 0.5em; font-size: 131%; }
 .headSub-02.head-arrow { padding-left: 20px; position: relative; }
@@ -307,14 +319,33 @@ p.prg-dropCaps:first-letter, li.prg-dropCaps:first-letter, span.prg-dropCaps:fir
 .fig-shadow img { border: 10px solid #fff; box-shadow: 0 2px 5px #ddd; }
 
 /* 
-# Pagenation
+# UI compornents
 */
 .pagenation { zoom: 1; }
 .pagenation:before, .pagenation:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
 .pagenation:after { clear: both; }
-.pagenation .link { display: inline-block; *display: inline; *zoom: 1; margin: 0 10px 0 0; }
+.pagenation .link { display: inline-block; margin: 0 10px 0 0; }
 .pagenation .link:last-child { margin: 0; }
 .pagenation .linkPrev a, .pagenation .linkNext a { padding: 2px 4px; background: #0797de; color: #fff; text-decoration: none; }
+
+/* 
+# Responsive Style compornents
+*/
+.re-fluidObj { width: 100%; height: auto; display: block; box-sizing: border-box; }
+
+.re-fluidBlc img { width: 100%; height: auto; display: block; box-sizing: border-box; }
+
+.re-fluidBlc-2 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-2 img { width: 50%; height: auto; float: left; display: block; box-sizing: border-box; }
+
+.re-fluidBlc-3 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-3 img { width: 33.33333%; height: auto; float: left; display: block; box-sizing: border-box; }
+
+.re-fluidBlc-4 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-4 img { width: 25%; height: auto; float: left; display: block; box-sizing: border-box; }
+
+.re-fluidBlc-5 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-5 img { width: 20%; height: auto; float: left; display: block; box-sizing: border-box; }
 
 /*
 # Design Interface Compornets

@@ -172,6 +172,18 @@ module.exports = function(grunt){
 	//	grunt.loadNpmTasks("grunt-play");
 	//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
+	var BROWSERS = [
+					'ie >= 8',
+//					'ie_mob >= 10',
+//					'ff >= 35',
+					'chrome >= 39',
+					'safari >= 7',
+//					'opera >= 23',
+					'ios >= 7'
+//					'android >= 2.3'
+//					'and_ff >= 20',
+//					'and_chr >= 34'
+				   ];
 
 	//基本的なタスクセット
     grunt.initConfig({
@@ -224,7 +236,9 @@ module.exports = function(grunt){
 		},
 		autoprefixer:{
 			options:{
-				browsers: ['last 2 version','ie 8','ie 9','ios 5']
+//				browsers: ['ie 8','ie 9','ios 5',"ios 4", "android 2.3"],
+				browsers:BROWSERS
+//				cascade:true
 			},
 			file:{
 				expand: true,
@@ -244,7 +258,7 @@ module.exports = function(grunt){
 					}
 				},
 				files: {
-				  'docs': 'common/scss/module.scss'
+				  docs: 'common/scss/module.scss'
 				}
 			}
 		},
@@ -257,7 +271,7 @@ module.exports = function(grunt){
 		},
         watch:{
 			options: {
-				spawn: false
+				spawn: true
 			},
             js:{
                 files:[
@@ -270,11 +284,14 @@ module.exports = function(grunt){
             },
 			sass:{
 				files:["common/scss/*.scss","common/scss/partials/*.scss"],
-				tasks:"sass"
+				tasks:["sass"]
 			},
 			css:{
+//				options: {
+//					spawn: false
+//				},
 				files:"<%= autoprefixer.file.src %>",
-                tasks:"autoprefixer"
+                tasks:["autoprefixer"]
 			},
 			styleguide:{
 				files:["common/scss/module.scss","common/scss/README.md"],
@@ -287,5 +304,4 @@ module.exports = function(grunt){
 
 
 };
-
 

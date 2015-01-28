@@ -16,7 +16,6 @@
 //フォントサイズ：%表示（20px以降はpxで可）
 
 
-
 @import "partials/_setting";
 @import "partials/_mixin";
 @import "partials/_function";
@@ -26,38 +25,36 @@
 
 
 
-/*============================================================
-LAYOUT用スタイル　
-============================================================*/
+
+/* ベースブロック
+--------------------------------------------------------------------*/
 html	{ height:100%;}
 body	{ height:100%; text-align:left; @include select-color(#fff,scheme(key));}
 body > #wrapper { height:auto;}
 #wrapper { /*min-width:$width;*/ min-height:100%; height:auto !important; height:100%; position:relative;
-	@include iphone	{ -webkit-text-size-adjust: none;}
-	
-	//ページトップに戻る
-	#topBack	{ @include bottom-left(300,0); color:#fff;}
+	@include mobile	{ -webkit-text-size-adjust: none;}	
 }
 
 
 
 
-/*HEADER
+/* ヘッダー
 --------------------------------------------------------------------*/
-#header	{ height:50px; background:#fff;
-	#ci	{
-		a:hover img	{ opacity:0.6;}
-	}
+#header	{ height:50px; background:#fff;}
+#ci	{
+	a:hover img	{ opacity:0.6;}
 }
 
 
 
 
-/*NAVIGATION
+
+/* ナビゲーション
 --------------------------------------------------------------------*/
 #gNav	{
 	ul	{ overflow:hidden;}
-	li	{ float:left;}
+}
+.gnBtn	{ float:left;
 	a 	{ display:block;
 		&:hover	{}
 	}
@@ -67,33 +64,27 @@ body > #wrapper { height:auto;}
 
 
 
-/*CONTENTS
+/*　コンテンツ全体
 --------------------------------------------------------------------*/
-/* コンテンツ部分 */
 #contents	{ /*width:$width;*/ margin:0 auto; padding:0 0 500px; overflow:hidden; position:relative;}
+#pageTop	{ @include bottom-left(300,0); color:#fff;}
 
 
-/* メインコンテンツ */
+//メインコンテンツ大枠
 #main	{}
 
 
-/* サブコンテンツ */
+//サブコンテンツ大枠
 #sub {}
 
-
-#test {
-	li:nth-child(1) { color:red;}
-	li:nth-child(2) { color:blue;}
-	li:nth-child(3) { color:green;}
-}
 
 
 
 /*FOOTER
 --------------------------------------------------------------------*/
-#footer	{ width:100%; height:50px; @include bottom-left; background:#fff;
-	#copyright	{}
-}
+#footer	{ width:100%; height:50px; @include bottom-left; background:#fff;}
+#copyright	{}
+
 
 
 

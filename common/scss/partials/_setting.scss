@@ -1,22 +1,6 @@
 @charset "UTF-8";
 // SETTING　各プロジェクト毎の仕様に対応する変数・MIXIN・関数を記述
 
-// コーポレートカラー
-// カラム幅
-// 基本テキストスタイル etc
-// CSSの記述時に毎回指定をし直すロスを無くすため、使えるものは極力使用する
-
-
-
-// Vairable 対応ブラウザ系変数 ///////////////////////////////////////
-
-		$ie6: true; // IE6
-		$ie7: true; // IE7
-		$ie8: true; // IE8
-		$ie9: true; // IE9
-		$mozilla: true; // firefox
-		$webkit : true; // Chrome, Safari
-
 
 
 
@@ -47,18 +31,6 @@
 
 // Vairable _helper用系変数 ///////////////////////////////////////
 
-		// Colors
-		$color-a: #157038; // Green
-		$color-b: #b3cf4d; // Yellowish Green
-		$color-c: #808080; // Alminium Gray
-		$color-d: #333; // Off Black
-		$color-e: #444;
-		$color-f: #555;
-		$color-g: #666;
-		$color-h: #777;
-		$color-i: #888;
-		$color-j: #999;
-		
 		// Spaces
 		$space-base: 10px;
 		$space-2: $space-base * 2;
@@ -66,7 +38,7 @@
 		$space-4: $space-base * 5;
 		
 		// Font Size
-		$font-size-base: 14px;
+		$font-size-base: 13px;
 		$font-size-1: $font-size-base - 6px;
 		$font-size-2: $font-size-base - 4px;
 		$font-size-3: $font-size-base - 2px;
@@ -74,16 +46,6 @@
 		$font-size-5: $font-size-base + 4px;
 		$font-size-6: $font-size-base + 6px;
 		
-		// Heights
-		$height-tap-1: 26px;
-		$height-tap-2: 32px;
-		$height-tap-3: 42px;
-		
-		// Border Radius
-		$radius-base: 4px;
-		$radius-2: $radius-base * 2;
-		$radius-3: $radius-base * 4;
-
 
 
 

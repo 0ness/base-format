@@ -118,35 +118,27 @@
 .prx { padding-right: $space-4 !important; }
 
 
-// Border Radius
-//-------------------------------------
-
-.rn { border-radius: 0 !important; }
-.rs { border-radius: $radius-base; }
-.rm { border-radius: $radius-2; }
-.rl { border-radius: $radius-3; }
-
 
 // Text Decorative Classes
 //-------------------------------------
 
-.ca { color: $color-a !important; }
-.cb { color: $color-b !important; }
-.cc { color: $color-c !important; }
-.cd { color: $color-d !important; }
-.ce { color: $color-e !important; }
-.cf { color: $color-f !important; }
-.cg { color: $color-g !important; }
-.ch { color: $color-h !important; }
+//.ca { color: $color-a !important; }
+//.cb { color: $color-b !important; }
+//.cc { color: $color-c !important; }
+//.cd { color: $color-d !important; }
+//.ce { color: $color-e !important; }
+//.cf { color: $color-f !important; }
+//.cg { color: $color-g !important; }
+//.ch { color: $color-h !important; }
 
-.ba { background-color: $color-a !important; }
-.bb { background-color: $color-b !important; }
-.bc { background-color: $color-c !important; }
-.bd { background-color: $color-d !important; }
-.be { background-color: $color-e !important; }
-.bf { background-color: $color-f !important; }
-.bg { background-color: $color-g !important; }
-.bh { background-color: $color-h !important; }
+//.ba { background-color: $color-a !important; }
+//.bb { background-color: $color-b !important; }
+//.bc { background-color: $color-c !important; }
+//.bd { background-color: $color-d !important; }
+//.be { background-color: $color-e !important; }
+//.bf { background-color: $color-f !important; }
+//.bg { background-color: $color-g !important; }
+//.bh { background-color: $color-h !important; }
 
 .n { font-weight: normal !important; }
 .b { font-weight: bold !important; }
@@ -155,13 +147,13 @@
 .r { text-align: right !important; }
 .u { text-decoration: underline !important; }
 
-.f1 { font-size: $font-size-1; }
-.f2 { font-size: $font-size-2; }
-.f3 { font-size: $font-size-3; }
-.fn { font-size: $font-size-base !important; }
-.f4 { font-size: $font-size-4; }
-.f5 { font-size: $font-size-5; }
-.f6 { font-size: $font-size-6; }
+//.f1 { font-size: $font-size-1; }
+//.f2 { font-size: $font-size-2; }
+//.f3 { font-size: $font-size-3; }
+//.fn { font-size: $font-size-base !important; }
+//.f4 { font-size: $font-size-4; }
+//.f5 { font-size: $font-size-5; }
+//.f6 { font-size: $font-size-6; }
 
 .v0 { vertical-align: 0; }
 .v1 { vertical-align: -1px; }

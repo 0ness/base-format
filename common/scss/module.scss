@@ -171,13 +171,13 @@ div{
 	& > b { font-weight: bold;}
 	& > em { color: scheme(key);}
 	& > strong { color: scheme(key); font-weight: bold;}
-	& > small { font-size: fs(12); padding:5px 0 0; line-height: 1.6; @include inline-block;}
+	& > small { font-size:fa(-1); padding:5px 0 0; line-height: 1.6; display: inline-block;}
 	& > .prg-bg { color: white; background:scheme(key);}
 	& > .prg-bdrSolid { border-bottom: solid scheme(text) 1px;}
 	& > .prg-bdrDotted { border-bottom: dotted scheme(text) 1px;}
 
 	//modefier
-	&.prg-small {display: block; font-size: fs(12); padding:5px 0 0; line-height: 1.6; @extend %prgMargin; }
+	&.prg-small {display: block; font-size: fa(-1); padding:5px 0 0; line-height: 1.6; @extend %prgMargin; }
 	&.prg-dropCaps { overflow: hidden; zoom:1;
 		&:first-letter { float: left; line-height: 1; font-size: 330%; padding: 0.25em 0.05em 5px 0;}
 	}
@@ -245,7 +245,7 @@ div{
 	
 	//modefier
 	&.head-subSet{ 
-		.sub { font-size:59%;
+		.sub { font-size:fa(-5);
 		}
 	}
 	
@@ -255,7 +255,7 @@ div{
 
 	//modefier
 	&.head-subSet{
-		.sub { font-size:69%;}
+		.sub { font-size:fa(-4);}
 	}
 	
 }
@@ -264,10 +264,10 @@ div{
 
 	//modefier
 	&.head-arrow { padding-left: 20px; position: relative;
-		&:before { content:"▶"; @include wh(4,100%); @include top-left(50%,0); margin-top: -9px; color:gray; font-size:93%;}
+		&:before { content:"▶"; @include wh(4,100%); @include top-left(50%,0); margin-top: -9px; color:gray; font-size:fa(-1);}
 	}
 	&.head-subSet{
-		.sub { font-size:85%;}
+		.sub { font-size:fa(-2);}
 	}
 	
 }
@@ -337,7 +337,7 @@ div{
 
 .figContainer { display: block; padding:4px 0 0 0; margin: 0 12px 1em 0;
 	img  { display: block;}
-	.cap { display: block; padding:0.5em 0 0; font-size: fs(12); line-height: 1.5;}
+	.cap { display: block; padding:0.5em 0 0; font-size: fa(-1); line-height: 1.5;}
 	&:last-child { margin-bottom: 0;}
 		
 	//modifier
@@ -356,12 +356,14 @@ div{
 
 
 /* 
-# Pagenation
+# UI compornents
 */
+
+//Pagenation
 .pagenation { @include clearfix;
 	
 	//child
-	.link { @include inline-block; margin: 0 10px 0 0;
+	.link { display: inline-block; margin: 0 10px 0 0;
 		&:last-child { margin: 0;}		
 	}
 	%linkBtn {
@@ -371,6 +373,23 @@ div{
 	.linkNext { @extend %linkBtn;}
 
 }
+
+
+/* 
+# Responsive Style compornents
+*/
+
+//fluid Img & fluid Block
+.re-fluidObj { @include fluidObj;}
+
+//fluid Block
+.re-fluidBlc {
+	img { @include fluidObj;}
+}
+.re-fluidBlc-2 { @include fluidBlc;}
+.re-fluidBlc-3 { @include fluidBlc(3);}
+.re-fluidBlc-4 { @include fluidBlc(4);}
+.re-fluidBlc-5 { @include fluidBlc(5);}
 
 
 

@@ -11,11 +11,11 @@
 
 //SCRIPT START
 var Library = function(){
-	
-	this.pages = new PageInfo();		
-	this.pageUA = this.pages.UA;			
-	this.pageVER = this.pages.VER;				
-	this.hasMobile = this.pages.mobile;
+	var p = new PageInfo();
+	this.pages = p;
+	this.pageUA = p.UA;			
+	this.pageVER = p.VER;				
+	this.hasMobile = p.mobile;
 	
 	/* method テーブルソート機能（テーブル01_id、行番号、ソートタイプ:str,num）
 	--------------------------------------------------------------------*/

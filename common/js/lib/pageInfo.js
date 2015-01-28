@@ -14,14 +14,13 @@ function PageInfo(){
 	this.osCheck();
 	this.uaCheck();
 	this.deviceCheck();
-	return false;
 };
 
 PageInfo.prototype = {
 	OS:"",
-	UA:"",			//ユーザーエージェント
+	UA:"",
 	ID:"",
-	Class:"",	//class
+	Class:"",
 	VER:"not IE",	//ブラウザバージョン IE用
 	mobile:false,	//スマートフォン判定
 	device:"pc",
@@ -35,11 +34,10 @@ PageInfo.prototype = {
 		this.ID = bodys.getAttribute('id');
 		this.Class = bodys.getAttribute("class");
 
-		if(classStr !== "ie") doc.getElementById("wrapper").className = classStr;
 		return false;
 	},
 
-	/* @method */
+	//OSチェック
 	osCheck:function(){
 		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
 		else this.OS = "mac";
@@ -72,6 +70,10 @@ PageInfo.prototype = {
 			else s_UA = "webkit";
 		};
 
+		if(s_version === "ie8" || s_version === "ie9") document.getElementById("wrapper").className = s_version;
+		//互換モード対応
+		if(document.documentMode === 8) document.getElementById("wrapper").className = "ie8";
+
 		//値をプロパティに帰属させる
 		this.UA = s_UA;
 		this.VER = s_version;
@@ -81,10 +83,10 @@ PageInfo.prototype = {
 
 	//デバイスチェック
 	deviceCheck:function(){
-		var n_height = 0;
-		var s_device = "pc";
-		var s_deviceUA = navigator.userAgent;
-		var b_Mobile = false;
+		var n_height = 0,
+			s_device = "pc",
+			s_deviceUA = navigator.userAgent,
+			b_Mobile = false;
 
 		if((s_deviceUA.indexOf('Android') > 0 && s_deviceUA.indexOf('Mobile') == -1) || s_deviceUA.indexOf('A1_07') > 0 || s_deviceUA.indexOf('SC-01C') > 0 || s_deviceUA.indexOf('iPad') > 0){
 			b_Mobile = true;
@@ -101,8 +103,8 @@ PageInfo.prototype = {
 
 	//クエリチェック
 	ulrQueryCheck:function(){
-		var s_qs = "id=PC";
-		var s_ls = location.search;
+		var s_qs = "id=PC",
+			s_ls = location.search;
 
 		//クエリ確認
 		if (s_ls.length === 0) return false;
@@ -115,10 +117,10 @@ PageInfo.prototype = {
 	//PC用css記述
 	pcCSS:function(css){
 		if(this.mobile === true) return false;
-		var doc = document;
-		var cssPath = css;
-		var link = doc.createElement('link');
-		var head = doc.getElementsByTagName('head');
+		var doc = document,
+			cssPath = css,
+			link = doc.createElement('link'),
+			head = doc.getElementsByTagName('head');
 		link.href = cssPath;
 		link.type = 'text/css';
 		link.rel = 'stylesheet';
@@ -127,12 +129,12 @@ PageInfo.prototype = {
 	},
 
 	//モバイル用css記述
-	mobileCSS:function(css){
+	mobileCSS:function(_path){
 		if(this.mobile === false) return false;
-		var doc = document;
-		var cssPath = css;
-		var link = doc.createElement('link');
-		var head = doc.getElementsByTagName('head');
+		var doc = document,
+			cssPath = _path,
+			link = doc.createElement('link'),
+			head = doc.getElementsByTagName('head');
 		link.href = cssPath;
 		link.type = 'text/css';
 		link.rel = 'stylesheet';
@@ -141,10 +143,10 @@ PageInfo.prototype = {
 	},
 
 	//viewport記述
-	responseViewPort:function(){
-		var doc = document;
-		var property = (this.mobile === true) ? 'width=device-width' : 'width=950px';
-		var meta = doc.createElement('meta');
+	responseViewPort:function(_width){
+		var doc = document,
+			property = (this.mobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
+			meta = doc.createElement('meta');
 		meta.setAttribute('name','viewport');
 		meta.setAttribute('content',property);
 		doc.getElementsByTagName('head')[0].appendChild(meta); 
