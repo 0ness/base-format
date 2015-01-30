@@ -1,6 +1,4 @@
 @charset "UTF-8";
-#test { -webkit-transform: rotate(10deg); -ms-transform: rotate(10deg); transform: rotate(10deg); transition: 0.2s linear; }
-
 /* リキッドスタイル　単体用 @param{Number}可変させる要素のwidthのパーセンテージ
 */
 	/* リキッドスタイル　複数画像格納用 	 * @param{Number}格納する画像の数：初期値2
@@ -80,7 +78,7 @@ pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height
 デフォルトスタイル　
 ============================================================*/
 a { text-decoration: underline; color: #008cda; }
-a:hover { text-decoration: underline; color: #0ea9ff; }
+a:hover { text-decoration: underline; color: #09c; }
 a:active { text-decoration: underline; color: #09c; }
 
 p { font-size: 100%; line-height: 1.8; color: #555; }
@@ -94,8 +92,8 @@ li + p { margin-top: 1.2em; }
 html { height: 100%; }
 
 body { height: 100%; text-align: left; }
-body p::selection, body h1::selection, body h2::selection, body h3::selection, body h4::selection, body a::selection, body img::selection, body em::selection, body strong::selection, body dd::selection, body dt::selection, body u::selection, body dfn::selection, body li::selection { color: #fff; background: #0797de; }
-body *::-moz-selection { color: #fff; background: #0797de; }
+body p::selection, body h1::selection, body h2::selection, body h3::selection, body h4::selection, body a::selection, body img::selection, body em::selection, body strong::selection, body dd::selection, body dt::selection, body u::selection, body dfn::selection, body li::selection { color: #fff; background: scheme(key); }
+body *::-moz-selection { color: #fff; background: scheme(key); }
 
 body > #wrapper { height: auto; }
 
@@ -111,15 +109,16 @@ body > #wrapper { height: auto; }
 /* ナビゲーション
 --------------------------------------------------------------------*/
 #gNav ul { overflow: hidden; }
-#gNav li { float: left; }
-#gNav a { display: block; }
-#gNav img { display: block; }
+
+.gnBtn { float: left; }
+.gnBtn a { display: block; }
+.gnBtn img { display: block; }
 
 /*　コンテンツ全体
 --------------------------------------------------------------------*/
 #contents { /*width:$width;*/ margin: 0 auto; padding: 0 0 500px; overflow: hidden; position: relative; }
 
-#topBack { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
+#pageTop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
 
 /*FOOTER
 --------------------------------------------------------------------*/

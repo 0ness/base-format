@@ -169,12 +169,12 @@ span,
 div{
 	//child
 	& > b { font-weight: bold;}
-	& > em { color: scheme(key);}
-	& > strong { color: scheme(key); font-weight: bold;}
+	& > em { color: $color-key;}
+	& > strong { color: $color-key; font-weight: bold;}
 	& > small { font-size:fa(-1); padding:5px 0 0; line-height: 1.6; display: inline-block;}
-	& > .prg-bg { color: white; background:scheme(key);}
-	& > .prg-bdrSolid { border-bottom: solid scheme(text) 1px;}
-	& > .prg-bdrDotted { border-bottom: dotted scheme(text) 1px;}
+	& > .prg-bg { color: white; background:$color-key;}
+	& > .prg-bdrSolid { border-bottom: solid $color-txt 1px;}
+	& > .prg-bdrDotted { border-bottom: dotted $color-txt 1px;}
 
 	//modefier
 	&.prg-small {display: block; font-size: fa(-1); padding:5px 0 0; line-height: 1.6; @extend %prgMargin; }
@@ -285,8 +285,8 @@ div{
 	//child
 	li,
 	.listItem {line-height: 1.6;
-		.btn { display: block; padding: 5px 8px; color: white; background:scheme(key); text-decoration:none;
-			&:hover { background:lighten(scheme(key),15%);}
+		.btn { display: block; padding: 5px 8px; color: white; background:$color-key; text-decoration:none;
+			&:hover { background:lighten($color-key,15%);}
 		}
 	}
 	

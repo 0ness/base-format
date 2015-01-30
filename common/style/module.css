@@ -81,7 +81,7 @@ pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height
 デフォルトスタイル　
 ============================================================*/
 a { text-decoration: underline; color: #008cda; }
-a:hover { text-decoration: underline; color: #0ea9ff; }
+a:hover { text-decoration: underline; color: #09c; }
 a:active { text-decoration: underline; color: #09c; }
 
 p { font-size: 100%; line-height: 1.8; color: #555; }
@@ -326,7 +326,7 @@ p.prg-dropCaps:first-letter, li.prg-dropCaps:first-letter, span.prg-dropCaps:fir
 .pagenation:after { clear: both; }
 .pagenation .link { display: inline-block; margin: 0 10px 0 0; }
 .pagenation .link:last-child { margin: 0; }
-.pagenation .linkPrev a, .pagenation .linkNext a { padding: 2px 4px; background: #0797de; color: #fff; text-decoration: none; }
+.pagenation .linkPrev a, .pagenation .linkNext a { padding: 2px 4px; background: scheme(key); color: #fff; text-decoration: none; }
 
 /* 
 # Responsive Style compornents

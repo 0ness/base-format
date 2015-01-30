@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 @import "_setting";
 
 //-------------------------------------//
@@ -7,115 +6,104 @@
 //-------------------------------------//
 
 // Clearfix (.group)
-.gp:before,
-.gp:after {content: "";display: table !important;}
-.gp:after { clear: both; }
+.ex-gp:before,
+.ex-gp:after {content: "";display: table !important;}
+.ex-gp:after { clear: both; }
 
 // Image Replacement
-.ir {overflow: hidden;white-space: nowrap;text-indent: 100%;}
+.ex-ir {overflow: hidden;white-space: nowrap;text-indent: 100%;}
 
 // Ellipsis
-.elps {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.ex-elps {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 
-.fl { float: left; }
-.fr { float: right; }
+.ex-fl { float: left; }
+.ex-fr { float: right; }
 
-.tal { text-align: left;}
-.tac { text-align: center;}
-.tar { text-align: right;}
+.ex-full 	{ width: 100%; }
+.ex-half 	{ width: 50%; }
+.ex-third	{ width: 33.3%; }
+.ex-quater	{ width: 25%; }
+.ex-fifth	{ width: 20%; }
 
-.full { width: 100%; }
-.half { width: 50%; }
-.third { width: 33.3%; }
-.quater { width: 25%; }
-.fifth { width: 20%; }
+.ex-posr { position: relative; }
+.ex-posa { position: absolute; }
 
-.ref { position: relative; }
-.abs { position: absolute; }
 
 // State Classes
 //-------------------------------------
 
-.invisible { visibility: hidden; }
+.ex-invisible { visibility: hidden; }
 
-.dn { display: none !important; }
-.db { display: block !important; }
-.di { display: inline !important; }
-.ds { display: inline-block !important; }
-.dt { display: table !important; }
-.dc { display: table-cell !important;}
+.ex-dn { display: none !important; }
+.ex-db { display: block !important; }
+.ex-di { display: inline !important; }
+.ex-ds { display: inline-block !important; }
+.ex-dt { display: table !important; }
+.ex-dc { display: table-cell !important;}
 
 
 // Spacing Classes
 //-------------------------------------
 
-.mod { margin: $space-2; }
+.ex-mod { margin: $space-2; }
+.ex-mgn { margin: 0 !important; }
+.ex-mca { margin:0 auto !important;}
 
-.mgn { margin: 0 !important; }
+.ex-mtn { margin-top: 0 !important; }
+.ex-mts { margin-top: $space-base !important; }
+.ex-mtm { margin-top: $space-2 !important; }
+.ex-mtl { margin-top: $space-3 !important; }
 
-.mtn { margin-top: 0 !important; }
-.mts { margin-top: $space-base !important; }
-.mtm { margin-top: $space-2 !important; }
-.mtl { margin-top: $space-3 !important; }
-.mtx { margin-top: $space-4 !important; }
-.mbn { margin-bottom: 0 !important; }
-.mbs { margin-bottom: $space-base !important; }
-.mbm { margin-bottom: $space-2 !important; }
-.mbl { margin-bottom: $space-3 !important; }
-.mbx { margin-bottom: $space-4 !important; }
-.mln { margin-left: 0 !important; }
-.mls { margin-left: $space-base !important; }
-.mlm { margin-left: $space-2 !important; }
-.mll { margin-left: $space-3 !important; }
-.mlx { margin-left: $space-4 !important; }
-.mrn { margin-right: 0 !important; }
-.mrs { margin-right: $space-base !important; }
-.mrm { margin-right: $space-2 !important; }
-.mrl { margin-right: $space-3 !important; }
-.mrx { margin-right: $space-4 !important; }
+.ex-mbn { margin-bottom: 0 !important; }
+.ex-mbs { margin-bottom: $space-base !important; }
+.ex-mbm { margin-bottom: $space-2 !important; }
+.ex-mbl { margin-bottom: $space-3 !important; }
 
-.mra { margin-right: auto !important; }
-.mla { margin-left: auto !important; }
-.mca { margin-left: auto !important; margin-right: auto !important; }
+.ex-mln { margin-left: 0 !important; }
+.ex-mls { margin-left: $space-base !important; }
+.ex-mlm { margin-left: $space-2 !important; }
+.ex-mll { margin-left: $space-3 !important; }
 
-.nmts { margin-top: -$space-base !important; }
-.nmtm { margin-top: -$space-2 !important; }
-.nmtl { margin-top: -$space-3 !important; }
-.nmtx { margin-top: -$space-4 !important; }
-.nmbs { margin-bottom: -$space-base !important; }
-.nmbm { margin-bottom: -$space-2 !important; }
-.nmbl { margin-bottom: -$space-3 !important; }
-.nmbx { margin-bottom: -$space-4 !important; }
-.nmls { margin-left: -$space-base !important; }
-.nmlm { margin-left: -$space-2 !important; }
-.nmll { margin-left: -$space-3 !important; }
-.nmlx { margin-left: -$space-4 !important; }
-.nmrs { margin-right: -$space-base !important; }
-.nmrm { margin-right: -$space-2 !important; }
-.nmrl { margin-right: -$space-3 !important; }
-.nmrx { margin-right: -$space-4 !important; }
+.ex-mrn { margin-right: 0 !important; }
+.ex-mrs { margin-right: $space-base !important; }
+.ex-mrm { margin-right: $space-2 !important; }
+.ex-mrl { margin-right: $space-3 !important; }
 
+.ex-nmts { margin-top: -$space-base !important; }
+.ex-nmtm { margin-top: -$space-2 !important; }
+.ex-nmtl { margin-top: -$space-3 !important; }
 
-.ptn { padding-top: 0 !important; }
-.pts { padding-top: $space-base !important; }
-.ptm { padding-top: $space-2 !important; }
-.ptl { padding-top: $space-3 !important; }
-.ptx { padding-top: $space-4 !important; }
-.pbn { padding-bottom: 0 !important; }
-.pbs { padding-bottom: $space-base !important; }
-.pbm { padding-bottom: $space-2 !important; }
-.pbl { padding-bottom: $space-3 !important; }
-.pbx { padding-bottom: $space-4 !important; }
-.pln { padding-left: 0 !important; }
-.pls { padding-left: $space-base !important; }
-.plm { padding-left: $space-2 !important; }
-.pll { padding-left: $space-3 !important; }
-.plx { padding-left: $space-4 !important; }
-.prn { padding-right: 0 !important; }
-.prs { padding-right: $space-base !important; }
-.prm { padding-right: $space-2 !important; }
-.prl { padding-right: $space-3 !important; }
-.prx { padding-right: $space-4 !important; }
+.ex-nmbs { margin-bottom: -$space-base !important; }
+.ex-nmbm { margin-bottom: -$space-2 !important; }
+.ex-nmbl { margin-bottom: -$space-3 !important; }
+
+.ex-nmls { margin-left: -$space-base !important; }
+.ex-nmlm { margin-left: -$space-2 !important; }
+.ex-nmll { margin-left: -$space-3 !important; }
+
+.ex-nmrs { margin-right: -$space-base !important; }
+.ex-nmrm { margin-right: -$space-2 !important; }
+.ex-nmrl { margin-right: -$space-3 !important; }
+
+.ex-ptn { padding-top: 0 !important; }
+.ex-pts { padding-top: $space-base !important; }
+.ex-ptm { padding-top: $space-2 !important; }
+.ex-ptl { padding-top: $space-3 !important; }
+
+.ex-pbn { padding-bottom: 0 !important; }
+.ex-pbs { padding-bottom: $space-base !important; }
+.ex-pbm { padding-bottom: $space-2 !important; }
+.ex-pbl { padding-bottom: $space-3 !important; }
+
+.ex-pln { padding-left: 0 !important; }
+.ex-pls { padding-left: $space-base !important; }
+.ex-plm { padding-left: $space-2 !important; }
+.ex-pll { padding-left: $space-3 !important; }
+
+.ex-prn { padding-right: 0 !important; }
+.ex-prs { padding-right: $space-base !important; }
+.ex-prm { padding-right: $space-2 !important; }
+.ex-prl { padding-right: $space-3 !important; }
 
 
 
@@ -140,12 +128,15 @@
 //.bg { background-color: $color-g !important; }
 //.bh { background-color: $color-h !important; }
 
-.n { font-weight: normal !important; }
-.b { font-weight: bold !important; }
-.l { text-align: left !important; }
-.c { text-align: center !important; }
-.r { text-align: right !important; }
-.u { text-decoration: underline !important; }
+.ex-fwn { font-weight: normal !important; }
+.ex-fwb { font-weight: bold !important; }
+
+.ex-tal { text-align: left !important; }
+.ex-tac { text-align: center !important; }
+.ex-tar { text-align: right !important; }
+
+.ex-tdn { text-decoration: none !important; }
+.ex-tdu { text-decoration: underline !important; }
 
 //.f1 { font-size: $font-size-1; }
 //.f2 { font-size: $font-size-2; }
@@ -155,12 +146,9 @@
 //.f5 { font-size: $font-size-5; }
 //.f6 { font-size: $font-size-6; }
 
-.v0 { vertical-align: 0; }
-.v1 { vertical-align: -1px; }
-.v2 { vertical-align: -2px; }
-.v3 { vertical-align: -3px; }
-.v4 { vertical-align: -4px; }
-.v5 { vertical-align: -5px; }
-.vt { vertical-align: top; }
-.vm { vertical-align: middle; }
-.vb { vertical-align: bottom; }
+.ex-v1 { vertical-align: -1px; }
+.ex-v2 { vertical-align: -2px; }
+.ex-v3 { vertical-align: -3px; }
+.ex-vt { vertical-align: top; }
+.ex-vm { vertical-align: middle; }
+.ex-vb { vertical-align: bottom; }

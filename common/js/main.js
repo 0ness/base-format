@@ -18,13 +18,13 @@
 	var pages = new PageInfo(),
 		lib = new Library();
 
-	var b_pageMobile = pages.mobile;    //モバイル判定
+	var isMobile = pages.mobile;    //モバイル判定
 
 	var s_pageUA = pages.UA,		//ユーザーエージェント保持
 		s_pageVER = pages.VER,		//IEのバージョン保持
 		s_pageID = pages.ID,		//ページID
 		s_pageClass = pages.class,  //ページclass
-		s_clickEvt = (b_pageMobile === true) ? "touchend" : "click";
+		s_clickEvt = (isMobile === true) ? "touchend" : "click";
 
 	var $_ancher = (s_pageUA === "webkit") ? $("body"):$("html");
 
@@ -35,7 +35,7 @@
 	//数値
 	var n_winWidth = win.innerWidth || doc.body.clientWidth,
 		n_winHeight = win.innerHeight || doc.body.clientHeight,
-		n_jQueryAnimInterval = (b_pageMobile === true) ? 18 : 14;
+		n_jQueryAnimInterval = (isMobile === true) ? 18 : 14;
 
 	$.fx.interval = n_jQueryAnimInterval;
 
@@ -62,7 +62,7 @@
 
 
 	//デバイス分岐
-	if( b_pageMobile === true) mobileFunc();
+	if( isMobile === true) mobileFunc();
 	else screenFunc();
 	
 

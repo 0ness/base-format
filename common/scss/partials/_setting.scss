@@ -6,124 +6,95 @@
 
 // Vairable レイアウト系変数 ///////////////////////////////////////
 
-		//サイトの幅
-		$width:1080px;
+	//サイトの幅
+	$width:1080px;
 
-		//メイン・コンテンツの幅
-		$main-width:780px;
+	//メイン・コンテンツの幅
+	$main-width:780px;
 
-		//サブ・コンテンツの幅
-		$sub-width:300px;
-
-
-
-
-// Vairable スタイル系変数 ///////////////////////////////////////
-
-		//基本のゴシック
-		$fontGothic:"游ゴシック",YuGothic,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-
-		//基本の明朝
-		$fontMincyou:"游明朝",YuMincho,"ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro","ＭＳ Ｐ明朝", "MS PMincho", serif;
+	//サブ・コンテンツの幅
+	$sub-width:300px;
 
 
 
 
 // Vairable _helper用系変数 ///////////////////////////////////////
 
-		// Spaces
-		$space-base: 10px;
-		$space-2: $space-base * 2;
-		$space-3: $space-base * 3;
-		$space-4: $space-base * 5;
-		
-		// Font Size
-		$font-size-base: 13px;
-		$font-size-1: $font-size-base - 6px;
-		$font-size-2: $font-size-base - 4px;
-		$font-size-3: $font-size-base - 2px;
-		$font-size-4: $font-size-base + 2px;
-		$font-size-5: $font-size-base + 4px;
-		$font-size-6: $font-size-base + 6px;
-		
+	// ベースフォント
+	$fontGothic:"游ゴシック",YuGothic,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	$fontMincyou:"游明朝",YuMincho,"ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro","ＭＳ Ｐ明朝", "MS PMincho", serif;
 
+	// color
+	$color-key:#0797de;
+	$color-txt:#555;
+	$color-link:#008cda;
+	$color-link-over:#09c;
+	$color-link-active:#09c;
+	$color-bg:#fff;
+	$color-bg-content:#fdfdfd;
 
+	// Spaces
+	$space-base: 10px;
+	$space-2: $space-base * 2;
+	$space-3: $space-base * 3;
+	$space-4: $space-base * 5;
 
-// FUNCTION カラースキームモジュール ///////////////////////////////////////
-
-		//カラースキーム適用
-		//引数には用途・目的など意味が伝わる言葉を使う
-
-		@function scheme($type){
-
-			@if $type == key{	//アクセントとなるキーカラー
-				@return #0797de;
-
-			}@elseif $type == text{	//テキストカラー
-				@return #555;
-
-			}@elseif $type == link{	//リンク色　テキストカラーのリンクのホバー色
-				@return #008cda;
-
-			}@elseif $type == linkHover{	//リンク色　テキストカラーのリンクのホバー色
-				@return #09c;
-
-			}@elseif $type == linkActive{	//リンク色　テキストカラーのリンクのアクティブ色
-				@return #09c;
-
-			}@elseif $type == bg{	//HTML背景色
-				@return #fff;
-
-			}@elseif $type == mainBG{	//メイン部分背景色
-				@return #fdfdfd;
-
-			}
-		}
+	// Font Size
+	$fs-base: 13px;
+	$fs-min-1: $fs-base - 1px;
+	$fs-min-2: $fs-base - 2px;
+	$fs-min-3: $fs-base - 3px;
+	$fs-max-1: $fs-base + 1px;
+	$fs-max-2: $fs-base + 2px;
+	$fs-max-3: $fs-base + 4px;
+	$fs-max-4: $fs-base + 6px;
+	$fs-max-5: $fs-base + 8px;
+	$fs-max-6: $fs-base + 16px;
 
 
 
 
 // MIXIN 画面リサイズ用MIXIN ///////////////////////////////////////
-		@mixin minWScreen {
-			@media only screen and (max-width:1016px){
-				 @content;
-			}
+	@mixin minWScreen {
+		@media only screen and (max-width:1016px){
+			 @content;
 		}
-		@mixin minHScreen {
-			@media only screen and (max-height:660px){
-				 @content;
-			}
+	}
+	@mixin minHScreen {
+		@media only screen and (max-height:660px){
+			 @content;
 		}
+	}
 
 
 
 // MIXIN テキスト系MIXIN ///////////////////////////////////////
 
-		//基本のテキストスタイル 引数(font-size , line-height , color , letter-spacing)
-		//ベースの変更は引数の値で指定しておく
-		//基本使用する時は引数を使わないイメージで 例：@include text-base;
-		@mixin text-base($size:100%,$lh:1.8,$tc:scheme(text)){ font-size:$size; line-height:$lh; color:$tc;
-									
-			//white space
-			& + p {margin-top:1.2em;}			
-			
-		};
+	//基本のテキストスタイル 引数(font-size , line-height , color , letter-spacing)
+	//ベースの変更は引数の値で指定しておく
+	//基本使用する時は引数を使わないイメージで 例：@include text-base;
+	@mixin text-base($size:100%,$lh:1.8){ font-size:$size; line-height:$lh; color:$color-txt;
 
- 		//リンクテキスト
-		@mixin text-link		{ text-decoration:underline; color:scheme(link);}
+		//white space
+		& + p {margin-top:1.2em;}			
 
-		//ロールオーバーテキスト
-		@mixin text-hover		{ text-decoration:underline; color:lighten(scheme(link),10%);}
+	};
 
-		//クリックテキスト
-		@mixin text-active		{ text-decoration:underline; color:scheme(linkActive);}
+	//リンクテキスト
+	@mixin text-link		{ text-decoration:underline; color:$color-link;}
 
-		//通常のリンクテキストの指定
-		@mixin link-set		{
-			@include text-link;
-			&:hover	{ @include text-hover;}
-			&:active{ @include text-active;}
-		}
+	//ロールオーバーテキスト
+	@mixin text-hover		{ text-decoration:underline; color:$color-link-over;}
+
+	//クリックテキスト
+	@mixin text-active		{ text-decoration:underline; color:$color-link-active;}
+
+	//通常のリンクテキストの指定
+	@mixin link-set		{
+		@include text-link;
+		&:hover	{ @include text-hover;}
+		&:active{ @include text-active;}
+	}
 
 
 

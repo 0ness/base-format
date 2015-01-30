@@ -1,21 +1,14 @@
-/*==============================================================================
-
-	コンテンツ共通　ページ情報オブジェクト
-
-	・基本の状態を維持する必要は無く、プロジェクトによってカスタマイズする
-
-	・head内で読み込ませて使用
-	・戻り値の関数は分岐処理などに利用する
-	・CSS読み込み
-	・viewportなどを操作する
-
-==============================================================================*/
+/**
+ * @class PageInfo
+ * OS・ブラウザ・ページの情報を取得する
+ * 基本的には他クラスファイル又はグローバルな処理の際に使用
+ */
 function PageInfo(){
-	this.osCheck();
-	this.uaCheck();
-	this.deviceCheck();
+	var _t = this;
+	_t.osCheck();
+	_t.uaCheck();
+	_t.deviceCheck();
 };
-
 PageInfo.prototype = {
 	OS:"",
 	UA:"",
@@ -25,132 +18,137 @@ PageInfo.prototype = {
 	mobile:false,	//スマートフォン判定
 	device:"pc",
 
-	//IDの取得（IEの場合はwrapperにIE追加）
+	/**
+	 * IDの取得（IEの場合はwrapperにIE追加）
+	 */
 	getID:function(){
-		var doc = document;
-		var bodys = doc.getElementsByTagName("body")[0];
-		var classStr = this.UA;
+		var _t = this,
+			_bodys = document.getElementsByTagName("body")[0],
+			_classStr = this.UA;
 
-		this.ID = bodys.getAttribute('id');
-		this.Class = bodys.getAttribute("class");
-
-		return false;
+		_t.ID = _bodys.getAttribute('id');
+		_t.Class = _bodys.getAttribute("class");
 	},
 
-	//OSチェック
+	/**
+	 * OSチェック
+	 */
 	osCheck:function(){
 		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
 		else this.OS = "mac";
-		return false;
 	},
 
-	//UAチェック
+	/**
+	 * UserAgentチェック
+	 */
 	uaCheck:function(){
 
-		var s_UA = "";
-		var s_version = "";
-
-		var wn = window.navigator,
-			s_browserUA = wn.userAgent.toLowerCase(),
-			s_ieUA = wn.appVersion.toLowerCase();
+		var _t = this,
+			_d = document,
+			_UA = "",
+			_UAver = "",
+			_wn = window.navigator,
+			_wnUA = _wn.userAgent.toLowerCase(),
+			_wnVer = _wn.appVersion.toLowerCase();
 
 		//ブラウザ確認
-		if(s_browserUA.indexOf("msie") !== -1){
-			s_UA = "ie";
-			if(s_ieUA.indexOf("msie 8.") !== -1) s_version = 'ie8';
-			else if (s_ieUA.indexOf("msie 7.") !== -1) s_version =  'ie7';
-			else if (s_ieUA.indexOf("msie 6.") !== -1) s_version = 'ie6';
-			else if (s_ieUA.indexOf("msie 9.") !== -1) s_version = "ie9";	//IE9以上
-			else s_version = "ie10";
-		}else if(s_browserUA.indexOf('trident/7') !== -1){
-			s_UA = "ie";
-			s_version = 'ie11';
+		if(_wnUA.indexOf("msie") !== -1){
+			_UA = "ie";
+			if(_wnVer.indexOf("msie 8.") !== -1) _UAver = 'ie8';
+			else if (_wnVer.indexOf("msie 9.") !== -1) _UAver = "ie9";
+			else if (_wnVer.indexOf("msie 7.") !== -1) _UAver = 'ie7';
+			else if (_wnVer.indexOf("msie 6.") !== -1) _UAver = 'ie6';
+			else _UAver = "ie10";
+		}else if(_wnUA.indexOf('trident/7') !== -1){
+			_UA = "ie";
+			_UAver = 'ie11';
 		}else{
-			if(s_browserUA.indexOf("firefox") !== -1) s_UA = "firefox";
-			else s_UA = "webkit";
+			if(_wnUA.indexOf("firefox") !== -1) _UA = "firefox";
+			else _UA = "webkit";
 		};
 
-		if(s_version === "ie8" || s_version === "ie9") document.getElementById("wrapper").className = s_version;
+		if(_UAver === "ie8" || _UAver === "ie9") _d.getElementById("wrapper").className = _UAver;
 		//互換モード対応
-		if(document.documentMode === 8) document.getElementById("wrapper").className = "ie8";
+		if(_d.documentMode === 8) _d.getElementById("wrapper").className = "ie8";
 
 		//値をプロパティに帰属させる
-		this.UA = s_UA;
-		this.VER = s_version;
-
-		return false;
+		_t.UA = _UA;
+		_t.VER = _UAver;
 	},
 
-	//デバイスチェック
+	/**
+	 * PC・モバイル　デバイス・UAチェック
+	 */
 	deviceCheck:function(){
-		var n_height = 0,
-			s_device = "pc",
-			s_deviceUA = navigator.userAgent,
-			b_Mobile = false;
+		var _t = this,
+			_device = "pc",
+			_deviceUA = navigator.userAgent,
+			_isMobile = false;
 
-		if((s_deviceUA.indexOf('Android') > 0 && s_deviceUA.indexOf('Mobile') == -1) || s_deviceUA.indexOf('A1_07') > 0 || s_deviceUA.indexOf('SC-01C') > 0 || s_deviceUA.indexOf('iPad') > 0){
-			b_Mobile = true;
-			s_device = "tablet";
-		}else if ((s_deviceUA.indexOf('iPhone') > 0 && s_deviceUA.indexOf('iPad') == -1) || s_deviceUA.indexOf('iPod') > 0 || (s_deviceUA.indexOf('Android') > 0 && s_deviceUA.indexOf('Mobile') > 0)){
-			b_Mobile = true;
-			s_device = "sp";
+		if((_deviceUA.indexOf('Android') > 0 && _deviceUA.indexOf('Mobile') == -1) || _deviceUA.indexOf('A1_07') > 0 || _deviceUA.indexOf('SC-01C') > 0 || _deviceUA.indexOf('iPad') > 0){
+			_isMobile = true;
+			_device = "tablet";
+		}else if ((_deviceUA.indexOf('iPhone') > 0 && _deviceUA.indexOf('iPad') == -1) || _deviceUA.indexOf('iPod') > 0 || (_deviceUA.indexOf('Android') > 0 && _deviceUA.indexOf('Mobile') > 0)){
+			_isMobile = true;
+			_device = "sp";
 		};
 
-		this.device = s_device;
-		this.mobile = b_Mobile;
-		return false;
+		_t.device = _device;
+		_t.mobile = _isMobile;
 	},
 
-	//クエリチェック
+	/**
+	 * クエリチェック
+	 */
 	ulrQueryCheck:function(){
-		var s_qs = "id=PC",
-			s_ls = location.search;
+		var _queryStr = "id=PC",
+			_queryLen = location.search;
 
-		//クエリ確認
-		if (s_ls.length === 0) return false;
-		s_qs = s_ls.substr(1).split("&").toString();
-		if(s_qs === "id=PC") this.mobile = false;
-		else if(s_qs === "id=SP") this.mobile = true;
-		return false;
+		if (_queryLen.length === 0) return false;
+		_queryStr = _queryLen.substr(1).split("&").toString();
+		if(_queryStr === "id=PC") this.mobile = false;
+		else if(_queryStr === "id=SP") this.mobile = true;
 	},
 
-	//PC用css記述
-	pcCSS:function(css){
+	/**
+	 * PC用css記述
+	 * @param   {String} _path cssファイルのパス
+	 */
+	setPcCSS:function(_path){
 		if(this.mobile === true) return false;
-		var doc = document,
-			cssPath = css,
-			link = doc.createElement('link'),
-			head = doc.getElementsByTagName('head');
-		link.href = cssPath;
-		link.type = 'text/css';
-		link.rel = 'stylesheet';
-		head.item(0).appendChild(link);
-		return false;
+		var _doc = document,
+			_link = _doc.createElement('link');
+		_link.href = _path;
+		_link.type = 'text/css';
+		_link.rel = 'stylesheet';
+		_doc.getElementsByTagName('head').item(0).appendChild(_link);
 	},
 
-	//モバイル用css記述
-	mobileCSS:function(_path){
+	/**
+	 * モバイル用css記述
+	 * @param   {String}  _path cssファイルのパス
+	 */
+	setMobileCSS:function(_path){
 		if(this.mobile === false) return false;
-		var doc = document,
-			cssPath = _path,
-			link = doc.createElement('link'),
-			head = doc.getElementsByTagName('head');
-		link.href = cssPath;
-		link.type = 'text/css';
-		link.rel = 'stylesheet';
-		head.item(0).appendChild(link);
-		return false;
+		var _doc = document,
+			_link = _doc.createElement('link');
+		_link.href = _path;
+		_link.type = 'text/css';
+		_link.rel = 'stylesheet';
+		_doc.getElementsByTagName('head').item(0).appendChild(link);
 	},
 
-	//viewport記述
-	responseViewPort:function(_width){
-		var doc = document,
-			property = (this.mobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
-			meta = doc.createElement('meta');
-		meta.setAttribute('name','viewport');
-		meta.setAttribute('content',property);
-		doc.getElementsByTagName('head')[0].appendChild(meta); 
-		return false;
+	/**
+	 * viewport記述
+	 * @param {Number} _width ビューポートの指定値
+	 */
+	setViewPort:function(_width){
+		var _doc = document,
+			_property = (this.mobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
+			_meta = _doc.createElement('meta');
+		_meta.setAttribute('name','viewport');
+		_meta.setAttribute('content',_property);
+		_doc.getElementsByTagName('head')[0].appendChild(_meta); 
 	}
 }
 
@@ -170,14 +168,10 @@ jQuery.easing.jswing=jQuery.easing.swing; jQuery.extend(jQuery.easing,{def:"ease
 
 ==============================================================================*/
 
-
 //SCRIPT START
 var Library = function(){
-	var p = new PageInfo();
-	this.pages = p;
-	this.pageUA = p.UA;			
-	this.pageVER = p.VER;				
-	this.hasMobile = p.mobile;
+	
+	this.init();
 	
 	/* method テーブルソート機能（テーブル01_id、行番号、ソートタイプ:str,num）
 	--------------------------------------------------------------------*/
@@ -341,37 +335,49 @@ var Library = function(){
 	}
 */
 }
-Library.prototype = $.extend({
+Library.prototype = {
 	
-	/*const 定数　このJS内部でグローバルに使う定数*/
 	win:window,
 	pages:null,
 	pageUA:null,
 	pageVER:null,
-	hasMobile:null, 
+	isMobile:null, 
+	
+	/* 初期化 */
+	init:function(){
+		var _p = new PageInfo(),
+			_t = this;
+		_t.pages = _p;
+		_t.pageUA = _p.UA;
+		_t.pageVER = _p.VER;
+		_t.isMobile = _p.mobile;
+	},
 
-	/* method jQuery アンカーアニメーション（jQueryオブジェクト）*/
-	ancher:function(_href){
+	/**
+	 * jQuery アンカーアニメーション（jQueryオブジェクト）
+	 * @param {String} URL
+	 */
+	anchor:function(href,callback){
 		$.fx.interval = 20;
-		var $ancherTag = (this.pageUA === "webkit") ? $("body"):$("html"),
-			href = _href,
-			target = $(href === "#" || href === "" ? 'html' : href),
-			position = target.offset().top;// 移動先を数値で取得
-		
-		$ancherTag.stop().animate({scrollTop:position}, 600, 'easeInOutQuad');
+		var _$tag = (this.pageUA === "webkit") ? $("body"):$("html"),
+			_href = href,
+			_target = $(_href === "#" || _href === "" ? 'html' : _href),
+			_position = _target.offset().top,
+			_func = callback || null;
+			
+		_$tag.stop().animate({scrollTop:_position}, 600, 'easeInOutQuad',_func);
 	},
 
-	/* method jQuery トップへ戻るリンク*/
+	/* jQuery トップへ戻るリンク */
 	topBackAncher:function(){
-		var $topBack = $(document.getElementById("topBack"));
-		$topBack.on("click",function(e){
+		var _$pageTop = $(document.getElementById("pageTop"));
+		_$pageTop.on("click",function(e){
 			e.preventDefault();
-			this.ancher($topBack);
+			this.anchor(_$pageTop.attr("href"));
 		});
-		return false;
 	},
 
-	/* method jQuery 固定アンカーリンク*/
+	/* jQuery 固定アンカーリンク*/
 	fixedLinkAncher:function(){
 
 		var t = this,
@@ -430,7 +436,7 @@ Library.prototype = $.extend({
 		};
 
 		//FixAncherインスタンス
-		if(t.hasMobile === false){
+		if(t.isMobile === false){
 			var fa = new FixLink();
 			//ページ全体のイベント
 			$win.on({"load":fa.resize,"resize":fa.resize});
@@ -479,57 +485,52 @@ Library.prototype = $.extend({
 		}
 		return false;
 	},
-	
-	/* method IE8,7で透過処理を個別に対応
-	 * 引数：処理を行いたい画像（jQueryオブジェクト）
-	*/
+		
+	/**
+	 * IE8,7で透過処理を個別に対応
+	 * @param   {Object}  処理を行いたい画像（jQueryオブジェクト）
+	 */
 	alphaCheck:function(obj){
 		if(this.pageVER !== "ie8" && this.pageVER !== "ie7") return false;
-		var img = obj;
-		var imgPass = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");';
-		img.css('filter',imgPass);
-		return false;
+		var _img = obj;
+		_img.css('filter','progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + _img.attr('src') + '", sizingMethod="scale");');
 	},
 
-	/* method IE8,7で透過処理を入れ子に対応
-	 * 引数：処理を行いたい画像の親要素（jQueryオブジェクト）
-	*/
+	/**
+	 * IE8,7で透過処理を入れ子に対応
+	 * @param   {Object}  obj 処理を行いたい画像の親要素（jQueryオブジェクト）
+	 */
 	alphaAllCheck:function(obj){
 		if(this.pageVER !== "ie8" && this.pageVER !== "ie7") return false;
 		var o = obj;
-		o.each(
-			function(){
-				var img = $(this);
-				if(img.attr('src').indexOf('.png') !== -1) {
-					var imgPass = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img.attr('src') + '", sizingMethod="scale");';
-					img.css('filter',imgPass);
-				}
+		o.each(function(){
+			var _img = $(this);
+			if(_img.attr('src').indexOf('.png') !== -1) {
+				_img.css('filter','progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + _img.attr('src') + '", sizingMethod="scale");');
 			}
-		)
-		return false;
+		})
 	},
 
-	/* method 自動化 コピーライト年数*/
+	/**
+	 * 自動化 コピーライト年数
+	 */
 	yearAdjust:function(){
-		var d = new Date();
-		var now_year = d.getFullYear();
-		document.getElementById("nowYear").innerHTML = ""+now_year;
-		return false;
+		var _now_year = new Date().getFullYear();
+		document.getElementById("nowYear").innerHTML += _now_year;
 	},
 	
-	/* method ２次元配列のソート
+	/* 2次元配列のソート
 	 * dimensionArySort(ソート配列:Array、開始番号:uint、昇順か降順化の指定:boolean)
 	 * 昇順はtrue,降順はfalse
 	 */
 	dimensionArySort:function(_ary,_col,_flg){
-		var ary = _ary;
-		var col = _col;
-		var srt = (_flg === true)? 1 : -1;
+		var ary = _ary,
+			col = _col,
+			srt = (_flg === true)? 1 : -1;
 		ary.sort(function(a , b){ return((a[col] - b[col]) * srt);});
 		return(ary);
 	}
-
-});
+};
 /*
 selectivizr v1.0.3b - (c) Keith Clark, freely distributable under the terms
 of the MIT license.
