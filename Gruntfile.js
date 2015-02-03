@@ -169,6 +169,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-newer");
+	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	//	grunt.loadNpmTasks("grunt-play");
 	//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
@@ -228,23 +229,22 @@ module.exports = function(grunt){
 			},
 			dist:{
 				files:{
-					'common/style/layout.css': 'common/scss/layout.scss',
-					'common/style/contents.css': 'common/scss/contents.scss',
-					'common/style/module.css': 'common/scss/module.scss'
+					'common/css/layout.css': 'common/scss/layout.scss',
+					'common/css/contents.css': 'common/scss/contents.scss',
+					'common/css/module.css': 'common/scss/module.scss'
 				}
 			}
 		},
 		autoprefixer:{
 			options:{
-//				browsers: ['ie 8','ie 9','ios 5',"ios 4", "android 2.3"],
 				browsers:BROWSERS
 //				cascade:true
 			},
 			file:{
 				expand: true,
 				flatten: true,
-				src:'common/style/*.css',
-				dest:'common/style/'
+				src:'common/css/*.css',
+				dest:'common/css/'
 			}
 		},
 		styleguide: {
@@ -265,14 +265,27 @@ module.exports = function(grunt){
 		shell:{
 			styledocco:{
 				command: function () {
-					return ' styledocco --o "common/style/compornents" --preprocessor "scss" common/scss/module.scss';
+					return ' styledocco --o "common/css/compornents" --preprocessor "scss" common/scss/module.scss';
+				}
+			}
+		},
+		yuidoc: {
+			dist: {
+				'name': 'js-document',
+				'description': "テストテストテストテストテストテスト",
+				options: {
+					//出力パスの指定(今回はGruntfile.jsと同階層に出力するよう指定)
+					paths:[
+						'common/js/lib/',
+						'common/js/develop/'
+					],
+					//YUIDocファイルを出力するディレクトリ名を記述
+					outdir: 'yuidocs/',
+					themedir: "themes/custom/"
 				}
 			}
 		},
         watch:{
-			options: {
-				spawn: true
-			},
             js:{
                 files:[
                     "common/js/*.js",
@@ -287,11 +300,18 @@ module.exports = function(grunt){
 				tasks:["sass"]
 			},
 			css:{
-//				options: {
-//					spawn: false
-//				},
+				options: {
+					spawn: false
+				},
 				files:"<%= autoprefixer.file.src %>",
                 tasks:["autoprefixer"]
+			},
+			yuidoc:{
+				files:[
+					"common/js/lib/*.js",
+					"common/js/develop/*.js"
+				],
+				tasks:["yuidoc"]
 			},
 			styleguide:{
 				files:["common/scss/module.scss","common/scss/README.md"],

@@ -1,7 +1,12 @@
 /**
+ * OS・UA・ページの情報を取得・操作する  
+ * ・コンストラクタで情報を取得し、インスタンスの変数から参照する  
+ * ・OS・UA・デバイス判定  
+ * ・css読み込み・viewport表示変更
  * @class PageInfo
- * OS・ブラウザ・ページの情報を取得する
- * 基本的には他クラスファイル又はグローバルな処理の際に使用
+ * @constructor
+ * @example var obj = new PageInfo();  
+ * if(obj.isMobile === true) return false;
  */
 function PageInfo(){
 	var _t = this;
@@ -10,28 +15,68 @@ function PageInfo(){
 	_t.deviceCheck();
 };
 PageInfo.prototype = {
+	
+	/**
+	 * 閲覧環境：OS
+	 * @property {String} OS
+	*/
 	OS:"",
+	/**
+	 * 閲覧環境：ユーザーエージェント
+	 * @property {String} UA
+	*/
 	UA:"",
-	ID:"",
-	Class:"",
-	VER:"not IE",	//ブラウザバージョン IE用
-	mobile:false,	//スマートフォン判定
+	/**
+	 * 閲覧環境：ieのバージョン
+	 * @property {String} IEver
+	*/
+	IEver:"not IE",
+	/**
+	 * 閲覧環境：モバイル判定
+	 * 判定の範囲は随時更新する
+	 * @property {Boolean} isMobile
+	*/
+	isMobile:false,
+	/**
+	 * 閲覧環境：デバイスの種類
+	 * @property {String} device
+	*/
 	device:"pc",
+	/**
+	 * ページ情報：閲覧しているページのbody要素のid  
+	 * サイト毎で起点となる要素は変更する
+	 * @property {String} id
+	*/
+	id:"",
+	/**
+	 * ページ情報：閲覧しているページのbody要素のclass  
+	 * サイト毎で起点となる要素は変更する
+	 * @property {String} class
+	*/
+	class:"",
+	/**
+	 * ページ情報：URLのクエリ情報  
+	 * @property {String} urlQuery
+	*/
+	urlQuery:"",
 
+	
 	/**
 	 * IDの取得（IEの場合はwrapperにIE追加）
+	 * @method getID
 	 */
 	getID:function(){
 		var _t = this,
 			_bodys = document.getElementsByTagName("body")[0],
 			_classStr = this.UA;
 
-		_t.ID = _bodys.getAttribute('id');
-		_t.Class = _bodys.getAttribute("class");
+		_t.id = _bodys.getAttribute('id');
+		_t.class = _bodys.getAttribute("class");
 	},
-
-	/**
+	
+	/** 
 	 * OSチェック
+	 * @method osCheck
 	 */
 	osCheck:function(){
 		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
@@ -40,9 +85,9 @@ PageInfo.prototype = {
 
 	/**
 	 * UserAgentチェック
+	 * @method uaCheck
 	 */
 	uaCheck:function(){
-
 		var _t = this,
 			_d = document,
 			_UA = "",
@@ -73,11 +118,12 @@ PageInfo.prototype = {
 
 		//値をプロパティに帰属させる
 		_t.UA = _UA;
-		_t.VER = _UAver;
+		_t.IEver = _UAver;
 	},
 
 	/**
 	 * PC・モバイル　デバイス・UAチェック
+	 * @method deviceCheck
 	 */
 	deviceCheck:function(){
 		var _t = this,
@@ -94,28 +140,26 @@ PageInfo.prototype = {
 		};
 
 		_t.device = _device;
-		_t.mobile = _isMobile;
+		_t.isMobile = _isMobile;
 	},
 
 	/**
 	 * クエリチェック
+	 * @method ulrQueryCheck
 	 */
 	ulrQueryCheck:function(){
-		var _queryStr = "id=PC",
-			_queryLen = location.search;
-
+		var _queryLen = location.search;
 		if (_queryLen.length === 0) return false;
-		_queryStr = _queryLen.substr(1).split("&").toString();
-		if(_queryStr === "id=PC") this.mobile = false;
-		else if(_queryStr === "id=SP") this.mobile = true;
+		this.urlQuery = _queryLen.substr(1).split("&").toString();
 	},
 
 	/**
 	 * PC用css記述
+	 * @method setPcCSS
 	 * @param   {String} _path cssファイルのパス
 	 */
 	setPcCSS:function(_path){
-		if(this.mobile === true) return false;
+		if(this.isMobile === true) return false;
 		var _doc = document,
 			_link = _doc.createElement('link');
 		_link.href = _path;
@@ -126,25 +170,27 @@ PageInfo.prototype = {
 
 	/**
 	 * モバイル用css記述
+	 * @method setMobileCSS
 	 * @param   {String}  _path cssファイルのパス
 	 */
 	setMobileCSS:function(_path){
-		if(this.mobile === false) return false;
+		if(this.isMobile === false) return false;
 		var _doc = document,
 			_link = _doc.createElement('link');
 		_link.href = _path;
 		_link.type = 'text/css';
 		_link.rel = 'stylesheet';
-		_doc.getElementsByTagName('head').item(0).appendChild(link);
+		_doc.getElementsByTagName('head').item(0).appendChild(_link);
 	},
 
 	/**
 	 * viewport記述
+	 * @method setViewPort
 	 * @param {Number} _width ビューポートの指定値
 	 */
 	setViewPort:function(_width){
 		var _doc = document,
-			_property = (this.mobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
+			_property = (this.isMobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
 			_meta = _doc.createElement('meta');
 		_meta.setAttribute('name','viewport');
 		_meta.setAttribute('content',_property);
@@ -162,179 +208,21 @@ jQuery.easing.jswing=jQuery.easing.swing; jQuery.extend(jQuery.easing,{def:"ease
 
 	汎用処理ライブラリ
 
-	・基本DOM操作の自動化
-	・HTML5対応
-	・IE対応
 
 ==============================================================================*/
-
-//SCRIPT START
-var Library = function(){
-	
+/**
+ * 多用する処理をまとめたクラス  
+ * ・単純なアニメーション処理
+ * ・HTML5対応処理  
+ * ・IE対応
+ * @class Library
+ * @constructor
+ * @example var obj = new Library();
+ */
+function Library(){
+	"use strict";
 	this.init();
-	
-	/* method テーブルソート機能（テーブル01_id、行番号、ソートタイプ:str,num）
-	--------------------------------------------------------------------*/
-	/*var table_sort = {
-		exec: function(tid,idx,type){
-			var table = document.getElementById(tid);
-			var tbody = table.getElementsByTagName('tbody')[0];
-			var rows  = tbody.getElementsByTagName('tr');
-			var sbody = document.createElement('tbody');
-
-			//save array
-			var srows = new Array();
-			for(var i=0;i<rows.length;i++){
-				srows.push({
-					row: rows[i],
-					cel: rows[i].getElementsByTagName('td')[idx].innerHTML,
-					idx: i
-				});
-			}
-
-			//sort array
-			srows.sort(function(a,b){
-				if(type == 'str')
-					return a.cel < b.cel ? 1 : -1;
-				else
-					return b.cel - a.cel;
-			});
-			if(this.flag == 1) srows.reverse();
-
-			//replace
-			for(var i=0;i<srows.length;i++){
-				sbody.appendChild(srows[i].row)
-			}
-			table.replaceChild(sbody,tbody);
-			this.replaceText(table,idx);
-
-			//set flag
-			this.flag = this.flag > 0 ? 0 : 1;
-		},
-
-		replaceText: function(table,idx){
-			var thead = table.getElementsByTagName('a');
-
-			//preset header-text
-			if(!this.exp){
-				this.text = new Array();
-				for(var i=0;i<thead.length;i++){
-					this.text.push(thead[i].firstChild.nodeValue);
-				}
-				this.exp = 1;
-			}
-
-			//set&remove suffix
-			for(var i=0;i<thead.length;i++){
-				if(i == idx){
-					thead[i].firstChild.nodeValue = this.flag == 0
-					? this.text[i] + this.suffix[0]
-					: this.text[i] + this.suffix[1];
-				}
-				else {
-					thead[i].firstChild.nodeValue = this.text[i];
-				}
-			}
-		},
-
-		suffix: ['▽','△'],
-		flag: 0
-	}
-*/
-
-
-
-	/* method テーブルソート機能　2つのテーブル同期（テーブル01_id、テーブル02_id、行番号、ソートタイプ:str,num）
-	--------------------------------------------------------------------*/
-	/*var table_sort_02 = {
-		exec: function(tid_01,tid_02,idx,type){
-
-			var table = document.getElementById(tid_01);
-			var f_table = document.getElementById(tid_02);
-
-			var tbody = table.getElementsByTagName('tbody')[0];
-			var rows  = tbody.getElementsByTagName('tr');
-			var sbody = document.createElement('tbody');
-
-			var f_tbody = f_table.getElementsByTagName('tbody')[0];
-			var f_rows  = f_tbody.getElementsByTagName('tr');
-			var f_sbody = document.createElement('tbody');
-
-			//save array
-			var srows = new Array();
-			var f_srows = new Array();
-
-			for(var i=0;i<rows.length;i++){
-				srows.push({
-					row: rows[i],
-					cel: rows[i].getElementsByTagName('td')[idx].innerHTML,
-					idx: i
-				});
-				f_srows.push({
-					row: f_rows[i],
-					//cel: f_rows[i].getElementsByTagName('td')[0].innerHTML,
-					idx: i
-				});
-			}
-
-			//sort array
-			srows.sort(function(a,b){
-				if(type === 'str')
-					return a.cel < b.cel ? 1 : -1;
-				else
-					var obj = b.cel - a.cel;
-				return obj;
-			});
-
-
-			if(this.flag == 1){
-				srows.reverse();
-			}
-
-			//replace
-			for(var i=0;i<srows.length;i++){
-				sbody.appendChild(srows[i].row)
-				var num = srows[i].idx;
-				f_sbody.appendChild(f_srows[num].row);
-			}
-
-			table.replaceChild(sbody,tbody);
-			f_table.replaceChild(f_sbody,f_tbody);
-
-			//set flag
-			this.flag = this.flag > 0 ? 0 : 1;
-		},
-
-		replaceText: function(table,idx){
-			var thead = table.getElementsByTagName('a');
-
-			//preset header-text
-			if(!this.exp){
-				this.text = new Array();
-				for(var i=0;i<thead.length;i++){
-					this.text.push(thead[i].firstChild.nodeValue);
-				}
-				this.exp = 1;
-			}
-
-			//set&remove suffix
-			for(var i=0;i<thead.length;i++){
-				if(i == idx){
-					thead[i].firstChild.nodeValue = this.flag == 0
-					? this.text[i] + this.suffix[0]
-					: this.text[i] + this.suffix[1];
-				}
-				else {
-					thead[i].firstChild.nodeValue = this.text[i];
-				}
-			}
-		},
-
-		suffix: ['▽','△'],
-		flag: 0
-	}
-*/
-}
+};
 Library.prototype = {
 	
 	win:window,
@@ -374,78 +262,6 @@ Library.prototype = {
 		_$pageTop.on("click",function(e){
 			e.preventDefault();
 			this.anchor(_$pageTop.attr("href"));
-		});
-	},
-
-	/* jQuery 固定アンカーリンク*/
-	fixedLinkAncher:function(){
-
-		var t = this,
-			$win = $(window),
-			$wrapper = $(document.getElementById("wrapper")),
-			pageTop = document.getElementById("topBack"),
-			$ancherBtn = $(pageTop);
-
-		var h = 0,
-			b = 0,
-			cls = "static",
-			old_flg = false,
-			now_flg = false,
-			num_scroll,
-			timer;
-
-		//高さ確認
-		var SizeCheck = function(){
-			h = $win.height();
-			b = ($wrapper.height()-h)-40;
-		};
-		SizeCheck();
-		
-		//FixLinkクラス
-		var FixLink = function(){};
-		FixLink.prototype = {
-			scrollCheck:function(){//スクロール時の位置判定
-				num_scroll = $win.scrollTop();
-
-				//位置のフラグ
-				if(num_scroll > 500) now_flg = true;
-				else now_flg = false;
-
-				//フッターとの位置調整
-				cls = (num_scroll >= b) ? "static" : "";
-				pageTop.className = cls;
-				timer = setTimeout(fa.scrollCheck,80);
-
-				//表示の切り替え
-				if(now_flg !== old_flg){
-					if(now_flg === true){
-						$ancherBtn.fadeTo(200,1,"linear");
-						old_flg = true;
-					}else{
-						$ancherBtn.fadeTo(200,0,"linear");
-						old_flg = false;
-					}
-				}
-				return false;
-			},
-			resize:function(){//リサイズ時の位置調整
-				SizeCheck();
-				if(t.pageVER !== 2) fa.scrollCheck();
-				return false;
-			}
-		};
-
-		//FixAncherインスタンス
-		if(t.isMobile === false){
-			var fa = new FixLink();
-			//ページ全体のイベント
-			$win.on({"load":fa.resize,"resize":fa.resize});
-			timer = setTimeout(fa.scrollCheck,80);
-		}
-
-		$ancherBtn.on("click",function(e){
-			e.preventDefault();
-			t.ancher($ancherBtn);
 		});
 	},
 

@@ -138,13 +138,15 @@
 .ex-tdn { text-decoration: none !important; }
 .ex-tdu { text-decoration: underline !important; }
 
-//.f1 { font-size: $font-size-1; }
-//.f2 { font-size: $font-size-2; }
-//.f3 { font-size: $font-size-3; }
-//.fn { font-size: $font-size-base !important; }
-//.f4 { font-size: $font-size-4; }
-//.f5 { font-size: $font-size-5; }
-//.f6 { font-size: $font-size-6; }
+.ex-fsmin-1{font-size:$fs-min-1 !important;}
+.ex-fsmin-2{font-size:$fs-min-2 !important;}
+.ex-fsmin-3{font-size:$fs-min-3 !important;}
+.ex-fsmax-1{font-size:$fs-max-1 !important;}
+.ex-fsmax-2{font-size:$fs-max-2 !important;}
+.ex-fsmax-3{font-size:$fs-max-3 !important;}
+.ex-fsmax-4{font-size:$fs-max-4 !important;}
+.ex-fsmax-5{font-size:$fs-max-5 !important;}
+.ex-fsmax-6{font-size:$fs-max-6 !important;}
 
 .ex-v1 { vertical-align: -1px; }
 .ex-v2 { vertical-align: -2px; }

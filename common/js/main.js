@@ -18,11 +18,11 @@
 	var pages = new PageInfo(),
 		lib = new Library();
 
-	var isMobile = pages.mobile;    //モバイル判定
+	var isMobile = pages.isMobile;    //モバイル判定
 
 	var s_pageUA = pages.UA,		//ユーザーエージェント保持
-		s_pageVER = pages.VER,		//IEのバージョン保持
-		s_pageID = pages.ID,		//ページID
+		s_pageVER = pages.IEver,	//IEのバージョン保持
+		s_pageID = pages.id,		//ページID
 		s_pageClass = pages.class,  //ページclass
 		s_clickEvt = (isMobile === true) ? "touchend" : "click";
 

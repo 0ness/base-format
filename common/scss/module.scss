@@ -367,7 +367,7 @@ div{
 		&:last-child { margin: 0;}		
 	}
 	%linkBtn {
-		a { padding: 2px 4px; background:scheme(key); color: #fff; text-decoration: none; }
+		a { padding: 2px 4px; background:$color-key; color: #fff; text-decoration: none; }
 	}
 	.linkPrev,
 	.linkNext { @extend %linkBtn;}

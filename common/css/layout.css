@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* リキッドスタイル　単体用 @param{Number}可変させる要素のwidthのパーセンテージ
+*/
+	/* リキッドスタイル　複数画像格納用 	 * @param{Number}格納する画像の数：初期値2
+	 * @param{Number}画像間のmarginの割合パーセンテージ（全体の合計値）：初期値0
+	 * @param{String}可変させる要素セレクタ：初期値"img"
+	 * @param{Number}可変させる要素のwidthのパーセンテージ：初期値100%
+	*/
+/* フォントサイズのリスト */
+/* フォントサイズをpxから％へ指定を変換 $param{Number}px単位のフォントサイズ
+*/
+/* 相対的なフォントサイズの調整を行う：基本の数値に対して増減した値を指定する @param{Number}px単位で基準となるフォントサイズから何px変わったかを指定
+*/
+/*============================================================
+RESET用スタイル　
+============================================================*/
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+body { line-height: 1; }
+
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*============================================================
+FONT用スタイル　
+============================================================*/
+/*
+[77% = 10px]
+[85% = 11px]
+[93% = 12px] 
+[100% = 13px]
+[108% = 14px] 
+[116% = 15px] 
+[123.1% = 16px]
+[131% = 17px] 
+[138.5% = 18px] 
+[146.5% = 19px]
+[153.9% = 20px]
+[161.6% = 21px]
+[167% = 22px]
+[174% = 23px]
+[182% = 24px]
+[189% = 25px]
+[197% = 26px]
+*/
+body { font: 13px/1.231 arial,helvetica,clean,sans-serif; *font-size: small; /* for IE */ *font: x-small; /* for IE in quirks mode */ font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+
+select, input, button, textarea { font: 99% arial, helvetica, clean, sans-serif; }
+
+table { font-size: inherit; font: 100%; }
+
+pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
+
+/* default style
+--------------------------------------------------------------------*/
+a { text-decoration: underline; color: #008cda; }
+a:hover { text-decoration: underline; color: #09c; }
+a:active { text-decoration: underline; color: #09c; }
+
+p { font-size: 100%; line-height: 1.8; color: #555; }
+p + p { margin-top: 1.2em; }
+
+li { font-size: 100%; line-height: 1.8; color: #555; }
+li + p { margin-top: 1.2em; }
+
+/* developed style
+--------------------------------------------------------------------*/
+a[href=""] { background: red !important; color: white !important; font-size: x-large !important; }
+
+/* base
+--------------------------------------------------------------------*/
+html { height: 100%; color: #555; background: #fff; }
+
+body { height: 100%; text-align: left; }
+body p::selection, body h1::selection, body h2::selection, body h3::selection, body h4::selection, body a::selection, body img::selection, body em::selection, body strong::selection, body dd::selection, body dt::selection, body u::selection, body dfn::selection, body li::selection { color: #fff; background: #0797de; }
+body *::-moz-selection { color: #fff; background: #0797de; }
+
+body > #wrapper { height: auto; }
+
+#wrapper { min-width: 1080px; min-height: 100%; height: auto !important; height: 100%; position: relative; }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) { #wrapper { -webkit-text-size-adjust: none; } }
+
+/* header
+--------------------------------------------------------------------*/
+#header { height: 50px; background: #fff; }
+
+#ci a:hover img { opacity: 0.6; }
+
+/* global navigation
+--------------------------------------------------------------------*/
+#gNav ul { overflow: hidden; }
+
+.gnBtn { float: left; }
+.gnBtn a { display: block; }
+.gnBtn img { display: block; }
+
+/*　contents block
+--------------------------------------------------------------------*/
+#contents { /*width:$width;*/ margin: 0 auto; padding: 0 0 1000px; overflow: hidden; position: relative; }
+
+#pageTop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
+
+/*footer
+--------------------------------------------------------------------*/
+#footer { width: 100%; height: 100px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: red; }
+
+/*FOOTER
+--------------------------------------------------------------------*/
+.js-fixedAnchor, .js-fixedAnchor-static { bottom: 0px; right: 0px; position: fixed; z-index: 1000; }
+
+.js-fixedAnchor-static { position: absolute; }

@@ -2,16 +2,21 @@
 
 	汎用処理ライブラリ
 
-	・基本DOM操作の自動化
-	・HTML5対応
-	・IE対応
 
 ==============================================================================*/
-
-//SCRIPT START
-var Library = function(){
+/**
+ * 多用する処理をまとめたクラス  
+ * ・単純なアニメーション処理
+ * ・HTML5対応処理  
+ * ・IE対応
+ * @class Library
+ * @constructor
+ * @example var obj = new Library();
+ */
+function Library(){
+	"use strict";
 	this.init();
-}
+};
 Library.prototype = {
 	
 	win:window,
@@ -51,78 +56,6 @@ Library.prototype = {
 		_$pageTop.on("click",function(e){
 			e.preventDefault();
 			this.anchor(_$pageTop.attr("href"));
-		});
-	},
-
-	/* jQuery 固定アンカーリンク*/
-	fixedLinkAncher:function(){
-
-		var t = this,
-			$win = $(window),
-			$wrapper = $(document.getElementById("wrapper")),
-			pageTop = document.getElementById("topBack"),
-			$ancherBtn = $(pageTop);
-
-		var h = 0,
-			b = 0,
-			cls = "static",
-			old_flg = false,
-			now_flg = false,
-			num_scroll,
-			timer;
-
-		//高さ確認
-		var SizeCheck = function(){
-			h = $win.height();
-			b = ($wrapper.height()-h)-40;
-		};
-		SizeCheck();
-		
-		//FixLinkクラス
-		var FixLink = function(){};
-		FixLink.prototype = {
-			scrollCheck:function(){//スクロール時の位置判定
-				num_scroll = $win.scrollTop();
-
-				//位置のフラグ
-				if(num_scroll > 500) now_flg = true;
-				else now_flg = false;
-
-				//フッターとの位置調整
-				cls = (num_scroll >= b) ? "static" : "";
-				pageTop.className = cls;
-				timer = setTimeout(fa.scrollCheck,80);
-
-				//表示の切り替え
-				if(now_flg !== old_flg){
-					if(now_flg === true){
-						$ancherBtn.fadeTo(200,1,"linear");
-						old_flg = true;
-					}else{
-						$ancherBtn.fadeTo(200,0,"linear");
-						old_flg = false;
-					}
-				}
-				return false;
-			},
-			resize:function(){//リサイズ時の位置調整
-				SizeCheck();
-				if(t.pageVER !== 2) fa.scrollCheck();
-				return false;
-			}
-		};
-
-		//FixAncherインスタンス
-		if(t.isMobile === false){
-			var fa = new FixLink();
-			//ページ全体のイベント
-			$win.on({"load":fa.resize,"resize":fa.resize});
-			timer = setTimeout(fa.scrollCheck,80);
-		}
-
-		$ancherBtn.on("click",function(e){
-			e.preventDefault();
-			t.ancher($ancherBtn);
 		});
 	},
 

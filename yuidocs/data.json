@@ -1,0 +1,534 @@
+{
+    "project": {
+        "name": "js-document",
+        "description": "テストテストテストテストテストテスト"
+    },
+    "files": {
+        "common/js/lib/FixedAnchor.js": {
+            "name": "common/js/lib/FixedAnchor.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "common/js/lib/Library.js": {
+            "name": "common/js/lib/Library.js",
+            "modules": {},
+            "classes": {
+                "Library": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "common/js/lib/PageInfo.js": {
+            "name": "common/js/lib/PageInfo.js",
+            "modules": {},
+            "classes": {
+                "PageInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "common/js/develop/Planet.js": {
+            "name": "common/js/develop/Planet.js",
+            "modules": {},
+            "classes": {
+                "Planet": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "common/js/develop/perlin-noise-classical.js": {
+            "name": "common/js/develop/perlin-noise-classical.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "common/js/develop/perlin-noise-simplex.js": {
+            "name": "common/js/develop/perlin-noise-simplex.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Library": {
+            "name": "Library",
+            "shortname": "Library",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/lib/Library.js",
+            "line": 7,
+            "description": "多用する処理をまとめたクラス  \n・単純なアニメーション処理\n・HTML5対応処理  \n・IE対応",
+            "is_constructor": 1,
+            "example": [
+                " var obj = new Library();"
+            ]
+        },
+        "PageInfo": {
+            "name": "PageInfo",
+            "shortname": "PageInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/lib/PageInfo.js",
+            "line": 1,
+            "description": "OS・UA・ページの情報を取得・操作する  \n・コンストラクタで情報を取得し、インスタンスの変数から参照する  \n・OS・UA・デバイス判定  \n・css読み込み・viewport表示変更",
+            "is_constructor": 1,
+            "example": [
+                " var obj = new PageInfo();  \nif(obj.isMobile === true) return false;"
+            ]
+        },
+        "Planet": {
+            "name": "Planet",
+            "shortname": "Planet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/develop/Planet.js",
+            "line": 1,
+            "description": "アニメーション・演算処理支援クラス  \n・インタラクティブコンテンツ開発用の色生成、座標取得、絶対値の算出などを行う  \n・インスタンスは即時関数内のローカル変数に格納して使用する  \n・動的な演出に必要な処理は、プライオリティが低くても追加していく",
+            "is_constructor": 1,
+            "example": [
+                " var obj = new Planet():"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "common/js/lib/FixedAnchor.js",
+            "line": 66,
+            "description": "jQuery アンカーアニメーション（jQueryオブジェクト）",
+            "params": [
+                {
+                    "name": "URL",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 38,
+            "description": "jQuery アンカーアニメーション（jQueryオブジェクト）",
+            "params": [
+                {
+                    "name": "URL",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 99,
+            "description": "IE8,7で透過処理を個別に対応",
+            "params": [
+                {
+                    "name": "処理を行いたい画像（jQueryオブジェクト）",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 109,
+            "description": "IE8,7で透過処理を入れ子に対応",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "処理を行いたい画像の親要素（jQueryオブジェクト）",
+                    "type": "Object"
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 124,
+            "description": "自動化 コピーライト年数",
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 19,
+            "description": "閲覧環境：OS",
+            "itemtype": "property",
+            "name": "OS",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 24,
+            "description": "閲覧環境：ユーザーエージェント",
+            "itemtype": "property",
+            "name": "UA",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 29,
+            "description": "閲覧環境：ieのバージョン",
+            "itemtype": "property",
+            "name": "IEver",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 34,
+            "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
+            "itemtype": "property",
+            "name": "isMobile",
+            "type": "Boolean",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 40,
+            "description": "閲覧環境：デバイスの種類",
+            "itemtype": "property",
+            "name": "device",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 45,
+            "description": "ページ情報：閲覧しているページのbody要素のid  \nサイト毎で起点となる要素は変更する",
+            "itemtype": "property",
+            "name": "id",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 51,
+            "description": "ページ情報：閲覧しているページのbody要素のclass  \nサイト毎で起点となる要素は変更する",
+            "itemtype": "property",
+            "name": "class",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 57,
+            "description": "ページ情報：URLのクエリ情報",
+            "itemtype": "property",
+            "name": "urlQuery",
+            "type": "String",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 64,
+            "description": "IDの取得（IEの場合はwrapperにIE追加）",
+            "itemtype": "method",
+            "name": "getID",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 77,
+            "description": "OSチェック",
+            "itemtype": "method",
+            "name": "osCheck",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 86,
+            "description": "UserAgentチェック",
+            "itemtype": "method",
+            "name": "uaCheck",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 124,
+            "description": "PC・モバイル　デバイス・UAチェック",
+            "itemtype": "method",
+            "name": "deviceCheck",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 146,
+            "description": "クエリチェック",
+            "itemtype": "method",
+            "name": "ulrQueryCheck",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 156,
+            "description": "PC用css記述",
+            "itemtype": "method",
+            "name": "setPcCSS",
+            "params": [
+                {
+                    "name": "_path",
+                    "description": "cssファイルのパス",
+                    "type": "String"
+                }
+            ],
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 171,
+            "description": "モバイル用css記述",
+            "itemtype": "method",
+            "name": "setMobileCSS",
+            "params": [
+                {
+                    "name": "_path",
+                    "description": "cssファイルのパス",
+                    "type": "String"
+                }
+            ],
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 186,
+            "description": "viewport記述",
+            "itemtype": "method",
+            "name": "setViewPort",
+            "params": [
+                {
+                    "name": "_width",
+                    "description": "ビューポートの指定値",
+                    "type": "Number"
+                }
+            ],
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 14,
+            "description": "色生成：シード値を与えてRGB値を返す",
+            "itemtype": "method",
+            "name": "getRndRGB",
+            "params": [
+                {
+                    "name": "256色",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "固定シード値",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "色番号",
+                "type": "String"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 30,
+            "description": "色生成：シード値を与えてRGB値を返す",
+            "itemtype": "method",
+            "name": "getRndRGB_02",
+            "params": [
+                {
+                    "name": "赤",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "青",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "緑",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "固定シード値",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "色番号",
+                "type": "String"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 47,
+            "description": "色生成：シード値を与えてRGBA値を返す",
+            "itemtype": "method",
+            "name": "getRndRGBA",
+            "params": [
+                {
+                    "name": "256色",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "透明度",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "固定シード値",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "色番号",
+                "type": "String"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 65,
+            "description": "色生成：シード値を与えてランダムなHEX値を返す",
+            "itemtype": "method",
+            "name": "getRndHEX",
+            "params": [
+                {
+                    "name": "256色",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "色番号",
+                "type": "String"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 78,
+            "description": "演算：差の絶対値を計算する",
+            "itemtype": "method",
+            "name": "abs",
+            "params": [
+                {
+                    "name": "絶対値にしたい数値",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "絶対値",
+                "type": "Number"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 89,
+            "description": "座標取得：ポイント01とポイント02の２点間の距離算出する",
+            "itemtype": "method",
+            "name": "getPointDistance",
+            "params": [
+                {
+                    "name": "ポイント01",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "ポイント02",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "距離",
+                "type": "Number"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/Planet.js",
+            "line": 107,
+            "description": "座標取得：マウスポインタ座標取得",
+            "itemtype": "method",
+            "name": "getMousePoint",
+            "params": [
+                {
+                    "name": "ターゲットイベント",
+                    "description": "",
+                    "type": "Event"
+                }
+            ],
+            "return": {
+                "description": "オブジェクト",
+                "type": "Object"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "common/js/develop/perlin-noise-classical.js",
+            "line": 7,
+            "description": "You can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
+            "class": ""
+        },
+        {
+            "file": "common/js/develop/perlin-noise-simplex.js",
+            "line": 7,
+            "description": "You can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
+            "line": " common/js/lib/FixedAnchor.js:66"
+        },
+        {
+            "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
+            "line": " common/js/lib/Library.js:38"
+        },
+        {
+            "message": "Missing item type\nIE8,7で透過処理を個別に対応",
+            "line": " common/js/lib/Library.js:99"
+        },
+        {
+            "message": "Missing item type\nIE8,7で透過処理を入れ子に対応",
+            "line": " common/js/lib/Library.js:109"
+        },
+        {
+            "message": "Missing item type\n自動化 コピーライト年数",
+            "line": " common/js/lib/Library.js:124"
+        },
+        {
+            "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
+            "line": " common/js/develop/perlin-noise-classical.js:7"
+        },
+        {
+            "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
+            "line": " common/js/develop/perlin-noise-simplex.js:7"
+        }
+    ]
+}

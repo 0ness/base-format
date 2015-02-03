@@ -24,9 +24,9 @@
 <meta property="og:image" content="0000000">
 -->
 <meta name="viewport" content="@@(viewport)@@" />
-<link rel="stylesheet" type="text/css" href="../common/style/layout.css" />
-<link rel="stylesheet" type="text/css" href="../common/style/contents.css" />
-<link rel="stylesheet" type="text/css" href="../common/style/temp.css" />
+<link rel="stylesheet" type="text/css" href="../common/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
+<link rel="stylesheet" type="text/css" href="../common/css/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
 <!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
