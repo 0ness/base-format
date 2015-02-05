@@ -258,6 +258,7 @@ jQuery.easing.jswing=jQuery.easing.swing; jQuery.extend(jQuery.easing,{def:"ease
 		return (function () {
 			var _len = _self.length;
 			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
+			return _self;
 		}());
 	};
 	$.fn.clickableOff	=	function(){
@@ -271,9 +272,9 @@ jQuery.easing.jswing=jQuery.easing.swing; jQuery.extend(jQuery.easing,{def:"ease
 		return (function () {
 			var _len = _self.length;
 			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
+			return _self;
 		}());
 	};
-
 
 	
 	//jquery extend propertys

@@ -28,6 +28,7 @@
 
 	var $_ancher = (s_pageUA === "webkit") ? $("body"):$("html");
 
+	
 
 
 	/*var
@@ -39,13 +40,7 @@
 
 	$.fx.interval = n_jQueryAnimInterval;
 
-
-	var $test = $("#test");
-	$test.opacity(0.5);
-
-//	$("#test").find("li").clickableOn();
 	
-	LIB.accordion($(".js-acd-head"),$(".js-acd-body"),{spd:600,ease:"easeOutBack"});
 	
 
 	/*contents コンテンツ毎の処理
@@ -54,8 +49,6 @@
 
 
 
-	
-	
 	
 	
 	/*contents 関数分岐　ID・Classで処理を変更

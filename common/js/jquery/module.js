@@ -22,6 +22,7 @@
 		return (function () {
 			var _len = _self.length;
 			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
+			return _self;
 		}());
 	};
 	$.fn.clickableOff	=	function(){
@@ -35,9 +36,9 @@
 		return (function () {
 			var _len = _self.length;
 			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
+			return _self;
 		}());
 	};
-
 
 	
 	//jquery extend propertys
