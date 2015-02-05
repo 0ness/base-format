@@ -41,6 +41,8 @@
                                 <li><a href="../classes/Library.html">Library</a></li>
                                 <li><a href="../classes/PageInfo.html">PageInfo</a></li>
                                 <li><a href="../classes/Planet.html">Planet</a></li>
+                                <li><a href="../classes/ScrollFire.html">ScrollFire</a></li>
+                                <li><a href="../classes/ScrollFireDom.html">ScrollFireDom</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -93,9 +95,8 @@
  */
 function PageInfo(){
 	var _t = this;
-	_t.osCheck();
-	_t.uaCheck();
-	_t.deviceCheck();
+	_t.checkUA();
+	_t.checkDevice();
 };
 PageInfo.prototype = {
 	
@@ -114,6 +115,12 @@ PageInfo.prototype = {
 	 * @property {String} IEver
 	*/
 	IEver:&quot;not IE&quot;,
+	/**
+	 * 閲覧環境：Flashプレーヤー判定
+	 * Flashプレーヤーの有無を確認
+	 * @property {Boolean} isFlash
+	*/
+	isFlash:false,
 	/**
 	 * 閲覧環境：モバイル判定
 	 * 判定の範囲は随時更新する
@@ -138,7 +145,12 @@ PageInfo.prototype = {
 	*/
 	class:&quot;&quot;,
 	/**
-	 * ページ情報：URLのクエリ情報  
+	 * ページ情報：URL内のクエリの有無
+	 * @property {Boolean} hasQuery
+	*/
+	hasQuery:&quot;&quot;,
+	/**
+	 * ページ情報：URL内のクエリの内容
 	 * @property {String} urlQuery
 	*/
 	urlQuery:&quot;&quot;,
@@ -159,18 +171,18 @@ PageInfo.prototype = {
 	
 	/** 
 	 * OSチェック
-	 * @method osCheck
+	 * @method checkOS
 	 */
-	osCheck:function(){
+	checkOS:function(){
 		if (navigator.platform.indexOf(&quot;Win&quot;) != -1) this.OS = &quot;windows&quot;;
 		else this.OS = &quot;mac&quot;;
 	},
 
 	/**
 	 * UserAgentチェック
-	 * @method uaCheck
+	 * @method checkUA
 	 */
-	uaCheck:function(){
+	checkUA:function(){
 		var _t = this,
 			_d = document,
 			_UA = &quot;&quot;,
@@ -206,9 +218,9 @@ PageInfo.prototype = {
 
 	/**
 	 * PC・モバイル　デバイス・UAチェック
-	 * @method deviceCheck
+	 * @method checkDevice
 	 */
-	deviceCheck:function(){
+	checkDevice:function(){
 		var _t = this,
 			_device = &quot;pc&quot;,
 			_deviceUA = navigator.userAgent,
@@ -227,13 +239,33 @@ PageInfo.prototype = {
 	},
 
 	/**
-	 * クエリチェック
-	 * @method ulrQueryCheck
+	 * Flashプレーヤーの有無をチェック
+	 * @method checkFlash
 	 */
-	ulrQueryCheck:function(){
-		var _queryLen = location.search;
+	checkFlash:function() {
+		var isFlashInstalled = function() {
+		if (navigator.plugins[&quot;Shockwave Flash&quot;]) {
+			return true;
+		}try {
+			new ActiveXObject(&quot;ShockwaveFlash.ShockwaveFlash&quot;);
+			return true;
+		} catch (e) {
+			return false;
+		}
+		}();
+		return isFlashInstalled &amp;&amp; !$.device(&quot;android&quot;) ? true : false;
+	},
+
+	/**
+	 * クエリチェック
+	 * @method checkURLQuery
+	 */
+	checkURLQuery:function(){
+		var _t = this,
+			_queryLen = location.search;
 		if (_queryLen.length === 0) return false;
-		this.urlQuery = _queryLen.substr(1).split(&quot;&amp;&quot;).toString();
+		_t.hasQuery = true;
+		_t.urlQuery = _queryLen.substr(1).split(&quot;&amp;&quot;).toString();
 	},
 
 	/**

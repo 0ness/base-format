@@ -192,3 +192,12 @@
 /*トップページ：index.html
 --------------------------------------------------------------------*/
 #top { background: white; }
+
+#test li { width: 100px; height: 100px; overflow: visible; display: block; background: red; }
+#test li:hover { background: blue; }
+
+.js-acd { width: 200px; }
+
+.js-acd-head { height: 20px; background: red; }
+
+.js-acd-body { background: blue; }

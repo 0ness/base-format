@@ -15,15 +15,15 @@
 	var win = window,
 		doc = document;
 
-	var pages = new PageInfo(),
-		lib = new Library();
+	var PAGE = new PageInfo(),
+		LIB = new Library();
 
-	var isMobile = pages.isMobile;    //モバイル判定
+	var isMobile = PAGE.isMobile;    //モバイル判定
 
-	var s_pageUA = pages.UA,		//ユーザーエージェント保持
-		s_pageVER = pages.IEver,	//IEのバージョン保持
-		s_pageID = pages.id,		//ページID
-		s_pageClass = pages.class,  //ページclass
+	var s_pageUA = PAGE.UA,		//ユーザーエージェント保持
+		s_pageVER = PAGE.IEver,	//IEのバージョン保持
+		s_pageID = PAGE.id,		//ページID
+		s_pageClass = PAGE.class,  //ページclass
 		s_clickEvt = (isMobile === true) ? "touchend" : "click";
 
 	var $_ancher = (s_pageUA === "webkit") ? $("body"):$("html");
@@ -33,17 +33,27 @@
 	/*var
 	--------------------------------------------------------------------*/
 	//数値
-	var n_winWidth = win.innerWidth || doc.body.clientWidth,
-		n_winHeight = win.innerHeight || doc.body.clientHeight,
+	var n_winWidth = LIB.windowWidth(),
+		n_winHeight = LIB.windowHeight(),
 		n_jQueryAnimInterval = (isMobile === true) ? 18 : 14;
 
 	$.fx.interval = n_jQueryAnimInterval;
 
+
+	var $test = $("#test");
+	$test.opacity(0.5);
+
+//	$("#test").find("li").clickableOn();
 	
+	LIB.accordion($(".js-acd-head"),$(".js-acd-body"),{spd:600,ease:"easeOutBack"});
 	
 
 	/*contents コンテンツ毎の処理
 	--------------------------------------------------------------------*/
+
+
+
+
 	
 	
 	

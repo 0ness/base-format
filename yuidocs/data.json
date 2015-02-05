@@ -29,6 +29,16 @@
             "fors": {},
             "namespaces": {}
         },
+        "common/js/lib/ScrollFire.js": {
+            "name": "common/js/lib/ScrollFire.js",
+            "modules": {},
+            "classes": {
+                "ScrollFireDom": 1,
+                "ScrollFire": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "common/js/develop/Planet.js": {
             "name": "common/js/develop/Planet.js",
             "modules": {},
@@ -64,11 +74,11 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "common/js/lib/Library.js",
-            "line": 7,
-            "description": "多用する処理をまとめたクラス  \n・単純なアニメーション処理\n・HTML5対応処理  \n・IE対応",
+            "line": 1,
+            "description": "多用する処理をまとめたクラス  \n・単純なアニメーション処理  \n・HTML5対応処理  \n・IE対応",
             "is_constructor": 1,
             "example": [
-                " var obj = new Library();"
+                " var obj = new Library();  \nobj.anchor(\"#header\"); //アンカーリンク処理"
             ]
         },
         "PageInfo": {
@@ -86,6 +96,44 @@
             "example": [
                 " var obj = new PageInfo();  \nif(obj.isMobile === true) return false;"
             ]
+        },
+        "ScrollFireDom": {
+            "name": "ScrollFireDom",
+            "shortname": "ScrollFireDom",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 1,
+            "description": "y軸のスクロールに対して、イベントを展開する",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "strID",
+                    "description": "要素のID",
+                    "type": "String"
+                },
+                {
+                    "name": "varFunc",
+                    "description": "発火時の処理",
+                    "type": "Function"
+                }
+            ]
+        },
+        "ScrollFire": {
+            "name": "ScrollFire",
+            "shortname": "ScrollFire",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 44,
+            "description": "スクロール値を取得しイベントを発火させる",
+            "is_constructor": 1
         },
         "Planet": {
             "name": "Planet",
@@ -120,38 +168,102 @@
         },
         {
             "file": "common/js/lib/Library.js",
-            "line": 38,
-            "description": "jQuery アンカーアニメーション（jQueryオブジェクト）",
+            "line": 21,
+            "description": "初期化　コンストラクタ内で実行",
+            "itemtype": "method",
+            "name": "init",
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 34,
+            "description": "ウィンドウの幅を取得",
+            "itemtype": "method",
+            "name": "windowWidth",
+            "return": {
+                "description": "ウィンドウ幅",
+                "type": "Number"
+            },
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 46,
+            "description": "ウィンドウの高さを取得",
+            "itemtype": "method",
+            "name": "windowHeight",
+            "return": {
+                "description": "ウィンドウ高",
+                "type": "Number"
+            },
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 58,
+            "description": "jQuery アンカーアニメーション",
+            "itemtype": "method",
+            "name": "anchor",
             "params": [
                 {
                     "name": "URL",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "コールバック関数",
+                    "description": "",
+                    "type": "Function"
                 }
             ],
             "class": "Library"
         },
         {
             "file": "common/js/lib/Library.js",
-            "line": 99,
-            "description": "IE8,7で透過処理を個別に対応",
+            "line": 77,
+            "description": "jQuery アコーディオン",
+            "itemtype": "method",
+            "name": "accordion",
             "params": [
                 {
-                    "name": "処理を行いたい画像（jQueryオブジェクト）",
-                    "description": "",
+                    "name": "a_$head",
+                    "description": "アコーディオンの見出し部分のjQueryオブジェクト",
+                    "type": "Object"
+                },
+                {
+                    "name": "a_$body",
+                    "description": "アコーディオンのボディ部分のjQueryオブジェクト",
+                    "type": "Object"
+                },
+                {
+                    "name": "a_param",
+                    "description": "内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}",
                     "type": "Object"
                 }
             ],
+            "example": [
+                " obj.accordion($(\".js-acd-head\"),$(\".js-acd-body\"),{spd:600,ease:\"easeOutBack\"});"
+            ],
             "class": "Library"
         },
         {
             "file": "common/js/lib/Library.js",
-            "line": 109,
-            "description": "IE8,7で透過処理を入れ子に対応",
+            "line": 117,
+            "description": "IE8以下 jQuery HTML5_placeholder対応",
+            "itemtype": "method",
+            "name": "placeholder",
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 156,
+            "description": "IE8,7で透過処理を個別に対応",
+            "itemtype": "method",
+            "name": "alphaCheck",
             "params": [
                 {
                     "name": "obj",
-                    "description": "処理を行いたい画像の親要素（jQueryオブジェクト）",
+                    "description": "処理を行いたいjQueryオブジェクト",
                     "type": "Object"
                 }
             ],
@@ -159,13 +271,40 @@
         },
         {
             "file": "common/js/lib/Library.js",
-            "line": 124,
-            "description": "自動化 コピーライト年数",
+            "line": 169,
+            "description": "IE8,7で透過処理を入れ子に対応",
+            "itemtype": "method",
+            "name": "alphaAllCheck",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "処理を行いたい画像の親jQueryオブジェクト",
+                    "type": "Object"
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "common/js/lib/Library.js",
+            "line": 189,
+            "description": "年数表記を自動で現在の値に書き換える",
+            "itemtype": "method",
+            "name": "yearAdjust",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "年数を囲っているid",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                " obj.yearAdust();"
+            ],
             "class": "Library"
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 19,
+            "line": 18,
             "description": "閲覧環境：OS",
             "itemtype": "property",
             "name": "OS",
@@ -174,7 +313,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 24,
+            "line": 23,
             "description": "閲覧環境：ユーザーエージェント",
             "itemtype": "property",
             "name": "UA",
@@ -183,7 +322,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 29,
+            "line": 28,
             "description": "閲覧環境：ieのバージョン",
             "itemtype": "property",
             "name": "IEver",
@@ -192,7 +331,16 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 34,
+            "line": 33,
+            "description": "閲覧環境：Flashプレーヤー判定\nFlashプレーヤーの有無を確認",
+            "itemtype": "property",
+            "name": "isFlash",
+            "type": "Boolean",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 39,
             "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
             "itemtype": "property",
             "name": "isMobile",
@@ -201,7 +349,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 40,
+            "line": 45,
             "description": "閲覧環境：デバイスの種類",
             "itemtype": "property",
             "name": "device",
@@ -210,7 +358,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 45,
+            "line": 50,
             "description": "ページ情報：閲覧しているページのbody要素のid  \nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
             "name": "id",
@@ -219,7 +367,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 51,
+            "line": 56,
             "description": "ページ情報：閲覧しているページのbody要素のclass  \nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
             "name": "class",
@@ -228,8 +376,17 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 57,
-            "description": "ページ情報：URLのクエリ情報",
+            "line": 62,
+            "description": "ページ情報：URL内のクエリの有無",
+            "itemtype": "property",
+            "name": "hasQuery",
+            "type": "Boolean",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 67,
+            "description": "ページ情報：URL内のクエリの内容",
             "itemtype": "property",
             "name": "urlQuery",
             "type": "String",
@@ -237,7 +394,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 64,
+            "line": 74,
             "description": "IDの取得（IEの場合はwrapperにIE追加）",
             "itemtype": "method",
             "name": "getID",
@@ -245,39 +402,47 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 77,
+            "line": 87,
             "description": "OSチェック",
             "itemtype": "method",
-            "name": "osCheck",
+            "name": "checkOS",
             "class": "PageInfo"
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 86,
+            "line": 96,
             "description": "UserAgentチェック",
             "itemtype": "method",
-            "name": "uaCheck",
+            "name": "checkUA",
             "class": "PageInfo"
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 124,
+            "line": 134,
             "description": "PC・モバイル　デバイス・UAチェック",
             "itemtype": "method",
-            "name": "deviceCheck",
-            "class": "PageInfo"
-        },
-        {
-            "file": "common/js/lib/PageInfo.js",
-            "line": 146,
-            "description": "クエリチェック",
-            "itemtype": "method",
-            "name": "ulrQueryCheck",
+            "name": "checkDevice",
             "class": "PageInfo"
         },
         {
             "file": "common/js/lib/PageInfo.js",
             "line": 156,
+            "description": "Flashプレーヤーの有無をチェック",
+            "itemtype": "method",
+            "name": "checkFlash",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 174,
+            "description": "クエリチェック",
+            "itemtype": "method",
+            "name": "checkURLQuery",
+            "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/PageInfo.js",
+            "line": 186,
             "description": "PC用css記述",
             "itemtype": "method",
             "name": "setPcCSS",
@@ -292,7 +457,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 171,
+            "line": 201,
             "description": "モバイル用css記述",
             "itemtype": "method",
             "name": "setMobileCSS",
@@ -307,7 +472,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 186,
+            "line": 216,
             "description": "viewport記述",
             "itemtype": "method",
             "name": "setViewPort",
@@ -319,6 +484,98 @@
                 }
             ],
             "class": "PageInfo"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 24,
+            "description": "y座標とスクロール値を比較してイベント発火",
+            "params": [
+                {
+                    "name": "y",
+                    "description": "スクロール値",
+                    "type": "Number"
+                }
+            ],
+            "class": "ScrollFireDom"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 55,
+            "description": "現在のスクロール値",
+            "itemtype": "property",
+            "name": "scrNum",
+            "type": "Number",
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 60,
+            "description": "イベント格納用配列  \nScrollFireDomから引き渡される関数を格納する",
+            "itemtype": "property",
+            "name": "events",
+            "type": "Array",
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 67,
+            "description": "初期化",
+            "itemtype": "method",
+            "name": "init",
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 76,
+            "description": "イベントをインスタンスにセットする",
+            "itemtype": "method",
+            "name": "setEvent",
+            "params": [
+                {
+                    "name": "strID",
+                    "description": "ID名",
+                    "type": "String"
+                },
+                {
+                    "name": "varFunc",
+                    "description": "変数定義されたイベント内容",
+                    "type": "Function"
+                }
+            ],
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 87,
+            "description": "ScrollFireDomオブジェクトの回転処理  \nスクロール値と各オブジェクトのイベント開始値を照合し、切り替え用の関数を実行",
+            "itemtype": "method",
+            "name": "checkEvents",
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 103,
+            "description": "スクロール値の取得",
+            "itemtype": "method",
+            "name": "checkScroll",
+            "return": {
+                "description": "スクロール値",
+                "type": "Number"
+            },
+            "class": "ScrollFire"
+        },
+        {
+            "file": "common/js/lib/ScrollFire.js",
+            "line": 114,
+            "description": "イベントを解除する",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "解除するイベントのid",
+                    "type": "String"
+                }
+            ],
+            "class": "ScrollFire"
         },
         {
             "file": "common/js/develop/Planet.js",
@@ -503,24 +760,28 @@
     ],
     "warnings": [
         {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " common/js/lib/Library.js:34"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " common/js/lib/Library.js:46"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " common/js/lib/ScrollFire.js:103"
+        },
+        {
             "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
             "line": " common/js/lib/FixedAnchor.js:66"
         },
         {
-            "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
-            "line": " common/js/lib/Library.js:38"
+            "message": "Missing item type\ny座標とスクロール値を比較してイベント発火",
+            "line": " common/js/lib/ScrollFire.js:24"
         },
         {
-            "message": "Missing item type\nIE8,7で透過処理を個別に対応",
-            "line": " common/js/lib/Library.js:99"
-        },
-        {
-            "message": "Missing item type\nIE8,7で透過処理を入れ子に対応",
-            "line": " common/js/lib/Library.js:109"
-        },
-        {
-            "message": "Missing item type\n自動化 コピーライト年数",
-            "line": " common/js/lib/Library.js:124"
+            "message": "Missing item type\nイベントを解除する",
+            "line": " common/js/lib/ScrollFire.js:114"
         },
         {
             "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",

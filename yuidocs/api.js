@@ -3,7 +3,9 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "Library",
         "PageInfo",
-        "Planet"
+        "Planet",
+        "ScrollFire",
+        "ScrollFireDom"
     ],
     "modules": [],
     "allModules": []

@@ -41,6 +41,8 @@
                                 <li><a href="../classes/Library.html">Library</a></li>
                                 <li><a href="../classes/PageInfo.html">PageInfo</a></li>
                                 <li><a href="../classes/Planet.html">Planet</a></li>
+                                <li><a href="../classes/ScrollFire.html">ScrollFire</a></li>
+                                <li><a href="../classes/ScrollFireDom.html">ScrollFireDom</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -81,20 +83,15 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/*==============================================================================
-
-	汎用処理ライブラリ
-
-
-==============================================================================*/
 /**
  * 多用する処理をまとめたクラス  
- * ・単純なアニメーション処理
+ * ・単純なアニメーション処理  
  * ・HTML5対応処理  
  * ・IE対応
  * @class Library
  * @constructor
- * @example var obj = new Library();
+ * @example var obj = new Library();  
+ * obj.anchor(&quot;#header&quot;); //アンカーリンク処理
  */
 function Library(){
 	&quot;use strict&quot;;
@@ -102,47 +99,110 @@ function Library(){
 };
 Library.prototype = {
 	
-	win:window,
-	pages:null,
 	pageUA:null,
 	pageVER:null,
 	isMobile:null, 
 	
-	/* 初期化 */
+	/**
+	 * 初期化　コンストラクタ内で実行
+	 * @method init
+	 */
 	init:function(){
 		var _p = new PageInfo(),
 			_t = this;
-		_t.pages = _p;
+		
 		_t.pageUA = _p.UA;
-		_t.pageVER = _p.VER;
-		_t.isMobile = _p.mobile;
+		_t.pageVER = _p.IEver;
+		_t.isMobile = _p.isMobile;
 	},
 
 	/**
-	 * jQuery アンカーアニメーション（jQueryオブジェクト）
-	 * @param {String} URL
+	 * ウィンドウの幅を取得
+	 * @method windowWidth
+	 * @returns {Number} ウィンドウ幅
 	 */
-	anchor:function(href,callback){
+	windowWidth:function(){
+		var _w = window,
+			_d = document,
+			_width = _w.innerWidth || _d.body.clientWidth;
+		return _width;
+	},
+
+	/**
+	 * ウィンドウの高さを取得
+ 	 * @method windowHeight
+	 * @returns {Number} ウィンドウ高
+	 */
+	windowHeight:function(){
+		var _w = window,
+			_d = document,
+			_height = _w.innerHeight || _d.body.clientHeight;
+		return _height;
+	},
+
+	/**
+	 * jQuery アンカーアニメーション
+	 * @method anchor
+	 * @param {String} URL
+	 * @param {function} コールバック関数
+	 */
+	anchor:function(a_href,a_callback,a_spd,a_ease){
 		$.fx.interval = 20;
 		var _$tag = (this.pageUA === &quot;webkit&quot;) ? $(&quot;body&quot;):$(&quot;html&quot;),
-			_href = href,
-			_target = $(_href === &quot;#&quot; || _href === &quot;&quot; ? &#x27;html&#x27; : _href),
-			_position = _target.offset().top,
-			_func = callback || null;
+			_href = a_href,
+			_target = _href === &quot;#&quot; || _href === &quot;&quot; ? &#x27;html&#x27; : _href,
+			_position = $(_target).offset().top,
+			_func = a_callback || null,
+			_spd = a_spd || 600,
+			_ease = a_ease || &quot;easeInOutQuad&quot;;
 			
-		_$tag.stop().animate({scrollTop:_position}, 600, &#x27;easeInOutQuad&#x27;,_func);
+		_$tag.stop().animate({scrollTop:_position},_spd,_ease,_func);
+	},
+	
+	/**
+	 * jQuery アコーディオン
+	 * @method accordion
+	 * @param {Object} a_$head アコーディオンの見出し部分のjQueryオブジェクト
+	 * @param {Object} a_$body アコーディオンのボディ部分のjQueryオブジェクト
+	 * @param {Object} a_param 内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}
+	 * @example obj.accordion($(&quot;.js-acd-head&quot;),$(&quot;.js-acd-body&quot;),{spd:600,ease:&quot;easeOutBack&quot;});
+	 */
+	accordion:function(a_$head,a_$body,a_param){
+	
+		var _$head = a_$head,
+			_$body = a_$body,
+			_$parent = _$head.parent(),
+			_bodyH = _$body.height(),
+			
+			_clsName = &quot;js-acd-open&quot;,
+			_param = a_param || {},
+			_spd = _param.spd || 500,
+			_ease = _param.ease || &quot;easeOutExpo&quot;,
+			_callback = _param.callback || function(){};
+		
+		//アニメーション
+		var open = function(){
+			_$body.stop().slideDown(_spd,_ease,_callback);
+			_$parent.addClass(_clsName);
+		};
+		var close = function(){
+			_$body.stop().slideUp(_spd,_ease,_callback);
+			_$parent.removeClass(_clsName);
+		};
+		var judge = function(){
+			if(_$parent.hasClass(_clsName) === true) close();
+			else open();
+		};
+		
+		//初期化
+		_$body.hide().css(&quot;overflow&quot;,&quot;hidden&quot;);
+		_$head.css(&quot;cursor&quot;,&quot;pointer&quot;).on(&quot;click&quot;,judge);
 	},
 
-	/* jQuery トップへ戻るリンク */
-	topBackAncher:function(){
-		var _$pageTop = $(document.getElementById(&quot;pageTop&quot;));
-		_$pageTop.on(&quot;click&quot;,function(e){
-			e.preventDefault();
-			this.anchor(_$pageTop.attr(&quot;href&quot;));
-		});
-	},
-
-	/* method IE8以下 jQuery HTML5_placeholder対応*/
+	/**
+	 * IE8以下 jQuery HTML5_placeholder対応
+	 * @method placeholder
+	 */
 	placeholder:function(){
 		var supportsInputAttribute = function (attr) {
 			var input = document.createElement(&#x27;input&#x27;);
@@ -176,28 +236,35 @@ Library.prototype = {
 				});
 			});
 		}
-		return false;
 	},
 		
 	/**
 	 * IE8,7で透過処理を個別に対応
-	 * @param   {Object}  処理を行いたい画像（jQueryオブジェクト）
+	 * @method alphaCheck
+	 * @param {Object} obj 処理を行いたいjQueryオブジェクト
 	 */
 	alphaCheck:function(obj){
-		if(this.pageVER !== &quot;ie8&quot; &amp;&amp; this.pageVER !== &quot;ie7&quot;) return false;
+		var _iever = this.pageVER;
+		if(_iever !== &quot;ie8&quot; &amp;&amp; _iever !== &quot;ie7&quot;) return false;
+		
 		var _img = obj;
 		_img.css(&#x27;filter&#x27;,&#x27;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&quot;&#x27; + _img.attr(&#x27;src&#x27;) + &#x27;&quot;, sizingMethod=&quot;scale&quot;);&#x27;);
 	},
 
 	/**
 	 * IE8,7で透過処理を入れ子に対応
-	 * @param   {Object}  obj 処理を行いたい画像の親要素（jQueryオブジェクト）
+	 * @method alphaAllCheck
+	 * @param {Object}  obj 処理を行いたい画像の親jQueryオブジェクト
 	 */
 	alphaAllCheck:function(obj){
-		if(this.pageVER !== &quot;ie8&quot; &amp;&amp; this.pageVER !== &quot;ie7&quot;) return false;
-		var o = obj;
-		o.each(function(){
-			var _img = $(this);
+		var _iever = this.pageVER;
+		if(_iever !== &quot;ie8&quot; &amp;&amp; _iever !== &quot;ie7&quot;) return false;
+		
+		var _o = obj,
+			_img;
+		
+		_o.each(function(){
+			_img = $(this);
 			if(_img.attr(&#x27;src&#x27;).indexOf(&#x27;.png&#x27;) !== -1) {
 				_img.css(&#x27;filter&#x27;,&#x27;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&quot;&#x27; + _img.attr(&#x27;src&#x27;) + &#x27;&quot;, sizingMethod=&quot;scale&quot;);&#x27;);
 			}
@@ -205,24 +272,16 @@ Library.prototype = {
 	},
 
 	/**
-	 * 自動化 コピーライト年数
+	 * 年数表記を自動で現在の値に書き換える
+	 * @method yearAdjust
+	 * @param {String} id 年数を囲っているid
+	 * @example obj.yearAdust();
 	 */
-	yearAdjust:function(){
-		var _now_year = new Date().getFullYear();
-		document.getElementById(&quot;nowYear&quot;).innerHTML += _now_year;
-	},
-	
-	/* 2次元配列のソート
-	 * dimensionArySort(ソート配列:Array、開始番号:uint、昇順か降順化の指定:boolean)
-	 * 昇順はtrue,降順はfalse
-	 */
-	dimensionArySort:function(_ary,_col,_flg){
-		var ary = _ary,
-			col = _col,
-			srt = (_flg === true)? 1 : -1;
-		ary.sort(function(a , b){ return((a[col] - b[col]) * srt);});
-		return(ary);
-	}
+	yearAdjust:function(id){
+		var _id = id || &quot;nowYear&quot;,
+			_now_year = new Date().getFullYear();
+		document.getElementById(_id).innerHTML += _now_year;
+	}	
 };
     </pre>
 </div>

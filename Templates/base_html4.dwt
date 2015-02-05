@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" class="ie6"><![endif]-->
-<!--[if IE 7]><html xmlns="http://www.w3.org/1999/xhtml" class="ie7"><![endif]-->
 <!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" class="ie8"><![endif]-->
 <!--[if IE 9]><html xmlns="http://www.w3.org/1999/xhtml" class="ie9"><![endif]-->
 <!--[if !IE]>-->
@@ -9,6 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@</title>
 <meta http-equiv="Content-Language" content="ja" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -29,7 +28,6 @@
 <link rel="stylesheet" type="text/css" href="../common/css/temp.css" />
 <!-- TemplateBeginEditable name="head" -->
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
-<!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
 <!-- TemplateParam name="ページタイトル" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->

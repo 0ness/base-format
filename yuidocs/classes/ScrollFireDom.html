@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>common/js/lib/FixedAnchor.js - js-document</title>
+    <title>ScrollFireDom - js-document</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -79,95 +79,113 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: common/js/lib/FixedAnchor.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
-function FixedAnchor(elmID) {
-	&quot;use strict&quot;;
-	this.init(elmID);
-};
-FixedAnchor.prototype = {
-	
-	$win:$(window),
-	$doc:$(document.getElementById(&quot;wrapper&quot;)),
-	$btn:null,
-	
-	winH:0,
-	borderH:0,
-	scrY:0,
-	className:&quot;js-fixedAnchor&quot;,
-	classNameStatic:&quot;js-fixedAnchor-static&quot;,
-	nowFlg:false,
-	oldFlg:false,
-	
-	init:function(elmID){
-		var _t = this;
-		_t.btn = document.getElementById( elmID);
-		_t.btn.className = &quot;js-fixedAnchor&quot;;
-		_t.$btn = $(_t.btn);
-
-		//イベント指定
-		_t.$win.on({&quot;scroll&quot;:function(){_t.scrollCheck();}});
-		_t.$btn.on(&quot;click&quot;, function(e) {
-			e.preventDefault();
-			_t.anchor(_t.$btn);
-		});
-		
-		_t.sizeCheck();
-	},
-	
-	//高さ確認
-	sizeCheck:function() {
-		var _t = this;
-		_t.$winH = _t.$win.height();
-		_t.borderH = (_t.$doc.height() - _t.$winH) - 40;
-	},
-
-	scrollCheck:function(){
-		var _t = this,
-			_win = _t.$win,
-			_cls,
-			_scrY;
-		
-		_t.scrY = _win.scrollTop();
-		_scrY = _t.scrY;
-
-		//位置のフラグ
-		if (_scrY &gt; 500) _t.nowFlg = true;
-		else _t.nowFlg = false;
-
-		//フッターとの位置調整
-		_cls = (_scrY &gt;= _t.borderH) ? _t.classNameStatic : _t.className;
-		_t.btn.className = _cls;
-
-		//表示の切り替え
-		if (_t.nowFlg === _t.oldFlg) return false;
-		if (_t.nowFlg === true) _t.$btn.fadeTo(200, 1, &quot;linear&quot;);
-		else _t.$btn.fadeTo(200, 0, &quot;linear&quot;);
-		_t.oldFlg = _t.nowFlg;
-	},
-	
-	/**
-	 * jQuery アンカーアニメーション（jQueryオブジェクト）
-	 * @param {String} URL
-	 */
-	anchor:function(href,callback){
-//		var _$tag = (this.pageUA === &quot;webkit&quot;) ? $(&quot;body&quot;):$(&quot;html&quot;),
-//			_href = href,
-//			_target = $(_href === &quot;#&quot; || _href === &quot;&quot; ? &#x27;html&#x27; : _href),
-//			_position = _target.offset().top,
-//			_func = callback || null;
-//
-//		_$tag.stop().animate({scrollTop:_position}, 600, &#x27;easeInOutQuad&#x27;,_func);
-	}
-};
+<h1>ScrollFireDom Class</h1>
+<div class="box meta">
 
 
-var test = new FixedAnchor(&quot;testBox&quot;);
+        <div class="foundat">
+            Defined in: <a href="../files/common_js_lib_ScrollFire.js.html#l1"><code>common&#x2F;js&#x2F;lib&#x2F;ScrollFire.js:1</code></a>
+        </div>
 
 
-    </pre>
+</div>
+
+
+<div class="box intro">
+    <p>y軸のスクロールに対して、イベントを展開する</p>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_ScrollFireDom" class="method item">
+            <h3 class="name"><code>ScrollFireDom</code></h3>
+        
+                <div class="args">
+                    <span class="paren">(</span><ul class="args-list inline commas">
+                        <li class="arg">
+                                <code>strID</code>
+                        </li>
+                        <li class="arg">
+                                <code>varFunc</code>
+                        </li>
+                    </ul><span class="paren">)</span>
+                </div>
+        
+        
+        
+        
+        
+        
+        
+        
+            <div class="meta">
+                        <p>
+                        Defined in
+                <a href="../files/common_js_lib_ScrollFire.js.html#l1"><code>common&#x2F;js&#x2F;lib&#x2F;ScrollFire.js:1</code></a>
+                </p>
+        
+        
+        
+            </div>
+        
+            <div class="description">
+                
+            </div>
+        
+                <div class="params">
+                    <h4>Parameters:</h4>
+        
+                    <ul class="params-list">
+                        <li class="param">
+                                <code class="param-name">strID</code>
+                                <span class="type">String</span>
+        
+        
+                            <div class="param-description">
+                                <p>要素のID</p>
+        
+                            </div>
+        
+                        </li>
+                        <li class="param">
+                                <code class="param-name">varFunc</code>
+                                <span class="type">Function</span>
+        
+        
+                            <div class="param-description">
+                                <p>発火時の処理</p>
+        
+                            </div>
+        
+                        </li>
+                    </ul>
+                </div>
+        
+        
+        
+        </div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
 </div>
                     </div>
                 </div>

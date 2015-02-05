@@ -29,3 +29,13 @@
 /*トップページ：index.html
 --------------------------------------------------------------------*/
 #top	{ background:white;}
+
+#test{
+	li { @include wh(100,100); background: red;
+		&:hover { background: blue;}
+	}
+}
+
+.js-acd { width: 200px;}
+.js-acd-head { height: 20px; background: red;}
+.js-acd-body { background: blue;}

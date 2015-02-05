@@ -41,6 +41,8 @@
                                 <li><a href="../classes/Library.html">Library</a></li>
                                 <li><a href="../classes/PageInfo.html">PageInfo</a></li>
                                 <li><a href="../classes/Planet.html">Planet</a></li>
+                                <li><a href="../classes/ScrollFire.html">ScrollFire</a></li>
+                                <li><a href="../classes/ScrollFireDom.html">ScrollFireDom</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -153,15 +155,27 @@
 
                     <ul class="index-list methods">
                             <li class="index-item method">
-                                <a href="#method_deviceCheck">deviceCheck</a>
+                                <a href="#method_checkDevice">checkDevice</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_checkFlash">checkFlash</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_checkOS">checkOS</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_checkUA">checkUA</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_checkURLQuery">checkURLQuery</a>
 
                             </li>
                             <li class="index-item method">
                                 <a href="#method_getID">getID</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_osCheck">osCheck</a>
 
                             </li>
                             <li class="index-item method">
@@ -174,14 +188,6 @@
                             </li>
                             <li class="index-item method">
                                 <a href="#method_setViewPort">setViewPort</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_uaCheck">uaCheck</a>
-
-                            </li>
-                            <li class="index-item method">
-                                <a href="#method_ulrQueryCheck">ulrQueryCheck</a>
 
                             </li>
                     </ul>
@@ -200,11 +206,19 @@
 
                             </li>
                             <li class="index-item property">
+                                <a href="#property_hasQuery">hasQuery</a>
+
+                            </li>
+                            <li class="index-item property">
                                 <a href="#property_id">id</a>
 
                             </li>
                             <li class="index-item property">
                                 <a href="#property_IEver">IEver</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_isFlash">isFlash</a>
 
                             </li>
                             <li class="index-item property">
@@ -232,8 +246,8 @@
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
 
-<div id="method_deviceCheck" class="method item">
-    <h3 class="name"><code>deviceCheck</code></h3>
+<div id="method_checkDevice" class="method item">
+    <h3 class="name"><code>checkDevice</code></h3>
 
         <span class="paren">()</span>
 
@@ -247,7 +261,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l124"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:124</code></a>
+        <a href="../files/common_js_lib_PageInfo.js.html#l134"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:134</code></a>
         </p>
 
 
@@ -256,6 +270,130 @@
 
     <div class="description">
         <p>PC・モバイル　デバイス・UAチェック</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_checkFlash" class="method item">
+    <h3 class="name"><code>checkFlash</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_PageInfo.js.html#l156"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:156</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Flashプレーヤーの有無をチェック</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_checkOS" class="method item">
+    <h3 class="name"><code>checkOS</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_PageInfo.js.html#l87"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:87</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>OSチェック</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_checkUA" class="method item">
+    <h3 class="name"><code>checkUA</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_PageInfo.js.html#l96"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:96</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>UserAgentチェック</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_checkURLQuery" class="method item">
+    <h3 class="name"><code>checkURLQuery</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_PageInfo.js.html#l174"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:174</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>クエリチェック</p>
 
     </div>
 
@@ -278,7 +416,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l64"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:64</code></a>
+        <a href="../files/common_js_lib_PageInfo.js.html#l74"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:74</code></a>
         </p>
 
 
@@ -287,37 +425,6 @@
 
     <div class="description">
         <p>IDの取得（IEの場合はwrapperにIE追加）</p>
-
-    </div>
-
-
-
-
-</div>
-<div id="method_osCheck" class="method item">
-    <h3 class="name"><code>osCheck</code></h3>
-
-        <span class="paren">()</span>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l77"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:77</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>OSチェック</p>
 
     </div>
 
@@ -346,7 +453,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l171"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:171</code></a>
+        <a href="../files/common_js_lib_PageInfo.js.html#l201"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:201</code></a>
         </p>
 
 
@@ -400,7 +507,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l156"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:156</code></a>
+        <a href="../files/common_js_lib_PageInfo.js.html#l186"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:186</code></a>
         </p>
 
 
@@ -454,7 +561,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l186"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:186</code></a>
+        <a href="../files/common_js_lib_PageInfo.js.html#l216"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:216</code></a>
         </p>
 
 
@@ -487,68 +594,6 @@
 
 
 </div>
-<div id="method_uaCheck" class="method item">
-    <h3 class="name"><code>uaCheck</code></h3>
-
-        <span class="paren">()</span>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l86"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:86</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>UserAgentチェック</p>
-
-    </div>
-
-
-
-
-</div>
-<div id="method_ulrQueryCheck" class="method item">
-    <h3 class="name"><code>ulrQueryCheck</code></h3>
-
-        <span class="paren">()</span>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/common_js_lib_PageInfo.js.html#l146"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:146</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>クエリチェック</p>
-
-    </div>
-
-
-
-
-</div>
             </div>
 
             <div id="properties" class="api-class-tabpanel">
@@ -565,7 +610,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l51"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:51</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l56"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:56</code></a>
                             </p>
                     
                     
@@ -590,7 +635,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l40"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:40</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l45"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:45</code></a>
                             </p>
                     
                     
@@ -598,6 +643,31 @@
                     
                         <div class="description">
                             <p>閲覧環境：デバイスの種類</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_hasQuery" class="property item">
+                        <h3 class="name"><code>hasQuery</code></h3>
+                        <span class="type">Boolean</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/common_js_lib_PageInfo.js.html#l62"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:62</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>ページ情報：URL内のクエリの有無</p>
                     
                         </div>
                     
@@ -615,7 +685,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l45"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:45</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l50"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:50</code></a>
                             </p>
                     
                     
@@ -640,7 +710,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l29"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:29</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l28"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:28</code></a>
                             </p>
                     
                     
@@ -648,6 +718,32 @@
                     
                         <div class="description">
                             <p>閲覧環境：ieのバージョン</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_isFlash" class="property item">
+                        <h3 class="name"><code>isFlash</code></h3>
+                        <span class="type">Boolean</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/common_js_lib_PageInfo.js.html#l33"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:33</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>閲覧環境：Flashプレーヤー判定
+                    Flashプレーヤーの有無を確認</p>
                     
                         </div>
                     
@@ -665,7 +761,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l34"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:34</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l39"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:39</code></a>
                             </p>
                     
                     
@@ -691,7 +787,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l19"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:19</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l18"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:18</code></a>
                             </p>
                     
                     
@@ -716,7 +812,7 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l24"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:24</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l23"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:23</code></a>
                             </p>
                     
                     
@@ -741,14 +837,14 @@
                         <div class="meta">
                                     <p>
                                     Defined in
-                            <a href="../files/common_js_lib_PageInfo.js.html#l57"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:57</code></a>
+                            <a href="../files/common_js_lib_PageInfo.js.html#l67"><code>common&#x2F;js&#x2F;lib&#x2F;PageInfo.js:67</code></a>
                             </p>
                     
                     
                         </div>
                     
                         <div class="description">
-                            <p>ページ情報：URLのクエリ情報</p>
+                            <p>ページ情報：URL内のクエリの内容</p>
                     
                         </div>
                     

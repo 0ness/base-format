@@ -41,6 +41,8 @@
                                 <li><a href="../classes/Library.html">Library</a></li>
                                 <li><a href="../classes/PageInfo.html">PageInfo</a></li>
                                 <li><a href="../classes/Planet.html">Planet</a></li>
+                                <li><a href="../classes/ScrollFire.html">ScrollFire</a></li>
+                                <li><a href="../classes/ScrollFireDom.html">ScrollFireDom</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -82,7 +84,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/common_js_lib_Library.js.html#l7"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:7</code></a>
+            Defined in: <a href="../files/common_js_lib_Library.js.html#l1"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:1</code></a>
         </div>
 
 
@@ -90,8 +92,7 @@
 
 
 <div class="box intro">
-    <p>多用する処理をまとめたクラス<br>・単純なアニメーション処理
-・HTML5対応処理<br>・IE対応</p>
+    <p>多用する処理をまとめたクラス<br>・単純なアニメーション処理<br>・HTML5対応処理<br>・IE対応</p>
 
 </div>
 
@@ -112,7 +113,7 @@
             <div class="meta">
                         <p>
                         Defined in
-                <a href="../files/common_js_lib_Library.js.html#l7"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:7</code></a>
+                <a href="../files/common_js_lib_Library.js.html#l1"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:1</code></a>
                 </p>
         
         
@@ -130,7 +131,7 @@
                     <h4>Example:</h4>
         
                     <div class="example-content">
-                        <p> var obj = new Library();</p>
+                        <p> var obj = new Library();<br>obj.anchor(&quot;#header&quot;); //アンカーリンク処理</p>
         
                     </div>
                 </div>
@@ -141,17 +142,538 @@
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
     </ul>
 
     <div>
         <div id="index" class="api-class-tabpanel index">
             <h2 class="off-left">Item Index</h2>
 
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_accordion">accordion</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_alphaAllCheck">alphaAllCheck</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_alphaCheck">alphaCheck</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_anchor">anchor</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_init">init</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_placeholder">placeholder</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_windowHeight">windowHeight</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_windowWidth">windowWidth</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_yearAdjust">yearAdjust</a>
+
+                            </li>
+                    </ul>
+                </div>
 
 
 
         </div>
 
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_accordion" class="method item">
+    <h3 class="name"><code>accordion</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>a_$head</code>
+                </li>
+                <li class="arg">
+                        <code>a_$body</code>
+                </li>
+                <li class="arg">
+                        <code>a_param</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l77"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:77</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>jQuery アコーディオン</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">a_$head</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>アコーディオンの見出し部分のjQueryオブジェクト</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">a_$body</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>アコーディオンのボディ部分のjQueryオブジェクト</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">a_param</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <p> obj.accordion($(&quot;.js-acd-head&quot;),$(&quot;.js-acd-body&quot;),{spd:600,ease:&quot;easeOutBack&quot;});</p>
+
+            </div>
+        </div>
+</div>
+<div id="method_alphaAllCheck" class="method item">
+    <h3 class="name"><code>alphaAllCheck</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>obj</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l169"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:169</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>IE8,7で透過処理を入れ子に対応</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">obj</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>処理を行いたい画像の親jQueryオブジェクト</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_alphaCheck" class="method item">
+    <h3 class="name"><code>alphaCheck</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>obj</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l156"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:156</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>IE8,7で透過処理を個別に対応</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">obj</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>処理を行いたいjQueryオブジェクト</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_anchor" class="method item">
+    <h3 class="name"><code>anchor</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>URL</code>
+                </li>
+                <li class="arg">
+                        <code>コールバック関数</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l58"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:58</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>jQuery アンカーアニメーション</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">URL</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">コールバック関数</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_init" class="method item">
+    <h3 class="name"><code>init</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l21"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:21</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>初期化　コンストラクタ内で実行</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_placeholder" class="method item">
+    <h3 class="name"><code>placeholder</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l117"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:117</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>IE8以下 jQuery HTML5_placeholder対応</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_windowHeight" class="method item">
+    <h3 class="name"><code>windowHeight</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l46"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:46</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>ウィンドウの高さを取得</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+                    <p>ウィンドウ高</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_windowWidth" class="method item">
+    <h3 class="name"><code>windowWidth</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l34"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:34</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>ウィンドウの幅を取得</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+                    <p>ウィンドウ幅</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_yearAdjust" class="method item">
+    <h3 class="name"><code>yearAdjust</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>id</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/common_js_lib_Library.js.html#l189"><code>common&#x2F;js&#x2F;lib&#x2F;Library.js:189</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>年数表記を自動で現在の値に書き換える</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">id</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>年数を囲っているid</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <p> obj.yearAdust();</p>
+
+            </div>
+        </div>
+</div>
+            </div>
 
 
 

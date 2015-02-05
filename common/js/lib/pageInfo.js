@@ -10,9 +10,8 @@
  */
 function PageInfo(){
 	var _t = this;
-	_t.osCheck();
-	_t.uaCheck();
-	_t.deviceCheck();
+	_t.checkUA();
+	_t.checkDevice();
 };
 PageInfo.prototype = {
 	
@@ -31,6 +30,12 @@ PageInfo.prototype = {
 	 * @property {String} IEver
 	*/
 	IEver:"not IE",
+	/**
+	 * 閲覧環境：Flashプレーヤー判定
+	 * Flashプレーヤーの有無を確認
+	 * @property {Boolean} isFlash
+	*/
+	isFlash:false,
 	/**
 	 * 閲覧環境：モバイル判定
 	 * 判定の範囲は随時更新する
@@ -55,7 +60,12 @@ PageInfo.prototype = {
 	*/
 	class:"",
 	/**
-	 * ページ情報：URLのクエリ情報  
+	 * ページ情報：URL内のクエリの有無
+	 * @property {Boolean} hasQuery
+	*/
+	hasQuery:"",
+	/**
+	 * ページ情報：URL内のクエリの内容
 	 * @property {String} urlQuery
 	*/
 	urlQuery:"",
@@ -76,18 +86,18 @@ PageInfo.prototype = {
 	
 	/** 
 	 * OSチェック
-	 * @method osCheck
+	 * @method checkOS
 	 */
-	osCheck:function(){
+	checkOS:function(){
 		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
 		else this.OS = "mac";
 	},
 
 	/**
 	 * UserAgentチェック
-	 * @method uaCheck
+	 * @method checkUA
 	 */
-	uaCheck:function(){
+	checkUA:function(){
 		var _t = this,
 			_d = document,
 			_UA = "",
@@ -123,9 +133,9 @@ PageInfo.prototype = {
 
 	/**
 	 * PC・モバイル　デバイス・UAチェック
-	 * @method deviceCheck
+	 * @method checkDevice
 	 */
-	deviceCheck:function(){
+	checkDevice:function(){
 		var _t = this,
 			_device = "pc",
 			_deviceUA = navigator.userAgent,
@@ -144,13 +154,33 @@ PageInfo.prototype = {
 	},
 
 	/**
-	 * クエリチェック
-	 * @method ulrQueryCheck
+	 * Flashプレーヤーの有無をチェック
+	 * @method checkFlash
 	 */
-	ulrQueryCheck:function(){
-		var _queryLen = location.search;
+	checkFlash:function() {
+		var isFlashInstalled = function() {
+		if (navigator.plugins["Shockwave Flash"]) {
+			return true;
+		}try {
+			new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+			return true;
+		} catch (e) {
+			return false;
+		}
+		}();
+		return isFlashInstalled && !$.device("android") ? true : false;
+	},
+
+	/**
+	 * クエリチェック
+	 * @method checkURLQuery
+	 */
+	checkURLQuery:function(){
+		var _t = this,
+			_queryLen = location.search;
 		if (_queryLen.length === 0) return false;
-		this.urlQuery = _queryLen.substr(1).split("&").toString();
+		_t.hasQuery = true;
+		_t.urlQuery = _queryLen.substr(1).split("&").toString();
 	},
 
 	/**

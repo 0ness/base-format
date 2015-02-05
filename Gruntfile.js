@@ -194,6 +194,7 @@ module.exports = function(grunt){
                     "common/js/lib/pageInfo.js",
                     "common/js/jquery/jquery.js",
                     "common/js/jquery/easing.js",
+                    "common/js/jquery/module.js",
                     "common/js/lib/library.js",
 					"common/js/ie/selectivizr.js"
                 ],

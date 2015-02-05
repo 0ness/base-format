@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--[if IE 6]><html lang="ja" class="ie6"><![endif]-->
-<!--[if IE 7]><html lang="ja" class="ie7"><![endif]-->
 <!--[if IE 8]><html lang="ja" class="ie8"><![endif]-->
 <!--[if IE 9]><html lang="ja" class="ie9"><![endif]-->
 <!--[if !IE]>-->
@@ -8,7 +6,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@</title>
 <meta name="description" content="@@(Description)@@">
 <meta name="keywords" content="@@(Keyword)@@">
@@ -27,7 +25,6 @@
 <!-- レガシーブラウザ用スクリプト　不必要な場合は削除 -->
 <!-- TemplateBeginEditable name="head" -->
 <!--[if lt IE 9]><script src="common/js/ie/html5shiv.js"></script><![endif]-->
-<!--[if IE 6]><script type="text/javascript" src="common/js/ie/DD_belatedPNG.js"></script><script>DD_belatedPNG.fix('img');</script><![endif]-->
 <!-- TemplateEndEditable -->
 <!-- TemplateParam name="ページタイトル" type="text" value="" -->
 <!-- TemplateParam name="Keyword" type="text" value="" -->
@@ -65,7 +62,7 @@
 		<!-- sub -->
 		<div id="sub"> 
 			<!-- subNav -->
-			<nav id="subNav"> <!-- TemplateBeginIf cond="_document['subNav-contents']" --> 
+			<nav id="subNav"><!-- TemplateBeginIf cond="_document['subNav-contents']" --> 
 				<!-- subNav-about -->
 				<dl>
 					<dt>カテゴリータイトル</dt>
