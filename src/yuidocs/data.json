@@ -102,6 +102,9 @@
                     "description": "SP側に切り替わった際の関数",
                     "type": "Function"
                 }
+            ],
+            "example": [
+                "\nvar BPO = new BreakPointOne(768,pcFunc,spFunc);  \nfunction pcFunc(){ pcレイアウト切替時の処理 };  \nfunction spFunc(){ spレイアウト切替時の処理 };"
             ]
         },
         "Library": {
@@ -130,10 +133,10 @@
             "extension_for": [],
             "file": "common/js/lib/PageInfo.js",
             "line": 1,
-            "description": "OS・UA・ページの情報を取得・操作する  \n・コンストラクタで情報を取得し、インスタンスの変数から参照する  \n・OS・UA・デバイス判定  \n・css読み込み・viewport表示変更",
+            "description": "OS・UA・ページの情報を取得・操作する\n・コンストラクタで情報を取得し、インスタンスの変数から参照する\n・OS・UA・デバイス判定\n・css読み込み・viewport表示変更",
             "is_constructor": 1,
             "example": [
-                " var obj = new PageInfo();  \nif(obj.isMobile === true) return false;"
+                " var obj = new PageInfo();\nif(obj.isMobile === true) return false;"
             ]
         },
         "ScrollFireDom": {
@@ -194,7 +197,7 @@
     "classitems": [
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 20,
+            "line": 24,
             "description": "ブレークポイントの境界値",
             "itemtype": "property",
             "name": "border",
@@ -203,7 +206,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 25,
+            "line": 29,
             "description": "PC側に切り替わった際事項されるコールバック関数",
             "itemtype": "property",
             "name": "pcCallBack",
@@ -212,7 +215,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 30,
+            "line": 34,
             "description": "SP側に切り替わった際事項されるコールバック関数",
             "itemtype": "property",
             "name": "spCallBack",
@@ -221,7 +224,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 35,
+            "line": 39,
             "description": "現在のページの状態がPCかSPかを判断する為の正否値  \ntrue:SP　false:PC",
             "itemtype": "property",
             "name": "isSP",
@@ -230,7 +233,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 42,
+            "line": 49,
             "description": "初期化  \nコンストラクタ時にリサイズイベントを設定する",
             "itemtype": "method",
             "name": "init",
@@ -238,7 +241,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 63,
+            "line": 74,
             "description": "リサイズイベントを破棄する",
             "itemtype": "method",
             "name": "reset",
@@ -246,7 +249,7 @@
         },
         {
             "file": "common/js/lib/BreakPointOne.js",
-            "line": 78,
+            "line": 90,
             "description": "リサイズ時にブレークポイントの状態を確認する  \nウィンドウ幅とブレークポイント幅を確認し、  \nPC・SPの切り替わりが判定された場合、設定した関数を実行する",
             "itemtype": "method",
             "name": "breakPointCheck",
@@ -458,7 +461,7 @@
         {
             "file": "common/js/lib/PageInfo.js",
             "line": 50,
-            "description": "ページ情報：閲覧しているページのbody要素のid  \nサイト毎で起点となる要素は変更する",
+            "description": "ページ情報：閲覧しているページのbody要素のid\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
             "name": "id",
             "type": "String",
@@ -467,9 +470,9 @@
         {
             "file": "common/js/lib/PageInfo.js",
             "line": 56,
-            "description": "ページ情報：閲覧しているページのbody要素のclass  \nサイト毎で起点となる要素は変更する",
+            "description": "ページ情報：閲覧しているページのbody要素のclass\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
-            "name": "class",
+            "name": "className",
             "type": "String",
             "class": "PageInfo"
         },
@@ -533,7 +536,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 174,
+            "line": 175,
             "description": "クエリチェック",
             "itemtype": "method",
             "name": "checkURLQuery",
@@ -541,7 +544,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 186,
+            "line": 187,
             "description": "PC用css記述",
             "itemtype": "method",
             "name": "setPcCSS",
@@ -556,7 +559,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 201,
+            "line": 202,
             "description": "モバイル用css記述",
             "itemtype": "method",
             "name": "setMobileCSS",
@@ -571,7 +574,7 @@
         },
         {
             "file": "common/js/lib/PageInfo.js",
-            "line": 216,
+            "line": 217,
             "description": "viewport記述",
             "itemtype": "method",
             "name": "setViewPort",

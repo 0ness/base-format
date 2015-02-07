@@ -95,8 +95,8 @@
 	<!-- /============= footer ============= --> 
 	
 	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>
-<script src="../common/js/base.js"></script> 
+<script src="../src/js/base.js"></script> 
 <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
-<script src="../common/js/main.js"></script> 
+<script src="../src/js/main.js"></script> 
 </body>
 </html>

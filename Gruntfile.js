@@ -192,36 +192,36 @@ module.exports = function(grunt){
         concat:{
             baseJS:{
                 src:[
-                    "common/js/lib/pageInfo.js",
-                    "common/js/jquery/jquery.js",
-                    "common/js/jquery/easing.js",
-                    "common/js/jquery/module.js",
-                    "common/js/lib/library.js",
-					"common/js/ie/selectivizr.js"
+                    "src/js/lib/pageInfo.js",
+                    "src/js/jquery/jquery.js",
+                    "src/js/jquery/easing.js",
+                    "src/js/jquery/module.js",
+                    "src/js/lib/library.js",
+					"src/js/ie/selectivizr.js"
                 ],
-                dest:"common/js/base.js"
+                dest:"src/js/base.js"
             }
         },
+		uglify:{
+			baseJS:{
+				src:"src/js/base.js",
+				dest:"common/js/base.js"
+			},
+			mainJS:{
+				src:"src/js/main.js",
+				dest:"common/js/main.js"
+			}
+		},
 		removelogging:{
 			baseJS:{
 				src: "common/js/base.js",
-				dest:"common/js/minify/base.js"
+				dest:"common/js/base.js"
 			},
             mainJS:{
                 src: "common/js/main.js",
-                dest:"common/js/minify/main.js"
+                dest:"common/js/main.js"
             }
 		},
-        uglify:{
-			baseJS:{
-                src:"common/js/base.js",
-                dest:"common/js/minify/base.js"
-            },
-            mainJS:{
-                src:"common/js/main.js",
-                dest:"common/js/minify/main.js"
-            }
-        },
 		clean:{
             js:"<%= concat.baseJS.dest %>"
         },
@@ -231,9 +231,9 @@ module.exports = function(grunt){
 			},
 			dist:{
 				files:{
-					'common/css/layout.css': 'common/scss/layout.scss',
-					'common/css/contents.css': 'common/scss/contents.scss',
-					'common/css/module.css': 'common/scss/module.scss'
+					'common/css/layout.css': 'src/scss/layout.scss',
+					'common/css/contents.css': 'src/scss/contents.scss',
+					'common/css/module.css': 'src/scss/module.scss'
 				}
 			}
 		},
@@ -260,18 +260,18 @@ module.exports = function(grunt){
 					}
 				},
 				files: {
-				  docs: 'common/scss/module.scss'
+				  docs: 'src/scss/module.scss'
 				}
 			}
 		},
-		sassdoc:{
-			default:{
-				src:[
-					"common/scss/*.scss",
-					"User/macbookair12/desktop/works/base_format/htdocs/common/scss/partials/*.scss"
-				]
-			}
-		},
+//		sassdoc:{
+//			default:{
+//				src:[
+//					"common/scss/*.scss",
+//					"User/macbookair12/desktop/works/base_format/htdocs/common/scss/partials/*.scss"
+//				]
+//			}
+//		},
 		shell:{
 			styledocco:{
 				command: function () {
@@ -280,7 +280,7 @@ module.exports = function(grunt){
 			},
 			sassdoc:{
 				command: function () {
-					return 'sassdoc common/scss -d sassdocs -n "Wonderful Sass"';
+					return 'sassdoc src/scss -d src/sassdocs -n "Wonderful Sass"';
 				}
 			}
 		},
@@ -291,27 +291,27 @@ module.exports = function(grunt){
 				options: {
 					//出力パスの指定(今回はGruntfile.jsと同階層に出力するよう指定)
 					paths:[
-						'common/js/lib/',
-						'common/js/develop/'
+						'src/js/lib/',
+						'src/js/develop/'
 					],
 					//YUIDocファイルを出力するディレクトリ名を記述
-					outdir: 'yuidocs/',
-					themedir: "themes/custom/"
+					outdir: 'src/yuidocs/',
+					themedir: "src/yui-themes/custom/"
 				}
 			}
 		},
         watch:{
             js:{
                 files:[
-                    "common/js/*.js",
-                    "common/js/lib/*.js",
-                    "common/js/jquery/*.js",
-                    "common/js/ie/*.js"
+                    "src/js/*.js",
+                    "src/js/lib/*.js",
+                    "src/js/jquery/*.js",
+                    "src/js/ie/*.js"
                 ],
                 tasks:["concat","removelogging","uglify"/*,"clean",*//*"utf8tosjis"*/]
             },
 			sass:{
-				files:["common/scss/*.scss","common/scss/partials/*.scss"],
+				files:["src/scss/*.scss","src/scss/partials/*.scss"],
 				tasks:["sass"]
 			},
 			css:{
@@ -323,8 +323,8 @@ module.exports = function(grunt){
 			},
 			yuidoc:{
 				files:[
-					"common/js/lib/*.js",
-					"common/js/develop/*.js"
+					"src/js/lib/*.js",
+					"src/js/develop/*.js"
 				],
 				tasks:["yuidoc"]
 			},
@@ -333,7 +333,7 @@ module.exports = function(grunt){
                 tasks:["newer:sass","shell:styledocco"]
 			}*/
 			sassdoc:{
-				files:["common/scss/partials/*.scss"],
+				files:["src/scss/partials/*.scss"],
 				tasks:["shell:sassdoc"]
 			}
         }

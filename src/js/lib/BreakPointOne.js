@@ -7,14 +7,18 @@
  * @param {Number}   a_border ブレークポイント幅
  * @param {Function} a_pcFunc PC側に切り替わった際の関数
  * @param {Function} a_spFunc SP側に切り替わった際の関数
+ * @example
+ * var BPO = new BreakPointOne(768,pcFunc,spFunc);  
+ * function pcFunc(){ pcレイアウト切替時の処理 };  
+ * function spFunc(){ spレイアウト切替時の処理 };
  */
 function BreakPointOne(a_border, a_pcFunc, a_spFunc) {
     "use strict";
     var _self = this;
     _self.border = a_border;
     _self.pcCallBack = a_pcFunc || null;
-    _self.spCallBack = a_spFunc || null;
-    _self.init();
+    _self.spCallBack = a_spFunc || null;	
+	_self.init();
 };
 BreakPointOne.prototype = {
 	/**
@@ -38,6 +42,9 @@ BreakPointOne.prototype = {
 	 * @property {Boolean} isSP
      */
 	isSP: false,
+	timer:null,
+	fps:100,
+	resizeEvent:null,
 
     /**
      * 初期化  
@@ -46,17 +53,21 @@ BreakPointOne.prototype = {
      */
     init: function() {
         var _self = this,
-            _win = window;
+            _win = window,
+			_fps = 100;
+		
+		console.log("risize event added");
 
-        //リサイズイベント処理
+		/*eventHandlerを正確に実行するための処理
+		resizeEventに処理を格納してからイベントハンドラを実行しないと、
+		イベントがremoveされない*/
+		_self.resizeEvent = function(){ _self.breakPointCheck();};
+
+        //リサイズイベント処理 addEventListenerの有無でIE8と分岐
         if (_win.addEventListener) {
-            _win.addEventListener("resize", function() {
-                _self.breakPointCheck();
-            });
+			_win.addEventListener("resize",_self.resizeEvent,false);
         } else {
-            _win.attachEvent('on' + "resize", function() {
-                _self.breakPointCheck.call(_win);
-            });
+            _win.attachEvent('on' + "resize",_self.resizeEvent);
         }
     },
 	
@@ -67,12 +78,13 @@ BreakPointOne.prototype = {
     reset: function() {
         var _self = this,
             _win = window;
+		
+		console.log("risize event removed");
+		
         if (_win.removeEventListener)
-            _win.removeEventListener("resize", function() {
-                _self.breakPointCheck();
-            });
+			_win.removeEventListener("resize",_self.resizeEvent,false);
         else
-            _win.detachEvent('on' + "resize", _self.breakPointCheck);
+			_win.detachEvent('on' + "resize", _self.resizeEvent);
     },
 	
     /**
