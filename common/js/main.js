@@ -16,7 +16,9 @@
 		doc = document;
 
 	var PAGE = new PageInfo(),
-		LIB = new Library();
+		LIB = new Library(),
+		BPO = new BreakPointOne(768);
+
 
 	var isMobile = PAGE.isMobile;    //モバイル判定
 
@@ -26,26 +28,26 @@
 		s_pageClass = PAGE.class,  //ページclass
 		s_clickEvt = (isMobile === true) ? "touchend" : "click";
 
-	var $_ancher = (s_pageUA === "webkit") ? $("body"):$("html");
+
 
 	
-
-
 	/*var
 	--------------------------------------------------------------------*/
 	//数値
 	var n_winWidth = LIB.windowWidth(),
-		n_winHeight = LIB.windowHeight(),
-		n_jQueryAnimInterval = (isMobile === true) ? 18 : 14;
-
-	$.fx.interval = n_jQueryAnimInterval;
+		n_winHeight = LIB.windowHeight();
 
 	
 	
 
 	/*contents コンテンツ毎の処理
-	--------------------------------------------------------------------*/
-
+	--------------------------------------------------------------------*/	
+	BPO.spCallBack = function(){
+		console.log("sp");
+	};
+	BPO.pcCallBack = function(){
+		console.log("pc");
+	}
 
 
 

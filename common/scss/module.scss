@@ -236,7 +236,7 @@ div{
 		.sub 	{ display:inline-block; text-align: right; vertical-align: middle;
 			a { margin: 0 0 0 15px;}
 		}
-	}
+	}	
 }
 
 //subclass
@@ -248,7 +248,7 @@ div{
 		.sub { font-size:fa(-5);
 		}
 	}
-	
+	@include maxMedia { background: red !important;}
 }
 //中見出し
 .headSub {@extend .heading; margin-bottom: 1em; font-size:fs(20); font-weight: bold;
@@ -380,11 +380,11 @@ div{
 */
 
 //fluid Img & fluid Block
-.re-fluidObj { @include fluidObj;}
+.re-fluidElm { @include fluidElm;}
 
 //fluid Block
 .re-fluidBlc {
-	img { @include fluidObj;}
+	img { @include fluidElm;}
 }
 .re-fluidBlc-2 { @include fluidBlc;}
 .re-fluidBlc-3 { @include fluidBlc(3);}

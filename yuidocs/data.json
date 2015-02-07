@@ -4,6 +4,15 @@
         "description": "テストテストテストテストテストテスト"
     },
     "files": {
+        "common/js/lib/BreakPointOne.js": {
+            "name": "common/js/lib/BreakPointOne.js",
+            "modules": {},
+            "classes": {
+                "BreakPointOne": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "common/js/lib/FixedAnchor.js": {
             "name": "common/js/lib/FixedAnchor.js",
             "modules": {},
@@ -65,6 +74,36 @@
     },
     "modules": {},
     "classes": {
+        "BreakPointOne": {
+            "name": "BreakPointOne",
+            "shortname": "BreakPointOne",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 1,
+            "description": "ブレークポイントの切り替えを検知する  \n対応数できるポイント数は１つ  \nそれ以上は別クラスを作成して対応する",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "a_border",
+                    "description": "ブレークポイント幅",
+                    "type": "Number"
+                },
+                {
+                    "name": "a_pcFunc",
+                    "description": "PC側に切り替わった際の関数",
+                    "type": "Function"
+                },
+                {
+                    "name": "a_spFunc",
+                    "description": "SP側に切り替わった際の関数",
+                    "type": "Function"
+                }
+            ]
+        },
         "Library": {
             "name": "Library",
             "shortname": "Library",
@@ -153,6 +192,66 @@
         }
     },
     "classitems": [
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 20,
+            "description": "ブレークポイントの境界値",
+            "itemtype": "property",
+            "name": "border",
+            "type": "Number",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 25,
+            "description": "PC側に切り替わった際事項されるコールバック関数",
+            "itemtype": "property",
+            "name": "pcCallBack",
+            "type": "Function",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 30,
+            "description": "SP側に切り替わった際事項されるコールバック関数",
+            "itemtype": "property",
+            "name": "spCallBack",
+            "type": "Function",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 35,
+            "description": "現在のページの状態がPCかSPかを判断する為の正否値  \ntrue:SP　false:PC",
+            "itemtype": "property",
+            "name": "isSP",
+            "type": "Boolean",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 42,
+            "description": "初期化  \nコンストラクタ時にリサイズイベントを設定する",
+            "itemtype": "method",
+            "name": "init",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 63,
+            "description": "リサイズイベントを破棄する",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "common/js/lib/BreakPointOne.js",
+            "line": 78,
+            "description": "リサイズ時にブレークポイントの状態を確認する  \nウィンドウ幅とブレークポイント幅を確認し、  \nPC・SPの切り替わりが判定された場合、設定した関数を実行する",
+            "itemtype": "method",
+            "name": "breakPointCheck",
+            "class": "BreakPointOne"
+        },
         {
             "file": "common/js/lib/FixedAnchor.js",
             "line": 66,

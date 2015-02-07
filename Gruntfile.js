@@ -170,6 +170,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-newer");
 	grunt.loadNpmTasks("grunt-contrib-yuidoc");
+	grunt.loadNpmTasks('grunt-sassdoc');
 	//	grunt.loadNpmTasks("grunt-play");
 	//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
@@ -263,10 +264,23 @@ module.exports = function(grunt){
 				}
 			}
 		},
+		sassdoc:{
+			default:{
+				src:[
+					"common/scss/*.scss",
+					"User/macbookair12/desktop/works/base_format/htdocs/common/scss/partials/*.scss"
+				]
+			}
+		},
 		shell:{
 			styledocco:{
 				command: function () {
 					return ' styledocco --o "common/css/compornents" --preprocessor "scss" common/scss/module.scss';
+				}
+			},
+			sassdoc:{
+				command: function () {
+					return 'sassdoc common/scss -d sassdocs -n "Wonderful Sass"';
 				}
 			}
 		},
@@ -314,14 +328,18 @@ module.exports = function(grunt){
 				],
 				tasks:["yuidoc"]
 			},
-			styleguide:{
+			/*styleguide:{
 				files:["common/scss/module.scss","common/scss/README.md"],
                 tasks:["newer:sass","shell:styledocco"]
+			}*/
+			sassdoc:{
+				files:["common/scss/partials/*.scss"],
+				tasks:["shell:sassdoc"]
 			}
         }
 	});
 
-    //grunt.registerTask("default",["concat","uglify","clean","play"]);
+//    grunt.registerTask("default",["shell:sassdoc"]);
 
 
 };

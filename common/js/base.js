@@ -278,7 +278,10 @@ jQuery.easing.jswing=jQuery.easing.swing; jQuery.extend(jQuery.easing,{def:"ease
 
 	
 	//jquery extend propertys
-	var cssSupport	=	function(PROPERTY){ return typeof $('<div>').css(PROPERTY)==="string";};
+	var cssSupport = function(PROPERTY){ return typeof $('<div>').css(PROPERTY)==="string";},
+		breakPointEvent = function(){
+			
+		}
 
 	$.extend({
 		cssSupport  :	function(a_str){return cssSupport(a_str)}
