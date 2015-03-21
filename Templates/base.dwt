@@ -33,7 +33,7 @@
 <!-- TemplateParam name="ページclass" type="text" value="" -->
 <!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
 <!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
-<!-- TemplateInfo codeOutsideHTMLIsLocked="true" -->
+<!-- TemplateInfo codeOutsideHTMLIsLocked="true" -->　
 </head>
 <body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
 <div id="wrapper"> 

@@ -192,3 +192,11 @@
 .js-acd-head { height: 20px; background: red; }
 
 .js-acd-body { background: blue; }
+
+.js-tabnav { overflow: hidden; }
+.js-tabnav p { width: 100px; height: 100px; overflow: visible; display: block; float: left; margin: 0; background: yellow; }
+.js-tabnav p:hover { background: red; }
+
+.js-tabbody { overflow: hidden; }
+.js-tabbody div { width: 200px; height: 200px; overflow: visible; display: block; display: none; background: green; }
+.js-tabbody div:first-child { display: block; }

@@ -4,8 +4,8 @@
         "description": "テストテストテストテストテストテスト"
     },
     "files": {
-        "common/js/lib/BreakPointOne.js": {
-            "name": "common/js/lib/BreakPointOne.js",
+        "src/js/lib/BreakPointOne.js": {
+            "name": "src/js/lib/BreakPointOne.js",
             "modules": {},
             "classes": {
                 "BreakPointOne": 1
@@ -13,15 +13,15 @@
             "fors": {},
             "namespaces": {}
         },
-        "common/js/lib/FixedAnchor.js": {
-            "name": "common/js/lib/FixedAnchor.js",
+        "src/js/lib/FixedAnchor.js": {
+            "name": "src/js/lib/FixedAnchor.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "common/js/lib/Library.js": {
-            "name": "common/js/lib/Library.js",
+        "src/js/lib/Library.js": {
+            "name": "src/js/lib/Library.js",
             "modules": {},
             "classes": {
                 "Library": 1
@@ -29,8 +29,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "common/js/lib/PageInfo.js": {
-            "name": "common/js/lib/PageInfo.js",
+        "src/js/lib/PageInfo.js": {
+            "name": "src/js/lib/PageInfo.js",
             "modules": {},
             "classes": {
                 "PageInfo": 1
@@ -38,8 +38,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "common/js/lib/ScrollFire.js": {
-            "name": "common/js/lib/ScrollFire.js",
+        "src/js/lib/ScrollFire.js": {
+            "name": "src/js/lib/ScrollFire.js",
             "modules": {},
             "classes": {
                 "ScrollFireDom": 1,
@@ -48,8 +48,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "common/js/develop/Planet.js": {
-            "name": "common/js/develop/Planet.js",
+        "src/js/develop/Planet.js": {
+            "name": "src/js/develop/Planet.js",
             "modules": {},
             "classes": {
                 "Planet": 1
@@ -57,15 +57,15 @@
             "fors": {},
             "namespaces": {}
         },
-        "common/js/develop/perlin-noise-classical.js": {
-            "name": "common/js/develop/perlin-noise-classical.js",
+        "src/js/develop/perlin-noise-classical.js": {
+            "name": "src/js/develop/perlin-noise-classical.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "common/js/develop/perlin-noise-simplex.js": {
-            "name": "common/js/develop/perlin-noise-simplex.js",
+        "src/js/develop/perlin-noise-simplex.js": {
+            "name": "src/js/develop/perlin-noise-simplex.js",
             "modules": {},
             "classes": {},
             "fors": {},
@@ -82,7 +82,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 1,
             "description": "ブレークポイントの切り替えを検知する  \n対応数できるポイント数は１つ  \nそれ以上は別クラスを作成して対応する",
             "is_constructor": 1,
@@ -115,7 +115,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 1,
             "description": "多用する処理をまとめたクラス  \n・単純なアニメーション処理  \n・HTML5対応処理  \n・IE対応",
             "is_constructor": 1,
@@ -131,7 +131,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 1,
             "description": "OS・UA・ページの情報を取得・操作する\n・コンストラクタで情報を取得し、インスタンスの変数から参照する\n・OS・UA・デバイス判定\n・css読み込み・viewport表示変更",
             "is_constructor": 1,
@@ -147,7 +147,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 1,
             "description": "y軸のスクロールに対して、イベントを展開する",
             "is_constructor": 1,
@@ -172,7 +172,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 44,
             "description": "スクロール値を取得しイベントを発火させる",
             "is_constructor": 1
@@ -185,7 +185,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 1,
             "description": "アニメーション・演算処理支援クラス  \n・インタラクティブコンテンツ開発用の色生成、座標取得、絶対値の算出などを行う  \n・インスタンスは即時関数内のローカル変数に格納して使用する  \n・動的な演出に必要な処理は、プライオリティが低くても追加していく",
             "is_constructor": 1,
@@ -196,7 +196,7 @@
     },
     "classitems": [
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 24,
             "description": "ブレークポイントの境界値",
             "itemtype": "property",
@@ -205,7 +205,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 29,
             "description": "PC側に切り替わった際事項されるコールバック関数",
             "itemtype": "property",
@@ -214,7 +214,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 34,
             "description": "SP側に切り替わった際事項されるコールバック関数",
             "itemtype": "property",
@@ -223,7 +223,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 39,
             "description": "現在のページの状態がPCかSPかを判断する為の正否値  \ntrue:SP　false:PC",
             "itemtype": "property",
@@ -232,7 +232,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 49,
             "description": "初期化  \nコンストラクタ時にリサイズイベントを設定する",
             "itemtype": "method",
@@ -240,7 +240,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 74,
             "description": "リサイズイベントを破棄する",
             "itemtype": "method",
@@ -248,7 +248,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/BreakPointOne.js",
+            "file": "src/js/lib/BreakPointOne.js",
             "line": 90,
             "description": "リサイズ時にブレークポイントの状態を確認する  \nウィンドウ幅とブレークポイント幅を確認し、  \nPC・SPの切り替わりが判定された場合、設定した関数を実行する",
             "itemtype": "method",
@@ -256,7 +256,7 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "common/js/lib/FixedAnchor.js",
+            "file": "src/js/lib/FixedAnchor.js",
             "line": 66,
             "description": "jQuery アンカーアニメーション（jQueryオブジェクト）",
             "params": [
@@ -269,7 +269,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 21,
             "description": "初期化　コンストラクタ内で実行",
             "itemtype": "method",
@@ -277,7 +277,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 34,
             "description": "ウィンドウの幅を取得",
             "itemtype": "method",
@@ -289,7 +289,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 46,
             "description": "ウィンドウの高さを取得",
             "itemtype": "method",
@@ -301,7 +301,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 58,
             "description": "jQuery アンカーアニメーション",
             "itemtype": "method",
@@ -321,7 +321,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 77,
             "description": "jQuery アコーディオン",
             "itemtype": "method",
@@ -349,7 +349,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 117,
             "description": "IE8以下 jQuery HTML5_placeholder対応",
             "itemtype": "method",
@@ -357,7 +357,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 156,
             "description": "IE8,7で透過処理を個別に対応",
             "itemtype": "method",
@@ -372,7 +372,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 169,
             "description": "IE8,7で透過処理を入れ子に対応",
             "itemtype": "method",
@@ -387,7 +387,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/Library.js",
+            "file": "src/js/lib/Library.js",
             "line": 189,
             "description": "年数表記を自動で現在の値に書き換える",
             "itemtype": "method",
@@ -405,7 +405,7 @@
             "class": "Library"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 18,
             "description": "閲覧環境：OS",
             "itemtype": "property",
@@ -414,7 +414,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 23,
             "description": "閲覧環境：ユーザーエージェント",
             "itemtype": "property",
@@ -423,7 +423,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 28,
             "description": "閲覧環境：ieのバージョン",
             "itemtype": "property",
@@ -432,7 +432,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 33,
             "description": "閲覧環境：Flashプレーヤー判定\nFlashプレーヤーの有無を確認",
             "itemtype": "property",
@@ -441,7 +441,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 39,
             "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
             "itemtype": "property",
@@ -450,7 +450,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 45,
             "description": "閲覧環境：デバイスの種類",
             "itemtype": "property",
@@ -459,7 +459,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 50,
             "description": "ページ情報：閲覧しているページのbody要素のid\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
@@ -468,7 +468,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 56,
             "description": "ページ情報：閲覧しているページのbody要素のclass\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
@@ -477,7 +477,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 62,
             "description": "ページ情報：URL内のクエリの有無",
             "itemtype": "property",
@@ -486,7 +486,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 67,
             "description": "ページ情報：URL内のクエリの内容",
             "itemtype": "property",
@@ -495,7 +495,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 74,
             "description": "IDの取得（IEの場合はwrapperにIE追加）",
             "itemtype": "method",
@@ -503,7 +503,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 87,
             "description": "OSチェック",
             "itemtype": "method",
@@ -511,7 +511,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 96,
             "description": "UserAgentチェック",
             "itemtype": "method",
@@ -519,7 +519,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 134,
             "description": "PC・モバイル　デバイス・UAチェック",
             "itemtype": "method",
@@ -527,7 +527,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 156,
             "description": "Flashプレーヤーの有無をチェック",
             "itemtype": "method",
@@ -535,7 +535,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 175,
             "description": "クエリチェック",
             "itemtype": "method",
@@ -543,7 +543,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 187,
             "description": "PC用css記述",
             "itemtype": "method",
@@ -558,7 +558,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 202,
             "description": "モバイル用css記述",
             "itemtype": "method",
@@ -573,7 +573,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/PageInfo.js",
+            "file": "src/js/lib/PageInfo.js",
             "line": 217,
             "description": "viewport記述",
             "itemtype": "method",
@@ -588,7 +588,7 @@
             "class": "PageInfo"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 24,
             "description": "y座標とスクロール値を比較してイベント発火",
             "params": [
@@ -601,7 +601,7 @@
             "class": "ScrollFireDom"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 55,
             "description": "現在のスクロール値",
             "itemtype": "property",
@@ -610,7 +610,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 60,
             "description": "イベント格納用配列  \nScrollFireDomから引き渡される関数を格納する",
             "itemtype": "property",
@@ -619,7 +619,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 67,
             "description": "初期化",
             "itemtype": "method",
@@ -627,7 +627,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 76,
             "description": "イベントをインスタンスにセットする",
             "itemtype": "method",
@@ -647,7 +647,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 87,
             "description": "ScrollFireDomオブジェクトの回転処理  \nスクロール値と各オブジェクトのイベント開始値を照合し、切り替え用の関数を実行",
             "itemtype": "method",
@@ -655,7 +655,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 103,
             "description": "スクロール値の取得",
             "itemtype": "method",
@@ -667,7 +667,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/lib/ScrollFire.js",
+            "file": "src/js/lib/ScrollFire.js",
             "line": 114,
             "description": "イベントを解除する",
             "params": [
@@ -680,7 +680,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 14,
             "description": "色生成：シード値を与えてRGB値を返す",
             "itemtype": "method",
@@ -704,7 +704,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 30,
             "description": "色生成：シード値を与えてRGB値を返す",
             "itemtype": "method",
@@ -738,7 +738,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 47,
             "description": "色生成：シード値を与えてRGBA値を返す",
             "itemtype": "method",
@@ -767,7 +767,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 65,
             "description": "色生成：シード値を与えてランダムなHEX値を返す",
             "itemtype": "method",
@@ -786,7 +786,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 78,
             "description": "演算：差の絶対値を計算する",
             "itemtype": "method",
@@ -805,7 +805,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 89,
             "description": "座標取得：ポイント01とポイント02の２点間の距離算出する",
             "itemtype": "method",
@@ -829,7 +829,7 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/Planet.js",
+            "file": "src/js/develop/Planet.js",
             "line": 107,
             "description": "座標取得：マウスポインタ座標取得",
             "itemtype": "method",
@@ -848,13 +848,13 @@
             "class": "Planet"
         },
         {
-            "file": "common/js/develop/perlin-noise-classical.js",
+            "file": "src/js/develop/perlin-noise-classical.js",
             "line": 7,
             "description": "You can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
             "class": ""
         },
         {
-            "file": "common/js/develop/perlin-noise-simplex.js",
+            "file": "src/js/develop/perlin-noise-simplex.js",
             "line": 7,
             "description": "You can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
             "class": ""
@@ -863,35 +863,35 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " common/js/lib/Library.js:34"
+            "line": " src/js/lib/Library.js:34"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " common/js/lib/Library.js:46"
+            "line": " src/js/lib/Library.js:46"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " common/js/lib/ScrollFire.js:103"
+            "line": " src/js/lib/ScrollFire.js:103"
         },
         {
             "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
-            "line": " common/js/lib/FixedAnchor.js:66"
+            "line": " src/js/lib/FixedAnchor.js:66"
         },
         {
             "message": "Missing item type\ny座標とスクロール値を比較してイベント発火",
-            "line": " common/js/lib/ScrollFire.js:24"
+            "line": " src/js/lib/ScrollFire.js:24"
         },
         {
             "message": "Missing item type\nイベントを解除する",
-            "line": " common/js/lib/ScrollFire.js:114"
+            "line": " src/js/lib/ScrollFire.js:114"
         },
         {
             "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
-            "line": " common/js/develop/perlin-noise-classical.js:7"
+            "line": " src/js/develop/perlin-noise-classical.js:7"
         },
         {
             "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",
-            "line": " common/js/develop/perlin-noise-simplex.js:7"
+            "line": " src/js/develop/perlin-noise-simplex.js:7"
         }
     ]
 }

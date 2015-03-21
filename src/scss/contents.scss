@@ -40,3 +40,14 @@
 .js-acd { width: 200px;}
 .js-acd-head { height: 20px; background: red;}
 .js-acd-body { background: blue;}
+
+.js-tabnav { overflow:hidden;
+	p {	@include wh(100,100); float: left; margin:0; background:yellow;
+		&:hover { background:red;}
+	}
+}
+.js-tabbody { overflow:hidden;
+	div { @include wh(200,200); display:none; background:green;
+		&:first-child { display:block;}
+	}
+}
