@@ -28,26 +28,47 @@
 
 /*トップページ：index.html
 --------------------------------------------------------------------*/
-#top	{ background:white;}
-
-#test{
-
-	li { @include wh(100,100); background: red;
-		&:hover { background: blue;}
-	}
+#jsTest{
+	#header 	{ display: none;}
+	#contents	{ padding-bottom:80px;}
+	#footer 	{ display: none;}
 }
 
-.js-acd { width: 200px;}
-.js-acd-head { height: 20px; background: red;}
-.js-acd-body { background: blue;}
+.jsTest{ padding: 20px 40px;
+	@at-root{
+		#{&}__blc 		{ margin: 0 20px 50px 40px;
+			& + .jsTest__blc { margin-top: 100px;}
+		}
+		#{&}__head 		{ margin: 0 0 60px; font-size: 30px;}
+		#{&}__subhead 	{ margin: 0 0 30px; padding: 0 0 0 15px; position: relative; font-size: 20px;
+			&:before { content:" "; @include wh(5,80%); @include top-left(10%,0); background:#333; border-radius: 5px; box-shadow:3px 3px 0 yellow;}
+		}
+		#{&}__minHead 	{ font-weight: bold;}
 
-.js-tabnav { overflow:hidden;
-	p {	@include wh(100,100); float: left; margin:0; background:yellow;
-		&:hover { background:red;}
-	}
-}
-.js-tabbody { overflow:hidden;
-	div { @include wh(200,200); display:none; background:green;
-		&:first-child { display:block;}
-	}
+		//リスト
+		#{&}__list 	 	{ margin: 0 0 20px; line-height: 1.8; list-style: disc inside;}
+		
+		//サンプルエリア
+		#{&}__example 	{ overflow: hidden; margin:30px 0 0; padding: 30px 0 0; border-top: 1px dotted #ccc;
+			& + .jsTest__example { padding: 0; border: none;}
+			@at-root{
+				#{&}__head 		{ margin: 0 0 10px; padding: 0 0 0 12px; position: relative; font-weight: bold;
+					&:before { content: " "; @include wh(5,5); margin: -3px 0 0; @include top-left(50%,0); background:#333; box-shadow:2px 2px 0 yellow; border-radius: 5px;}
+				}
+				#{&}__code 		{ width: 50%; float: left; text-shadow: 0 0 0.2px #ccc; font-size: 12px;
+					.hljs 		{ line-height: 1.8;}
+				}
+				#{&}__blc { width: 50%; min-height:150px; float: left; position: relative; padding: 10px; background:#f5f5f5; box-sizing: border-box;}
+								
+				.square	{ @include wh(100,100); background:black; @include center;
+					&:hover {background:#6a6a6a;}
+				}
+				.square__link { @include wh(30,30); background:yellow; @include center;;}
+				.btn { padding:5px 5px 5px 3px; line-height: 1; @include top-left(20,20); background: black; color: white; cursor: pointer; border: 1px solid #ddd;
+					&:hover { background:yellow; color: black;}
+				}
+
+			}
+		}
+	}	
 }

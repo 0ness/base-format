@@ -3,17 +3,15 @@
  * ・コンストラクタで情報を取得し、インスタンスの変数から参照する
  * ・OS・UA・デバイス判定
  * ・css読み込み・viewport表示変更
- * @class PageInfo
+ * @class UserInfo
  * @constructor
- * @example var obj = new PageInfo();
+ * @example var obj = new UserInfo();
  * if(obj.isMobile === true) return false;
  */
-function PageInfo() {
-    var _t = this;
-    _t.checkUA();
-    _t.checkDevice();
+function UserInfo() {
+	"use strict";
 };
-PageInfo.prototype = {
+UserInfo.prototype = {
 
     /**
      * 閲覧環境：OS
@@ -76,12 +74,12 @@ PageInfo.prototype = {
      * @method getID
      */
     getID: function() {
-        var _t = this,
+        var _self = this,
             _bodys = document.getElementsByTagName("body")[0],
-            _classStr = _t.UA;
+            _classStr = _self.UA;
 
-        _t.id = _bodys.getAttribute('id');
-        _t.className = _bodys.className;
+        _self.id = _bodys.getAttribute('id');
+        _self.className = _bodys.className;
     },
 
     /** 
@@ -98,7 +96,7 @@ PageInfo.prototype = {
      * @method checkUA
      */
     checkUA: function() {
-        var _t = this,
+        var _self = this,
             _d = document,
             _UA = "",
             _UAver = "",
@@ -127,8 +125,8 @@ PageInfo.prototype = {
         if (_d.documentMode === 8) _d.getElementById("wrapper").className = "ie8";
 
         //値をプロパティに帰属させる
-        _t.UA = _UA;
-        _t.IEver = _UAver;
+        _self.UA = _UA;
+        _self.IEver = _UAver;
     },
 
     /**
@@ -136,7 +134,7 @@ PageInfo.prototype = {
      * @method checkDevice
      */
     checkDevice: function() {
-        var _t = this,
+        var _self = this,
             _device = "pc",
             _deviceUA = navigator.userAgent,
             _isMobile = false;
@@ -149,8 +147,8 @@ PageInfo.prototype = {
             _device = "sp";
         };
 
-        _t.device = _device;
-        _t.isMobile = _isMobile;
+        _self.device = _device;
+        _self.isMobile = _isMobile;
     },
 
     /**
@@ -158,7 +156,7 @@ PageInfo.prototype = {
      * @method checkFlash
      */
     checkFlash: function() {
-        var isFlashInstalled = function() {
+        var _isFlashInstalled = function() {
             if (navigator.plugins["Shockwave Flash"]) {
                 return true;
             }
@@ -169,7 +167,7 @@ PageInfo.prototype = {
                 return false;
             }
         }();
-        return isFlashInstalled && !$.device("android") ? true : false;
+		return _isFlashInstalled && !$.device("android") ? true : false;
     },
 
     /**
@@ -177,54 +175,10 @@ PageInfo.prototype = {
      * @method checkURLQuery
      */
     checkURLQuery: function() {
-        var _t = this,
+        var _self = this,
             _queryLen = location.search;
         if (_queryLen.length === 0) return false;
-        _t.hasQuery = true;
-        _t.urlQuery = _queryLen.substr(1).split("&").toString();
-    },
-
-    /**
-     * PC用css記述
-     * @method setPcCSS
-     * @param   {String} _path cssファイルのパス
-     */
-    setPcCSS: function(_path) {
-        if (this.isMobile === true) return false;
-        var _doc = document,
-            _link = _doc.createElement('link');
-        _link.href = _path;
-        _link.type = 'text/css';
-        _link.rel = 'stylesheet';
-        _doc.getElementsByTagName('head').item(0).appendChild(_link);
-    },
-
-    /**
-     * モバイル用css記述
-     * @method setMobileCSS
-     * @param   {String}  _path cssファイルのパス
-     */
-    setMobileCSS: function(_path) {
-        if (this.isMobile === false) return false;
-        var _doc = document,
-            _link = _doc.createElement('link');
-        _link.href = _path;
-        _link.type = 'text/css';
-        _link.rel = 'stylesheet';
-        _doc.getElementsByTagName('head').item(0).appendChild(_link);
-    },
-
-    /**
-     * viewport記述
-     * @method setViewPort
-     * @param {Number} _width ビューポートの指定値
-     */
-    setViewPort: function(_width) {
-        var _doc = document,
-            _property = (this.isMobile === true) ? 'width=device-width' : 'width=' + _width + 'px',
-            _meta = _doc.createElement('meta');
-        _meta.setAttribute('name', 'viewport');
-        _meta.setAttribute('content', _property);
-        _doc.getElementsByTagName('head')[0].appendChild(_meta);
+        _self.hasQuery = true;
+        _self.urlQuery = _queryLen.substr(1).split("&").toString();
     }
 }

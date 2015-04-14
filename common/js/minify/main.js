@@ -1,0 +1,1 @@
+!function(a,b){"use strict";var c=(new UserInfo,new Library),d=(c.windowWidth(),c.windowHeight(),function(){}),e=d.prototype;e.INIT=function(){},a.INDEX=d}(window,document);var Index=new INDEX;window.addEventListener?window.addEventListener("load",function(){Index.INIT()}):window.attachEvent("onload",function(){Index.INIT()});

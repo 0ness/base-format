@@ -1,163 +1,3 @@
-
-//マルチタスクの登録
-//module.exports = function(grunt){
-//
-//    /*grunt.initConfig({
-//        タスク１：{
-//            ターゲット1：データ1,
-//            ターゲット2：データ2,
-//            ターゲット3：データ3,
-//            ....,
-//        },
-//        タスク２:{
-//        },
-//        ....,
-//    })
-//    マルチタスクはinitConfigのデータを元に処理を行う
-//    registerMultiTask関数と紐付いているため関数と同じ名前を持つ
-//    各タスクに2つ以上値がある場合、それぞれに処理が走る*/
-//    grunt.initConfig({
-//        mygreattask:{
-//            target1:"so great",
-//            target2:"very great"
-//        },
-//        mycooltask:{
-//            target1:"so cool",
-//            target2:"very cool"
-//        }
-//    });
-//
-//    /*grunt.registerMultiTask
-//    registerTaskと基本的な記述は同じ、this.targetとthis.dataが利用できる*/
-//    grunt.registerMultiTask("mygreattask","マルチタスクのテスト_01",function(){
-//        grunt.log.writeln("target: "+this.target);
-//        grunt.log.writeln("data: "+this.data);
-//    });
-//
-//    grunt.registerMultiTask("mycooltask","マルチタスクのテスト_02",function(){
-//
-//        /*async()
-//        実行した際、そのタスクは非同期であることをgrunt側が判断する
-//        完了時に関数を返し、その関数の実行によってタスク完了をgurnt側が判断する
-//        引数にfalseを入れるとタスクの失敗を連絡できる*/
-//        var done = this.async();
-//        var self = this;
-//        setTimeout(function(){
-//            grunt.log.writeln("target: "+self.target);
-//            grunt.log.writeln("data: "+self.data);
-//            done();
-//        },1000);
-//    });
-//
-//    grunt.registerTask("default",["mygreattask","mycooltask"]);
-//
-//}
-
-
-//タスクの外部ファイル化
-//module.exports = function(grunt){
-//
-//    /*grunt.task.loadTasks（ディレクトリ）
-//    ディレクトリ内のファイルを読み込む*/
-//    grunt.task.loadTasks("mytasks");
-//
-//    grunt.initConfig({
-//        mygreattask:{
-//            target1:"so great",
-//            target2:"very great"
-//        },
-//        mycooltask:{
-//            target1:"so cool",
-//            target2:"very cool"
-//        }
-//    });
-//
-//    grunt.registerTask("default",["mygreattask","mycooltask"]);
-//
-//};
-
-
-//Gruntプラグインの導入（uglifyの場合）
-//module.exports = function(grunt){
-//
-//    /*grunt.loadNpmTask(インストールするプラグイン名)
-//    gruntにプラグインをインストールする*/
-//    grunt.loadNpmTasks("grunt-contrib-uglify");
-//
-//    //uglifyの設定を追加
-//    grunt.initConfig({
-//        uglify:{
-//            /*options
-//            プラグインそれぞれのオプション機能*/
-//            options:{
-//                banner:"/* uglifyプラグインのオプションテスト */"
-//            },
-//            foo:{
-//                src:"common/js/main.js",
-//                dest:"common/js/minify/main.min.js"
-//            },
-//            bar:{
-//                src:"common/js/pageInfo.js",
-//                dest:"common/js/minify/pageInfo.min.js"
-//            }
-//        }
-//    });
-//
-//    //処理を実行
-//    grunt.registerTask("default",["uglify"]);
-//}
-
-
-//Gruntプラグインの導入（concatの場合）
-//module.exports = function(grunt){
-//
-//    grunt.loadNpmTasks("grunt-contrib-concat");
-//
-//    grunt.initConfig({
-//        //concatの設定を追加
-//        concat:{
-//            js:{
-//                src:[
-//                    "common/js/pageInfo.js",
-//                    "common/js/jquery/jquery.js",
-//                    "common/js/jquery/easing.js"
-//                ],
-//                dest:"common/js/test.js"
-//            }
-//        }
-//    });
-//
-//    grunt.registerTask("default",["concat"]);
-//}
-
-
-//Gruntプラグインの導入（watchの場合）
-//module.exports = function(grunt){
-//
-//    grunt.loadNpmTasks("grunt-contrib-uglify");
-//    grunt.loadNpmTasks("grunt-contrib-watch");
-//
-//    grunt.initConfig({
-//        uglify:{
-//            test:{
-//                src:"common/js/main.js",
-//                dest:"common/js/minify/main.min.js"
-//            }
-//        },
-//        watch:{
-//            js:{
-//                files:"<%= uglify.test.src %>",
-//                tasks:["uglify"]
-//            }
-//        }
-//    });
-//
-//    grunt.registerTask("default",["uglify"]);
-//
-//}
-
-
-//Gruntプラグインの導入（watchの場合）
 module.exports = function(grunt){
 
 	grunt.loadNpmTasks("grunt-contrib-concat");
@@ -168,11 +8,8 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-autoprefixer");
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks("grunt-remove-logging");
-	grunt.loadNpmTasks("grunt-newer");
 	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	grunt.loadNpmTasks('grunt-sassdoc');
-	//	grunt.loadNpmTasks("grunt-play");
-	//	grunt.loadNpmTasks("grunt-utf8tosjis" );
 
 	var BROWSERS = [
 					'ie >= 8',
@@ -192,39 +29,53 @@ module.exports = function(grunt){
         concat:{
             baseJS:{
                 src:[
-                    "src/js/lib/pageInfo.js",
                     "src/js/jquery/jquery.js",
                     "src/js/jquery/easing.js",
-                    "src/js/jquery/module.js",
-                    "src/js/lib/library.js",
 					"src/js/ie/selectivizr.js"
                 ],
                 dest:"src/js/base.js"
-            }
-        },
-		uglify:{
-			baseJS:{
-				src:"src/js/base.js",
-				dest:"common/js/base.js"
+            },
+			moduleJS:{
+				src:[
+					"src/js/module/jquery.module.js",
+					"src/js/module/UserInfo.js",
+					"src/js/module/Library.js"
+				],
+				dest:"common/js/module.js"
 			},
 			mainJS:{
 				src:"src/js/main.js",
 				dest:"common/js/main.js"
 			}
+        },
+		uglify:{
+			baseJS:{
+				src:"src/js/base.js",
+				dest:"common/js/minify/base.js"
+			},
+			moduleJS:{
+				src:"common/js/module.js",
+				dest:"common/js/minify/module.js"
+			},
+			mainJS:{
+				src:"src/js/main.js",
+				dest:"common/js/minify/main.js"
+			}
 		},
 		removelogging:{
 			baseJS:{
-				src: "common/js/base.js",
-				dest:"common/js/base.js"
+				src: "common/js/minify/base.js",
+				dest:"common/js/minify/base.js"
 			},
-            mainJS:{
-                src: "common/js/main.js",
-                dest:"common/js/main.js"
+			moduleJS:{
+				src:"common/js/minify/module.js",
+				dest:"common/js/minify/module.js"
+			},
+			mainJS:{
+				src: "common/js/minify/main.js",
+				dest:"common/js/minify/main.js"
             }
 		},
-		clean:{
-            js:"<%= concat.baseJS.dest %>"
-        },
 		sass:{
 			options:{
 				style: 'compact'
@@ -240,7 +91,6 @@ module.exports = function(grunt){
 		autoprefixer:{
 			options:{
 				browsers:BROWSERS
-//				cascade:true
 			},
 			file:{
 				expand: true,
@@ -291,7 +141,7 @@ module.exports = function(grunt){
 				options: {
 					//出力パスの指定(今回はGruntfile.jsと同階層に出力するよう指定)
 					paths:[
-						'src/js/lib/',
+						'src/js/module/',
 						'src/js/develop/'
 					],
 					//YUIDocファイルを出力するディレクトリ名を記述
@@ -301,36 +151,38 @@ module.exports = function(grunt){
 			}
 		},
         watch:{
-            js:{
-                files:[
-                    "src/js/*.js",
-                    "src/js/lib/*.js",
-                    "src/js/jquery/*.js",
-                    "src/js/ie/*.js"
-                ],
-                tasks:["concat","removelogging","uglify"/*,"clean",*//*"utf8tosjis"*/]
-            },
+			options: {
+				spawn: false
+			},
+			JS_base:{
+				files:[
+					"src/js/ie/*.js",
+					"src/js/jquery/*.js"
+				],
+				tasks:["concat:baseJS","uglify:baseJS","removelogging:baseJS"]
+			},
+			JS_module:{
+				files:"src/js/module/*.js",
+				tasks:["concat:moduleJS","uglify:moduleJS","removelogging:moduleJS"]
+			},
+			JS_main:{
+				files:"src/js/main.js",
+				tasks:["concat:mainJS","uglify:mainJS","removelogging:mainJS"]
+			},
 			sass:{
 				files:["src/scss/*.scss","src/scss/partials/*.scss"],
-				tasks:["sass"]
-			},
-			css:{
-				options: {
-					spawn: false
-				},
-				files:"<%= autoprefixer.file.src %>",
-                tasks:["autoprefixer"]
+				tasks:["sass","autoprefixer:file"]
 			},
 			yuidoc:{
 				files:[
-					"src/js/lib/*.js",
+					"src/js/module/*.js",
 					"src/js/develop/*.js"
 				],
 				tasks:["yuidoc"]
 			},
 			/*styleguide:{
 				files:["common/scss/module.scss","common/scss/README.md"],
-                tasks:["newer:sass","shell:styledocco"]
+                tasks:["sass","shell:styledocco"]
 			}*/
 			sassdoc:{
 				files:["src/scss/partials/*.scss"],
@@ -338,9 +190,5 @@ module.exports = function(grunt){
 			}
         }
 	});
-
-//    grunt.registerTask("default",["shell:sassdoc"]);
-
-
 };
 

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 //
 //記述はレイアウトの構造優先
 //-----------------------------
@@ -20,7 +19,7 @@
 @import "partials/_mixin";
 @import "partials/_function";
 @import "partials/_reset";
-
+@import "partials/_font";
 
 
 
@@ -88,8 +87,6 @@ body > #wrapper { height:auto;}
 #main	{}
 
 
-//サブコンテンツ大枠
-#sub {}
 
 
 

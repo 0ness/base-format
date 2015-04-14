@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 /*============================================================
 RESET用スタイル　
 ============================================================*/
@@ -26,6 +24,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -57,36 +56,10 @@ table {
 /*============================================================
 FONT用スタイル　
 ============================================================*/
-//YUI 3.10.1 (build 8bc088e)
-/*
-[77% = 10px]
-[85% = 11px]
-[93% = 12px] 
-[100% = 13px]
-[108% = 14px] 
-[116% = 15px] 
-[123.1% = 16px]
-[131% = 17px] 
-[138.5% = 18px] 
-[146.5% = 19px]
-[153.9% = 20px]
-[161.6% = 21px]
-[167% = 22px]
-[174% = 23px]
-[182% = 24px]
-[189% = 25px]
-[197% = 26px]
-*/
 html { font-size: 62.5%;}
 body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$fontGothic;}
-select,
-input,
-button,
-textarea { font: 99% arial, helvetica, clean, sans-serif }
+body.webfont { font-family:'Noto Sans Japanese',$fontGothic; font-weight:100;}
+
+select,input,button,textarea { font: 99% arial, helvetica, clean, sans-serif }
 table { font-size: inherit; font: 100% }
-pre,
-code,
-kbd,
-samp,
-tt { font-family: monospace; *font-size:108%;
-line-height: 100% }
+pre,code,kbd,samp,tt { font-family: monospace; *font-size:108%;line-height: 100% }

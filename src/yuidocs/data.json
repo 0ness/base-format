@@ -4,24 +4,25 @@
         "description": "テストテストテストテストテストテスト"
     },
     "files": {
-        "src/js/lib/BreakPointOne.js": {
-            "name": "src/js/lib/BreakPointOne.js",
+        "src/js/module/BreakPointOne.js": {
+            "name": "src/js/module/BreakPointOne.js",
             "modules": {},
             "classes": {
+                "BreakEvent": 1,
                 "BreakPointOne": 1
             },
             "fors": {},
             "namespaces": {}
         },
-        "src/js/lib/FixedAnchor.js": {
-            "name": "src/js/lib/FixedAnchor.js",
+        "src/js/module/FixedAnchor.js": {
+            "name": "src/js/module/FixedAnchor.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "src/js/lib/Library.js": {
-            "name": "src/js/lib/Library.js",
+        "src/js/module/Library.js": {
+            "name": "src/js/module/Library.js",
             "modules": {},
             "classes": {
                 "Library": 1
@@ -29,22 +30,29 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/js/lib/PageInfo.js": {
-            "name": "src/js/lib/PageInfo.js",
-            "modules": {},
-            "classes": {
-                "PageInfo": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/js/lib/ScrollFire.js": {
-            "name": "src/js/lib/ScrollFire.js",
+        "src/js/module/ScrollFire.js": {
+            "name": "src/js/module/ScrollFire.js",
             "modules": {},
             "classes": {
                 "ScrollFireDom": 1,
                 "ScrollFire": 1
             },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/module/UserInfo.js": {
+            "name": "src/js/module/UserInfo.js",
+            "modules": {},
+            "classes": {
+                "UserInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/module/jquery.module.js": {
+            "name": "src/js/module/jquery.module.js",
+            "modules": {},
+            "classes": {},
             "fors": {},
             "namespaces": {}
         },
@@ -74,6 +82,31 @@
     },
     "modules": {},
     "classes": {
+        "BreakEvent": {
+            "name": "BreakEvent",
+            "shortname": "BreakEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 5,
+            "description": "ブレークポイントの切替時に発火するイベント用クラス  \nPC用・SP用の関数を所持している",
+            "constracutor": "",
+            "params": [
+                {
+                    "name": "a_pcfunc",
+                    "description": "PCレイアウト切替時に実行する関数",
+                    "type": "Function"
+                },
+                {
+                    "name": "a_spfunc",
+                    "description": "SPレイアウト切替時に実行する関数",
+                    "type": "Function"
+                }
+            ]
+        },
         "BreakPointOne": {
             "name": "BreakPointOne",
             "shortname": "BreakPointOne",
@@ -82,8 +115,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 1,
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 27,
             "description": "ブレークポイントの切り替えを検知する  \n対応数できるポイント数は１つ  \nそれ以上は別クラスを作成して対応する",
             "is_constructor": 1,
             "params": [
@@ -115,28 +148,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/js/lib/Library.js",
-            "line": 1,
+            "file": "src/js/module/Library.js",
+            "line": 4,
             "description": "多用する処理をまとめたクラス  \n・単純なアニメーション処理  \n・HTML5対応処理  \n・IE対応",
             "is_constructor": 1,
             "example": [
                 " var obj = new Library();  \nobj.anchor(\"#header\"); //アンカーリンク処理"
-            ]
-        },
-        "PageInfo": {
-            "name": "PageInfo",
-            "shortname": "PageInfo",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "src/js/lib/PageInfo.js",
-            "line": 1,
-            "description": "OS・UA・ページの情報を取得・操作する\n・コンストラクタで情報を取得し、インスタンスの変数から参照する\n・OS・UA・デバイス判定\n・css読み込み・viewport表示変更",
-            "is_constructor": 1,
-            "example": [
-                " var obj = new PageInfo();\nif(obj.isMobile === true) return false;"
             ]
         },
         "ScrollFireDom": {
@@ -147,7 +164,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 1,
             "description": "y軸のスクロールに対して、イベントを展開する",
             "is_constructor": 1,
@@ -172,10 +189,26 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 44,
             "description": "スクロール値を取得しイベントを発火させる",
             "is_constructor": 1
+        },
+        "UserInfo": {
+            "name": "UserInfo",
+            "shortname": "UserInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/js/module/UserInfo.js",
+            "line": 1,
+            "description": "OS・UA・ページの情報を取得・操作する\n・コンストラクタで情報を取得し、インスタンスの変数から参照する\n・OS・UA・デバイス判定\n・css読み込み・viewport表示変更",
+            "is_constructor": 1,
+            "example": [
+                " var obj = new UserInfo();\nif(obj.isMobile === true) return false;"
+            ]
         },
         "Planet": {
             "name": "Planet",
@@ -186,7 +219,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/js/develop/Planet.js",
-            "line": 1,
+            "line": 5,
             "description": "アニメーション・演算処理支援クラス  \n・インタラクティブコンテンツ開発用の色生成、座標取得、絶対値の算出などを行う  \n・インスタンスは即時関数内のローカル変数に格納して使用する  \n・動的な演出に必要な処理は、プライオリティが低くても追加していく",
             "is_constructor": 1,
             "example": [
@@ -196,8 +229,8 @@
     },
     "classitems": [
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 24,
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 48,
             "description": "ブレークポイントの境界値",
             "itemtype": "property",
             "name": "border",
@@ -205,58 +238,115 @@
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 29,
-            "description": "PC側に切り替わった際事項されるコールバック関数",
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 53,
+            "description": "ブレークポイント切替時の関数用オブジェクトを格納する",
             "itemtype": "property",
-            "name": "pcCallBack",
-            "type": "Function",
+            "name": "functions",
+            "type": "Array",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 34,
-            "description": "SP側に切り替わった際事項されるコールバック関数",
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 58,
+            "description": "関数の総数",
             "itemtype": "property",
-            "name": "spCallBack",
-            "type": "Function",
+            "name": "funcLengh",
+            "type": "Number",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 39,
-            "description": "現在のページの状態がPCかSPかを判断する為の正否値  \ntrue:SP　false:PC",
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 63,
+            "description": "現在のページの状態がPCかSPかを判断する為の正否値",
             "itemtype": "property",
             "name": "isSP",
             "type": "Boolean",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 49,
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 68,
+            "description": "閲覧中のブラウザがIE8かを判断する為の正否値",
+            "itemtype": "property",
+            "name": "isIE8",
+            "type": "Boolean",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 73,
+            "description": "リサイズ関数をremoveするための関数ラッパー",
+            "itemtype": "property",
+            "name": "resizeEvent",
+            "type": "Function",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 78,
+            "description": "レイアウトを分岐させる為のクラスを追加するhtml要素",
+            "itemtype": "property",
+            "name": "wrappers",
+            "type": "Object",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 84,
             "description": "初期化  \nコンストラクタ時にリサイズイベントを設定する",
             "itemtype": "method",
             "name": "init",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 74,
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 116,
             "description": "リサイズイベントを破棄する",
             "itemtype": "method",
             "name": "reset",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/BreakPointOne.js",
-            "line": 90,
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 130,
             "description": "リサイズ時にブレークポイントの状態を確認する  \nウィンドウ幅とブレークポイント幅を確認し、  \nPC・SPの切り替わりが判定された場合、設定した関数を実行する",
             "itemtype": "method",
             "name": "breakPointCheck",
             "class": "BreakPointOne"
         },
         {
-            "file": "src/js/lib/FixedAnchor.js",
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 157,
+            "description": "各デバイス毎の関数を指定",
+            "params": [
+                {
+                    "name": "a_pc",
+                    "description": "PC用関数",
+                    "type": "Function"
+                },
+                {
+                    "name": "a_sp",
+                    "description": "SP用関数",
+                    "type": "Function"
+                }
+            ],
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 179,
+            "description": "登録したPC用関数を呼び出す",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/BreakPointOne.js",
+            "line": 190,
+            "description": "登録したSP用関数を呼び出す",
+            "class": "BreakPointOne"
+        },
+        {
+            "file": "src/js/module/FixedAnchor.js",
             "line": 66,
             "description": "jQuery アンカーアニメーション（jQueryオブジェクト）",
             "params": [
@@ -269,19 +359,11 @@
             "class": "Library"
         },
         {
-            "file": "src/js/lib/Library.js",
-            "line": 21,
-            "description": "初期化　コンストラクタ内で実行",
-            "itemtype": "method",
-            "name": "init",
-            "class": "Library"
-        },
-        {
-            "file": "src/js/lib/Library.js",
-            "line": 34,
+            "file": "src/js/module/Library.js",
+            "line": 23,
             "description": "ウィンドウの幅を取得",
             "itemtype": "method",
-            "name": "windowWidth",
+            "name": "getWindowWidth",
             "return": {
                 "description": "ウィンドウ幅",
                 "type": "Number"
@@ -289,11 +371,11 @@
             "class": "Library"
         },
         {
-            "file": "src/js/lib/Library.js",
-            "line": 46,
+            "file": "src/js/module/Library.js",
+            "line": 34,
             "description": "ウィンドウの高さを取得",
             "itemtype": "method",
-            "name": "windowHeight",
+            "name": "getWindowHeight",
             "return": {
                 "description": "ウィンドウ高",
                 "type": "Number"
@@ -301,94 +383,72 @@
             "class": "Library"
         },
         {
-            "file": "src/js/lib/Library.js",
-            "line": 58,
-            "description": "jQuery アンカーアニメーション",
+            "file": "src/js/module/Library.js",
+            "line": 45,
+            "description": "ウィンドウの高さを取得",
             "itemtype": "method",
-            "name": "anchor",
+            "name": "getScrollTop",
+            "return": {
+                "description": "スクロール位置",
+                "type": "Number"
+            },
+            "class": "Library"
+        },
+        {
+            "file": "src/js/module/Library.js",
+            "line": 56,
+            "description": "指定DOMのclassを追加",
+            "itemtype": "method",
+            "name": "addClass",
             "params": [
                 {
-                    "name": "URL",
+                    "name": "DOM要素",
+                    "description": "",
+                    "type": "DOM"
+                },
+                {
+                    "name": "クラス名",
                     "description": "",
                     "type": "String"
-                },
+                }
+            ],
+            "class": "Library"
+        },
+        {
+            "file": "src/js/module/Library.js",
+            "line": 70,
+            "description": "指定DOMのclassを削除",
+            "itemtype": "method",
+            "name": "reomveClass",
+            "params": [
                 {
-                    "name": "コールバック関数",
+                    "name": "DOM要素",
                     "description": "",
-                    "type": "Function"
-                }
-            ],
-            "class": "Library"
-        },
-        {
-            "file": "src/js/lib/Library.js",
-            "line": 77,
-            "description": "jQuery アコーディオン",
-            "itemtype": "method",
-            "name": "accordion",
-            "params": [
-                {
-                    "name": "a_$head",
-                    "description": "アコーディオンの見出し部分のjQueryオブジェクト",
-                    "type": "Object"
+                    "type": "DOM"
                 },
                 {
-                    "name": "a_$body",
-                    "description": "アコーディオンのボディ部分のjQueryオブジェクト",
-                    "type": "Object"
-                },
-                {
-                    "name": "a_param",
-                    "description": "内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}",
-                    "type": "Object"
-                }
-            ],
-            "example": [
-                " obj.accordion($(\".js-acd-head\"),$(\".js-acd-body\"),{spd:600,ease:\"easeOutBack\"});"
-            ],
-            "class": "Library"
-        },
-        {
-            "file": "src/js/lib/Library.js",
-            "line": 117,
-            "description": "IE8以下 jQuery HTML5_placeholder対応",
-            "itemtype": "method",
-            "name": "placeholder",
-            "class": "Library"
-        },
-        {
-            "file": "src/js/lib/Library.js",
-            "line": 156,
-            "description": "IE8,7で透過処理を個別に対応",
-            "itemtype": "method",
-            "name": "alphaCheck",
-            "params": [
-                {
-                    "name": "obj",
-                    "description": "処理を行いたいjQueryオブジェクト",
-                    "type": "Object"
+                    "name": "クラス名",
+                    "description": "",
+                    "type": "String"
                 }
             ],
             "class": "Library"
         },
         {
-            "file": "src/js/lib/Library.js",
-            "line": 169,
-            "description": "IE8,7で透過処理を入れ子に対応",
+            "file": "src/js/module/Library.js",
+            "line": 84,
+            "description": "指定DOMが任意のclassを持つか判定",
             "itemtype": "method",
-            "name": "alphaAllCheck",
-            "params": [
-                {
-                    "name": "obj",
-                    "description": "処理を行いたい画像の親jQueryオブジェクト",
-                    "type": "Object"
-                }
-            ],
+            "name": "hasClass",
+            "return": {
+                "description": "クラスを持っているか正否値",
+                "type": "Boolean"
+            },
             "class": "Library"
         },
         {
-            "file": "src/js/lib/Library.js",
-            "line": 189,
+            "file": "src/js/module/Library.js",
+            "line": 99,
             "description": "年数表記を自動で現在の値に書き換える",
             "itemtype": "method",
             "name": "yearAdjust",
@@ -405,190 +465,7 @@
             "class": "Library"
         },
         {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 18,
-            "description": "閲覧環境：OS",
-            "itemtype": "property",
-            "name": "OS",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 23,
-            "description": "閲覧環境：ユーザーエージェント",
-            "itemtype": "property",
-            "name": "UA",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 28,
-            "description": "閲覧環境：ieのバージョン",
-            "itemtype": "property",
-            "name": "IEver",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 33,
-            "description": "閲覧環境：Flashプレーヤー判定\nFlashプレーヤーの有無を確認",
-            "itemtype": "property",
-            "name": "isFlash",
-            "type": "Boolean",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 39,
-            "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
-            "itemtype": "property",
-            "name": "isMobile",
-            "type": "Boolean",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 45,
-            "description": "閲覧環境：デバイスの種類",
-            "itemtype": "property",
-            "name": "device",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 50,
-            "description": "ページ情報：閲覧しているページのbody要素のid\nサイト毎で起点となる要素は変更する",
-            "itemtype": "property",
-            "name": "id",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 56,
-            "description": "ページ情報：閲覧しているページのbody要素のclass\nサイト毎で起点となる要素は変更する",
-            "itemtype": "property",
-            "name": "className",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 62,
-            "description": "ページ情報：URL内のクエリの有無",
-            "itemtype": "property",
-            "name": "hasQuery",
-            "type": "Boolean",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 67,
-            "description": "ページ情報：URL内のクエリの内容",
-            "itemtype": "property",
-            "name": "urlQuery",
-            "type": "String",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 74,
-            "description": "IDの取得（IEの場合はwrapperにIE追加）",
-            "itemtype": "method",
-            "name": "getID",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 87,
-            "description": "OSチェック",
-            "itemtype": "method",
-            "name": "checkOS",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 96,
-            "description": "UserAgentチェック",
-            "itemtype": "method",
-            "name": "checkUA",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 134,
-            "description": "PC・モバイル　デバイス・UAチェック",
-            "itemtype": "method",
-            "name": "checkDevice",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 156,
-            "description": "Flashプレーヤーの有無をチェック",
-            "itemtype": "method",
-            "name": "checkFlash",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 175,
-            "description": "クエリチェック",
-            "itemtype": "method",
-            "name": "checkURLQuery",
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 187,
-            "description": "PC用css記述",
-            "itemtype": "method",
-            "name": "setPcCSS",
-            "params": [
-                {
-                    "name": "_path",
-                    "description": "cssファイルのパス",
-                    "type": "String"
-                }
-            ],
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 202,
-            "description": "モバイル用css記述",
-            "itemtype": "method",
-            "name": "setMobileCSS",
-            "params": [
-                {
-                    "name": "_path",
-                    "description": "cssファイルのパス",
-                    "type": "String"
-                }
-            ],
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/PageInfo.js",
-            "line": 217,
-            "description": "viewport記述",
-            "itemtype": "method",
-            "name": "setViewPort",
-            "params": [
-                {
-                    "name": "_width",
-                    "description": "ビューポートの指定値",
-                    "type": "Number"
-                }
-            ],
-            "class": "PageInfo"
-        },
-        {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 24,
             "description": "y座標とスクロール値を比較してイベント発火",
             "params": [
@@ -601,7 +478,7 @@
             "class": "ScrollFireDom"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 55,
             "description": "現在のスクロール値",
             "itemtype": "property",
@@ -610,7 +487,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 60,
             "description": "イベント格納用配列  \nScrollFireDomから引き渡される関数を格納する",
             "itemtype": "property",
@@ -619,7 +496,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 67,
             "description": "初期化",
             "itemtype": "method",
@@ -627,7 +504,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 76,
             "description": "イベントをインスタンスにセットする",
             "itemtype": "method",
@@ -647,7 +524,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 87,
             "description": "ScrollFireDomオブジェクトの回転処理  \nスクロール値と各オブジェクトのイベント開始値を照合し、切り替え用の関数を実行",
             "itemtype": "method",
@@ -655,7 +532,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 103,
             "description": "スクロール値の取得",
             "itemtype": "method",
@@ -667,7 +544,7 @@
             "class": "ScrollFire"
         },
         {
-            "file": "src/js/lib/ScrollFire.js",
+            "file": "src/js/module/ScrollFire.js",
             "line": 114,
             "description": "イベントを解除する",
             "params": [
@@ -680,8 +557,279 @@
             "class": "ScrollFire"
         },
         {
+            "file": "src/js/module/UserInfo.js",
+            "line": 16,
+            "description": "閲覧環境：OS",
+            "itemtype": "property",
+            "name": "OS",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 21,
+            "description": "閲覧環境：ユーザーエージェント",
+            "itemtype": "property",
+            "name": "UA",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 26,
+            "description": "閲覧環境：ieのバージョン",
+            "itemtype": "property",
+            "name": "IEver",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 31,
+            "description": "閲覧環境：Flashプレーヤー判定\nFlashプレーヤーの有無を確認",
+            "itemtype": "property",
+            "name": "isFlash",
+            "type": "Boolean",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 37,
+            "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
+            "itemtype": "property",
+            "name": "isMobile",
+            "type": "Boolean",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 43,
+            "description": "閲覧環境：デバイスの種類",
+            "itemtype": "property",
+            "name": "device",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 48,
+            "description": "ページ情報：閲覧しているページのbody要素のid\nサイト毎で起点となる要素は変更する",
+            "itemtype": "property",
+            "name": "id",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 54,
+            "description": "ページ情報：閲覧しているページのbody要素のclass\nサイト毎で起点となる要素は変更する",
+            "itemtype": "property",
+            "name": "className",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 60,
+            "description": "ページ情報：URL内のクエリの有無",
+            "itemtype": "property",
+            "name": "hasQuery",
+            "type": "Boolean",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 65,
+            "description": "ページ情報：URL内のクエリの内容",
+            "itemtype": "property",
+            "name": "urlQuery",
+            "type": "String",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 72,
+            "description": "IDの取得（IEの場合はwrapperにIE追加）",
+            "itemtype": "method",
+            "name": "getID",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 85,
+            "description": "OSチェック",
+            "itemtype": "method",
+            "name": "checkOS",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 94,
+            "description": "UserAgentチェック",
+            "itemtype": "method",
+            "name": "checkUA",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 132,
+            "description": "PC・モバイル　デバイス・UAチェック",
+            "itemtype": "method",
+            "name": "checkDevice",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 154,
+            "description": "Flashプレーヤーの有無をチェック",
+            "itemtype": "method",
+            "name": "checkFlash",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/UserInfo.js",
+            "line": 173,
+            "description": "クエリチェック",
+            "itemtype": "method",
+            "name": "checkURLQuery",
+            "class": "UserInfo"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 8,
+            "description": "要素の透明度を直接変更",
+            "params": [
+                {
+                    "name": "透明度の数値",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 15,
+            "description": "要素のクリッカブル機能をONに",
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 42,
+            "description": "要素のクリッカブル機能をOFFに",
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 61,
+            "description": "スムーズスクロール",
+            "params": [
+                {
+                    "name": "要素のhref属性",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 86,
+            "description": "CSSのプロパティがサポートされているかの判定",
+            "params": [
+                {
+                    "name": "PROPERTY",
+                    "description": "プロパティの名前",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "正否値",
+                "type": "Boolean"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 96,
+            "description": "Webkitエンジンかを判定",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 110,
+            "description": "IE8以下か判定",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 125,
+            "description": "アコーディオン",
+            "params": [
+                {
+                    "name": "a_$btn",
+                    "description": "アコーディオンの見出し部分のjQueryオブジェクト",
+                    "type": "Object"
+                },
+                {
+                    "name": "a_$body",
+                    "description": "アコーディオンのボディ部分のjQueryオブジェクト",
+                    "type": "Object"
+                },
+                {
+                    "name": "a_param",
+                    "description": "内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                " obj.accordion($(\".js-acd-btn\"),$(\".js-acd-body\"),{spd:600,ease:\"easeOutBack\"});"
+            ],
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 162,
+            "description": "IE8以下 jQuery HTML5_placeholder対応",
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 195,
+            "description": "IE8,7で透過処理を個別に対応",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "処理を行いたいjQueryオブジェクト",
+                    "type": "Object"
+                }
+            ],
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/module/jquery.module.js",
+            "line": 207,
+            "description": "IE8,7で透過処理を入れ子に対応",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "処理を行いたい画像の親jQueryオブジェクト",
+                    "type": "Object"
+                }
+            ],
+            "class": "Planet"
+        },
+        {
             "file": "src/js/develop/Planet.js",
-            "line": 14,
+            "line": 19,
             "description": "色生成：シード値を与えてRGB値を返す",
             "itemtype": "method",
             "name": "getRndRGB",
@@ -705,7 +853,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 30,
+            "line": 37,
             "description": "色生成：シード値を与えてRGB値を返す",
             "itemtype": "method",
             "name": "getRndRGB_02",
@@ -739,7 +887,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 47,
+            "line": 56,
             "description": "色生成：シード値を与えてRGBA値を返す",
             "itemtype": "method",
             "name": "getRndRGBA",
@@ -768,7 +916,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 65,
+            "line": 76,
             "description": "色生成：シード値を与えてランダムなHEX値を返す",
             "itemtype": "method",
             "name": "getRndHEX",
@@ -787,7 +935,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 78,
+            "line": 91,
             "description": "演算：差の絶対値を計算する",
             "itemtype": "method",
             "name": "abs",
@@ -806,7 +954,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 89,
+            "line": 104,
             "description": "座標取得：ポイント01とポイント02の２点間の距離算出する",
             "itemtype": "method",
             "name": "getPointDistance",
@@ -830,7 +978,7 @@
         },
         {
             "file": "src/js/develop/Planet.js",
-            "line": 107,
+            "line": 124,
             "description": "座標取得：マウスポインタ座標取得",
             "itemtype": "method",
             "name": "getMousePoint",
@@ -844,6 +992,42 @@
             "return": {
                 "description": "オブジェクト",
                 "type": "Object"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/develop/Planet.js",
+            "line": 145,
+            "description": "数値取得：ウィンドウの幅を取得",
+            "itemtype": "method",
+            "name": "getWindowWidth",
+            "return": {
+                "description": "ウィンドウ幅",
+                "type": "Number"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/develop/Planet.js",
+            "line": 156,
+            "description": "数値取得：ウィンドウの高さを取得",
+            "itemtype": "method",
+            "name": "getWindowHeight",
+            "return": {
+                "description": "ウィンドウ高",
+                "type": "Number"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "src/js/develop/Planet.js",
+            "line": 167,
+            "description": "数値取得：スクロール値を取得",
+            "itemtype": "method",
+            "name": "getScrollTop",
+            "return": {
+                "description": "スクロール位置",
+                "type": "Number"
             },
             "class": "Planet"
         },
@@ -862,28 +1046,120 @@
     ],
     "warnings": [
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/lib/Library.js:34"
+            "message": "unknown tag: constracutor",
+            "line": " src/js/module/BreakPointOne.js:5"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/lib/Library.js:46"
+            "line": " src/js/module/Library.js:23"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/lib/ScrollFire.js:103"
+            "line": " src/js/module/Library.js:34"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/Library.js:45"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/Library.js:84"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/ScrollFire.js:103"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/jquery.module.js:86"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/jquery.module.js:96"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/module/jquery.module.js:110"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/develop/Planet.js:145"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/develop/Planet.js:156"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/develop/Planet.js:167"
+        },
+        {
+            "message": "Missing item type\n各デバイス毎の関数を指定",
+            "line": " src/js/module/BreakPointOne.js:157"
+        },
+        {
+            "message": "Missing item type\n登録したPC用関数を呼び出す",
+            "line": " src/js/module/BreakPointOne.js:179"
+        },
+        {
+            "message": "Missing item type\n登録したSP用関数を呼び出す",
+            "line": " src/js/module/BreakPointOne.js:190"
         },
         {
             "message": "Missing item type\njQuery アンカーアニメーション（jQueryオブジェクト）",
-            "line": " src/js/lib/FixedAnchor.js:66"
+            "line": " src/js/module/FixedAnchor.js:66"
         },
         {
             "message": "Missing item type\ny座標とスクロール値を比較してイベント発火",
-            "line": " src/js/lib/ScrollFire.js:24"
+            "line": " src/js/module/ScrollFire.js:24"
         },
         {
             "message": "Missing item type\nイベントを解除する",
-            "line": " src/js/lib/ScrollFire.js:114"
+            "line": " src/js/module/ScrollFire.js:114"
+        },
+        {
+            "message": "Missing item type\n要素の透明度を直接変更",
+            "line": " src/js/module/jquery.module.js:8"
+        },
+        {
+            "message": "Missing item type\n要素のクリッカブル機能をONに",
+            "line": " src/js/module/jquery.module.js:15"
+        },
+        {
+            "message": "Missing item type\n要素のクリッカブル機能をOFFに",
+            "line": " src/js/module/jquery.module.js:42"
+        },
+        {
+            "message": "Missing item type\nスムーズスクロール",
+            "line": " src/js/module/jquery.module.js:61"
+        },
+        {
+            "message": "Missing item type\nCSSのプロパティがサポートされているかの判定",
+            "line": " src/js/module/jquery.module.js:86"
+        },
+        {
+            "message": "Missing item type\nWebkitエンジンかを判定",
+            "line": " src/js/module/jquery.module.js:96"
+        },
+        {
+            "message": "Missing item type\nIE8以下か判定",
+            "line": " src/js/module/jquery.module.js:110"
+        },
+        {
+            "message": "Missing item type\nアコーディオン",
+            "line": " src/js/module/jquery.module.js:125"
+        },
+        {
+            "message": "Missing item type\nIE8以下 jQuery HTML5_placeholder対応",
+            "line": " src/js/module/jquery.module.js:162"
+        },
+        {
+            "message": "Missing item type\nIE8,7で透過処理を個別に対応",
+            "line": " src/js/module/jquery.module.js:195"
+        },
+        {
+            "message": "Missing item type\nIE8,7で透過処理を入れ子に対応",
+            "line": " src/js/module/jquery.module.js:207"
         },
         {
             "message": "Missing item type\nYou can pass in a random number generator object if you like.\nIt is assumed to have a random() method.",

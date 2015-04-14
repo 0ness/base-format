@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 //　MIXIN　モジュール用SCSS
 //　共有用モジュールのみ記述　基本プロジェクトに影響するものは記述しない
 
@@ -12,18 +10,23 @@
 
 // MIXIN メディアクエリ系モジュール ///////////////////////////////////////
 
-//レスポンシブ対応の分岐処理に使用
-//基本的にPCなど大きいモニタ用に
-//@mixin maxMedia
-//@usage
-//.class {
-//=maxMedia {
-//　　　background:red;
-//　}
-//}
+//最小エリア　メディアクエリ
+@mixin min-height-media() {
+	@media screen and (max-height:700px) {
+		@content;
+	}
+}
 
-@mixin maxMedia{
-	@media screen and (min-width:768px){
+//レスポンシブ対応　PC用メディアクエリ
+@mixin pc-media-query{
+	@media screen and (min-width:769px){
+		@content;
+	}
+}
+
+//レスポンシブ対応　SP用メディアクエリ
+@mixin sp-media-query{
+	@media screen and (max-width:768px){
 		@content;
 	}
 }
@@ -38,10 +41,10 @@
 //ipad用メディアクエリ
 @mixin ipad {
 	@media only screen and
-	(min-device-width : 768px) and
-	(max-device-width : 1024px){
-		 @content;
-	}
+		(min-device-width : 768px) and
+		(max-device-width : 1024px){
+			@content;
+		}
 }
 
 //Androidの高精細画面も含めた指定
@@ -65,6 +68,11 @@
 @mixin iphone456s {
 	@media screen and (min-width: 0px) and (max-width: 499px){ @content; }
 }
+
+
+
+
+// MIXIN ブラウザ分岐系モジュール ///////////////////////////////////////
 
 //IE6用対応
 @mixin ie6	{
@@ -203,8 +211,6 @@
 
 //キーフレームkeyframes(関数名)
 @mixin keyframes($name){			
-	@-moz-keyframes $name{ @content; }
-	@-ms-keyframes $name{ @content; }
 	@-webkit-keyframes $name{ @content; }
 	@keyframes $name{ @content; }
 }
@@ -248,7 +254,7 @@
 		width: $size; height: $size;
 	}
 
-	 @include radius(100%); background:$bgcolor;
+	@include radius(100%); background:$bgcolor;
 }
 
 //ボックスで楕円を描く（幅、高さ、背景色,ぼかし）
@@ -275,7 +281,7 @@
 
 	width:$w_02;
 	height:$h_02;
-	 @include radius(100%); background:$bgcolor;
+	@include radius(100%); background:$bgcolor;
 }
 
 //フォームのスタイル変更
@@ -283,22 +289,28 @@
 	-webkit-appearance:$prop; -moz-appearance:$prop; appearance:$prop;
 }
 
+//画像や文字を選択させない処理
+@mixin use-none { user-select: none;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}
 
 
 // MIXIN CSS3系スマートフォン用モジュール ///////////////////////////////////////
 
 //ボックス内テキスト中央揃え
 //スマートフォンのボタンなどに使用
-@mixin center	{ display:table-cell; vertical-align:middle; text-align:center;}
+//@mixin center	{ display:table-cell; vertical-align:middle; text-align:center;}
 
 //ボックス内テキスト上下揃え
 //スマートフォンのボタンなどに使用
-@mixin v-center	{ display:table-cell; vertical-align:middle;}
+//@mixin v-center	{ display:table-cell; vertical-align:middle;}
 
 
 
 
 // MIXIN CSS2系スタイルモジュール ///////////////////////////////////////
+
+//幅指定時に画面の天地左右中央に配置する
+//@mixin center
+@mixin center{position: absolute; top:0; left: 0; bottom: 0; right: 0; margin: auto;}
 
 //幅と高さ指定（width,height,overflow）
 //幅と高さの引数はpx・%で入力、pxは省略可能
@@ -490,10 +502,31 @@
 //@param {Number} $px - 指定したいpxでのサイズ
 //@source http://c-brains.jp/blog/wsg/14/10/06-191029.php
 @mixin fr($px:13) {
+	//	@if $px < 10 {
+	//		$per:$px / 10;
+	//		$px:10;
+	//		transform:scale($per);
+	//	}
 	$rem:$px / 10;
 	font-size: $px + px;
 	font-size: $rem + rem;
 }
+
+//フォントサイズをpx指定でrem化する
+//IE6〜8用にpx指定もセットで行う
+//@mixin fr
+//@param {Number} $px - 指定したいpxでのサイズ
+//@source http://c-brains.jp/blog/wsg/14/10/06-191029.php
+@mixin ico-fr($px:13) {
+	@if $px < 10 {
+		$per:$px / 10;
+		$px:10;
+		transform:scale($per);
+	}
+	font-size: $px + px;
+}
+
+
 
 
 // MIXIN レスポンシブ対応モジュール ///////////////////////////////////////
@@ -511,11 +544,27 @@
 // }
 @mixin fluidElm($width:100%){
 	@if unit($width) == "%" { width:$width;}
-	@else { width:percentage($width / 100);}
+	@else { width:percentage($width/100);}
 	height: auto;
 	display: block;
 	box-sizing: border-box;
-}
+};
+
+//要素単体をフルードさせる為に使用する
+//親との相対値で値を指定する
+//@mixin fluidElmRe
+//@param {Number} $elmW - 可変させる要素のwidth
+//@praam {Number} $contW - 格納している要素のwidth
+//@usage//divが640px、pが200pxの場合の計算
+// .class{
+//	=fluidElmRe(200,640);
+// }
+@mixin fluidElmRe($elmW,$contW){
+	width:percentage($elmW/$contW);
+	height: auto;
+	display: block;
+	box-sizing: border-box;
+};
 
 //ネストする要素をフルードさせる為に使用する
 //引数に要素名を入力してセレクタを特定する

@@ -1,1 +1,58 @@
-!function(){"use strict";function a(){console.log("PC")}function b(){console.log("SP")}var c=(window,document,new PageInfo),d=new Library,e=(new BreakPointOne(768,a,b),c.isMobile),f=(c.UA,c.IEver,c.id,c.className,d.windowWidth(),d.windowHeight(),function(){return!1}),g=function(){return!1};return e===!0?g():f(),!1}();
+;(function(window, document) {
+	"use strict";
+
+
+	
+	
+	/*Property
+	--------------------------------------------------------------------*/
+	var w = window,
+		d = document;
+
+	var INF0 = new UserInfo(),
+		LIB = new Library();
+	
+	var n_winWidth = LIB.windowWidth(),
+		n_winHeight = LIB.windowHeight();
+
+	
+	
+	
+	/*Constructor
+	--------------------------------------------------------------------*/
+	/**
+	 * @class INDEX
+     * @constructor
+     */
+	var INDEX = function(){},
+		METHOD = INDEX.prototype;
+
+
+
+	
+	/*Init Method
+	--------------------------------------------------------------------*/
+	METHOD.INIT = function INIT() {
+		var _self = this;
+	};
+
+	
+	
+	
+	/*Page Method
+	--------------------------------------------------------------------*/
+
+	
+	
+	
+	
+	
+
+
+
+	window.INDEX = INDEX;
+})(window, document);
+
+var Index = new INDEX();
+if (window.addEventListener) window.addEventListener('load', function(){Index.INIT();});
+else window.attachEvent('onload', function() {Index.INIT();});
