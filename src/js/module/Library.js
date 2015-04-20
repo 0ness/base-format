@@ -21,6 +21,59 @@
 	--------------------------------------------------------------------*/
 
 	/**
+	 * 閲覧環境：IE8以下判定
+	 * @method checkIE8
+	 * @return {Boolean} ブラウザの判定
+	 */
+	METHOD.isIE8 = function(){
+		var _flg = false;
+		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
+		else if(this.isIE8Under() === true) _flg = true;
+		return _flg;
+	};
+
+	
+	/**
+	 * 閲覧環境：IE9判定
+	 * @method isIE9
+	 * @return {Boolean} ブラウザの判定
+	 */
+	METHOD.isIE9 = function(){
+		var _self= this,
+			_flg = false,
+			_und = "undefined";
+		if(_self.isIE8Under() === true) _flg = false;
+		else if(_self.isIE9Under() === true) _flg = true;
+		return _flg;
+	};
+	
+
+	/**
+	 * 閲覧環境：IE8以下判定
+	 * @method isIE8Under
+	 * @return {Boolean} ブラウザの判定
+	 */
+	METHOD.isIE8Under = function(){
+		var _flg = false,
+			_und = "undefined";
+		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
+		return _flg;
+	};
+
+	
+	/**
+	 * 閲覧環境：IE9以下判定
+	 * @method isIE9Under
+	 * @return {Boolean} ブラウザの判定
+	 */
+	METHOD.isIE9Under = function(){
+		var _flg = false;
+		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
+		return _flg;
+	};
+
+	
+	/**
 	 * ウィンドウの幅を取得
 	 * @method getWindowWidth
 	 * @returns {Number} ウィンドウ幅
