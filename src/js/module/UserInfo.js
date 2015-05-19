@@ -1,6 +1,7 @@
 ;(function(window,document){
 	"use strict";
 
+
 	/**
 	 * OS・UA・ページの情報を取得・操作する
 	 * ・コンストラクタで情報を取得し、インスタンスの変数から参照する
@@ -11,66 +12,77 @@
 	 * @example var obj = new UserInfo();
 	 * if(obj.isMobile === true) return false;
 	 */
-	var USERINFO = function() {},
-		METHOD = USERINFO.prototype;
-	
-	
-	UserInfo.prototype = {
+	var USERINFO = function() {
+		var _self = this;
+		_self.checkUA();
+		_self.checkDevice();
+	};
+	USERINFO.prototype = {
 
 		/**
 		 * 閲覧環境：OS
 		 * @property {String} OS
 		 */
 		OS: "",
+
 		/**
 		 * 閲覧環境：ユーザーエージェント
 		 * @property {String} UA
 		 */
 		UA: "",
+
 		/**
 		 * 閲覧環境：ieのバージョン
 		 * @property {String} IEver
 		 */
 		IEver: "not IE",
+
 		/**
 		 * 閲覧環境：Flashプレーヤー判定
 		 * Flashプレーヤーの有無を確認
 		 * @property {Boolean} isFlash
 		 */
 		isFlash: false,
+
 		/**
 		 * 閲覧環境：モバイル判定
 		 * 判定の範囲は随時更新する
 		 * @property {Boolean} isMobile
 		 */
 		isMobile: false,
+
 		/**
 		 * 閲覧環境：デバイスの種類
 		 * @property {String} device
 		 */
 		device: "pc",
+
 		/**
 		 * ページ情報：閲覧しているページのbody要素のid
 		 * サイト毎で起点となる要素は変更する
 		 * @property {String} id
 		 */
 		id: "",
+
 		/**
 		 * ページ情報：閲覧しているページのbody要素のclass
 		 * サイト毎で起点となる要素は変更する
 		 * @property {String} className
 		 */
 		className: "",
+
 		/**
 		 * ページ情報：URL内のクエリの有無
 		 * @property {Boolean} hasQuery
 		 */
 		hasQuery: "",
+
 		/**
 		 * ページ情報：URL内のクエリの内容
 		 * @property {String} urlQuery
 		 */
 		urlQuery: "",
+
 
 
 		/**
@@ -113,8 +125,8 @@
 				_UA = "ie";
 				if (_wnVer.indexOf("msie 8.") !== -1) _UAver = 'ie8';
 				else if (_wnVer.indexOf("msie 9.") !== -1) _UAver = "ie9";
-				else if (_wnVer.indexOf("msie 7.") !== -1) _UAver = 'ie7';
-				else if (_wnVer.indexOf("msie 6.") !== -1) _UAver = 'ie6';
+				//				else if (_wnVer.indexOf("msie 7.") !== -1) _UAver = 'ie7';
+				//				else if (_wnVer.indexOf("msie 6.") !== -1) _UAver = 'ie6';
 				else _UAver = "ie10";
 			} else if (_wnUA.indexOf('trident/7') !== -1) {
 				_UA = "ie";
@@ -124,9 +136,13 @@
 				else _UA = "webkit";
 			};
 
-			if (_UAver === "ie8" || _UAver === "ie9") _d.getElementById("wrapper").className = _UAver;
+			if (_UAver === "ie8" || _UAver === "ie9") document.getElementsByTagName("html")[0].className = _UAver;
+
 			//互換モード対応
-			if (_d.documentMode === 8) _d.getElementById("wrapper").className = "ie8";
+			if (_d.documentMode === 8){
+				_UAver = "ie8";
+				document.getElementsByTagName("html")[0].className = "ie8";	
+			}
 
 			//値をプロパティに帰属させる
 			_self.UA = _UA;
@@ -232,6 +248,6 @@
 		}
 	};
 
-	
-	window.UserInfo = LIBRARY;
+
+	window.UserInfo = USERINFO;
 })(window, document);
