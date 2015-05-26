@@ -36,8 +36,9 @@
 <body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
 <div id="wrapper"> 
 	<!-- ============= header ============= -->
-	<header id="header"> 
-		<nav id="gNav">
+	<header id="header">
+		<h1 id="header__ci">CI</h1>
+		<nav id="gnav">
 			<ul>
 				<li @@((ページid != 'category_id_01') ? 'class="gnBtn gnBtn_01"' : ' class="gnBtn gnBtn_01 is-current"';)@@><a href="#header"></a></li>
 				<li @@((ページid != 'category_id_02') ? 'class="gnBtn gnBtn_02"' : ' class="gnBtn gnBtn_02 is-current"';)@@><a href="#header"></a></li>

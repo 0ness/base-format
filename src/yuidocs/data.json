@@ -203,7 +203,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/js/module/UserInfo.js",
-            "line": 4,
+            "line": 5,
             "description": "OS・UA・ページの情報を取得・操作する\n・コンストラクタで情報を取得し、インスタンスの変数から参照する\n・OS・UA・デバイス判定\n・css読み込み・viewport表示変更",
             "is_constructor": 1,
             "example": [
@@ -606,7 +606,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 20,
+            "line": 22,
             "description": "閲覧環境：OS",
             "itemtype": "property",
             "name": "OS",
@@ -615,7 +615,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 25,
+            "line": 28,
             "description": "閲覧環境：ユーザーエージェント",
             "itemtype": "property",
             "name": "UA",
@@ -624,7 +624,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 30,
+            "line": 34,
             "description": "閲覧環境：ieのバージョン",
             "itemtype": "property",
             "name": "IEver",
@@ -633,7 +633,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 35,
+            "line": 40,
             "description": "閲覧環境：Flashプレーヤー判定\nFlashプレーヤーの有無を確認",
             "itemtype": "property",
             "name": "isFlash",
@@ -642,7 +642,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 41,
+            "line": 47,
             "description": "閲覧環境：モバイル判定\n判定の範囲は随時更新する",
             "itemtype": "property",
             "name": "isMobile",
@@ -651,7 +651,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 47,
+            "line": 54,
             "description": "閲覧環境：デバイスの種類",
             "itemtype": "property",
             "name": "device",
@@ -660,7 +660,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 52,
+            "line": 60,
             "description": "ページ情報：閲覧しているページのbody要素のid\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
             "name": "id",
@@ -669,7 +669,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 58,
+            "line": 67,
             "description": "ページ情報：閲覧しているページのbody要素のclass\nサイト毎で起点となる要素は変更する",
             "itemtype": "property",
             "name": "className",
@@ -678,7 +678,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 64,
+            "line": 74,
             "description": "ページ情報：URL内のクエリの有無",
             "itemtype": "property",
             "name": "hasQuery",
@@ -687,7 +687,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 69,
+            "line": 80,
             "description": "ページ情報：URL内のクエリの内容",
             "itemtype": "property",
             "name": "urlQuery",
@@ -696,7 +696,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 76,
+            "line": 88,
             "description": "IDの取得（IEの場合はwrapperにIE追加）",
             "itemtype": "method",
             "name": "getID",
@@ -704,7 +704,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 89,
+            "line": 101,
             "description": "OSチェック",
             "itemtype": "method",
             "name": "checkOS",
@@ -712,7 +712,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 98,
+            "line": 110,
             "description": "UserAgentチェック",
             "itemtype": "method",
             "name": "checkUA",
@@ -720,7 +720,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 136,
+            "line": 152,
             "description": "閲覧環境：IE8以下判定",
             "itemtype": "method",
             "name": "checkIE8",
@@ -728,7 +728,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 147,
+            "line": 163,
             "description": "閲覧環境：IE9判定",
             "itemtype": "method",
             "name": "checkIE9",
@@ -736,7 +736,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 160,
+            "line": 176,
             "description": "閲覧環境：IE8以下判定",
             "itemtype": "method",
             "name": "checkIE8Under",
@@ -744,7 +744,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 171,
+            "line": 187,
             "description": "閲覧環境：IE9以下判定",
             "itemtype": "method",
             "name": "checkIE9Under",
@@ -752,7 +752,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 181,
+            "line": 197,
             "description": "PC・モバイル　デバイスチェック",
             "itemtype": "method",
             "name": "checkDevice",
@@ -760,7 +760,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 203,
+            "line": 219,
             "description": "Flashプレーヤーの有無をチェック",
             "itemtype": "method",
             "name": "checkFlash",
@@ -768,7 +768,7 @@
         },
         {
             "file": "src/js/module/UserInfo.js",
-            "line": 222,
+            "line": 238,
             "description": "クエリチェック",
             "itemtype": "method",
             "name": "checkURLQuery",

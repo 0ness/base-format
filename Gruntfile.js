@@ -80,23 +80,50 @@ module.exports = function(grunt){
 			options:{
 				style: 'compact'
 			},
-			dist:{
+			all:{
 				files:{
 					'common/css/layout.css': 'src/scss/layout.scss',
 					'common/css/contents.css': 'src/scss/contents.scss',
 					'common/css/module.css': 'src/scss/module.scss'
 				}
+			},
+			layout:{
+				files:{'common/css/layout.css': 'src/scss/layout.scss'}
+			},
+			contents:{
+				files:{'common/css/contents.css': 'src/scss/contents.scss'}
+			},
+			module:{
+				files:{'common/css/module.css': 'src/scss/module.scss'}
 			}
 		},
 		autoprefixer:{
 			options:{
 				browsers:BROWSERS
 			},
-			file:{
+			all:{
 				expand: true,
 				flatten: true,
 				src:'common/css/*.css',
 				dest:'common/css/'
+			},
+			layout:{
+				expand: true,
+				flatten: true,
+				src:'common/css/layout.css',
+				dest:'common/css/'
+			},
+			contents:{
+				expand: true,
+				flatten: true,
+				src:'common/css/contents.css',
+				dest:'common/css/contents.css'
+			},
+			module:{
+				expand: true,
+				flatten: true,
+				src:'common/css/module.css',
+				dest:'common/css/module.css'
 			}
 		},
 		styleguide: {
@@ -154,6 +181,8 @@ module.exports = function(grunt){
 			options: {
 				spawn: false
 			},
+			
+			//JS
 			JS_base:{
 				files:[
 					"src/js/ie/*.js",
@@ -169,10 +198,26 @@ module.exports = function(grunt){
 				files:"src/js/main.js",
 				tasks:["concat:mainJS","uglify:mainJS","removelogging:mainJS"]
 			},
-			sass:{
-				files:["src/scss/*.scss","src/scss/partials/*.scss"],
-				tasks:["sass","autoprefixer:file"]
+			
+			//SASS
+			SASS_all:{
+				files:["src/scss/partials/*.scss"],
+				tasks:["sass:all","autoprefixer:all"]
 			},
+			SASS_layout:{
+				files:["src/scss/layout.scss"],
+				tasks:["sass:layout","autoprefixer:layout"]
+			},
+			SASS_contents:{
+				files:["src/scss/contents.scss"],
+				tasks:["sass:contents","autoprefixer:contents"]
+			},
+			SASS_module:{
+				files:["src/scss/module.scss"],
+				tasks:["sass:module","autoprefixer:module"]
+			},
+
+			//DOCUMENT
 			yuidoc:{
 				files:[
 					"src/js/module/*.js",
