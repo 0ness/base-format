@@ -40,11 +40,11 @@
 		<h1 id="header__ci">CI</h1>
 		<nav id="gnav">
 			<ul>
-				<li @@((ページid != 'category_id_01') ? 'class="gnBtn gnBtn_01"' : ' class="gnBtn gnBtn_01 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_02') ? 'class="gnBtn gnBtn_02"' : ' class="gnBtn gnBtn_02 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_03') ? 'class="gnBtn gnBtn_03"' : ' class="gnBtn gnBtn_03 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_04') ? 'class="gnBtn gnBtn_04"' : ' class="gnBtn gnBtn_04 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_05') ? 'class="gnBtn gnBtn_05"' : ' class="gnBtn gnBtn_05 is-current"';)@@><a href="#header"></a></li>
+				<li @@((ページid != 'category_id_01') ? 'class="gnav__btn gnav__btn--01"' : ' class="gnav__btn gnav__btn--01 is-current"';)@@><a href="#header"></a></li>
+				<li @@((ページid != 'category_id_02') ? 'class="gnav__btn gnav__btn--02"' : ' class="gnav__btn gnav__btn--02 is-current"';)@@><a href="#header"></a></li>
+				<li @@((ページid != 'category_id_03') ? 'class="gnav__btn gnav__btn--03"' : ' class="gnav__btn gnav__btn--03 is-current"';)@@><a href="#header"></a></li>
+				<li @@((ページid != 'category_id_04') ? 'class="gnav__btn gnav__btn--04"' : ' class="gnav__btn gnav__btn--04 is-current"';)@@><a href="#header"></a></li>
+				<li @@((ページid != 'category_id_05') ? 'class="gnav__btn gnav__btn--05"' : ' class="gnav__btn gnav__btn--05 is-current"';)@@><a href="#header"></a></li>
 			</ul>
 		</nav>
 		<!-- /gnav --> 

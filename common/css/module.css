@@ -38,7 +38,6 @@ pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height
 */
 .blc, .section { margin: 0 0 60px; }
 .blc:last-child, .section:last-child { margin-bottom: 0; }
-.ex-bdrRadius { border-radius: 4px; }
 /* 
 
 

@@ -62,13 +62,13 @@ body > #wrapper { height: auto; }
 /* global navigation
 --------------------------------------------------------------------*/
 #gnav ul { overflow: hidden; }
-.gnBtn { float: left; }
-.gnBtn a { display: block; }
-.gnBtn img { display: block; }
+.gnav__btn { float: left; }
+.gnav__btn a { display: block; }
+.gnav__btn img { display: block; }
 /*　contents block
 --------------------------------------------------------------------*/
 #contents { /*width:$width;*/ margin: 0 auto; overflow: hidden; position: relative; }
-#pageTop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
+#pagetop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
 /*footer
 --------------------------------------------------------------------*/
 #footer { width: 100%; height: 100px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: red; }

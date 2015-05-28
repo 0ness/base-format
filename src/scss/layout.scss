@@ -67,7 +67,7 @@ body > #wrapper { height:auto;}
 #gnav	{
 	ul	{ overflow:hidden;}
 }
-.gnBtn	{ float:left;
+.gnav__btn	{ float:left;
 	a 	{ display:block;
 		&:hover	{}
 	}
@@ -80,7 +80,7 @@ body > #wrapper { height:auto;}
 /*　contents block
 --------------------------------------------------------------------*/
 #contents	{ /*width:$width;*/ margin:0 auto; overflow:hidden; position:relative;}
-#pageTop	{ @include bottom-left(300,0); color:#fff;}
+#pagetop	{ @include bottom-left(300,0); color:#fff;}
 
 
 //メインコンテンツ大枠

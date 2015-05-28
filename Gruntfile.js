@@ -117,13 +117,13 @@ module.exports = function(grunt){
 				expand: true,
 				flatten: true,
 				src:'common/css/contents.css',
-				dest:'common/css/contents.css'
+				dest:'common/css/'
 			},
 			module:{
 				expand: true,
 				flatten: true,
 				src:'common/css/module.css',
-				dest:'common/css/module.css'
+				dest:'common/css/'
 			}
 		},
 		styleguide: {
