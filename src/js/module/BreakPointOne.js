@@ -31,8 +31,6 @@
 	 * @class BreakPointOne
 	 * @constructor
 	 * @param {Number}   a_border ブレークポイント幅
-	 * @param {Function} a_pcFunc PC側に切り替わった際の関数
-	 * @param {Function} a_spFunc SP側に切り替わった際の関数
 	 * @example
 	 * var BPO = new BreakPointOne(768,pcFunc,spFunc);  
 	 * function pcFunc(){ pcレイアウト切替時の処理 };  
@@ -41,7 +39,7 @@
 	function BreakPointOne(a_border) {
 		"use strict";
 		var _self = this;
-		_self.border = a_border;
+		_self.border 	= a_border;
 		_self.functions = [];
 	};
 	BreakPointOne.prototype = {
@@ -88,13 +86,10 @@
 		 */
 		init: function() {
 			var _self = this,
-				_win = window,
-				_info = new PageInfo();
+				_win = window;
 
 			//IE分岐処理
-			_info.checkUA();
-			_self.isIE8 = (_info.IEver === "ie8") ? true : false;
-
+			_self.isIE8 = _self.isIE8Under();
 			if(_self.isIE8 === true) return false;
 
 			/*eventHandlerを正確に実行するための処理
@@ -163,14 +158,11 @@
 			var _self = this,
 				_event = new BreakEvent(a_pc,a_sp);
 
-			//IE8はPC用関数を返す
+			//IE8はPC用関数を返す SPではSP用関数を返す
 			if(_self.isIE8 === true){
 				a_pc();
 				return false;
-			}
-
-			if(_self.isSP === true) a_sp();
-			else a_pc();
+			}else if(_self.isSP === true) a_sp();
 
 			_self.functions[_self.funcLengh] = _event;
 			_self.funcLengh++;
@@ -196,7 +188,20 @@
 				_len = _self.funcLengh;
 
 			for(var i = 0; i<_len; i++) _func[i].spFunc();
+		},
+		
+		/**
+		 * 閲覧環境：IE8以下判定
+		 * @method isIE8Under
+		 * @return {Boolean} ブラウザの判定
+		 */
+		isIE8Under:function(){
+			var _flg = false,
+			_und = "undefined";
+			if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
+			return _flg;
 		}
+		
 	};
 
 
