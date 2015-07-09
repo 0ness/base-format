@@ -1,14 +1,28 @@
 ;(function(window, document) {
 	"use strict";
 
+	
+	
+	
+	/*Constructor
+	--------------------------------------------------------------------*/
+	/**
+	 * @class INDEX
+     * @constructor
+     */
+	var INDEX = function(){},
+		MEMBER = INDEX.prototype;
+
 
 	
 	
-	/*Property
+	/*Private Static Property
 	--------------------------------------------------------------------*/
+	//dom
 	var w = window,
 		d = document;
 
+	//instance
 	var INF0	= new UserInfo(),
 		LIB		= new Library(),
 		STATE	= {
@@ -20,37 +34,25 @@
 	
 	
 	
-	/*Constructor
+	/*Public Static Property
 	--------------------------------------------------------------------*/
-	/**
-	 * @class INDEX
-     * @constructor
-     */
-	var INDEX = function(){},
-		METHOD = INDEX.prototype;
-
-	
-	
-	
-	/*Member Property
-	--------------------------------------------------------------------*/
-	METHOD.importState	= {
+	MEMBER.importState	= {
 		isIE8	:false,
 		isIE9	:false,
 		isIE89	:false
 	};
-	METHOD.page 		= document.getElementById("contents");
-	METHOD.pageSty 		= METHOD.page.style;
+	MEMBER.page 		= document.getElementById("contents");
+	MEMBER.pageSty 		= MEMBER.page.style;
 
-	METHOD.animateInCallBack 	= function(){};
-	METHOD.animateOutCallBack 	= function(){};
+	MEMBER.animateInCallBack 	= function(){};
+	MEMBER.animateOutCallBack 	= function(){};
 
 
 
 	
 	/*Init
 	--------------------------------------------------------------------*/
-	METHOD.init = function() {
+	MEMBER.init = function() {
 		var _self = this;
 		_self.stateCheck();
 	};
@@ -58,9 +60,9 @@
 	
 	
 	
-	/*Member Method
+	/*Public Static Method
 	--------------------------------------------------------------------*/
-	METHOD.stateCheck = function(){
+	MEMBER.stateCheck = function(){
 		var _state	= STATE,
 			_ua		= INF0.UA,
 			_iever	= INF0.IEver;

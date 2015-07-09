@@ -64,7 +64,7 @@ module.exports = function(grunt){
 		},
 		removelogging:{
 			baseJS:{
-				src	: "htdocs/common/js/minify/base.js",
+				src	:"htdocs/common/js/minify/base.js",
 				dest:"htdocs/common/js/minify/base.js"
 			},
 			moduleJS:{
@@ -72,7 +72,7 @@ module.exports = function(grunt){
 				dest:"htdocs/common/js/minify/module.js"
 			},
 			mainJS:{
-				src	: "htdocs/common/js/minify/main.js",
+				src	:"htdocs/common/js/minify/main.js",
 				dest:"htdocs/common/js/minify/main.js"
             }
 		},
@@ -82,9 +82,9 @@ module.exports = function(grunt){
 			},
 			all:{
 				files:{
-					"htdocs/common/css/layout.css": "htdocs/src/scss/layout.scss",
+					"htdocs/common/css/layout.css"	: "htdocs/src/scss/layout.scss",
 					"htdocs/common/css/contents.css": "htdocs/src/scss/contents.scss",
-					"htdocs/common/css/module.css": "htdocs/src/scss/module.scss"
+					"htdocs/common/css/module.css"	: "htdocs/src/scss/module.scss"
 				}
 			},
 			layout:{
@@ -152,12 +152,12 @@ module.exports = function(grunt){
 		shell:{
 			styledocco:{
 				command: function () {
-					return " styledocco --o "htdocs/common/css/compornents" --preprocessor "scss" common/scss/module.scss";
+					return " styledocco --o 'htdocs/common/css/compornents' --preprocessor 'scss' common/scss/module.scss";
 				}
 			},
 			sassdoc:{
 				command: function () {
-					return "sassdoc src/scss -d src/sassdocs -n "Wonderful Sass"";
+					return "sassdoc src/scss -d src/sassdocs -n 'Wonderful Sass'";
 				}
 			}
 		},
