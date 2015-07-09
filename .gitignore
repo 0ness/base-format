@@ -2,6 +2,7 @@
 !.gitignore
 _notes/
 node_modules/
-src/yuidocs
-src/yui-themes
-src/sassdocs
+htdocs/src/yuidocs
+htdocs/src/yui-themes
+htdocs/src/sassdocs
+.DS_Store
