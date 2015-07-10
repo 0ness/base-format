@@ -1,110 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" class="ie8"><![endif]-->
-<!--[if IE 9]><html xmlns="http://www.w3.org/1999/xhtml" class="ie9"><![endif]-->
-<!--[if !IE]>-->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<!--<![endif]-->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@</title>
-<meta http-equiv="Content-Language" content="ja" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta name="description" content="@@(Description)@@" />
-<meta name="keywords" content="@@(Keyword)@@" />
-<meta name="author" content="" />
-<!-- SNS対応する際に使用
-<meta property="og:site_name" content="0000000">
-<meta property="og:title" content="@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@">
-<meta property="og:description" content="@@(Description)@@">
-<meta property="og:url" content="0000000">
-<meta property="og:image" content="0000000">
--->
-<meta name="viewport" content="@@(viewport)@@" />
-<link rel="stylesheet" type="text/css" href="../common/css/layout.css" />
-<link rel="stylesheet" type="text/css" href="../common/css/contents.css" />
-<link rel="stylesheet" type="text/css" href="../common/css/temp.css" />
-<!-- TemplateBeginEditable name="head" -->
-<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]-->
-<!-- TemplateEndEditable -->
-<!-- TemplateParam name="ページタイトル" type="text" value="" -->
-<!-- TemplateParam name="Keyword" type="text" value="" -->
-<!-- TemplateParam name="Description" type="text" value="" -->
-<!-- TemplateParam name="ページid" type="text" value="" -->
-<!-- TemplateParam name="ページclass" type="text" value="" -->
-<!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
-<!-- TemplateParam name="subNav-contents" type="boolean" value="false" -->
-<!-- TemplateInfo codeOutsideHTMLIsLocked="true" -->
-</head>
-<body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@>
-<div id="wrapper"> 
-
-	<!-- ============= header ============= -->
-	<div id="header"> 
-		<h1 id="header__ci">CI</h1>
-		<!-- gnav --> 
-		<!-- 基本はnavが親だが、構成がシンプルな場合はulを親にする-->
-		<div id="gnav">
-			<ul>
-				<li @@((ページid != 'category_id_01') ? 'class="gnBtn gnBtn_01"' : ' class="gnBtn gnBtn_01 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_02') ? 'class="gnBtn gnBtn_02"' : ' class="gnBtn gnBtn_02 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_03') ? 'class="gnBtn gnBtn_03"' : ' class="gnBtn gnBtn_03 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_04') ? 'class="gnBtn gnBtn_04"' : ' class="gnBtn gnBtn_04 is-current"';)@@><a href="#header"></a></li>
-				<li @@((ページid != 'category_id_05') ? 'class="gnBtn gnBtn_05"' : ' class="gnBtn gnBtn_05 is-current"';)@@><a href="#header"></a></li>
-			</ul>
-		</div>
-		<!-- /gnav --> 
-	</div>
-	<!-- /============= header ============= -->
-
-
-	<!-- ============= contents ============= -->
-	<div id="contents"> 
-		
-		<!-- main -->
-		<div id="main"><!-- TemplateBeginEditable name="メイン部分" -->メイン部分<!-- TemplateEndEditable --></div>
-		<!-- /main --> 
-		<!-- sub -->
-		<div id="sub"> 
-			<!-- subNav -->
-			<div id="subNav"> <!-- TemplateBeginIf cond="_document['subNav-contents']" --> 
-				<!-- subNav-about -->
-				<dl>
-					<dt>カテゴリータイトル</dt>
-					<dd@@((ページid != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>
-					</dd>
-					<dd@@((ページid != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>
-					</dd>
-					<dd@@((ページid != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>
-					</dd>
-					<dd@@((ページid != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>
-					</dd>
-				</dl>
-				<!-- /subNav-about --> 
-				<!-- TemplateEndIf --> </div>
-		</div>
-		<!-- /sub --> 
-		<a href="#header" id="pageTop">トップに戻る</a> </div>
-	<!-- /============= contents ============= --> 
-	
-	
-	<!-- ============= footer ============= -->
-	<div id="footer">
-		<ul>
-			<li><a href="#header">サイトマップ</a></li>
-			<li><a href="#header">個人情報のお取扱いについて</a></li>
-			<li><a href="#header">サイトポリシー</a></li>
-		</ul>
-		<p><small>Copylight &copy;</small></p>
-	</div>
-	<!-- /============= footer ============= -->
-
-	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div>
-<!-- /============= wrapper ============= -->
-<script type="text/javascript" src="../src/js/minify/base.js"></script> 
-<!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> 
-<script type="text/javascript" src="../src/js/main.js"></script> 
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" class="ie8"><![endif]--><!--[if IE 9]><html xmlns="http://www.w3.org/1999/xhtml" class="ie9"><![endif]--><!--[if !IE]>--><html xmlns="http://www.w3.org/1999/xhtml"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@</title><meta http-equiv="Content-Language" content="ja" /><meta http-equiv="Content-Style-Type" content="text/css" /><meta http-equiv="Content-Script-Type" content="text/javascript" /><meta name="description" content="@@(Description)@@" /><meta name="keywords" content="@@(Keyword)@@" /><!-- SNS対応する際に使用<meta property="og:site_name" content="0000000"><meta property="og:title" content="@@((ページid === 'top') ?  ページタイトル : ページタイトル + ' ｜ サイト名' )@@"><meta property="og:description" content="@@(Description)@@"><meta property="og:url" content="0000000"><meta property="og:image" content="0000000">--><meta name="viewport" content="@@(viewport)@@" /><link rel="stylesheet" type="text/css" href="../common/css/layout.css" /><link rel="stylesheet" type="text/css" href="../common/css/contents.css" /><!-- TemplateBeginEditable name="head" --><!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="common/style/ie.css"><![endif]--><!-- TemplateEndEditable --><!-- TemplateParam name="ページタイトル" type="text" value="" --><!-- TemplateParam name="Keyword" type="text" value="" --><!-- TemplateParam name="Description" type="text" value="" --><!-- TemplateParam name="ページid" type="text" value="" --><!-- TemplateParam name="ページclass" type="text" value="" --><!-- TemplateParam name="viewport" type="text" value="width=1080px,user-scalable=yes" --><!-- TemplateParam name="subNav-contents" type="boolean" value="false" --><!-- TemplateInfo codeOutsideHTMLIsLocked="true" --></head><body id="@@(ページid)@@"@@((ページclass == '')?'' : ' class="' + ページclass + '"';)@@><div id="wrapper"> 	<!-- ============= header ============= -->	<div id="header"> 		<h1 id="header__ci">CI</h1>		<!-- gnav --> 		<!-- 基本はnavが親だが、構成がシンプルな場合はulを親にする-->		<div id="gnav">			<ul>				<li @@((ページid != 'category_id_01') ? 'class="gnBtn gnBtn_01"' : ' class="gnBtn gnBtn_01 is-current"';)@@><a href="#header"></a></li>				<li @@((ページid != 'category_id_02') ? 'class="gnBtn gnBtn_02"' : ' class="gnBtn gnBtn_02 is-current"';)@@><a href="#header"></a></li>				<li @@((ページid != 'category_id_03') ? 'class="gnBtn gnBtn_03"' : ' class="gnBtn gnBtn_03 is-current"';)@@><a href="#header"></a></li>				<li @@((ページid != 'category_id_04') ? 'class="gnBtn gnBtn_04"' : ' class="gnBtn gnBtn_04 is-current"';)@@><a href="#header"></a></li>				<li @@((ページid != 'category_id_05') ? 'class="gnBtn gnBtn_05"' : ' class="gnBtn gnBtn_05 is-current"';)@@><a href="#header"></a></li>			</ul>		</div>		<!-- /gnav --> 	</div>	<!-- /============= header ============= -->	<!-- ============= contents ============= -->	<div id="contents"> 				<!-- main -->		<div id="main"><!-- TemplateBeginEditable name="メイン部分" -->メイン部分<!-- TemplateEndEditable --></div>		<!-- /main --> 		<!-- sub -->		<div id="sub"> 			<!-- subNav -->			<div id="subNav"> <!-- TemplateBeginIf cond="_document['subNav-contents']" --> 				<!-- subNav-about -->				<dl>					<dt>カテゴリータイトル</dt>					<dd@@((ページid != 'content_id_01') ? '' : ' class="current"';)@@><a href="#header"></a>					</dd>					<dd@@((ページid != 'content_id_02') ? '' : ' class="current"';)@@><a href="#header"></a>					</dd>					<dd@@((ページid != 'content_id_03') ? '' : ' class="current"';)@@><a href="#header"></a>					</dd>					<dd@@((ページid != 'content_id_04') ? '' : ' class="current"';)@@><a href="#header"></a>					</dd>				</dl>				<!-- /subNav-about --> 				<!-- TemplateEndIf --> </div>		</div>		<!-- /sub --> 		<a href="#header" id="pageTop">トップに戻る</a> </div>	<!-- /============= contents ============= --> 			<!-- ============= footer ============= -->	<div id="footer">		<p><small>Copylight &copy;</small></p>	</div>	<!-- /============= footer ============= -->	<!-- TemplateBeginEditable name="wrapper-last" --> <!-- TemplateEndEditable --> </div><!-- /============= wrapper ============= --><script type="text/javascript" src="../common/js/base.js"></script> <script type="text/javascript" src="../common/js/module.js"></script> <!-- TemplateBeginEditable name="body-last" --> <!-- TemplateEndEditable --> <script type="text/javascript" src="../src/js/main.js"></script> </body></html>
