@@ -12,8 +12,8 @@
      */
 	var INDEX = function(){},
 		MEMBER = INDEX.prototype;
-
-
+	
+	
 	
 	
 	/*Private Static Property
@@ -43,12 +43,9 @@
 	};
 	MEMBER.page 		= document.getElementById("contents");
 	MEMBER.pageSty 		= MEMBER.page.style;
-
-	MEMBER.animateInCallBack 	= function(){};
-	MEMBER.animateOutCallBack 	= function(){};
-
-
-
+	
+	
+	
 	
 	/*Init
 	--------------------------------------------------------------------*/
@@ -56,7 +53,7 @@
 		var _self = this;
 		_self.stateCheck();
 	};
-
+	
 	
 	
 	

@@ -138,8 +138,6 @@
 			_UA = "ie";
 			if (_wnVer.indexOf("msie 8.") !== -1) _UAver = 'ie8';
 			else if (_wnVer.indexOf("msie 9.") !== -1) _UAver = "ie9";
-//			else if (_wnVer.indexOf("msie 7.") !== -1) _UAver = 'ie7';
-//			else if (_wnVer.indexOf("msie 6.") !== -1) _UAver = 'ie6';
 			else _UAver = "ie10";
 		} else if (_wnUA.indexOf('trident/7') !== -1) {
 			_UA = "ie";
@@ -257,7 +255,7 @@
 			_queryTxt = location.search;
 		if (_queryTxt.length === 0) return false;
 		_self.hasQuery = true;
-		_self.urlQuery = _queryLen.substr(1).split("&").toString();
+		_self.urlQuery = _queryTxt.substr(1).split("&").toString();
 	};
 
 
