@@ -126,7 +126,7 @@
 	 * @param {DOM} DOM要素
 	 * @param {String} クラス名
 	 */
-	METHOD.reomveClass = function(a_dom,a_cls){
+	METHOD.removeClass = function(a_dom,a_cls){
 		var _dom = a_dom,
 			_cls = a_cls;
 		if (_dom.classList) _dom.classList.remove(_cls);

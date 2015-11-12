@@ -256,98 +256,91 @@
 	 * if(obj.isMobile === true) return false;
 	 */
 	var USERINFO = function() {
-		var _self = this;
-		_self.checkUA();
-		_self.checkDevice();
-		_self.getID();
+		var _bodys = document.getElementsByTagName("body")[0];
+		
+		/**
+		 * 閲覧環境：OS
+		 * @property {String} OS
+		 */
+		this.OS = "";
+
+		/**
+		 * 閲覧環境：ユーザーエージェント
+		 * @property {String} UA
+		 */
+		this.UA = "";
+
+		/**
+		 * 閲覧環境：ieのバージョン
+		 * @property {String} IEver
+		 */
+		this.IEver = "not IE";
+
+		/**
+		 * 閲覧環境：Flashプレーヤー判定
+		 * Flashプレーヤーの有無を確認
+		 * @property {Boolean} isFlash
+		 */
+		this.hasFlashPlayer = false;
+
+		/**
+		 * 閲覧環境：モバイル判定
+		 * 判定の範囲は随時更新する
+		 * @property {Boolean} isMobile
+		 */
+		this.isMobile = false;
+
+		/**
+		 * 閲覧環境：デバイスの種類
+		 * @property {String} device
+		 */
+		this.device = "pc";
+
+		/**
+		 * ページ情報：閲覧しているページのbody要素のid
+		 * サイト毎で起点となる要素は変更する
+		 * @property {String} id
+		 */
+		this.id = _bodys.getAttribute('id');
+
+		/**
+		 * ページ情報：閲覧しているページのbody要素のclass
+		 * サイト毎で起点となる要素は変更する
+		 * @property {String} className
+		 */
+		this.className = _bodys.className;
+
+		/**
+		 * ページ情報：URL内のクエリの有無
+		 * @property {Boolean} hasQuery
+		 */
+		this.hasQuery = false;
+
+		/**
+		 * ページ情報：URL内のクエリの内容
+		 * @property {String} urlQuery
+		 */
+		this.urlQuery = "";
+		
+		
+		//コンストラクタ実行時の処理
+		this.checkUA();
+		this.checkDevice();
 	},
 		MEMBER = USERINFO.prototype;
 	
-	
-	
-	
-	/*Public Property
-	--------------------------------------------------------------------*/
-	/**
-	 * 閲覧環境：OS
-	 * @property {String} OS
-	 */
-	MEMBER.OS = "";
-
-	/**
-	 * 閲覧環境：ユーザーエージェント
-	 * @property {String} UA
-	 */
-	MEMBER.UA = "";
-
-	/**
-	 * 閲覧環境：ieのバージョン
-	 * @property {String} IEver
-	 */
-	MEMBER.IEver = "not IE";
-
-	/**
-	 * 閲覧環境：Flashプレーヤー判定
-	 * Flashプレーヤーの有無を確認
-	 * @property {Boolean} isFlash
-	 */
-	MEMBER.isFlash = false;
-
-	/**
-	 * 閲覧環境：モバイル判定
-	 * 判定の範囲は随時更新する
-	 * @property {Boolean} isMobile
-	 */
-	MEMBER.isMobile = false;
-
-	/**
-	 * 閲覧環境：デバイスの種類
-	 * @property {String} device
-	 */
-	MEMBER.device = "pc";
-
-	/**
-	 * ページ情報：閲覧しているページのbody要素のid
-	 * サイト毎で起点となる要素は変更する
-	 * @property {String} id
-	 */
-	MEMBER.id = "";
-
-	/**
-	 * ページ情報：閲覧しているページのbody要素のclass
-	 * サイト毎で起点となる要素は変更する
-	 * @property {String} className
-	 */
-	MEMBER.className = "";
-
-	/**
-	 * ページ情報：URL内のクエリの有無
-	 * @property {Boolean} hasQuery
-	 */
-	MEMBER.hasQuery = false;
-
-	/**
-	 * ページ情報：URL内のクエリの内容
-	 * @property {String} urlQuery
-	 */
-	MEMBER.urlQuery = "";
-
 
 	
 	
 	/*Public Method
-	--------------------------------------------------------------------*/
+	--------------------------------------------------------------------*/	
 	/**
 	 * IDの取得（IEの場合はwrapperにIE追加）
-	 * @method getID
+	 * @method getBodyId
+	 * @returns {String} body要素のidを返す
 	 */
-	MEMBER.getID = function() {
-		var _self = this,
-			_bodys = document.getElementsByTagName("body")[0],
-			_classStr = _self.UA;
-
-		_self.id = _bodys.getAttribute('id');
-		_self.className = _bodys.className;
+	MEMBER.getBodyId = function() {
+		return this.id;
 	};
 
 	/** 
@@ -377,8 +370,6 @@
 			_UA = "ie";
 			if (_wnVer.indexOf("msie 8.") !== -1) _UAver = 'ie8';
 			else if (_wnVer.indexOf("msie 9.") !== -1) _UAver = "ie9";
-//			else if (_wnVer.indexOf("msie 7.") !== -1) _UAver = 'ie7';
-//			else if (_wnVer.indexOf("msie 6.") !== -1) _UAver = 'ie6';
 			else _UAver = "ie10";
 		} else if (_wnUA.indexOf('trident/7') !== -1) {
 			_UA = "ie";
@@ -484,7 +475,7 @@
 				return false;
 			}
 		}();
-		return _isFlashInstalled && !$.device("android") ? true : false;
+		this.hasFlashPlayer =  _isFlashInstalled && !$.device("android") ? true : false;
 	};
 
 	/**
@@ -496,7 +487,7 @@
 			_queryTxt = location.search;
 		if (_queryTxt.length === 0) return false;
 		_self.hasQuery = true;
-		_self.urlQuery = _queryLen.substr(1).split("&").toString();
+		_self.urlQuery = _queryTxt.substr(1).split("&").toString();
 	};
 
 
@@ -633,7 +624,7 @@
 	 * @param {DOM} DOM要素
 	 * @param {String} クラス名
 	 */
-	METHOD.reomveClass = function(a_dom,a_cls){
+	METHOD.removeClass = function(a_dom,a_cls){
 		var _dom = a_dom,
 			_cls = a_cls;
 		if (_dom.classList) _dom.classList.remove(_cls);

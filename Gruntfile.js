@@ -50,7 +50,7 @@ module.exports = function(grunt){
         },
 		uglify:{
 			baseJS:{
-				src	:"htdocs/src/js/base.js",
+				src	:"htdocs/common/js/base.js",
 				dest:"htdocs/common/js/minify/base.js"
 			},
 			moduleJS:{

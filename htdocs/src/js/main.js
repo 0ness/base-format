@@ -18,10 +18,6 @@
 	
 	/*Private Static Property
 	--------------------------------------------------------------------*/
-	//dom
-	var w = window,
-		d = document;
-
 	//instance
 	var INF0	= new UserInfo(),
 		LIB		= new Library(),

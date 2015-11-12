@@ -15,15 +15,45 @@
 		METHOD = PLANET.prototype;
 	
 	
+	/**
+	 * 色生成：hex値を与えてrgbのオブジェクトを返す
+	 * @param   {String} _hex webでの色番号
+	 * @returns {Object} rgbオブジェクト
+	 */
+	METHOD.hexToRgb = function (_hex) {
+		// source: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+		// Expand shorthand form (e.g."03F") to full form (e.g."0033FF")
+		var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+		_hex = _hex.replace(shorthandRegex, function (m, r, g, b) {
+			return r + r + g + g + b + b;
+		});
+		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
+		return {
+			red: parseInt(result[1], 16),
+			green: parseInt(result[2], 16),
+			blue: parseInt(result[3], 16)
+		};
+	};
+
+	/**
+	 * 色生成：rgb値を与えてHEX値を返す
+	 * @param   {Object} rgb rgb情報のオブジェクト
+	 * @returns {String} HEX値
+	 */
+	METHOD.rgbToHex = function (rgb) {
+		// source: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+		return "#" + ((1 << 24) + (rgb.red << 16) + (rgb.green << 8) + rgb.blue).toString(16).slice(1);
+	};
+
 	
 	/**
 	* 色生成：シード値を与えてRGB値を返す
-	* @method getRndRGB
+	* @method randomRgb
 	* @param{Number} 256色
 	* @param{Number} 固定シード値
 	* @return{String} 色番号
 	*/
-	METHOD.getRndRGB = function(_rnd,_plus){
+	METHOD.randomRgb = function(_rnd,_plus){
 		var rnd = _rnd || 255,
 			plus = _plus || 0,
 			r = ((Math.random()*rnd)>>0) + plus,
@@ -36,14 +66,14 @@
 	
 	/**
 	* 色生成：シード値を与えてRGB値を返す
-	* @method getRndRGB_02
+	* @method randomRgb_02
 	* @param{Number} 赤
 	* @param{Number} 青
 	* @param{Number} 緑
 	* @param{Number} 固定シード値
 	* @return{String} 色番号
 	*/
-	METHOD.getRndRGB_02 = function(_r,_g,_b,_plus){
+	METHOD.randomRgb_02 = function(_r,_g,_b,_plus){
 		var plus = _plus || 0,
 			r = ((Math.random()*_r)>>0) + plus,
 			g = ((Math.random()*_g)>>0) + plus,
