@@ -10,18 +10,14 @@
 	 * @class INDEX
      * @constructor
      */
-	var INDEX = function(){},
-		MEMBER = INDEX.prototype;
-
-
+	var Index = function(){},
+		Member = Index.prototype;
+	
+	
 	
 	
 	/*Private Static Property
 	--------------------------------------------------------------------*/
-	//dom
-	var w = window,
-		d = document;
-
 	//instance
 	var INF0	= new UserInfo(),
 		LIB		= new Library(),
@@ -36,33 +32,30 @@
 	
 	/*Public Static Property
 	--------------------------------------------------------------------*/
-	MEMBER.importState	= {
+	Member.importState	= {
 		isIE8	:false,
 		isIE9	:false,
 		isIE89	:false
 	};
-	MEMBER.page 		= document.getElementById("contents");
-	MEMBER.pageSty 		= MEMBER.page.style;
-
-	MEMBER.animateInCallBack 	= function(){};
-	MEMBER.animateOutCallBack 	= function(){};
-
-
-
+	Member.page 		= document.getElementById("contents");
+	Member.pageSty 		= Member.page.style;
+	
+	
+	
 	
 	/*Init
 	--------------------------------------------------------------------*/
-	MEMBER.init = function() {
+	Member.init = function() {
 		var _self = this;
 		_self.stateCheck();
 	};
-
+	
 	
 	
 	
 	/*Public Static Method
 	--------------------------------------------------------------------*/
-	MEMBER.stateCheck = function(){
+	Member.stateCheck = function(){
 		var _state	= STATE,
 			_ua		= INF0.UA,
 			_iever	= INF0.IEver;
@@ -85,10 +78,10 @@
 
 
 
-	window.INDEX = INDEX;
+	window.Index = Index;
 })(window, document);
 
 
-var Index = new INDEX();
-if (window.addEventListener) window.addEventListener('load', function(){Index.init();});
-else window.attachEvent('onload', function() {Index.init();});
+var INDEX = new Index();
+if (window.addEventListener) window.addEventListener('load', function(){INDEX.init();});
+else window.attachEvent('onload', function() {INDEX.init();});

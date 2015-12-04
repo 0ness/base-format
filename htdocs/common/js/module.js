@@ -255,7 +255,7 @@
 	 * @example var obj = new UserInfo();
 	 * if(obj.isMobile === true) return false;
 	 */
-	var USERINFO = function() {
+	var UserInfo = function() {
 		var _bodys = document.getElementsByTagName("body")[0];
 		
 		/**
@@ -327,27 +327,18 @@
 		this.checkUA();
 		this.checkDevice();
 	},
-		MEMBER = USERINFO.prototype;
+		Member = UserInfo.prototype;
 	
 
 	
 	
 	/*Public Method
 	--------------------------------------------------------------------*/	
-	/**
-	 * IDの取得（IEの場合はwrapperにIE追加）
-	 * @method getBodyId
-	 * @returns {String} body要素のidを返す
-	 */
-	MEMBER.getBodyId = function() {
-		return this.id;
-	};
-
 	/** 
 	 * OSチェック
 	 * @method checkOS
 	 */
-	MEMBER.checkOS = function() {
+	Member.checkOS = function() {
 		if (navigator.platform.indexOf("Win") != -1) this.OS = "windows";
 		else this.OS = "mac";
 	};
@@ -356,7 +347,7 @@
 	 * UserAgentチェック
 	 * @method checkUA
 	 */
-	MEMBER.checkUA = function() {
+	Member.checkUA = function() {
 		var _self = this,
 			_d = document,
 			_UA = "",
@@ -396,7 +387,7 @@
 	 * 閲覧環境：IE8以下判定
 	 * @method checkIE8
 	 */
-	MEMBER.checkIE8 = function(){
+	Member.checkIE8 = function(){
 		var _flg = false;
 		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
 		else if(this.checkIE8Under() === true) _flg = true;
@@ -407,7 +398,7 @@
 	 * 閲覧環境：IE9判定
 	 * @method checkIE9
 	 */
-	MEMBER.checkIE9 = function(){
+	Member.checkIE9 = function(){
 		var _self= this,
 			_flg = false,
 			_und = "undefined";
@@ -420,7 +411,7 @@
 	 * 閲覧環境：IE8以下判定
 	 * @method checkIE8Under
 	 */
-	MEMBER.checkIE8Under = function(){
+	Member.checkIE8Under = function(){
 		var _flg = false,
 			_und = "undefined";
 		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
@@ -431,7 +422,7 @@
 	 * 閲覧環境：IE9以下判定
 	 * @method checkIE9Under
 	 */
-	MEMBER.checkIE9Under = function(){
+	Member.checkIE9Under = function(){
 		var _flg = false;
 		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
 		return _flg;
@@ -441,7 +432,7 @@
 	 * PC・モバイル　デバイスチェック
 	 * @method checkDevice
 	 */
-	MEMBER.checkDevice = function() {
+	Member.checkDevice = function() {
 		var _self = this,
 			_device = "pc",
 			_deviceUA = navigator.userAgent,
@@ -463,7 +454,7 @@
 	 * Flashプレーヤーの有無をチェック
 	 * @method checkFlash
 	 */
-	MEMBER.checkFlash = function() {
+	Member.checkFlash = function() {
 		var _isFlashInstalled = function() {
 			if (navigator.plugins["Shockwave Flash"]) {
 				return true;
@@ -482,7 +473,7 @@
 	 * URLのクエリチェック
 	 * @method checkURLQuery
 	 */
-	MEMBER.checkURLQuery = function() {
+	Member.checkURLQuery = function() {
 		var _self = this,
 			_queryTxt = location.search;
 		if (_queryTxt.length === 0) return false;
@@ -493,7 +484,7 @@
 
 	
 
-	window.UserInfo = USERINFO;
+	window.UserInfo = UserInfo;
 })(window, document);
 
 ;(function(window,document){
@@ -509,8 +500,8 @@
 	 * @example var obj = new Library();  
 	 * obj.anchor("#header"); //アンカーリンク処理
 	 */
-	var LIBRARY = function(){},
-		METHOD = LIBRARY.prototype;
+	var Library = function(){},
+		Method = Library.prototype;
 	
 	
 	
@@ -523,7 +514,7 @@
 	 * @method checkIE8
 	 * @return {Boolean} ブラウザの判定
 	 */
-	METHOD.isIE8 = function(){
+	Method.isIE8 = function(){
 		var _flg = false;
 		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
 		else if(this.isIE8Under() === true) _flg = true;
@@ -536,7 +527,7 @@
 	 * @method isIE9
 	 * @return {Boolean} ブラウザの判定
 	 */
-	METHOD.isIE9 = function(){
+	Method.isIE9 = function(){
 		var _self= this,
 			_flg = false,
 			_und = "undefined";
@@ -551,7 +542,7 @@
 	 * @method isIE8Under
 	 * @return {Boolean} ブラウザの判定
 	 */
-	METHOD.isIE8Under = function(){
+	Method.isIE8Under = function(){
 		var _flg = false,
 			_und = "undefined";
 		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
@@ -564,7 +555,7 @@
 	 * @method isIE9Under
 	 * @return {Boolean} ブラウザの判定
 	 */
-	METHOD.isIE9Under = function(){
+	Method.isIE9Under = function(){
 		var _flg = false;
 		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
 		return _flg;
@@ -576,7 +567,7 @@
 	 * @method getWindowWidth
 	 * @returns {Number} ウィンドウ幅
 	 */
-	METHOD.getWindowWidth = function(){
+	Method.getWindowWidth = function(){
 		var _width = window.innerWidth || document.body.clientWidth;
 		return _width;
 	};
@@ -587,7 +578,7 @@
 	 * @method getWindowHeight
 	 * @returns {Number} ウィンドウ高
 	 */
-	METHOD.getWindowHeight = function(){
+	Method.getWindowHeight = function(){
 		var _height = window.innerHeight || document.body.clientHeight;
 		return _height;
 	};
@@ -598,7 +589,7 @@
 	 * @method getScrollTop
 	 * @returns {Number} スクロール位置
 	 */
-	METHOD.getScrollTop = function(){
+	Method.getScrollTop = function(){
 		var _y = document.body.scrollTop || document.documentElement.scrollTop;
 		return _y;
 	};
@@ -610,7 +601,7 @@
 	 * @param {DOM} DOM要素
 	 * @param {String} クラス名
 	 */
-	METHOD.addClass = function(a_dom,a_cls){
+	Method.addClass = function(a_dom,a_cls){
 		var _dom = a_dom,
 			_cls = a_cls;
 		if (_dom.classList) _dom.classList.add(_cls);
@@ -624,7 +615,7 @@
 	 * @param {DOM} DOM要素
 	 * @param {String} クラス名
 	 */
-	METHOD.removeClass = function(a_dom,a_cls){
+	Method.removeClass = function(a_dom,a_cls){
 		var _dom = a_dom,
 			_cls = a_cls;
 		if (_dom.classList) _dom.classList.remove(_cls);
@@ -637,7 +628,7 @@
 	 * @method hasClass
 	 * @returns {Boolean} クラスを持っているか正否値
 	 */
-	METHOD.hasClass = function(a_dom,a_cls){
+	Method.hasClass = function(a_dom,a_cls){
 		var _dom = a_dom,
 			_cls = a_cls,
 			_flg = false;
@@ -653,7 +644,7 @@
 	 * @param {String} id 年数を囲っているid
 	 * @example obj.yearAdust();
 	 */
-	METHOD.yearAdjust = function(id){
+	Method.yearAdjust = function(id){
 		var _id = id || "nowYear",
 			_now_year = new Date().getFullYear();
 		document.getElementById(_id).innerHTML += _now_year;
@@ -665,5 +656,5 @@
 	
 
 	
-	window.Library = LIBRARY;
+	window.Library = Library;
 })(window, document);
