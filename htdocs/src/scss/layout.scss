@@ -1,18 +1,36 @@
-//
 //記述はレイアウトの構造優先
-//-----------------------------
-//1.width,height
-//2.float,clear
-//3.position,top,bottom,left,right
-//4.overflow,display
-//5.margin,padding
-//6.text-align
-//7.font,line-height
-//8.background,border
-//9.etc....
-//-----------------------------
+//----------------------------------------------------------
+//１．ブロック要素のサイズ・属性：width,height,display,float...
+//２．ブロック要素の余白：margin,padding,overflow,box-sizing...
+//３．ポジション系：position,top,left...
+//４．背景、ボーダーなどのスタイル：background,border,box-shadow...
+//５．文字スタイル：font-size,letter-spacing,text-shadow...
+//６．変形：transform...
+//７．アニメーション：transition,animation...
+//８．その他
+//----------------------------------------------------------
+
+//指針とする記法
+//----------------------------------------------------------
+//MindBEMding(https://gist.github.com/juno/6182957)
+//・ブロック名はハイフン区切りを使用して表現してもよい（2つはだめ）
+//・柔軟でなくなる場合、厳格には準拠しない
 //
-//フォントサイズ：%表示（20px以降はpxで可）
+//（例
+//.site-search{} /* Block */
+//.site-search__field{} /* Element */
+//.site-search--full{} /* Modifier */
+//----------------------------------------------------------
+
+//その他記述ルール
+//----------------------------------------------------------
+//ベンダープレフィックス：基本的にgrunt-autoprefixerで対応するので不要
+//フォントサイズ：rem単位指定（IE8対応はmixinでpxとrem同時対応）
+//状態の表現：出来る限り「is-」の接頭辞をつける（is-animating,is-current）
+//（なせBEMのModifierでないかというと、こちらの方がjsと親和性が高いから）
+//汎用クラス：接頭辞「u-」をつける（_helper.scssで管理）
+//----------------------------------------------------------
+
 
 
 @import "partials/_setting";
