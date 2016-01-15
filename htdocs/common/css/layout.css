@@ -1,107 +1,85 @@
 @charset "UTF-8";
-/* フォントサイズのリスト */
-/* 相対的なフォントサイズの調整を行う：基本の数値に対して増減した値を指定する @param{Number}px単位で基準となるフォントサイズから何px変わったかを指定
-*/
-/*============================================================
-RESET用スタイル　
-============================================================*/
-/**
-* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
-* http://cssreset.com
-*/
+/*====================================================================
+Reset　
+====================================================================*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; text-decoration: none; }
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, menu, nav, section, main { display: block; }
-
 body { line-height: 1; }
-
 ol, ul { list-style: none; }
-
 blockquote, q { quotes: none; }
-
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-
 table { border-collapse: collapse; border-spacing: 0; }
-
-/*============================================================
-FONT用スタイル　
-============================================================*/
+/*====================================================================
+Base Font
+====================================================================*/
 html { font-size: 62.5%; }
-
 body { font: 13px/1.231 arial,helvetica,clean,sans-serif; *font-size: small; /* for IE */ *font: x-small; /* for IE in quirks mode */ font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
-
 body.webfont { font-family: "Noto Sans Japanese", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: 100; }
-
 select, input, button, textarea { font: 99% arial, helvetica, clean, sans-serif; }
-
 table { font-size: inherit; font: 100%; }
-
 pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
-
+/*====================================================================
+Font Classes　
+====================================================================*/
+/*　Noto Sans */
+.u-notofont { font-family: "Noto Sans Japanese"; }
+.u-notofont-thin { font-family: "Noto Sans Japanese thin"; }
+.u-notofont-medium { font-family: "Noto Sans Japanese medium"; }
+.u-notofont-light { font-family: "Noto Sans Japanese light"; }
+.u-notofont-demilight { font-family: "Noto Sans Japanese demilight"; }
+.u-notofont-bold { font-family: "Noto Sans Japanese bold"; }
+.u-notofont-black { font-family: "Noto Sans Japanese black"; }
+@font-face { font-family: "Noto Sans Japanese"; src: url("../fonts/notosans/regular/NotoSansCJKjp-Regular.eot"); src: url("../fonts/notosans/regular/NotoSansCJKjp-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/regular/NotoSansCJKjp-Regular.woff") format("woff"), url("../fonts/notosans/regular/NotoSansCJKjp-Regular.otf") format("opentype"); }
+@font-face { font-family: "Noto Sans Japanese thin"; src: url("../fonts/notosans/thin/NotoSansCJKjp-Thin.eot"); src: url("../fonts/notosans/thin/NotoSansCJKjp-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/thin/NotoSansCJKjp-Thin.woff") format("woff"), url("../fonts/notosans/thin/NotoSansCJKjp-Thin.otf") format("opentype"); font-weight: lighter; }
+@font-face { font-family: "Noto Sans Japanese medium"; src: url("../fonts/notosans/medium/NotoSansCJKjp-medium.eot"); src: url("../fonts/notosans/medium/NotoSansCJKjp-medium.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/medium/NotoSansCJKjp-medium.woff") format("woff"), url("../fonts/notosans/medium/NotoSansCJKjp-medium.otf") format("opentype"); font-weight: lighter; }
+@font-face { font-family: "Noto Sans Japanese light"; src: url("../fonts/notosans/light/NotoSansCJKjp-light.eot"); src: url("../fonts/notosans/light/NotoSansCJKjp-light.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/light/NotoSansCJKjp-light.woff") format("woff"), url("../fonts/notosans/light/NotoSansCJKjp-light.otf") format("opentype"); font-weight: lighter; }
+@font-face { font-family: "Noto Sans Japanese demilight"; src: url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.eot"); src: url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.woff") format("woff"), url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.otf") format("opentype"); font-weight: lighter; }
+@font-face { font-family: "Noto Sans Japanese bold"; src: url("../fonts/notosans/bold/NotoSansCJKjp-bold.eot"); src: url("../fonts/notosans/bold/NotoSansCJKjp-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/bold/NotoSansCJKjp-bold.woff") format("woff"), url("../fonts/notosans/bold/NotoSansCJKjp-bold.otf") format("opentype"); font-weight: lighter; }
+@font-face { font-family: "Noto Sans Japanese black"; src: url("../fonts/notosans/black/NotoSansCJKjp-black.eot"); src: url("../fonts/notosans/black/NotoSansCJKjp-black.eot?#iefix") format("embedded-opentype"), url("../fonts/notosans/black/NotoSansCJKjp-black.woff") format("woff"), url("../fonts/notosans/black/NotoSansCJKjp-black.otf") format("opentype"); font-weight: lighter; }
 @font-face { font-family: 'icomoon'; src: url("../fonts/icomoon.eot?gr599p"); src: url("../fonts/icomoon.eot?#iefixgr599p") format("embedded-opentype"), url("../fonts/icomoon.woff?gr599p") format("woff"), url("../fonts/icomoon.ttf?gr599p") format("truetype"), url("../fonts/icomoon.svg?gr599p#icomoon") format("svg"); font-weight: normal; font-style: normal; }
-[class^="icoFont"], [class*=" icoFont"] { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
+[class^="icoFont"], [class*=" icoFont"] { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .ico { width: 100%; height: 100%; display: table; text-align: center; }
-
 .ico { top: 0px; left: 0px; position: absolute; z-index: auto; line-height: 1 !important; }
 .ico:before { line-height: 1 !important; color: #555c5e; display: table-cell; vertical-align: middle; }
-
 .icoFontArw-up:before { content: "\e800"; }
-
 .icoFontArw-down:before { content: "\e802"; }
-
 .icoFontArw-right:before { content: "\e801"; }
-
 .icoFontArw-left:before { content: "\e803"; }
-
+/*====================================================================
+Layout　
+====================================================================*/
 /* default style
 --------------------------------------------------------------------*/
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:active { text-decoration: underline; }
-
 p { font-size: 100%; line-height: 1.8; }
-
 li { font-size: 100%; line-height: 1.8; }
-
-/* developed style
---------------------------------------------------------------------*/
-a[href=""] { background: red !important; color: white !important; font-size: x-large !important; }
-
 /* base
 --------------------------------------------------------------------*/
 html { height: 100%; color: #555; background: #fff; }
-
 body { height: 100%; text-align: left; }
 body p::selection, body h1::selection, body h2::selection, body h3::selection, body h4::selection, body a::selection, body img::selection, body em::selection, body strong::selection, body dd::selection, body dt::selection, body u::selection, body dfn::selection, body li::selection { color: #fff; background: #0797de; }
 body *::-moz-selection { color: #fff; background: #0797de; }
-
 body > #wrapper { height: auto; }
-
 #wrapper { min-width: 1024px; min-height: 100%; height: auto !important; height: 100%; position: relative; }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5) { #wrapper { -webkit-text-size-adjust: none; } }
 
 /* header
 --------------------------------------------------------------------*/
 #header { height: 50px; background: #fff; }
-
 #header__ci a:hover img { opacity: 0.6; }
-
 /* global navigation
 --------------------------------------------------------------------*/
 #gnav ul { overflow: hidden; }
-
 .gnav__btn { float: left; }
 .gnav__btn a { display: block; }
 .gnav__btn img { display: block; }
-
 /*　contents block
 --------------------------------------------------------------------*/
 #contents { /*width:$width;*/ margin: 0 auto; overflow: hidden; position: relative; }
-
 #pagetop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
-
 /*footer
 --------------------------------------------------------------------*/
 #footer { width: 100%; height: 100px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: red; }

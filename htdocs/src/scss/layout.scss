@@ -1,3 +1,10 @@
+@import "partials/_setting";
+@import "partials/_mixin";
+@import "partials/_function";
+@import "partials/_reset";
+@import "partials/_font";
+
+
 //記述はレイアウトの構造優先
 //----------------------------------------------------------
 //１．ブロック要素のサイズ・属性：width,height,display,float...
@@ -33,26 +40,19 @@
 
 
 
-@import "partials/_setting";
-@import "partials/_mixin";
-@import "partials/_function";
-@import "partials/_reset";
-@import "partials/_font";
 
 
+
+
+/*====================================================================
+Layout　
+====================================================================*/
 
 /* default style
 --------------------------------------------------------------------*/
 a	{ @include link-set;}
 p   { @include text-base;}
 li  { @include text-base;}
-
-
-
-
-/* developed style
---------------------------------------------------------------------*/
-a[href = ""] { background: red !important; color:white !important; font-size: x-large !important;}
 
 
 

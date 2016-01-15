@@ -201,7 +201,7 @@ module.exports = function(grunt){
 			
 			//SASS
 			SASS_all:{
-				files:["htdocs/src/scss/partials/*.scss"],
+				files:["htdocs/src/scss/partials/*.scss","htdocs/src/scss/partials/fonts/*.scss"],
 				tasks:["sass:all","autoprefixer:all"]
 			},
 			SASS_layout:{

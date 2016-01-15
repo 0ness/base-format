@@ -1,10 +1,8 @@
-/*============================================================
-RESET用スタイル　
-============================================================*/
-/**
-* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
-* http://cssreset.com
-*/
+/*====================================================================
+Reset　
+====================================================================*/
+//Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+//http://cssreset.com
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,9 +51,9 @@ table {
 
 
 
-/*============================================================
-FONT用スタイル　
-============================================================*/
+/*====================================================================
+Base Font
+====================================================================*/
 html { font-size: 62.5%;}
 body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$fontGothic;}
 body.webfont { font-family:'Noto Sans Japanese',$fontGothic; font-weight:100;}
