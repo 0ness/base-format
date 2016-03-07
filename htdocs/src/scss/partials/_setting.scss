@@ -6,7 +6,7 @@
 // Vairable プロジェクト用　///////////////////////////////////////
 
 //サイトの幅
-$width:980px;
+$width:1024px;
 
 //サイトの高さ
 $min-height:600px;
@@ -17,9 +17,9 @@ $fontMincyou:"游明朝",YuMincho,"ヒラギノ明朝 Pro W3", "Hiragino Mincho 
 
 // color
 $color-key:#0797de;
-$color-txt:#444;
-$color-link:#33366a;
-$color-link-over:#787ef0;
+$color-txt:#555;
+$color-link:#008cda;
+$color-link-over:#09c;
 $color-link-active:#09c;
 $color-bg:#fff;
 $color-bg-content:#fdfdfd;
@@ -50,9 +50,6 @@ $trans-style-long:ease 0.35s;
 
 $trans-fade:opacity ease 0.2s;
 
-//easing
-$ease:cubic-bezier(0, .75, .58, 1);
-
 
 
 
@@ -62,32 +59,16 @@ $ease:cubic-bezier(0, .75, .58, 1);
 //ベースの変更は引数の値で指定しておく
 //基本使用する時は引数を使わないイメージで 例：@include text-base;
 @mixin text-base($size:100%,$lh:1.8) { font-size:$size; line-height:$lh;}
-@mixin text-link		{ color:$color-link; line-height: 1.2; border-bottom: 1px dashed;}
-@mixin text-hover		{ color:$color-link-over;}
-@mixin text-active		{ }
+@mixin text-link		{ text-decoration:none;}
+@mixin text-hover		{ text-decoration:underline;}
+@mixin text-active		{ text-decoration:underline;}
 
 //通常のリンクテキストの指定
-@mixin link-set		{ display: inline-block;
+@mixin link-set		{
 	@include text-link;
 	&:hover	{ @include text-hover;}
 	&:active{ @include text-active;}
 }
-
-//extend
-%link-ico  	{ position: relative;
-	&:before,
-	&:after 	{ content: " "; width: 11px; height: 8px; display: block; position: absolute;}
-	&:before { background:$color-link-over; top:2px; right:-23px; border: 1px solid white; transition: 0.25s ease-out background;}
-	&:after  { background:$color-link; top:6px; right:-19px; border: 1px solid white; transition: 0.25s ease-out background;}
-	&:hover{
-		&:before { width: 9px; height: 6px; transform:translate(-1px,1px); background:transparent; border-color:$color-link-over;}
-		&:after {  width: 9px; height: 6px; transform:translate(-1px,1px); background:transparent; border-color:$color-link; }
-	}
-}
-%link-style { @include link-set;
-	&[target="_blank"] { margin: 0 27px 0 0; @extend %link-ico;}
-}
-
 
 
 

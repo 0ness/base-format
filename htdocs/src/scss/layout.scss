@@ -50,7 +50,7 @@ Layout　
 
 /* default style
 --------------------------------------------------------------------*/
-a	{ color: $color-link;}
+a	{ @include link-set;}
 p   { @include text-base;}
 li  { @include text-base;}
 
@@ -60,144 +60,61 @@ li  { @include text-base;}
 /* base
 --------------------------------------------------------------------*/
 html	{ height:100%; color: $color-txt; background:$color-bg;}
-body	{ height:100%; text-align:left; @include select-color(#fff,#222);}
+body	{ height:100%; text-align:left; @include select-color(#fff,$color-key);}
 body > #wrapper { height:auto;}
-#wrapper { min-width:$width; min-height:100%; height:auto !important; height:100%; overflow: hidden; position:relative; background:url(../../common/images/bg-photo.jpg) no-repeat center top;
-	@include mobile	{ -webkit-text-size-adjust: none;}
+#wrapper { min-width:$width; min-height:100%; height:auto !important; height:100%; position:relative;
+	@include mobile	{ -webkit-text-size-adjust: none;}	
 }
-@media screen and (min-width:1280px){
-	#wrapper{ background-size: 100%;}
-}
+
 
 
 
 /* header
 --------------------------------------------------------------------*/
-#header	{ height:305px; box-sizing: border-box;}
-.header__inner { width: $width; margin: 0 auto; padding: 27px 0 0; position: relative;}
-.header-ci__txt { margin: 0 0 0 20px;}
+#header	{ height:50px; background:#fff;}
+#header__ci	{
+	a:hover img	{ opacity:0.6;}
+}
 
 
-/*----------- global navigation -----------*/
-#global-nav	{ @include top-right(83,0);
+
+
+/* global navigation
+--------------------------------------------------------------------*/
+#gnav	{
 	ul	{ overflow:hidden;}
 }
-.gnav-btn	{ float:left; padding: 0 20px 0 0; margin: 0 20px 0 0; line-height: 1; border-right: 1px solid #5a5165;
+.gnav__btn	{ float:left;
 	a 	{ display:block;
 		&:hover	{}
 	}
 	img	{ display:block;}
-	&:last-child { margin: 0; padding: 0; border: none;}
 }
-
-
-/*----------- option-nav -----------*/
-.option-nav{ @include top-right(50,0); @include clearfix;
-	&__btn { float: left; line-height: 1;
-		a { color:rgba(172, 178, 196, 0.9);
-			&:hover { text-decoration: underline dashed;}
-		}
-		& + & { margin-left: 15px;}
-		&:first-child { padding-right: 15px; border-right: 1px solid;}
-		&:last-child  { margin-top: -6px; padding-left: 5px;}
-	}
-}
-
 
 
 
 
 /*　contents block
 --------------------------------------------------------------------*/
-.container	{ width: 100%; background: #fff;}
-#contents	{ margin:0 auto; padding: 60px 0 100px; position:relative;}
-#page-top-btn	{ @include wh(40,74); @include bottom-right(210,0); color:#fff; background:url(../../common/images/icon/ico-page-top.png) no-repeat 11px 23px #4e5080; border-radius: 5px 0 0 5px; cursor: pointer; transition: 0.2s ease;
-	img { @include top-left(41,10);}
-	&:hover { bottom: 215px; background-color:#7174b4; /*background-position: 11px 18px;*/}
-}
+#contents	{ /*width:$width;*/ margin:0 auto; overflow:hidden; position:relative;}
+#pagetop	{ @include bottom-left(300,0); color:#fff;}
+
+
+//メインコンテンツ大枠
+#main	{}
 
 
 
 
 
-/*　contents module
---------------------------------------------------------------------*/
-.hd-title 	{ width: $width; position: absolute; top:-66px; left: 50%; margin: 0 0 0 -490px;}
-
-
-/*----------- セクション -----------*/
-.section {
-	&__inner { width: $width; margin: 0 auto;}
-	&__hd	{ padding: 0 0 0 15px; margin: 0 0 35px; line-height: 1; border-left: 6px solid #000;}
-	&__txt 	{ font-size: 1.6rem; line-height: 1.88; @include text-justify; letter-spacing: 0.5px;
-		a { @extend %link-style;}
-	}
-	& + & { padding-top: 80px;}
-	&--devide-blc { padding-bottom: 75px; border-bottom: 1px solid #ccc;}
-}
-
-
-/*----------- 画像 -----------*/
-.photos {  margin: 35px 0 0;
-	&__inner { width: $width; @include clearfix;}
-	&-item { position: relative; float: left;
-		&__txt { padding: 0 0 0 10px; @include top-left(20,20); color: white; line-height: 1; font-size: 1.6rem; border-left: 1px solid #666;
-			.small { display: block; padding: 7px 0 0; font-size: 1.2rem; color: #c5c7eb;}
-		}
-		img {display: block;}
-		&:nth-child(2) ~ & { margin-top: 10px;}
-		&:nth-child(odd) { clear: both; margin-right:10px;}
-		&--dark {
-			.photos-item__txt { color: #444;}
-		}
-	}
-	
-	&--simple{
-		.photos-item	{ float: none;
-			&__txt { top: 10px;}
-			img { margin: 0 auto;}
-		}
-	}
-	&--large {
-		.photos__inner 	{ margin: 0 auto; padding: 20px 0;}
-	}
-	&--bg-dark{ background: rgb(0,0,0); background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(51,51,51,1) 100%);}
-	&--bg-dot{ background: url(../../common/images/pattern-dot-gray.gif);}
-}
-
-
-/*----------- リンク横一覧 -----------*/
-.link-list { margin: 20px 0 0; overflow: hidden;
-	&__item { float: left; line-height: 1.1;
-		a 	{ @extend %link-style; font-size: 1.6rem;
-			&:before 	{ top: 2px;}
-			&:after 	{ top: 5px;}
-		}
-		& + & { margin-left: 10px; padding-left: 10px; border-left: 1px solid #ccc;}
-	}
-	
-}
 
 
 
 /*footer
 --------------------------------------------------------------------*/
-.footer		{ width:100%; background:#333539; color: #acb2c4;
-	&__inner 	{ width: $width; padding: 55px 0 60px; margin: 0 auto; overflow: hidden;}
-	&-list 		{ float: left; margin: 0 100px 0 0;
-		&__item { line-height: 1; vertical-align: middle;
-			&:before { content: " "; @include wh(5,5); display: inline-block; margin: 0 10px 0 0; background: #565aa8; border-radius: 5px; vertical-align: middle;}
-		}
-		&__item + &__item { margin-top: 10px;}
-		a 		{ color: #acb2c4; display: inline; border: none; font-size: 1.3rem; letter-spacing: 1px; vertical-align: middle;
-			&:hover { text-decoration: underline dashed;}
-		}
-	}
-	&-address 	{ width: 383px; float: right; font-size: 12px; @include text-justify;
-		em 	{ font-weight: bold; font-size: 15px;}
-		a 	{ color: #acb2c4; display: inline; border: none;
-			&:hover { text-decoration: underline dashed;}
-		}
-		.copyright { display: block; margin:45px 0 0; padding: 28px 0 0; border-top: 1px solid #565aa8; line-height: 1; font-size: 1.2rem; letter-spacing: 0.5px;}
-	}
-}
+#footer	{ width:100%; height:100px; @include bottom-left; background:red;}
+#copyright	{}
+
+
+
+

@@ -12,7 +12,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-sassdoc");
 
 	var BROWSERS = [
-					"ie >= 10",
+					"ie >= 8",
 //					"ie_mob >= 10",
 //					"ff >= 35",
 					"chrome >= 39",
@@ -31,13 +31,15 @@ module.exports = function(grunt){
                 src	:[
                     "htdocs/src/js/jquery/jquery.js",
                     "htdocs/src/js/jquery/easing.js",
-					"htdocs/src/js/jquery/jquery.transit.js"
+					"htdocs/src/js/ie/selectivizr.js"
                 ],
                 dest:"htdocs/src/js/base.js"
             },
 			moduleJS:{
 				src	:[
-					"htdocs/src/js/module/UserInfo.js"
+					"htdocs/src/js/module/jquery.module.js",
+					"htdocs/src/js/module/UserInfo.js",
+					"htdocs/src/js/module/Library.js"
 				],
 				dest:"htdocs/common/js/module.js"
 			},

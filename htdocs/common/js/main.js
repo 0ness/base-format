@@ -19,13 +19,24 @@
 	/*Private Static Property
 	--------------------------------------------------------------------*/
 	//instance
-	var INF0	= new UserInfo();
+	var INF0	= new UserInfo(),
+		LIB		= new Library(),
+		STATE	= {
+			isIE8		:false,
+			isIE9		:false,
+			isIE89		:false
+		};
 	
 	
 	
 	
 	/*Public Static Property
 	--------------------------------------------------------------------*/
+	Member.importState	= {
+		isIE8	:false,
+		isIE9	:false,
+		isIE89	:false
+	};
 	Member.page 		= document.getElementById("contents");
 	Member.pageSty 		= Member.page.style;
 	
@@ -35,13 +46,8 @@
 	/*Init
 	--------------------------------------------------------------------*/
 	Member.init = function() {
-		var _id = INF0.id;
-		
-		$(document.getElementById("page-top-btn")).on("click",function(){
-			$("body,html").animate({scrollTop:0},1000,"easeInOutExpo");
-		});
-		
-		if(_id === "top") this.topPageContents();
+		var _self = this;
+		_self.stateCheck();
 	};
 	
 	
@@ -49,24 +55,24 @@
 	
 	/*Public Static Method
 	--------------------------------------------------------------------*/
-	Member.topPageContents = function(){
-		var _$gridBlc = $(this.page).find(".js-grid");
-		for(var i=0; i<_$gridBlc.length; i++) this.adjustGridHeight(_$gridBlc.eq(i));
+	Member.stateCheck = function(){
+		var _state	= STATE,
+			_ua		= INF0.UA,
+			_iever	= INF0.IEver;
+
+		//IEチェック
+		if(_ua !== "ie") return false;		
+		if(_iever === "ie8") _state.isIE8 = true,_state.isIE89 = true;
+		else if(_iever === "ie9") _state.isIE9 = true,_state.isIE89 = true;
+
+		//各クラス代入用ステータスオブジェクト
+		this.importState = {
+			isIE8	:_state.isIE8,
+			isIE9	:_state.isIE9,
+			isIE89	:_state.isIE89
+		};		
 	};
 	
-	/**
-	 * グリッドの高さを調整
-	 */
-	Member.adjustGridHeight = function(_$elm){
-		var _$grids 	= _$elm.children(),
-			_maxHeight 	= 0;
-			
-		for(var i=0; i<_$grids.length; i++){
-			var _height = _$grids.eq(i).height();
-			if(_maxHeight < _height) _maxHeight = _height;
-		};
-		_$grids.height(_maxHeight);
-	};
 	
 	
 
@@ -77,4 +83,5 @@
 
 
 var INDEX = new Index();
-window.addEventListener('load', function(){INDEX.init();});
+if (window.addEventListener) window.addEventListener('load', function(){INDEX.init();});
+else window.attachEvent('onload', function() {INDEX.init();});
