@@ -323,7 +323,7 @@
 //.class {
 //	=wh(500,500,hidden);
 //}
-@mixin wh($w:auto,$h:auto,$of:visible){
+@mixin wh($w:auto,$h:auto,$display:block){
 	$w_02:$w;
 	$h_02:$h;
 
@@ -343,8 +343,7 @@
 
 	width:$w_02;
 	height:$h_02;
-	overflow:$of;
-	display:block;
+	display:$display;
 }
 
 //絶対配置　上左（top,left,z-index,absolute or fixed）
@@ -358,6 +357,8 @@
 //	=top-left(0,0,100,fixed);
 //}
 @mixin top-left($t:0,$l:0,$z:auto,$pos:absolute)	{
+	position:$pos;
+	z-index:$z;
 
 	//topの指定
 	@if unitless($t) == true{
@@ -376,9 +377,6 @@
 	}@else if unit($l) == "%"{
 		left:$l;
 	}
-
-	position:$pos;
-	z-index:$z;
 }
 
 //絶対配置　下左（top,left,z-index,absolute or fixed）
@@ -388,6 +386,8 @@
 //@param {Number} $z - z-index値：初期値auto
 //@param {String} $pos - positionプロパティ：初期値absolute
 @mixin bottom-left($t:0,$l:0,$z:auto,$pos:absolute){
+	position:$pos;
+	z-index:$z;		
 
 	//bottomの指定
 	@if unitless($t) == true{
@@ -406,9 +406,6 @@
 	}@else if unit($l) == "%"{
 		left:$l;
 	}
-
-	position:$pos;
-	z-index:$z;		
 }
 
 //絶対配置　上右（top,left,z-index,absolute or fixed）
@@ -418,6 +415,8 @@
 //@param {Number} $z - z-index値：初期値auto
 //@param {String} $pos - positionプロパティ：初期値absolute
 @mixin top-right($t:0,$l:0,$z:auto,$pos:absolute)	{
+	position:$pos;
+	z-index:$z;		
 
 	//topの指定
 	@if unitless($t) == true{
@@ -436,9 +435,6 @@
 	}@else if unit($l) == "%"{
 		right:$l;
 	}
-
-	position:$pos;
-	z-index:$z;		
 }
 
 //絶対配置　下右（top,left,z-index,absolute or fixed）
@@ -448,6 +444,8 @@
 //@param {Number} $z - z-index値：初期値auto
 //@param {String} $pos - positionプロパティ：初期値absolute
 @mixin bottom-right($t:0,$l:0,$z:auto,$pos:absolute)	{
+	position:$pos;
+	z-index:$z;		
 
 	//bottomの指定
 	@if unitless($t) == true{
@@ -466,9 +464,6 @@
 	}@else if unit($l) == "%"{
 		right:$l;
 	}
-
-	position:$pos;
-	z-index:$z;		
 }
 
 //絶対配置のマスク配置（マスクの色,z-index）

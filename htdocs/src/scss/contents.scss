@@ -7,7 +7,90 @@
 
 
 
-/*トップページ：index.html
---------------------------------------------------------------------*/
 
+/*トップページ
+--------------------------------------------------------------------*/
+#top{
+	#header	{ height:122px; background: rgba(255, 255, 255, 0.05);}
+	.container { width:$width; margin: 0 auto; background: none;}
+}
+
+
+/*----------- main-visual -----------*/
+.top-visual { padding: 20px 0 65px;
+	img { display: block; margin: 0 auto;}
+}
+
+
+/*----------- top section -----------*/
+.top-section { @include clearfix;
+	&__hd { margin: 0 0 24px; overflow: hidden; line-height: 1;
+		a { display: inline-block; float: right; padding: 0 0 0 15px; margin: 6px 0 0; color: white; font-size: 1.4rem; letter-spacing: 2px; text-align: right; border-left: 1px solid #666;
+			&:hover { text-decoration: underline dashed;}
+		}
+	}
+	& + & { margin-top: 60px;}
+}
+
+
+/*----------- top grid -----------*/
+.top-grids { @include clearfix;
+	&__item { width: 320px; float: left; padding: 12px 20px 15px; margin: 0 10px 0 0; background: #fff; box-sizing: border-box; font-size: 1.6rem; color: #222; line-height: 1.55; box-shadow: 0 1px 4px rgba(0,0,0,0.5); transition: 0.3s $ease;
+		time 	{ display: block; margin:0 0 5px;  font-size: 1.4rem; font-weight: bold;}
+		figure 	{ display: block; transform: translate(-20px,-12px)}
+		img 	{ display: block; transition: 0.15s ease-out;}
+		&:nth-child(3n) { margin-right: 0;}
+		&:hover { background:rgba(190, 197, 219, 0.6); color: white;}
+	}
+	&__link { width: 320px; float: left; padding: 18px 20px; margin: 0 10px 0 0; background: #e5ecf2; box-sizing: border-box; font-size: 1.6rem; color: #222; line-height: 1.55; box-shadow: 0 1px 4px rgba(0,0,0,0.5); transition: 0.3s $ease; 
+		&[target="_blank"] { @extend %link-ico;
+			&:before { top: 20px; right: 20px;}
+			&:after  { top: 24px; right: 24px;}
+			&:hover{
+				&:before,
+				&:after { width: 11px; height: 8px; transform: none; border-color:white;}
+			}
+		}
+		time 	{ display: block; margin:0 0 5px;  font-size: 1.4rem; font-weight: bold;}
+		&:nth-child(3n) { margin-right: 0;}
+		&:hover { background:rgba(190, 197, 219, 0.6); color: white;}
+	}
+
+	& + & { margin-top: 10px;}
+}
+
+
+/*----------- top　バナー -----------*/
+.top-bnr	{ display: block; position: relative; overflow: hidden; background: #000; box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+	&-container { width: 320px; float: right;}
+	&__txt  { position: absolute; z-index: 10;}
+	&__img  {transition: 0.3s $ease opacity;}
+	img { display: block;}
+	& + & { margin-top: 10px;}
+	
+	&:hover {
+		.top-bnr__img  { opacity: 0.7;}
+	}
+	
+	&--kagra 		{ margin: 0 0 10px;
+		.top-bnr__txt { top: 45px; left: 41px;}
+	}
+	&--student 		{
+		.top-bnr__txt { top: 64px; left: 43px;}
+		&:after { content: " "; @include wh(100%,100%); @include top-left; border: 1px solid rgba(83, 92, 164, 0.8); box-sizing: border-box;}
+	}
+	&--activities 	{
+		.top-bnr__txt { top: 43px; left: 72px;}
+		&:after { content: " "; @include wh(100%,100%); @include top-left; border: 1px solid rgba(117, 117, 117, 0.8); box-sizing: border-box;}
+	}
+}
+.top-movie  { @include wh(651,365); float: left; background: #000;}
+
+
+
+/*重力波とは？：about
+--------------------------------------------------------------------*/
+.img-einstein { @include top-right(-110,220);
+	figcaption { @include bottom-right(25,-80); font-size: 1.2rem; color: #acb2c4; font-weight: bold; letter-spacing: -0.5px;}
+}
 
