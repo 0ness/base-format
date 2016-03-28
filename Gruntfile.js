@@ -33,7 +33,7 @@ module.exports = function(grunt){
                     "htdocs/src/js/jquery/easing.js",
 					"htdocs/src/js/ie/selectivizr.js"
                 ],
-                dest:"htdocs/src/js/base.js"
+				dest:"htdocs/common/js/base.js"
             },
 			moduleJS:{
 				src	:[
