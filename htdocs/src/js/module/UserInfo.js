@@ -146,33 +146,36 @@
 	
 	/**
 	 * 閲覧環境：IE8以下判定
-	 * @method checkIE8
+	 * @method getIsIe8
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE8 = function(){
+	Member.getIsIe8 = function(){
 		var _flg = false;
 		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
-		else if(this.checkIE8Under() === true) _flg = true;
+		else if(this.getIsIe8Under() === true) _flg = true;
 		return _flg;
 	};
 
 	/**
 	 * 閲覧環境：IE9判定
-	 * @method checkIE9
+	 * @method getIsIe9
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE9 = function(){
+	Member.getIsIe9 = function(){
 		var _self= this,
 			_flg = false,
 			_und = "undefined";
-		if(_self.checkIE8Under() === true) _flg = false;
-		else if(_self.checkIE9Under() === true) _flg = true;
+		if(_self.getIsIe8Under() === true) _flg = false;
+		else if(_self.getIsIe9Under() === true) _flg = true;
 		return _flg;
 	};
 
 	/**
 	 * 閲覧環境：IE8以下判定
-	 * @method checkIE8Under
+	 * @method getIsIe8Under
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE8Under = function(){
+	Member.getIsIe8Under = function(){
 		var _flg = false,
 			_und = "undefined";
 		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
@@ -181,9 +184,10 @@
 
 	/**
 	 * 閲覧環境：IE9以下判定
-	 * @method checkIE9Under
+	 * @method getIsIe9Under
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE9Under = function(){
+	Member.getIsIe9Under = function(){
 		var _flg = false;
 		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
 		return _flg;

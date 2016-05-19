@@ -71,9 +71,11 @@ body > #wrapper { height:auto;}
 
 /* header
 --------------------------------------------------------------------*/
-#header	{ height:50px; background:#fff;}
-#header__ci	{
-	a:hover img	{ opacity:0.6;}
+.header	{ height:50px;
+	&__inner { width: $width; margin: 0 auto;}
+	&__ci{
+		a:hover img	{ opacity:0.6;}
+	}
 }
 
 
@@ -81,9 +83,8 @@ body > #wrapper { height:auto;}
 
 /* global navigation
 --------------------------------------------------------------------*/
-#gnav	{
-	ul	{ overflow:hidden;}
-}
+#global-nav	{}
+.gnav__inner{ overflow: hidden;}
 .gnav__btn	{ float:left;
 	a 	{ display:block;
 		&:hover	{}
@@ -96,24 +97,19 @@ body > #wrapper { height:auto;}
 
 /*　contents block
 --------------------------------------------------------------------*/
-#contents	{ /*width:$width;*/ margin:0 auto; overflow:hidden; position:relative;}
+#contents	{ /*width:$width;*/ overflow:hidden; position:relative;}
+.contents__inner { width:$width; margin: 0 auto;}
 #pagetop	{ @include bottom-left(300,0); color:#fff;}
-
-
-//メインコンテンツ大枠
-#main	{}
-
-
-
-
 
 
 
 
 /*footer
 --------------------------------------------------------------------*/
-#footer	{ width:100%; height:100px; @include bottom-left; background:red;}
-#copyright	{}
+.footer	{ width:100%; height:100px; background:black;
+	&__inner {}
+}
+.copyright	{}
 
 
 

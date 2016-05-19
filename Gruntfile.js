@@ -11,121 +11,146 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	grunt.loadNpmTasks("grunt-sassdoc");
 
+	
+	
+	
+	/* 設定値
+	--------------------------------------------------------------------*/
 	var BROWSERS = [
 					"ie >= 8",
 //					"ie_mob >= 10",
-//					"ff >= 35",
-					"chrome >= 39",
 					"safari >= 7",
-//					"opera >= 23",
 					"ios >= 7"
 //					"android >= 2.3"
 //					"and_ff >= 20",
 //					"and_chr >= 34"
-				   ];
+				   ],
+		_srcJsDir 	= "htdocs/src/js/",
+		_cmnJsDir 	= "htdocs/common/js/",
+		_minJsDir 	= "htdocs/common/js/minify/",
+		_srcCssDir	= "htdocs/src/scss/",
+		_cmnCssDir 	= "htdocs/common/css/";
 
-	//基本的なタスクセット
+	
+	
+	
+	/* 関数
+	--------------------------------------------------------------------*/
+	var jsFilePath = function(_type,_file){
+		var _obj = {src	:"",dest:""};
+		if(_type === "concat"){
+			_obj.src 	= _srcJsDir + _file;
+			_obj.dest 	= _cmnJsDir + _file;
+		}else if(_type === "uglify"){
+			_obj.src 	= _cmnJsDir + _file;
+			_obj.dest 	= _minJsDir + _file;
+		}else if(_type === "removelogging"){
+			_obj.src 	= _minJsDir + _file;
+			_obj.dest 	= _minJsDir + _file;
+		}
+		return _obj;
+	},
+		
+		cssFilePath = function(_fileSet){
+			var _obj = {};
+			for(var i=0; i<_fileSet.length; i++){
+				var _file	= _fileSet[i].substr(0,_fileSet[i].length-4),
+					_css 	= _cmnCssDir + _file + "css",
+					_src 	= _srcCssDir + _file + "scss";
+				_obj[_css] = _src;
+			};
+			return _obj;
+		},
+		
+		autoprefixerProp = function(_file,_addDir){
+			var _dir = _addDir || "",
+				_prop = {
+					expand	: true,
+					flatten	: true,
+					src		:_cmnCssDir + _dir + _file,
+					dest	:_cmnCssDir + _dir
+				};
+			console.log(_prop);
+			return _prop;
+		},
+		
+		jsWatchTasks = function(_file){
+			var _tasks = [
+					"concat:"+_file,
+					"uglify:"+_file,
+					"removelogging:"+_file
+				];
+			return _tasks;
+		},
+		
+		scssWatchTasks = function(_file){
+			var _tasks = [
+				"sass:"+_file,
+				"autoprefixer:"+_file
+			];
+			return _tasks;
+		};
+
+	
+	
+	
+	/* gruntセット
+	--------------------------------------------------------------------*/
     grunt.initConfig({
+		
+		/*----------- js -----------*/
         concat:{
             baseJS:{
                 src	:[
-                    "htdocs/src/js/jquery/jquery.js",
-                    "htdocs/src/js/jquery/easing.js",
-					"htdocs/src/js/ie/selectivizr.js"
+					_srcJsDir + "jquery/jquery.js",
+					_srcJsDir + "jquery/easing.js"
+//					_srcJsDir + "ie/selectivizr.js"
                 ],
-				dest:"htdocs/common/js/base.js"
+				dest:_cmnJsDir + "base.js"
             },
 			moduleJS:{
 				src	:[
-					"htdocs/src/js/module/jquery.module.js",
-					"htdocs/src/js/module/UserInfo.js",
-					"htdocs/src/js/module/Library.js"
+					_srcJsDir + "module/UserInfo.js",
+					_srcJsDir + "module/Utility.js"
 				],
-				dest:"htdocs/common/js/module.js"
+				dest:_cmnJsDir + "module.js"
 			},
-			mainJS:{
-				src	:"htdocs/src/js/main.js",
-				dest:"htdocs/common/js/main.js"
-			}
+			mainJS	:jsFilePath("concat","main.js")
         },
 		uglify:{
-			baseJS:{
-				src	:"htdocs/common/js/base.js",
-				dest:"htdocs/common/js/minify/base.js"
-			},
-			moduleJS:{
-				src	:"htdocs/common/js/module.js",
-				dest:"htdocs/common/js/minify/module.js"
-			},
-			mainJS:{
-				src	:"htdocs/src/js/main.js",
-				dest:"htdocs/common/js/minify/main.js"
-			}
+			baseJS	:jsFilePath("uglify","base.js"),
+			moduleJS:jsFilePath("uglify","module.js"),
+			mainJS	:jsFilePath("uglify","main.js")
 		},
 		removelogging:{
-			baseJS:{
-				src	:"htdocs/common/js/minify/base.js",
-				dest:"htdocs/common/js/minify/base.js"
-			},
-			moduleJS:{
-				src	:"htdocs/common/js/minify/module.js",
-				dest:"htdocs/common/js/minify/module.js"
-			},
-			mainJS:{
-				src	:"htdocs/common/js/minify/main.js",
-				dest:"htdocs/common/js/minify/main.js"
-            }
+			baseJS	:jsFilePath("removelogging","base.js"),
+			moduleJS:jsFilePath("removelogging","module.js"),
+			mainJS	:jsFilePath("removelogging","main.js")
 		},
+		
+		/*----------- css -----------*/
 		sass:{
 			options:{
 				style: "compact"
 			},
-			all:{
-				files:{
-					"htdocs/common/css/layout.css"	: "htdocs/src/scss/layout.scss",
-					"htdocs/common/css/contents.css": "htdocs/src/scss/contents.scss",
-					"htdocs/common/css/module.css"	: "htdocs/src/scss/module.scss"
-				}
-			},
-			layout:{
-				files:{"htdocs/common/css/layout.css": "htdocs/src/scss/layout.scss"}
-			},
-			contents:{
-				files:{"htdocs/common/css/contents.css": "htdocs/src/scss/contents.scss"}
-			},
-			module:{
-				files:{"htdocs/common/css/module.css": "htdocs/src/scss/module.scss"}
-			}
+			all 	:{ files:cssFilePath(["layout.scss","contents.scss","module.scss"]) },
+			layout	:{ files:cssFilePath(["layout.scss"]) },
+			module	:{ files:cssFilePath(["module.scss"]) },
+			contents:{ files:cssFilePath(["contents.scss"]) },
+			top		:{ files:cssFilePath(["contents/top.scss"]) }
 		},
 		autoprefixer:{
 			options:{
 				browsers:BROWSERS
 			},
-			all:{
-				expand	: true,
-				flatten	: true,
-				src		:"htdocs/common/css/*.css",
-				dest	:"htdocs/common/css/"
-			},
-			layout:{
-				expand	: true,
-				flatten	: true,
-				src		:"htdocs/common/css/layout.css",
-				dest	:"htdocs/common/css/"
-			},
-			contents:{
-				expand	: true,
-				flatten	: true,
-				src		:"htdocs/common/css/contents.css",
-				dest	:"htdocs/common/css/"
-			},
-			module:{
-				expand	: true,
-				flatten	: true,
-				src		:"htdocs/common/css/module.css",
-				dest	:"htdocs/common/css/"
-			}
+			all		:autoprefixerProp("*.css"),
+			layout	:autoprefixerProp("layout.css"),
+			module	:autoprefixerProp("module.css"),
+			contents:autoprefixerProp("contents.css"),
+			top		:autoprefixerProp("top.css","contents/")
 		},
+		
+		/*----------- スタイルガイド -----------*/
 		styleguide: {
 			dist: {
 				options: {
@@ -137,14 +162,14 @@ module.exports = function(grunt){
 					}
 				},
 				files: {
-				  docs: "htdocs/src/scss/module.scss"
+				  docs: _srcCssDir + "module.scss"
 				}
 			}
 		},
 //		sassdoc:{
 //			default:{
 //				src:[
-//					"htdocs/common/scss/*.scss",
+//					_srcCssDir + "*.scss",
 //					"User/macbookair12/desktop/works/base_format/htdocs/common/scss/partials/*.scss"
 //				]
 //			}
@@ -152,12 +177,12 @@ module.exports = function(grunt){
 		shell:{
 			styledocco:{
 				command: function () {
-					return " styledocco --o 'htdocs/common/css/compornents' --preprocessor 'scss' common/scss/module.scss";
+					return " styledocco --o 'htdocs/common/css/compornents' --preprocessor 'scss' src/scss/module.scss";
 				}
 			},
 			sassdoc:{
 				command: function () {
-					return "sassdoc src/scss -d src/sassdocs -n 'Wonderful Sass'";
+					return "sassdoc src/scss -d src/sassdocs -n 'Sass Guide'";
 				}
 			}
 		},
@@ -168,8 +193,8 @@ module.exports = function(grunt){
 				options			: {
 					//出力パスの指定(今回はGruntfile.jsと同階層に出力するよう指定)
 					paths:[
-						"htdocs/src/js/module/",
-						"htdocs/src/js/develop/"
+						_srcJsDir + "/module/",
+						_srcJsDir + "/develop/"
 					],
 					//YUIDocファイルを出力するディレクトリ名を記述
 					outdir	: "htdocs/src/yuidocs/",
@@ -177,6 +202,8 @@ module.exports = function(grunt){
 				}
 			}
 		},
+		
+		/*----------- watchタスク -----------*/
         watch:{
 			options: {
 				spawn: false
@@ -185,52 +212,56 @@ module.exports = function(grunt){
 			//JS
 			JS_base:{
 				files:[
-					"htdocs/src/js/ie/*.js",
-					"htdocs/src/js/jquery/*.js"
+					_srcJsDir + "ie/*.js",
+					_srcJsDir + "jquery/*.js"
 				],
-				tasks:["concat:baseJS","uglify:baseJS","removelogging:baseJS"]
+				tasks:jsWatchTasks("baseJS")
 			},
 			JS_module:{
-				files:"htdocs/src/js/module/*.js",
-				tasks:["concat:moduleJS","uglify:moduleJS","removelogging:moduleJS"]
+				files:_srcJsDir + "module/*.js",
+				tasks:jsWatchTasks("moduleJS")
 			},
 			JS_main:{
-				files:"htdocs/src/js/main.js",
-				tasks:["concat:mainJS","uglify:mainJS","removelogging:mainJS"]
+				files:_srcJsDir + "main.js",
+				tasks:jsWatchTasks("mainJS")
 			},
 			
 			//SASS
 			SASS_all:{
-				files:["htdocs/src/scss/partials/*.scss","htdocs/src/scss/partials/fonts/*.scss"],
-				tasks:["sass:all","autoprefixer:all"]
+				files:[_srcCssDir + "partials/*.scss",_srcCssDir + "partials/fonts/*.scss"],
+				tasks:scssWatchTasks("all")
 			},
 			SASS_layout:{
-				files:["htdocs/src/scss/layout.scss"],
-				tasks:["sass:layout","autoprefixer:layout"]
-			},
-			SASS_contents:{
-				files:["htdocs/src/scss/contents.scss"],
-				tasks:["sass:contents","autoprefixer:contents"]
+				files:[_srcCssDir + "layout.scss"],
+				tasks:scssWatchTasks("layout")
 			},
 			SASS_module:{
-				files:["htdocs/src/scss/module.scss"],
-				tasks:["sass:module","autoprefixer:module"]
+				files:[_srcCssDir + "module.scss"],
+				tasks:scssWatchTasks("module")
+			},
+			SASS_contents:{
+				files:[_srcCssDir + "contents.scss"],
+				tasks:scssWatchTasks("contents")
+			},
+			SASS_top:{
+				files:[_srcCssDir + "contents/top.scss"],
+				tasks:scssWatchTasks("top")
 			},
 
 			//DOCUMENT
 			yuidoc:{
 				files:[
-					"htdocs/src/js/module/*.js",
-					"htdocs/src/js/develop/*.js"
+					_srcJsDir + "module/*.js",
+					_srcJsDir + "develop/*.js"
 				],
 				tasks:["yuidoc"]
 			},
 			/*styleguide:{
-				files:["htdocs/common/scss/module.scss","htdocs/common/scss/README.md"],
+				files:[_srcCssDir + "module.scss",_srcCssDir+"README.md"],
                 tasks:["sass","shell:styledocco"]
 			}*/
 			sassdoc:{
-				files:["htdocs/src/scss/partials/*.scss"],
+				files:[_srcCssDir + "partials/*.scss"],
 				tasks:["shell:sassdoc"]
 			}
         }
