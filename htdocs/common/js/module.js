@@ -1,242 +1,3 @@
-;(function($){
-	
-	var $fn = $.fn;
-	
-	/*jQuery Instance Funtion
-	--------------------------------------------------------------------*/
-	
-	/**
-	 * 要素の透明度を直接変更
-	 * @param {Number} 透明度の数値
-	 */
-	$fn.opacity		=	function(a_alp){return this.css('opacity',a_alp);};
-	
-
-	/**
-	 * 要素のクリッカブル機能をONに
-	 */
-	$fn.clickableOn	=	function(){
-		var _self = this,
-			_clickable	=	function(a_obj){
-				var _obj = a_obj,
-					_link = _obj.find("a");
-
-				if(_link.length === 0) return false;
-
-				var _href = _link.attr("href"),
-					_target = _link.attr("target");
-				
-				_obj.on("click",function(){
-					if(_target === "_blank") window.open().location = _href;
-					else window.location = _href;
-				}).css("cursor","pointer");
-			};
-		return (function () {
-			var _len = _self.length;
-			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
-			return _self;
-		}());
-	};
-	
-	
-	/**
-	 * 要素のクリッカブル機能をOFFに
-	 */
-	$fn.clickableOff	=	function(){
-		var _self = this,
-			_clickable	=	function(a_obj){
-				var _obj = a_obj;
-				if(_obj.find("a").length === 0) return false;
-				_obj.off("click").css("cursor","default");
-			};
-		
-		return (function () {
-			var _len = _self.length;
-			for(var i=0; i<_len; i++) _clickable(_self.eq(i));
-			return _self;
-		}());
-	};
-
-	
-	/**
-	 * スムーズスクロール
-	 * @param {String} 要素のhref属性
-	 */
-	$fn.anchor = function(a_opts){
-		var _self = this,
-			_$tag	 = (isWebkitUA() === true) ? $("body"):$("html"),
-			_href	 = this.attr("href"),
-			_opts	 = a_opts || {},
-			_target	 = _href === "#" || _href === "" ? 'html' : _href,
-			_position= $(_target).offset().top,
-			_func	 = _opts.callback || null,
-			_spd	 = _opts.spd || 600,
-			_ease	 = _opts.ease || "easeInOutQuad";
-		_$tag.stop().animate({scrollTop:_position},_spd,_ease,_func);
-		return _self;
-	};
-	
-
-	
-	
-	
-	/*jQuery Object Funtion
-	--------------------------------------------------------------------*/
-	
-	/**
-	 * CSSのプロパティがサポートされているかの判定
-	 * @param   {String}  PROPERTY プロパティの名前
-	 * @returns {Boolean} 正否値
-	 */
-	var cssSupport = function(PROPERTY){
-		return typeof $('<div>').css(PROPERTY)==="string";
-	};
-
-	
-	/**
-	 * Webkitエンジンかを判定
-	 * @returns {Boolean}
-	 */
-	var isWebkitUA = function(){
-		var _ua = navigator.userAgent.toLowerCase(),
-			_flg = false;
-		if (_ua.indexOf('chrome') != -1 || _ua.indexOf('safari') != -1 || _ua.indexOf('opera') != -1) {
-			_flg = true;
-		}
-		return _flg;
-	};
-
-	
-	/**
-	 * IE8以下か判定
-	 * @returns {Boolean}
-	 */
-	var isIE8Under = function(){
-		var _ua = navigator.userAgent.toLowerCase(),
-			_flg = false;
-		
-		if(typeof window.addEventListener == "undefined" && typeof document.getElementsByClassName == "undefined"){
-			_flg = true;
-		}
-		return _flg;
-	};
-
-	
-	/**
-	 * アコーディオン
-	 * @param {Object} a_$btn アコーディオンの見出し部分のjQueryオブジェクト
-	 * @param {Object} a_$body アコーディオンのボディ部分のjQueryオブジェクト
-	 * @param {Object} a_param 内部設定のパラメーター{ spd:速度,ease:イージング,callback：　コールバック関数}
-	 * @example obj.accordion($(".js-acd-btn"),$(".js-acd-body"),{spd:600,ease:"easeOutBack"});
-	 */
-	var accordion = function(a_$btn,a_$body,a_opts){
-		var _$btn	 = a_$btn,
-			_$body	 = a_$body,
-			_$parent = _$btn.parent(),
-			_clsName = "js-acd-open",
-			_param	 = a_opts || {},
-			_spd	 = _param.spd || 500,
-			_ease	 = _param.ease || "easeOutExpo",
-			_callback= _param.callback || null;
-
-		//アニメーション
-		var open = function(){
-			_$body.stop().slideDown(_spd,_ease,_callback);
-			_$parent.addClass(_clsName);
-		};
-		var close = function(){
-			_$body.stop().slideUp(_spd,_ease,_callback);
-			_$parent.removeClass(_clsName);
-		};
-		var judge = function(){
-			if(_$parent.hasClass(_clsName) === true) close();
-			else open();
-		};
-
-		//初期化
-		_$body.hide().css("overflow","hidden");
-		_$btn.css("cursor","pointer").on("click",judge);
-	};
-
-
-	/**
-	 * IE8以下 jQuery HTML5_placeholder対応
-	 */
-	var placeholder = function(){
-		if(isIE8Under() === false) return false;
-		$('[placeholder]').each(function () {
-			var input = $(this),
-				placeholderText = input.attr('placeholder'),
-				placeholderColor = 'GrayText',
-				defaultColor = input.css('color');
-
-			input.on({
-				"focus":function(){
-					if (input.val() === placeholderText) {
-						input.val('').css('color', defaultColor);
-					}
-				},
-				"blur":function(){
-					if (input.val() === '') {
-						input.val(placeholderText).css('color', placeholderColor);
-					} else if (input.val() === placeholderText) {
-						input.css('color', placeholderColor);
-					}
-				}
-			}).parents('form').submit(function () {
-				if (input.val() === placeholderText) {
-					input.val('');
-				}
-			});
-		});
-	};
-
-
-	/**
-	 * IE8,7で透過処理を個別に対応
-	 * @param {Object} obj 処理を行いたいjQueryオブジェクト
-	 */
-	var alphaImgLoader = function(obj){
-		if(isIE8Under() === false) return false;
-		var _img = obj,
-			_prop = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + _img.attr('src') + '", sizingMethod="scale");'
-		_img.css('filter',_prop);
-	};
-
-
-	/**
-	 * IE8,7で透過処理を入れ子に対応
-	 * @param {Object}  obj 処理を行いたい画像の親jQueryオブジェクト
-	 */
-	var alphaImgLoaderBlc = function(obj){
-		if(isIE8Under() === false) return false;
-		var _o = obj,
-			_img;
-		_o.each(function(){
-			_img = $(this);
-			if(_img.attr('src').indexOf('.png') === -1) return false;
-			var _prop = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + _img.attr('src') + '", sizingMethod="scale");';
-			_img.css('filter',_prop);
-		})
-	};
-
-
-	
-	
-	/*jQuery Object Extend
-	--------------------------------------------------------------------*/
-	$.extend({
-		cssSupport  		:function(a_str){return cssSupport(a_str)},
-		isWebkitUA  		:function(){return isWebkitUA()},
-		isIE8Under  		:function(){return isIE8Under()},
-		accordion  			:function(a_btn,a_body,a_opts){return accordion(a_btn,a_body,a_opts)},
-		placeholder 		:function(){return placeholder()},
-		alphaImgLoader  	:function(){return alphaImgLoader()},
-		alphaImgLoaderBlc	:function(){return alphaImgLoaderBlc()}
-	});
-	
-	
-})(jQuery);
 ;(function(window,document){
 	"use strict";
 
@@ -385,33 +146,36 @@
 	
 	/**
 	 * 閲覧環境：IE8以下判定
-	 * @method checkIE8
+	 * @method getIsIe8
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE8 = function(){
+	Member.getIsIe8 = function(){
 		var _flg = false;
 		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
-		else if(this.checkIE8Under() === true) _flg = true;
+		else if(this.getIsIe8Under() === true) _flg = true;
 		return _flg;
 	};
 
 	/**
 	 * 閲覧環境：IE9判定
-	 * @method checkIE9
+	 * @method getIsIe9
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE9 = function(){
+	Member.getIsIe9 = function(){
 		var _self= this,
 			_flg = false,
 			_und = "undefined";
-		if(_self.checkIE8Under() === true) _flg = false;
-		else if(_self.checkIE9Under() === true) _flg = true;
+		if(_self.getIsIe8Under() === true) _flg = false;
+		else if(_self.getIsIe9Under() === true) _flg = true;
 		return _flg;
 	};
 
 	/**
 	 * 閲覧環境：IE8以下判定
-	 * @method checkIE8Under
+	 * @method getIsIe8Under
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE8Under = function(){
+	Member.getIsIe8Under = function(){
 		var _flg = false,
 			_und = "undefined";
 		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
@@ -420,9 +184,10 @@
 
 	/**
 	 * 閲覧環境：IE9以下判定
-	 * @method checkIE9Under
+	 * @method getIsIe9Under
+	 * @return {Boolean} ブラウザの判定
 	 */
-	Member.checkIE9Under = function(){
+	Member.getIsIe9Under = function(){
 		var _flg = false;
 		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
 		return _flg;
@@ -488,80 +253,28 @@
 })(window, document);
 
 ;(function(window,document){
-	
+	"use strict";
 
+	
+	
+	
 	/**
-	 * 多用する処理をまとめたクラス  
-	 * ・単純なアニメーション処理  
-	 * ・HTML5対応処理  
-	 * ・IE対応
-	 * @class Library
+	 * 多用する単純な処理をまとめたクラス
+	 * ・dom情報取得
+	 * ・サイズ取得
+	 * ・座標取得
+	 * ・IE判定
+	 * @class Utility
 	 * @constructor
-	 * @example var obj = new Library();  
-	 * obj.anchor("#header"); //アンカーリンク処理
 	 */
-	var Library = function(){},
-		Method = Library.prototype;
+	var Utility = function(){},
+		Method = Utility.prototype;
 	
 	
 	
 	
-	/*DOM Method
+	/* Method
 	--------------------------------------------------------------------*/
-
-	/**
-	 * 閲覧環境：IE8以下判定
-	 * @method checkIE8
-	 * @return {Boolean} ブラウザの判定
-	 */
-	Method.isIE8 = function(){
-		var _flg = false;
-		if(typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined") _flg = false;
-		else if(this.isIE8Under() === true) _flg = true;
-		return _flg;
-	};
-
-	
-	/**
-	 * 閲覧環境：IE9判定
-	 * @method isIE9
-	 * @return {Boolean} ブラウザの判定
-	 */
-	Method.isIE9 = function(){
-		var _self= this,
-			_flg = false,
-			_und = "undefined";
-		if(_self.isIE8Under() === true) _flg = false;
-		else if(_self.isIE9Under() === true) _flg = true;
-		return _flg;
-	};
-	
-
-	/**
-	 * 閲覧環境：IE8以下判定
-	 * @method isIE8Under
-	 * @return {Boolean} ブラウザの判定
-	 */
-	Method.isIE8Under = function(){
-		var _flg = false,
-			_und = "undefined";
-		if(typeof window.addEventListener == _und && typeof document.getElementsByClassName == _und) _flg = true;
-		return _flg;
-	};
-
-	
-	/**
-	 * 閲覧環境：IE9以下判定
-	 * @method isIE9Under
-	 * @return {Boolean} ブラウザの判定
-	 */
-	Method.isIE9Under = function(){
-		var _flg = false;
-		if(document.uniqueID && typeof window.matchMedia == "undefined") _flg = true;
-		return _flg;
-	};
-
-	
 	/**
 	 * ウィンドウの幅を取得
 	 * @method getWindowWidth
@@ -572,7 +285,6 @@
 		return _width;
 	};
 	
-
 	/**
 	 * ウィンドウの高さを取得
 	 * @method getWindowHeight
@@ -583,7 +295,6 @@
 		return _height;
 	};
 	
-	
 	/**
 	 * ウィンドウの高さを取得
 	 * @method getScrollTop
@@ -593,58 +304,68 @@
 		var _y = document.body.scrollTop || document.documentElement.scrollTop;
 		return _y;
 	};
-
 	
 	/**
-	 * 指定DOMのclassを追加
-	 * @method addClass
-	 * @param {DOM} DOM要素
-	 * @param {String} クラス名
+	 * domの座標
+	 * @param   {object} _elm 座標を取得したいdom要素
+	 *　@returns {object} 座標情報のオブジェクト
 	 */
-	Method.addClass = function(a_dom,a_cls){
-		var _dom = a_dom,
-			_cls = a_cls;
-		if (_dom.classList) _dom.classList.add(_cls);
-		else _dom.className += ' ' + _cls;
+	Method.getDomPoint = function(_elm){
+		var _rect 	= _elm.getBoundingClientRect(),
+			_left 	= (_rect.left + window.pageXOffset)|0,
+			_top	= (_rect.top + window.pageYOffset)|0;
+		return {top:_top,left:_left};
 	};
-
 	
 	/**
-	 * 指定DOMのclassを削除
-	 * @method reomveClass
-	 * @param {DOM} DOM要素
-	 * @param {String} クラス名
+	 * domのx座標
+	 * @param   {object} _elm 座標を取得したいdom要素
+	 *　@returns {object} 座標情報のオブジェクト
 	 */
-	Method.removeClass = function(a_dom,a_cls){
-		var _dom = a_dom,
-			_cls = a_cls;
-		if (_dom.classList) _dom.classList.remove(_cls);
-		else _dom.className = _dom.className.replace(new RegExp('(^|\\b)' + _cls.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-	};
-	
-	
-	/**
-	 * 指定DOMが任意のclassを持つか判定
-	 * @method hasClass
-	 * @returns {Boolean} クラスを持っているか正否値
-	 */
-	Method.hasClass = function(a_dom,a_cls){
-		var _dom = a_dom,
-			_cls = a_cls,
-			_flg = false;
-		if (_dom.classList) _flg =  _dom.classList.contains(_cls);
-		else _flg = new RegExp('(^| )' + _cls + '( |$)', 'gi').test(_dom.className);
-		return _flg;
+	Method.getDomLeft = function(_elm){
+		var _rect 	= _elm.getBoundingClientRect(),
+			_left 	= (_rect.left + window.pageXOffset)|0;
+		return _left;
 	};
 
-	
+	/**
+	 * domのy座標
+	 * @param   {object} _elm 座標を取得したいdom要素
+	 *　@returns {object} 座標情報のオブジェクト
+	 */
+	Method.getDomTop = function(_elm){
+		var _rect 	= _elm.getBoundingClientRect(),
+			_top	= (_rect.top + window.pageYOffset)|0;
+		return _top;
+	};
+
+	/**
+	* 座標取得：マウスポインタ座標取得
+	* @method getMousePoint
+	* @param{Event} ターゲットイベント
+	* @return{Object} オブジェクト
+	*/
+	Method.getMousePoint = function(e){
+		var point = {x:0,y:0},
+			doc = document.body, 
+			ev = event;
+		if(e){
+			point.x = e.pageX;
+			point.y = e.pageY;
+		}else{
+			point.x = ev.x + doc.scrollLeft;
+			point.y = ev.y + doc.scrollTop;
+		}
+		return point;
+	};
+
 	/**
 	 * 年数表記を自動で現在の値に書き換える
-	 * @method yearAdjust
+	 * @method writeYearString
 	 * @param {String} id 年数を囲っているid
-	 * @example obj.yearAdust();
+	 * @example obj.writeYearString();
 	 */
-	Method.yearAdjust = function(id){
+	Method.writeYearTxt = function(id){
 		var _id = id || "nowYear",
 			_now_year = new Date().getFullYear();
 		document.getElementById(_id).innerHTML += _now_year;
@@ -653,8 +374,7 @@
 	
 	
 	
-	
-
-	
-	window.Library = Library;
+	var instance = new Utility();
+	window.Utility = instance;
 })(window, document);
+

@@ -10,7 +10,9 @@
 	 * @class INDEX
      * @constructor
      */
-	var Index = function(){},
+	var Index = function(){
+		this.init();
+	},
 		Member = Index.prototype;
 	
 	
@@ -18,70 +20,48 @@
 	
 	/*Private Static Property
 	--------------------------------------------------------------------*/
-	//instance
-	var INF0	= new UserInfo(),
-		LIB		= new Library(),
-		STATE	= {
-			isIE8		:false,
-			isIE9		:false,
-			isIE89		:false
-		};
+	var INF0	= new UserInfo();
 	
 	
 	
 	
 	/*Public Static Property
 	--------------------------------------------------------------------*/
-	Member.importState	= {
-		isIE8	:false,
-		isIE9	:false,
-		isIE89	:false
-	};
-	Member.page 		= document.getElementById("contents");
-	Member.pageSty 		= Member.page.style;
-	
-	
-	
-	
-	/*Init
-	--------------------------------------------------------------------*/
-	Member.init = function() {
-		var _self = this;
-		_self.stateCheck();
-	};
+	Member.contentsElm 		= document.getElementById("contents");
 	
 	
 	
 	
 	/*Public Static Method
 	--------------------------------------------------------------------*/
-	Member.stateCheck = function(){
-		var _state	= STATE,
-			_ua		= INF0.UA,
-			_iever	= INF0.IEver;
+	Member.init = function() {
+		var _id = INF0.id;
 
-		//IEチェック
-		if(_ua !== "ie") return false;		
-		if(_iever === "ie8") _state.isIE8 = true,_state.isIE89 = true;
-		else if(_iever === "ie9") _state.isIE9 = true,_state.isIE89 = true;
+		this.commonFunction();
+		if(_id === "top") this.topPageFunction();
+	};
 
-		//各クラス代入用ステータスオブジェクト
-		this.importState = {
-			isIE8	:_state.isIE8,
-			isIE9	:_state.isIE9,
-			isIE89	:_state.isIE89
-		};		
+	/**
+	 * ページ共通処理
+	 */
+	Member.commonFunction = function(){
+		
+	};
+	
+	/**
+	 * トップページ処理
+	 */
+	Member.topPageFunction = function(){
+		
 	};
 	
 	
 	
-
-
-
+	
+	
 	window.Index = Index;
 })(window, document);
 
 
-var INDEX = new Index();
-if (window.addEventListener) window.addEventListener('load', function(){INDEX.init();});
-else window.attachEvent('onload', function() {INDEX.init();});
+if (window.addEventListener) window.addEventListener('DOMContentLoaded', function(){ var INDEX = new Index(); });
+else window.attachEvent('onload', function() { var INDEX = new Index(); });

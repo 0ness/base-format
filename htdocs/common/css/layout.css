@@ -68,25 +68,20 @@ body > #wrapper { height: auto; }
 
 /* header
 --------------------------------------------------------------------*/
-#header { height: 50px; background: #fff; }
-#header__ci a:hover img { opacity: 0.6; }
+.header { height: 50px; }
+.header__inner { width: 1024px; margin: 0 auto; }
+.header__ci a:hover img { opacity: 0.6; }
 /* global navigation
 --------------------------------------------------------------------*/
-#gnav ul { overflow: hidden; }
+.gnav__inner { overflow: hidden; }
 .gnav__btn { float: left; }
 .gnav__btn a { display: block; }
 .gnav__btn img { display: block; }
 /*　contents block
 --------------------------------------------------------------------*/
-#contents { /*width:$width;*/ margin: 0 auto; overflow: hidden; position: relative; }
-<<<<<<< HEAD
-#pagetop { position: absolute; z-index: auto; bottom: 300px; left: 0px; color: #fff; }
-/*footer
---------------------------------------------------------------------*/
-#footer { width: 100%; height: 100px; position: absolute; z-index: auto; bottom: 0px; left: 0px; background: red; }
-=======
+#contents { /*width:$width;*/ overflow: hidden; position: relative; }
+.contents__inner { width: 1024px; margin: 0 auto; }
 #pagetop { bottom: 300px; left: 0px; position: absolute; z-index: auto; color: #fff; }
 /*footer
 --------------------------------------------------------------------*/
-#footer { width: 100%; height: 100px; bottom: 0px; left: 0px; position: absolute; z-index: auto; background: red; }
->>>>>>> parent of d301987... add：first-commit
+.footer { width: 100%; height: 100px; background: black; }
