@@ -110,7 +110,10 @@
 			_win.attachEvent('on' + "resize",function(){ _self.breakPointCheck(); });
 		}
 		
-		setTimeout(function(){_self.breakPointCheck();},10);
+		setTimeout(function(){
+			_self.isSP = (_self.border > window.innerWidth)?true: false;
+			window.addEventListener("resize",function(){ _self.breakPointCheck(); },false);
+		},10);
 	};
 
 	/**
@@ -135,25 +138,18 @@
 	 */
 	Member.breakPointCheck =  function() {
 		var _winW 		= window.innerWidth || document.documentElement.clientWidth,
-			_breakpoint = this.border,
 			_isSP 		= this.isSP,
 			_isSP_now 	= false;
 
 		//ブレークポイントとウィンドウ幅の差異を確認
-		if (_breakpoint < _winW) _isSP_now = false;
+		if (this.border < _winW) _isSP_now = false;
 		else _isSP_now = true;
-
 
 		//判定後、ブレークポイントが切り替わった時点でコールバック関数処理
 		if (_isSP === _isSP_now) return false;
-
 		if (_isSP_now === true) this.spFuncOperation();
 		else this.pcFuncOperation();
-
 		this.isSP = _isSP_now;
-		
-//		alert(this.isSP + " breakpoint:" + _breakpoint + " winW:" + window.innerWidth || document.documentElement.clientWidth);
-
 	};
 
 	/**
@@ -166,11 +162,6 @@
 		var _self = this,
 			_event = new FuncSet(a_pc,a_sp);
 
-//		alert("addFuncSet");
-
-		if(_self.isSP === true) a_sp();
-		else a_pc();
-		
 		//IE8はPC用関数を返す SPではSP用関数を返す
 		if(_self.isIE8 === true) return false;
 		
@@ -186,7 +177,7 @@
 		var _self = this,
 			_func = _self.functions,
 			_len = _self.funcLengh;
-		for(var i = 0; i<_len; i++) _func[i].pcFunc();
+		for(var i = 0; i<_len; i=(i+1)|0) _func[i].pcFunc();
 	};
 
 	/**
@@ -197,7 +188,7 @@
 		var _self = this,
 			_func = _self.functions,
 			_len = _self.funcLengh;
-		for(var i = 0; i<_len; i++) _func[i].spFunc();
+		for(var i = 0; i<_len; i=(i+1)|0) _func[i].spFunc();
 	};
 
 	/**
