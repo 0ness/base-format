@@ -5,13 +5,14 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-contrib-clean");
 	grunt.loadNpmTasks("grunt-contrib-sass");
+	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	grunt.loadNpmTasks("grunt-autoprefixer");
+	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks("grunt-remove-logging");
-	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	grunt.loadNpmTasks("grunt-sassdoc");
+	grunt.loadNpmTasks('grunt-sitemap');
 
-	
 	
 	
 	/* 設定値
@@ -150,6 +151,25 @@ module.exports = function(grunt){
 			top		:autoprefixerProp("top.css","contents/")
 		},
 		
+		/*----------- ブラウザ同期 -----------*/
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src : [
+						"htdocs/*.html",
+						_cmnJsDir + '*.js',
+						_cmnJsDir + 'contents/*.js',
+						_cmnCssDir + '*.css',
+						_cmnCssDir + 'contents/*.css'
+					]
+				},
+				options:{
+					watchTask: true,
+					server: './htdocs'
+				}
+			}
+		},
+		
 		/*----------- スタイルガイド -----------*/
 		styleguide: {
 			dist: {
@@ -200,6 +220,19 @@ module.exports = function(grunt){
 					outdir	: "htdocs/src/yuidocs/",
 					themedir: "htdocs/src/yui-themes/custom/"
 				}
+			}
+		},
+		
+		/*----------- Googleサイトマップ -----------*/
+		sitemap: {
+			dist: {
+				siteRoot: 'htdocs/',
+				homepage: 'http://www.hogehoge.com/',
+				pattern: [
+					'htdocs/*.html',
+					'htdocs/**/*.html',
+					'!htdocs/common/fonts/**/**/*.html',//除外
+					'!htdocs/src/**/*.html']//除外
 			}
 		},
 		
@@ -266,5 +299,7 @@ module.exports = function(grunt){
 			}
         }
 	});
+	
+	grunt.registerTask('default', ['browserSync', 'watch']);
 };
 

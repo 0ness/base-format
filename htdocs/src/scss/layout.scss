@@ -2,7 +2,6 @@
 @import "partials/_mixin";
 @import "partials/_function";
 @import "partials/_reset";
-@import "partials/_font";
 
 
 //記述はレイアウトの構造優先
@@ -59,7 +58,7 @@ li  { @include text-base;}
 
 /* base
 --------------------------------------------------------------------*/
-html	{ height:100%; color: $color-txt; background:$color-bg;}
+html	{ height:100%; color: $color-txt; background:$color-bg; background: #000;}
 body	{ height:100%; text-align:left; @include select-color(#fff,$color-key);}
 body > #wrapper { height:auto;}
 #wrapper { min-width:$width; min-height:100%; height:auto !important; height:100%; position:relative;

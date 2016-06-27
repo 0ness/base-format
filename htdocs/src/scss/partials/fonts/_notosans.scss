@@ -17,57 +17,57 @@ $notoFont-black	:"Noto Sans Japanese black";
 
 @font-face {
 	font-family:"Noto Sans Japanese";
-	src: url("../fonts/notosans/regular/NotoSansCJKjp-Regular.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/regular/NotoSansCJKjp-Regular.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/regular/NotoSansCJKjp-Regular.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/regular/NotoSansCJKjp-Regular.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/regular/NotoSansCJKjp-Regular.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/regular/NotoSansCJKjp-Regular.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/regular/NotoSansCJKjp-Regular.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/regular/NotoSansCJKjp-Regular.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 }
 @font-face {
 	font-family:"Noto Sans Japanese thin";
-	src: url("../fonts/notosans/thin/NotoSansCJKjp-Thin.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/thin/NotoSansCJKjp-Thin.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/thin/NotoSansCJKjp-Thin.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/thin/NotoSansCJKjp-Thin.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/thin/NotoSansCJKjp-Thin.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/thin/NotoSansCJKjp-Thin.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/thin/NotoSansCJKjp-Thin.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/thin/NotoSansCJKjp-Thin.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 @font-face {
 	font-family:"Noto Sans Japanese medium";
-	src: url("../fonts/notosans/medium/NotoSansCJKjp-medium.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/medium/NotoSansCJKjp-medium.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/medium/NotoSansCJKjp-medium.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/medium/NotoSansCJKjp-medium.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/medium/NotoSansCJKjp-Medium.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/medium/NotoSansCJKjp-Medium.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/medium/NotoSansCJKjp-Medium.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/medium/NotoSansCJKjp-Medium.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 @font-face {
 	font-family:"Noto Sans Japanese light";
-	src: url("../fonts/notosans/light/NotoSansCJKjp-light.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/light/NotoSansCJKjp-light.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/light/NotoSansCJKjp-light.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/light/NotoSansCJKjp-light.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/light/NotoSansCJKjp-Light.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/light/NotoSansCJKjp-Light.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/light/NotoSansCJKjp-Light.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/light/NotoSansCJKjp-Light.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 @font-face {
 	font-family:"Noto Sans Japanese demilight";
-	src: url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/demilight/NotoSansCJKjp-demilight.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/demilight/NotoSansCJKjp-DemiLight.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/demilight/NotoSansCJKjp-DemiLight.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/demilight/NotoSansCJKjp-DemiLight.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/demilight/NotoSansCJKjp-DemiLight.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 @font-face {
 	font-family:"Noto Sans Japanese bold";
-	src: url("../fonts/notosans/bold/NotoSansCJKjp-bold.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/bold/NotoSansCJKjp-bold.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/bold/NotoSansCJKjp-bold.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/bold/NotoSansCJKjp-bold.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/bold/NotoSansCJKjp-Bold.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/bold/NotoSansCJKjp-Bold.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/bold/NotoSansCJKjp-Bold.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/bold/NotoSansCJKjp-Bold.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 @font-face {
 	font-family:"Noto Sans Japanese black";
-	src: url("../fonts/notosans/black/NotoSansCJKjp-black.eot");  //IE9 Compat Modes 
-	src: url("../fonts/notosans/black/NotoSansCJKjp-black.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
-		url("../fonts/notosans/black/NotoSansCJKjp-black.woff") format("woff"), //woff - Modern Browsers 
-		url("../fonts/notosans/black/NotoSansCJKjp-black.otf")  format("opentype"); //ttf - Safari, Android, iOS 
+	src: url("/common/fonts/notosans/black/NotoSansCJKjp-Black.eot");  //IE9 Compat Modes 
+	src: url("/common/fonts/notosans/black/NotoSansCJKjp-Black.eot?#iefix") format("embedded-opentype"), //eof - IE6-IE8 
+		url("/common/fonts/notosans/black/NotoSansCJKjp-Black.woff") format("woff"), //woff - Modern Browsers 
+		url("/common/fonts/notosans/black/NotoSansCJKjp-Black.otf")  format("opentype"); //ttf - Safari, Android, iOS 
 	font-weight:lighter;
 }
 
