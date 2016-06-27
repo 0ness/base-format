@@ -11,7 +11,9 @@
 	 * @class ScrollFire
 	 * @constructor
 	 */
-	var ScrollFire 	= function(){},
+	var ScrollFire 	= function(){
+		window.addEventListener("scroll",this.checkEvents.bind(this),false);
+	},
 		Member 		= ScrollFire.prototype;
 	
 	
@@ -43,9 +45,10 @@
 	 * @param {String}   strID   ID名
 	 * @param {Function} varFunc 変数定義されたイベント内容
 	 */
-	Member.setEvent = function(_domId,_func){
-		var _dom = new ScrollFireDom(_domId,_func);
+	Member.setEvent = function(_domId,_func,_repeat){
+		var _dom = new ScrollFireDom(_domId,_func,_repeat);
 		events.push(_dom);
+		return this;
 	};
 
 	/**
@@ -94,11 +97,11 @@
 	 * @param {String}   strID   要素のID
 	 * @param {Function} varFunc 発火時の処理
 	 */
-	var ScrollFireDom = function(_id,_func){
-		this.id 	= _id;
-		this.y 		= document.getElementById(_id).offsetTop;
-		this.func 	= _func;
+	var ScrollFireDom = function(_id,_func,_repeat){
+		this.y 			= document.getElementById(_id).offsetTop;
+		this.callback 	= _func;
 		this.isFired	= false;
+		this.isRepeat	= _repeat || false;
 		this.threshold 	= 300;
 	},
 		ScrollFireDomMember = ScrollFireDom.prototype;
@@ -115,8 +118,8 @@
 		_abs = _abs>0?_abs:-_abs;
 
 		if(_abs > this.threshold) return false;
-		this.isFired = true;
-		this.func();
+		if(this.isRepeat === false) this.isFired = true;
+		this.callback();
 	};
 
 	
