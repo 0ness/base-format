@@ -170,75 +170,9 @@
 //@param {Number} $n - 透明度指定：0〜100
 @mixin opacity($n:75)	{ opacity:$n/100; filter: alpha(opacity=$n); -ms-filter:"alpha(opacity="+$n+")"; zoom:1;}
 
-//トランジション（イージング,秒数,プロパティ,ディレイ）
-@mixin transition($e:ease-out,$n:0.2s,$p:all,$delay:0s){
-	@if $e == none {
-		-webkit-transition:none; -moz-transition:none; transition:none;
-	}@else if $p == box-shadow{
-		-webkit-transition:$e $n -webkit-box-shadow; -moz-transition:$e $n box-shadow; transition:$e $n box-shadow;
-	}@else if $p == transform{
-		-webkit-transition:$e $n -webkit-transform; -moz-transition:$e $n -moz-transform; transition:$e $n transform;
-	}@else{
-		-webkit-transition:$e $n $p; -moz-transition:$e $n $p; transition:$e $n $p;
-	}
-	-moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;
-}
-
-//トランジションdelay（ディレイ）
-@mixin delay($delay:0s){ -moz-transition-delay:$delay; -webkit-transition-delay:$delay; transition-delay:$delay;}
-
-//カスタムイージング：CSS3アニメーションのイージングを細かく指定したい時に使用するhttp://cubic-bezier.comを利用すると便利
-@mixin easing($a,$b,$c,$d,$pro:all,$s:1000ms){
-	@if $pro == transform{
-		-webkit-transition: -webkit-transform $s cubic-bezier($a,$b,$c,$d);
-		-moz-transition: -moz-transform $s cubic-bezier($a,$b,$c,$d);
-		-ms-transition: -ms-transform $s cubic-bezier($a,$b,$c,$d);
-		transition: transform $s cubic-bezier($a,$b,$c,$d);
-	}@else{
-		-webkit-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-		-moz-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-		-ms-transition: $pro $s cubic-bezier($a,$b,$c,$d);
-		transition: $pro $s cubic-bezier($a,$b,$c,$d);
-	}
-	-webkit-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-	-moz-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-	-ms-transition-timing-function: cubic-bezier($a,$b,$c,$d);
-	transition-timing-function: cubic-bezier($a,$b,$c,$d);
-}
-
-//アニメーションanimation（プロパティセット）
-@mixin animation($prop){ -moz-animation:$prop; -webkit-animation:$prop; -ms-animation:$prop; animation:$prop;}
-
-//キーフレームkeyframes(関数名)
-@mixin keyframes($name){			
-	@-webkit-keyframes $name{ @content; }
-	@keyframes $name{ @content; }
-}
-
-//トランスフォーム　一式（プロパティセット）
-@mixin transform($set...)	{ -ms-transform:$set; -moz-transform:$set; -webkit-transform:$set; transform:$set;}
-
-//トランスフォーム　回転（角度を単位degを付けて入力）
-@mixin rotate($r)	{ -ms-transform: rotateZ($r); -moz-transform: rotateZ($r); -webkit-transform: rotateZ($r); transform: rotateZ($r);}
-
-//トランスレート　座標（x,y）
-@mixin translate($x:0,$y:0)	{ -ms-transform: translate($x+px,$y+px); -moz-transform: translate($x+px,$y+px); -webkit-transform: translate($x+px,$y+px); transform: translate($x+px,$y+px);}
-
-//トランスレート　座標（x,y,z）
-@mixin translate3d($x:0,$y:0,$z:0)	{ -ms-transform: translate3d($x+px,$y+px,$z+px); -moz-transform: translate3d($x+px,$y+px,$z+px); -webkit-transform: translate3d($x+px,$y+px,$z+px); transform: translate3d($x+px,$y+px,$z+px);}
-
-//角丸（プロパティセット）
-@mixin radius($r)	{ -webkit-border-radius:$r; -moz-border-radius:$r; -ms-border-radius:$r; border-radius:$r;}
-
-//ボックスシャドウ（影のプロパティは幾つでもセット可能）
-@mixin box-shadow($shadows...){ -moz-box-shadow: $shadows; -webkit-box-shadow: $shadows; box-shadow: $shadows;}
-
-//ボックスモデル（プロパティ）	基本はボーダーボックス状態にするために使う
-@mixin sizing($r:border-box) { -moz-box-sizing:$r; -webkit-box-sizing:$r; box-sizing:$r;}
-
 //選択範囲テキスト（文字色、背景色）
 @mixin select-color($color,$bg){
-	p::selection,h1::selection,h2::selection,h3::selection,h4::selection,a::selection,img::selection,em::selection,strong::selection,dd::selection,dt::selection,u::selection,dfn::selection,li::selection{ color:$color; background:$bg;}
+p::selection,h1::selection,h2::selection,h3::selection,h4::selection,a::selection,img::selection,em::selection,strong::selection,dd::selection,dt::selection,u::selection,dfn::selection,li::selection{ color:$color; background:$bg;}
 	*::-moz-selection { color:$color; background:$bg; }
 }
 
@@ -285,23 +219,16 @@
 }
 
 //フォームのスタイル変更
-@mixin appearance($prop:none) {
-	-webkit-appearance:$prop; -moz-appearance:$prop; appearance:$prop;
-}
+@mixin appearance($prop:none) { -webkit-appearance:$prop; -moz-appearance:$prop; appearance:$prop;}
 
 //画像や文字を選択させない処理
 @mixin use-none { user-select: none;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}
 
+//font-smoothingを追加する
+@mixin smoothing { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
 
-// MIXIN CSS3系スマートフォン用モジュール ///////////////////////////////////////
-
-//ボックス内テキスト中央揃え
-//スマートフォンのボタンなどに使用
-//@mixin center	{ display:table-cell; vertical-align:middle; text-align:center;}
-
-//ボックス内テキスト上下揃え
-//スマートフォンのボタンなどに使用
-//@mixin v-center	{ display:table-cell; vertical-align:middle;}
+//font-smoothingを解除する
+@mixin not-smoothing { -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: unset;}
 
 
 
@@ -310,7 +237,9 @@
 
 //幅指定時に画面の天地左右中央に配置する
 //@mixin center
-@mixin center{position: absolute; top:0; left: 0; bottom: 0; right: 0; margin: auto;}
+@mixin center{
+	position: absolute; top:0; left: 0; bottom: 0; right: 0; margin: auto;
+}
 
 //幅と高さ指定（width,height,overflow）
 //幅と高さの引数はpx・%で入力、pxは省略可能
@@ -318,7 +247,6 @@
 //@mixin wh
 //@param {Number} $w - width値：初期値auto
 //@param {Number} $h - height値：初期値auto
-//@param {String} $of - overflowプロパティ：初期値visible
 //@usage
 //.class {
 //	=wh(500,500,hidden);
@@ -343,7 +271,6 @@
 
 	width:$w_02;
 	height:$h_02;
-	overflow:$of;
 	display:block;
 }
 
