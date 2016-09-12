@@ -1,19 +1,3 @@
-/*　Noto Sans */
-$notoFont		:"Noto Sans Japanese";
-$notoFont-thin	:"Noto Sans Japanese thin";
-$notoFont-medium:"Noto Sans Japanese medium";
-$notoFont-light	:"Noto Sans Japanese light";
-$notoFont-demilight:"Noto Sans Japanese demilight";
-$notoFont-bold	:"Noto Sans Japanese bold";
-$notoFont-black	:"Noto Sans Japanese black";
-
-.u-notofont			{ font-family: $notoFont;}
-.u-notofont-thin	{ font-family:$notoFont-thin;}
-.u-notofont-medium	{ font-family:$notoFont-medium;}
-.u-notofont-light	{ font-family:$notoFont-light;}
-.u-notofont-demilight{ font-family:$notoFont-demilight;}
-.u-notofont-bold	{ font-family:$notoFont-bold;}
-.u-notofont-black	{ font-family:$notoFont-black;}
 
 @font-face {
 	font-family:"Noto Sans Japanese";

@@ -23,6 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 	text-decoration: none;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -56,10 +57,18 @@ Base Font
 ====================================================================*/
 html { font-size: 62.5%;}
 body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$fontGothic;}
-body.webfont { font-family:'Noto Sans Japanese',$fontGothic; font-weight:100;}
 
 select,input,button,textarea { font: 99% arial, helvetica, clean, sans-serif }
 table { font-size: inherit; font: 100% }
 pre,code,kbd,samp,tt { font-family: monospace; *font-size:108%;line-height: 100% }
 
-@import "_font";
+
+
+
+
+/*====================================================================
+Base Font
+====================================================================*/
+@import "fonts/_path";
+
+

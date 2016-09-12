@@ -32,6 +32,8 @@ module.exports = function(grunt){
 		_srcCssDir	= "htdocs/src/scss/",
 		_cmnCssDir 	= "htdocs/common/css/";
 
+	var ssi = require('browsersync-ssi');
+
 	
 	
 	
@@ -103,14 +105,14 @@ module.exports = function(grunt){
         concat:{
             baseJS:{
                 src	:[
-					_srcJsDir + "jquery/jquery.js",
-					_srcJsDir + "jquery/easing.js"
-//					_srcJsDir + "ie/selectivizr.js"
+					_srcJsDir + "jquery/jquery.js"
                 ],
 				dest:_cmnJsDir + "base.js"
             },
 			moduleJS:{
 				src	:[
+					_srcJsDir + "ie/easing.js",
+					_srcJsDir + "ie/selectivizr.js",
 					_srcJsDir + "module/UserInfo.js",
 					_srcJsDir + "module/Utility.js"
 				],
@@ -165,6 +167,7 @@ module.exports = function(grunt){
 				},
 				options:{
 					watchTask: true,
+					logLevel:"silent",
 					server: './htdocs'
 				}
 			}
