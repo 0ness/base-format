@@ -1,0 +1,50 @@
+//
+// Mixins
+//
+// Sass のカスタム Mixin
+//
+
+//
+// clearfix
+//
+// `float` を解除する clearfix の Mixin
+//
+//
+//     @include clearfix;
+//
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: ' ';
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//
+// icon-arrow
+//
+// 矢印アイコンの Mixin
+//
+// + $border-color : カラー
+// + $border-width : 幅
+// + $border-size  : サイズ
+// + $rotate       : 回転する角度
+//
+//
+//     @include icon-arrow([$border-color, $border-size, $rotate]);
+//
+@mixin icon-arrow($border-color: $color-01, $border-size: 5px, $rotate: null) {
+  content: '';
+  width: 0;
+  height: 0;
+  border: solid ($border-size - 1) transparent;
+  border-right: solid $border-size transparent;
+  border-left: solid $border-size $border-color;
+  
+  @if $rotate {
+    transform: rotate($rotate);
+  }
+}

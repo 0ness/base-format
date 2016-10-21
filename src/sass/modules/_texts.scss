@@ -1,0 +1,51 @@
+/* ----------------------------------------
+  テキストモジュール（接頭辞: `text`）
+---------------------------------------- */
+/* リードテキスト */
+.text-lead {
+  margin-bottom: 40px;
+  padding: 20px 37px;
+  background-color: $color-03;
+  color: $color-01;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: (64/36);
+  
+  .hdg-01 + & {
+    margin-top: -17px;
+  }
+}
+
+/* 通常テキスト */
+.text {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  line-height: (60/28);
+}
+
+/* 小テキスト */
+.text-s {
+  font-size: 1.4rem;
+}
+
+/* 注釈テキスト */
+.text-note {
+  font-size: 1.2rem;
+  line-height: (36/24);
+}
+
+/* メッセージ */
+.text-message {
+  padding: 45px 40px;
+  background-color: $color-03
+}
+.text-message-hdg {
+  margin-bottom: 24px;
+  background-color: transparent;
+  color: $color-01;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.text-message-desc {
+  line-height: (48/28);
+}

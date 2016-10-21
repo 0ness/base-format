@@ -1,0 +1,99 @@
+doctype html
+block vars
+
+//- URL の設定
+- var url 			= 'http://test.co.jp';
+- var lang 			= 'ja';
+- var sitename 		= 'サイト名';
+
+
+html(lang=lang)
+
+	//head elment
+	head
+		meta(charset="UTF-8")
+		
+		//- タイトル
+		if title
+			title #{title}　|　#{sitename}
+		else
+			title #{sitename}
+
+
+		//- viewport
+		meta(name="viewport", content="width=width=1080px,user-scalable=yes")
+
+		//- keyword
+		if keyword
+			meta(name="keyword", content=keyword)
+
+		//- description
+		if description
+			meta(name="description", content=description)
+			meta(property="og:description",content=description)
+
+		//- OGP
+		if title
+			meta(property="og:title", content=title +"　|　"+ sitename)
+		else
+			meta(property="og:title", content=sitename)
+
+		
+		if ogdir
+			-var dir = ogdir
+			meta(property="og:url", content=url + dir)
+			meta(property="og:image", content=url + "/common/images/og_image.png")
+		
+
+		//- CSS読み込み
+		include /_includes/_css
+
+
+	//body elment
+	body(class=category, id=id)
+	
+		#wrapper
+
+			//- ヘッダー
+			block header
+			include /_includes/_header
+
+			//- コンテンツエリア
+			.content
+
+				//- コンテンツの分岐
+				if category === 'top-category'
+					.content-body
+						main.main-contents
+							block content
+
+				else
+					.content-body
+						main.main-contents
+							block content
+
+					//- パンくず
+					block topicpath
+						ul.bread-nav
+							each val, key in topicpathObj
+								if val.link
+									li: a(href=val.link) #{val.name}
+								else
+									li #{val.name}
+
+			///contents
+			
+			//- フッター
+			block footer
+				include /_includes/_footer
+		///wrapper
+		
+		//- JS読み込み
+		include /_includes/_js
+		if contentsJs
+			- for (var i = 0; i < contentsJs.length; i++) {
+				-var src = setFilepath + contentsJs[i]
+				script(src=src)
+			- }
+		else
+			p test

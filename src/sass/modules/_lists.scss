@@ -1,0 +1,335 @@
+/* ----------------------------------------
+  リストモジュール（接頭辞: `list`）
+---------------------------------------- */
+/* インフォメーション リスト */
+.list-information {
+  margin-top: 50px;
+  border-top: solid 1px $color-05;
+}
+.list-information-item {
+  padding-top: 15px;
+  padding-bottom: 13px;
+  border-bottom: solid 1px $color-05;
+  line-height: (48/28);
+}
+.list-information-item-date {
+  margin-bottom: 2px;
+  background-color: transparent;
+  color: $color-01;
+  font-weight: bold;
+}
+.list-information-item-category {
+  margin-left: 10px;
+  padding-left: 10px;
+  display: inline-block;
+  position: relative;
+  
+  &:before {
+    content: '';
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1px;
+    height: 1em;
+    background-color: $color-01;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+/* ビュレット付き リスト */
+.list-disc {
+  line-height: (48/28);
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+.list-disc-item {
+  padding-left: 12px;
+  position: relative;
+  
+  &:not(:last-child) {
+    margin-bottom: 7px;
+  }
+  &:before {
+    content: '';
+    border-radius: 100%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    position: absolute;
+    top: 0.55em;
+    left: 0;
+    background-color: $color-01;
+  }
+}
+
+/* インデックス リスト */
+.list-index-wrapper {
+  &:not(:last-child) {
+    margin-bottom: 55px;
+  }
+}
+.list-index-hdg {
+  margin-bottom: 10px;
+  background-color: transparent;
+  color: $color-04;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1;
+}
+.list-index {
+  margin-bottom: -24px;
+  width: 100%;
+  @include clearfix;
+}
+.list-index-item {
+  margin-bottom: 24px;
+  padding-right: 210px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px $color-05;
+  float: left;
+  width: 342.5px;
+  min-height: 191px;
+  box-sizing: border-box;
+  position: relative;
+  
+  &:nth-child(odd) {
+    clear: both;
+  }
+  &:nth-child(even) {
+    float: right;
+  }
+  
+  // 英語
+  html[lang="en"] & {
+    width: 464px;
+  }
+}
+.list-index-item-desc {
+  padding-top: 55px;
+  position: relative;
+  z-index: 10;
+}
+.list-index-item-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.list-index-item-hdg {
+  margin-bottom: 7px;
+  background-color: transparent;
+  color: $color-01;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.2;
+  
+  // 英語
+  html[lang="en"] & {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+.list-index-item-post {
+  margin-bottom: 7px;
+  background-color: transparent;
+  color: $color-01;
+  line-height: (40/28);
+  
+  // 英語
+  html[lang="en"] & {
+    margin-bottom: 0;
+    color: $base-font-color;
+  }
+}
+.list-index-item-link {
+  line-height: 1.2;
+  
+  .link-more {
+    padding-left: 9px;
+    font-size: 1.4rem;
+  }
+}
+
+/* 略歴 リスト */
+.list-chrono {
+  // padding-left: 4.3em;
+  // position: relative;
+  display: flex;
+  
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+.list-chrono-term {
+  margin-right: 1em;
+  white-space: nowrap;
+  // width: 4.3em;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+}
+
+/* プロジェクト リスト */
+.list-project {
+  @include clearfix;
+  
+  .hdg-02 + & {
+    margin-top: 40px;
+  }
+}
+.list-project-item {
+  margin-bottom: 40px;
+  float: left;
+  width: 344px;
+  
+  &:nth-child(odd) {
+    clear: both;
+  }
+  &:nth-child(even) {
+    float: right;
+  }
+  
+  // 英語
+  html[lang="en"] & {
+    width: 467px;
+  }
+}
+.list-project-item-hdg {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-bottom: solid 1px $color-05;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: $color-01;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: (48/36);
+}
+.list-project-item-name {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  
+  // 英語
+  html[lang="en"] & {
+    font-weight: bold;
+  }
+}
+.list-project-item-post {
+  margin-top: 7px;
+  line-height: (40/28);
+}
+.list-project-item-link {
+  margin-top: 10px;
+  
+  & > .link-more {
+    font-size: 1.4rem;
+  }
+}
+
+/* 関連リンク リスト */
+.list-link {
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+.list-link-term {
+  margin-bottom: 7px;
+}
+.list-link-narrow {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+/* ドット付き リンクリスト */
+.list-link-dot {
+  margin-top: 30px;
+  padding-left: 12px;
+  position: relative;
+  font-size: 1.6rem;
+  
+  &:before {
+    content: '';
+    border-radius: 100%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    position: absolute;
+    top: 0.55em;
+    left: 0;
+    background-color: $color-01;
+  }
+}
+.list-link-dot-term {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* サイトマップ リスト */
+.list-sitemap-hdg {
+  margin-bottom: 25px;
+  background-color: transparent;
+  color: $color-04;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1;
+  
+  &:only-child {
+    margin-bottom: 0;
+  }
+  & > a {
+    color: $color-04;
+    text-decoration: underline;
+  }
+  & > a:hover {
+    text-decoration: none;
+  }
+}
+.list-sitemap {
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .list-sitemap-hdg + & {
+    margin-top: 25px;
+  }
+}
+.list-sitemap-item {
+  padding-left: 12px;
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: bold;
+  
+  &:not(:last-child) {
+    margin-bottom: 7px;
+  }
+  &:before {
+    content: '';
+    border-radius: 100%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    position: absolute;
+    top: 0.55em;
+    left: 0;
+    background-color: $color-01;
+  }
+  & > a {
+    text-decoration: underline;
+  }
+  & > a:hover {
+    text-decoration: none;
+  }
+}
+.list-sitemap-float {
+  display: flex;
+}
+.list-sitemap-float-item {
+  &:not(:first-child) {
+    margin-left: 140px;
+  }
+}

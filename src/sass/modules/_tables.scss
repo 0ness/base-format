@@ -1,0 +1,151 @@
+/* ----------------------------------------
+  テーブルモジュール（接頭辞: `tbl`）
+---------------------------------------- */
+/* テーブル 01 */
+.tbl-01 {
+  margin-bottom: 24px;
+  width: 100%;
+  line-height: (48/28);
+  table-layout: fixed;
+  
+  th,
+  td {
+    border-top: solid 1px $color-05;
+    border-bottom: solid 1px $color-05;
+    border-right: solid 1px $color-05;
+    vertical-align: middle;  
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  th {
+    font-weight: normal;
+  }
+  thead th {
+    padding: 7px;
+    text-align: center;
+  }
+  tbody th {
+    padding: 25px 25px 25px 20px;
+    text-align: left;
+  }
+  tbody th.tbl-01-cell-arrow {
+    padding: 0;
+  }
+  tbody td {
+    padding: 15px 22px;
+  }
+}
+.tbl-01-cell-em {
+  background-color: #e6f8f7;
+}
+.tbl-01-num {
+  padding-left: 2em;
+  position: relative;
+  background-color: transparent;
+  color: $color-01;
+  font-weight: bold;
+  line-height: (48/28);
+}
+.tbl-01-num-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tbl-01-num-sub {
+  padding-left: 2em;
+  line-height: (48/28);
+}
+.tbl-01-arrow-wrapper {
+  padding: 25px 78px 25px 20px;
+  width: 100%;
+  height: 100%;
+  min-height: 135px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.tbl-01-arrow.tbl-01-arrow {
+  position: absolute;
+  right: 20px;
+}
+.tbl-01-arrow.tbl-01-arrow-down {
+  bottom: -10px;
+}
+.tbl-01-arrow.tbl-01-arrow-up {
+  top: -10px;
+}
+
+/* テーブル 02 */
+.tbl-02 {
+  margin-bottom: 24px;
+  width: 100%;
+  line-height: (48/28);
+  table-layout: fixed;
+  
+  th,
+  td {
+    border-top: solid 1px $color-05;
+    border-bottom: solid 1px $color-05;
+    border-right: solid 1px $color-05;
+    vertical-align: top;  
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  th {
+    font-weight: normal;
+  }
+  thead th {
+    padding: 7px;
+    text-align: left;
+  }
+  tbody th {
+    padding: 15px 5px 15px 0;
+    background-color: transparent;
+    color: $color-01;
+    text-align: left;
+  }
+  tbody td {
+    padding: 15px 22px;
+  }
+}
+
+/* テーブル 03 */
+.tbl-03 {
+  width: 100%;
+  line-height: (48/28);
+  table-layout: fixed;
+  
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  th,
+  td {
+    border-top: solid 1px $color-05;
+    border-bottom: solid 1px $color-05;
+    border-right: solid 1px $color-05;
+    vertical-align: top;  
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  thead th,
+  thead td {
+    padding: 20px;
+    font-weight: bold;
+    text-align: left;
+  }
+  tbody th {
+    padding: 15px 20px;
+    font-weight: normal;
+    text-align: left;
+  }
+  tbody td {
+    padding: 15px 20px;
+  }
+}

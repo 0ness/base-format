@@ -1,0 +1,188 @@
+/* ----------------------------------------
+  見出しモジュール（接頭辞: `hdg`）
+---------------------------------------- */
+/* 見出し 01 */
+.hdg-01 {
+  margin-bottom: 55px;
+  padding: 17px 29px;
+  box-shadow: 7px 7px 0 #e5e5e5;
+  position: relative;
+  background-color: $color-01;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* 見出し 01 日付付き */
+.hdg-01-title {
+  padding-right: 20px;
+  width: 580px;
+  box-sizing: border-box;
+  display: table-cell;
+  vertical-align: top;
+}
+.hdg-01-date {
+  display: table-cell;
+  vertical-align: bottom;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+/* 見出し 02 */
+.hdg-02 {
+  margin-bottom: 17px;
+  color: $color-04;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: (60/48);
+  
+  .text + & {
+    margin-top: 30px;
+  }
+}
+
+/* 見出し 03 */
+.hdg-03 {
+  margin-bottom: 17px;
+  padding-left: 28px;
+  position: relative;
+  color: $color-02;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  
+  &:before {
+    content: '';
+    box-shadow: 3px 3px 0 #d3d3d3;
+    width: 15px;
+    height: 15px;
+    display: block;
+    position: absolute;
+    top: 0.2em;
+    left: 2px;
+    background-color: $color-01;
+  }
+}
+
+/* 見出し 03 マーカー無し　サイズ大*/
+.hdg-03-nomarker {
+  margin-bottom: 17px;
+  position: relative;
+  color: $color-02;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* 見出し 04 */
+.hdg-04 {
+  margin-bottom: 20px;
+  padding-bottom: 3px;
+  border-bottom: solid 1px $color-04;
+  display: table;
+  background-color: transparent;
+  color: $color-04;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: (60/40);
+}
+
+/* 見出し イメージ */
+.hdg-image {
+  margin-bottom: 55px;
+  box-shadow: 7px 7px 0 #e5e5e5;
+  position: relative;
+  
+  // 英語
+  html[lang="en"] & {
+    display: flex;
+    align-items: center;
+    background-color: $color-01;
+  }
+}
+.hdg-image-box {
+  padding: 55px 28px 55px 24px;
+  width: 260px;
+  min-height: 210px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: $color-01;
+  color: #fff;
+  font-weight: normal;
+  
+  // 英語
+  html[lang="en"] & {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 0;
+    position: static;
+  }
+}
+.hdg-image-box-category,
+.hdg-image-box-name,
+.hdg-image-box-post {
+  display: block;
+  line-height: 1.2;
+}
+.hdg-image-box-category {
+  margin-bottom: 17px;
+  padding-bottom: 8px;
+  border-bottom: solid 1px #fff;
+}
+.hdg-image-box-name {
+  margin-bottom: 15px;
+  font-size: 2.4rem;
+  
+  // 英語
+  html[lang="en"] & {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+.hdg-image-box-post {
+  // 英語
+  html[lang="en"] & {
+    line-height: (40/28);
+  }
+}
+
+/* 見出し プロジェクト */
+.hdg-project {
+  margin-bottom: 50px;
+  box-shadow: 7px 7px 0 #e5e5e5;
+  position: relative;
+}
+.hdg-project-box {
+  width: 260px;
+  min-height: 210px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: table;
+  background-color: $color-01;
+  color: #fff;
+  font-weight: normal;
+}
+.hdg-project-box-inner {
+  padding: 20px 22px 20px 24px;
+  height: 210px;
+  box-sizing: border-box;
+  display: table-cell;
+  vertical-align: middle;
+}
+.hdg-project-box-name,
+.hdg-project-box-post {
+  display: block;
+}
+.hdg-project-box-name {
+  margin-bottom: 15px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+.hdg-project-box-post {
+  line-height: (40/28);
+}
+

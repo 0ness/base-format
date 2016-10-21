@@ -1,0 +1,41 @@
+/* ----------------------------------------
+  画像モジュール（接頭辞: `image`）
+---------------------------------------- */
+/* 通常画像 */
+.image {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.image-caption {
+  margin-top: 15px;
+  text-align: left;
+}
+
+/* プロフィール画像 */
+.image-profile {
+  border-bottom: solid 1px $color-05;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.image-profile-btm {
+  border-top: solid 1px $color-05;
+}
+.image-profile-caption {
+  margin-left: 30px;
+  background-color: transparent;
+  color: $color-01;
+  font-weight: normal;
+}
+.image-profile-caption-name,
+.image-profile-caption-post {
+  display: block;
+}
+.image-profile-caption-name {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 2.4rem;
+}
+.image-profile-item {
+  margin-right: 25px;
+}

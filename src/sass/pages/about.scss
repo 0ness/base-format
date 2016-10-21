@@ -1,0 +1,70 @@
+/* ----------------------------------------
+  about（接頭辞: `about`）
+---------------------------------------- */
+// 設定ファイルのインポート
+@import '../foundation';
+
+.about{
+  .l-content      { padding-bottom: 100px; position: relative; background:url(../../../about/images/index/img_photo_bg.jpg) no-repeat center top #e9e4d1;} 
+  .l-content-body { padding-top: 60px;  position: relative; background:#fff;} 
+  .l-topicpath    { margin-top: 0; padding-top: 17px; position: relative; z-index: 100;
+    &-item { color: white;
+	  &:before { border-left-color: #fff;}
+	}
+    a { color: white;}
+  }
+}
+
+/*見出し*/
+.about-hdg-wrapper { width: 1000px; height: 235px; margin: 0 auto;
+  img { display: block; margin: 0 auto;}
+}
+.about-hdg { padding: 0px 0 15px;}
+
+/*ナビゲーション*/
+.about-page-nav { width: 1000px; display: flex; margin: 0 auto;
+  &-btn { width: 50%; display: block; padding: 18px 0; position: relative; line-height: 1; font-size: 2.4rem; font-weight: bold; text-align: center; color: white; background: #a59f88; transition: 0.2s ease;
+    
+	&:before { content: ""; width: 0; height: 0; display: inline-block; margin: 0 7px 0 -15px; border-style: solid; border-width: 7px 0 7px 9px; border-color: transparent transparent transparent #fff;}
+    &:hover { text-decoration: none; background: #bfbaa5;}
+    
+    &.is-current { background: #fff; color: #a59f88;
+		&:before { border-color: transparent transparent transparent #a59f88;}
+	}
+  }
+}
+
+/*リード文*/
+.about-read { width: 1000px; margin: 0 auto; padding: 70px 0 0; background: #fff; text-align: center;
+   &-hdg { margin: 0 0 30px; color: #0ba29a; font-size: 4.6rem; line-height: 1; letter-spacing: -1px;}
+   &-txt { margin: 0 0 50px; font-size: 1.7rem; line-height: 2;}
+   &-img { vertical-align: bottom;} 
+}
+
+.border-box { padding:25px 30px 10px; margin: 45px 0 0; border: 2px solid #0ba29a;
+  a { display: inline-block; margin-top: 10px; position: relative; padding: 0 0 0 15px;
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      margin-top: -0.1em;
+      content: '';
+      width: 0;
+      height: 0;
+      border: solid 3px transparent;
+      border-right: solid 4px transparent;
+      border-left: solid 4px #0ba29a;
+    }
+  }
+}
+
+/*QAブロック*/
+.qa-blc { 
+  &-hdg { padding: 15px 20px; margin: 0 0 15px; font-size: 2.4rem; line-height: 1; color: white; background: $color-02;
+    &:before { content: "Q"; display: inline-block; margin: 0 16px 0 0;}
+  }
+  &-txt { padding: 0 20px 0 53px; position: relative;
+    &:before { content: "A"; position: absolute; top: 8px; left: 21px; font-weight: bold; font-size: 2.4rem; line-height: 1; color: $color-02;}
+  }
+  & + & { margin-top: 30px;}
+}

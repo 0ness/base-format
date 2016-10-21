@@ -1,0 +1,119 @@
+/* ----------------------------------------
+  チャートモジュール（接頭辞: `chart`）
+---------------------------------------- */
+/* チャート */
+.chart {
+  margin-right: -175px;
+  margin-left: -430px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 1350px auto;
+  background-color: #eff7f8;
+  color: $base-font-color;
+  
+  & > img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+.chart-inner {
+  margin-right: auto;
+  margin-left: auto;
+  width: $content-width;
+  @include clearfix;
+}
+.chart-content {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  float: right;
+  width: 669px;
+}
+.chart-hdg {
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+.chart-image {
+  position: relative;
+}
+.chart-image-item {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+}
+.chart-image-mask {
+  position: absolute;
+}
+.chart-caption {
+  margin-top: 30px;
+  width: 100%;
+  display: table;
+  font-size: 1.2rem;
+  line-height: (36/24);
+  
+  & + .chart-caption {
+    margin-top: 0;
+  }
+}
+.chart-caption-term,
+.chart-caption-desc {
+  display: inline;
+}
+.chart-caption-term {
+  
+  &:after {
+    content: '：';
+  }
+}
+.chart-desc {
+  margin-top: 30px;
+  width: 100%;
+  display: table;
+  background-color: transparent;
+  color: $color-01;
+  line-height: (60/28);
+}
+.chart-desc-term,
+.chart-desc-desc,
+.chart-desc-desc > p {
+  display: inline;
+}
+.chart-desc-term {
+  
+  &:before {
+    content: '【';
+  }
+  &:after {
+    content: '】';
+  }
+}
+
+// バーチャート
+.js-chart-type-bar {
+  .js & .chart-image-item {
+    transition: clip 1.6s cubic-bezier(.40, 0, .80, 1);
+  }
+  .js & .chart-image-item {
+    clip: rect(318px, 670px, 318px, 0);
+  }
+  .js & .chart-image-item.is-show {
+    clip: rect(0, 670px, 318px, 0);
+  }
+}
+
+// 折れ線チャート
+.js-chart-type-line {
+  .js & .chart-image-item {
+    transition: clip 2.6s cubic-bezier(.40, 0, .80, 1);
+  }
+  .js & .chart-image-item {
+    clip: rect(0, 0, 318px, 0);
+  }
+  .js & .chart-image-item.is-show {
+    clip: rect(0, 670px, 318px, 0);
+  }
+}

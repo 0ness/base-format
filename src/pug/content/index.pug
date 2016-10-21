@@ -1,0 +1,36 @@
+extends /_templates/_layout
+
+block vars
+	//- ページタイトル
+	- var title    = 'コンテンツタイトル'
+  
+	//- `body` に追加する class
+	- var category 	= 'test-category'
+	- var id 		= 'test'
+  
+	//- 共通ファイルを参照する相対パス
+	- var filepath = '..'
+
+	//- meta
+	- var keyword 		= 'ダミーキーワードダミーキーワードダミーキーワードダミーキーワード'
+	- var description 	= 'ダミーディスクリプションダミーディスクリプションダミーディスクリプション'
+
+	//- 言語アノテーション
+	- var hreflang = 'ja'
+	- var dir      = '/content/index.html'
+  
+	//- パンくず
+	- var topicpathObj = [];
+	- topicpathObj.push({ name: 'ホーム', link: '../index.html' });
+	- topicpathObj.push({ name: 'サイトマップ' });
+  
+
+  
+//- パンくずナビゲーション
+prepend topicpath
+
+//- メインエリア
+block content
+	h1.hdg-01 サイトマップ
+	
+	.l-section テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト

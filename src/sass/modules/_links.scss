@@ -1,0 +1,107 @@
+/* ----------------------------------------
+  リンクモジュール（接頭辞: `link`）
+---------------------------------------- */
+/* 詳細リンク */
+.link-more {
+  padding-left: 12px;
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  
+  &:before {
+    position: absolute;
+    top: 0.25em;
+    left: 0;
+    @include icon-arrow($border-size: 4px);
+  }
+}
+
+/* 下線リンク */
+.link-underline {
+  text-decoration: underline;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* 各種ファイル */
+.l-content {
+  a[href$=".pdf"],
+  a[href$=".ppt"],
+  a[href$=".pptx"],
+  a[href$=".xls"],
+  a[href$=".xlsx"],
+  a[href$=".doc"],
+  a[href$=".docx"] {
+    padding-right: 43px;
+    
+    &:after {
+      content: '';
+      margin-top: -3px;
+      margin-left: 10px;
+      width: 23px;
+      height: 12px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: auto 12px;
+      vertical-align: middle;
+    } 
+  }
+  a[href$=".pdf"] {
+    
+    &:after {
+      background-image: url('../images/icon_pdf.png');
+    }
+  }
+  a[href$=".ppt"],
+  a[href$=".pptx"] {
+    
+    &:after {
+      background-image: url('../images/icon_ppt.png');
+    }
+  }
+  a[href$=".xls"],
+  a[href$=".xlsx"] {
+    
+    &:after {
+      background-image: url('../images/icon_xls.png');
+    }
+  }
+  a[href$=".doc"],
+  a[href$=".docx"] {
+    
+    &:after {
+      background-image: url('../images/icon_doc.png');
+    }
+  }
+}
+
+/* target="_blank" */
+.l-content {
+  a[target="_blank"] {
+    padding-right: 10px;
+    
+    &:after {
+      content: '';
+      margin-top: -4px;
+      margin-left: 10px;
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      background: url('../images/icon_blank.svg') no-repeat 0 0;
+      background-size: auto 12px;
+      vertical-align: middle;
+    }
+  }
+}
+
+/* リンク領域の拡大 */
+body.js .js-enlarge-link {
+  cursor: pointer;
+  
+  &:hover a {
+    text-decoration: underline;
+  }
+}

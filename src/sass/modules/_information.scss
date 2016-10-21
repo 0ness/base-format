@@ -1,0 +1,61 @@
+/* ----------------------------------------
+  インフォメーション
+---------------------------------------- */
+.information-detail .l-main {
+  h2 {
+    @extend .hdg-02;
+  }
+  h3 {
+    @extend .hdg-04;
+  }
+  h4,
+  caption {
+    @extend .hdg-03
+  }
+  caption {
+    text-align: left;
+  }
+  ul {
+    @extend .list-disc;
+    
+    & > li {
+      @extend .list-disc-item;
+    }
+  }
+  p,
+  ul,
+  ul:not(:last-child),
+  table,
+  table:not(:last-child) {
+    margin-bottom: 35px;
+  }
+  p {
+    line-height: (48/28);
+  }
+  p + p {
+    margin-top: -15px;
+  }
+  table {
+    @extend .tbl-03;
+    
+    p {
+      margin-bottom: 0;
+      line-height: inherit;
+    }
+    p + p {
+      margin-top: 0;
+    }
+  }
+  img {
+    margin-bottom: 15px;
+    max-width: 100%;
+    height: auto;
+  }
+  a {
+    text-decoration: underline;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

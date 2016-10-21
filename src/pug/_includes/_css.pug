@@ -1,0 +1,15 @@
+if lang === 'en'
+	- var setFilepath = filepath + "/common/css/en";
+else
+	- var setFilepath = filepath + "/common/css";
+ 
+ 
+//- Layout for CSS
+link(rel="stylesheet", href=setFilepath + "/layout.css")
+
+
+//- Contents for CSS
+if category === 'top-category'
+	link(rel="stylesheet", href=setFilepath + "/contents/top.css")
+else if category === 'test-category'
+	link(rel="stylesheet", href=setFilepath + "/contents/about.css")

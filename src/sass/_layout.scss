@@ -1,0 +1,534 @@
+/* ----------------------------------------
+  コンテナ
+---------------------------------------- */
+html, body {
+  height: 100%;
+}
+body {
+  min-width: $content-width;
+  position: relative;
+  background-color: #e5e5e5;
+  color: $base-font-color;
+  
+  // 左右のシャドウをマスク
+  &:before,
+  &:after {
+    content: '';
+    width: 40px;
+    height: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  &:before {
+    margin-left: -675px;
+    box-shadow: -40px 0 0 #e5e5e5;
+    left: 50%;
+  }
+  &:after {
+    margin-right: -675px;
+    box-shadow: 40px 0 0 #e5e5e5;
+    right: 50%;
+  }
+}
+.l-container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $container-width;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  color: $base-font-color;
+}
+
+/* ----------------------------------------
+  グローバルヘッダ
+---------------------------------------- */
+.l-header {
+  position: relative;
+  z-index: 200;
+  background-color: #fff;
+  color: $base-font-color;
+}
+.l-header-inner {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 19px 38px 18px 38px;
+  max-width: 1260px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  color: $base-font-color;
+  
+  body.home &,
+  body.about & {
+    padding: 22px 10px 22px;
+    max-width: 1260px + 20px;
+  }
+}
+.l-header-logo-target {
+  display: flex;
+  align-items: center;
+}
+.l-header-logo-type {
+  padding-left: 11px;
+}
+.l-header-utility {
+  display: flex;
+}
+.l-header-utility-link {
+  padding-top: 16px;
+  
+  body.home &,
+  body.about & {
+    padding-top: 24px;
+  }
+}
+.l-header-utility-link-item {
+  padding-left: 1em;
+  display: table-cell;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: top;
+}
+.l-header-utility-external {
+  padding-top: 14px;
+  
+  body.home &,
+  body.about & {
+    padding-top: 20px;
+  }
+}
+.l-header-utility-external-item {
+  padding-left: 20px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* ----------------------------------------
+  グローバルナビ
+---------------------------------------- */
+.l-gnav {
+  padding-top: 134px;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 100;
+  background-image: url('../images/img_sub_main_01.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: auto 134px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  
+  body.home &,
+  body.about & {
+    padding-top: 0;
+    background: none;
+  }
+  body.outline & {
+    background-image: url('../images/img_sub_main_01.jpg');
+  }
+  body.introduction & {
+    background-image: url('../images/img_sub_main_02.jpg');
+  }
+  body.project & {
+    background-image: url('../images/img_sub_main_03.jpg');
+  }
+  body.information & {
+    background-image: url('../images/img_sub_main_04.jpg');
+  }
+  body.link &,
+  body.sitemap & {
+    background-image: url('../images/img_sub_main_05.jpg');
+  }
+  
+  // 英語
+  html[lang="en"] body.outline & {
+    background-image: url('../images/img_sub_main_01.jpg');
+  }
+  html[lang="en"] body.message & {
+    background-image: url('../images/img_sub_main_02.jpg');
+  }
+  html[lang="en"] body.introduction & {
+    background-image: url('../images/img_sub_main_03.jpg');
+  }
+  html[lang="en"] body.project & {
+    background-image: url('../images/img_sub_main_04.jpg');
+  }
+}
+
+.l-gnav-inner {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1260px;
+  
+  body.home &,
+  body.about & {
+    border-top: solid 3px #8a805d;
+  }
+}
+.l-gnav-list {
+  margin-right: auto;
+  margin-left: auto;
+  width: $content-width;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  align-content: space-around;
+}
+.l-gnav-list-item {
+  //width: 18%;
+  display: inline-block;
+  position: relative;
+  
+  &:first-child:before {
+    content: '';
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #ccc;
+  }
+  &:after {
+    content: '';
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+  }
+}
+.l-gnav-list-item-introduction {
+  //width: 28%;
+}
+// 英語
+html[lang="en"] {
+  .l-gnav-list-item {
+    width: 20.5%;
+  }
+  .l-gnav-list-item-message {
+    width: 38.5%;
+  }
+}
+.l-gnav-list-item-target {
+  padding: 16px 14px;
+  display: block;
+  background-color: transparent;
+  text-align: center;
+  
+  &:hover {
+    color: $color-01;
+    font-weight: bold;
+    text-decoration: none;
+    
+    // 英語
+    html[lang="en"] & {
+      padding: 16px 5px;
+      font-weight: normal;
+    }
+  }
+}
+
+// 選択状態
+$gnav: about, outline, introduction, project, information, link, message;
+
+@each $id in $gnav {
+  body.#{$id} .l-gnav-list-item-#{$id} .l-gnav-list-item-target {
+    color: $color-01;
+    font-weight: bold;
+  }
+}
+
+/* ----------------------------------------
+  コンテンツエリア
+---------------------------------------- */
+.l-content {
+  background-color: #fff;
+  color: $base-font-color;
+}
+.l-content-inner {
+  margin-right: auto;
+  margin-left: auto;
+  width: $content-width;
+}
+.l-content-body {
+  width: 100%;
+  @include clearfix;
+}
+
+/* ----------------------------------------
+  セクション
+---------------------------------------- */
+.l-section {
+  &:not(:last-child) {
+    margin-bottom: 50px;
+  }
+}
+.l-section-information {
+  &:not(:last-child) {
+    margin-bottom: 35px;
+  }
+  .hdg-01 + & {
+    margin-top: 55px;
+  }
+  p {
+    line-height: (48/28);
+  }
+}
+.l-section-narrow {
+  margin-right: 37px;
+  margin-left: 37px;
+}
+
+/* ----------------------------------------
+  パンくずナビゲーション
+---------------------------------------- */
+.l-topicpath {
+  margin-top: 17px;
+  margin-bottom: 63px;
+  display: flex;
+}
+.l-topicpath-item {
+  position: relative;
+  background-color: transparent;
+  color: #666;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  
+  &:not(:first-child) {
+    padding-left: 23px;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.25em;
+      left: 9px;
+      @include icon-arrow($border-color: #666, $border-size: 5px);
+    }
+  }
+  & > a {
+    background-color: transparent;
+    color: #666;
+  }
+}
+
+/* ----------------------------------------
+  メインエリア
+---------------------------------------- */
+.l-main {
+  margin-bottom: 75px;
+  width: 745px;
+  float: right;
+  
+  &:only-child {
+    margin-right: auto;
+    margin-left: auto;
+    float: none;
+  }
+  html[lang="en"] & {
+    width: 100%;
+  }
+}
+
+/* ----------------------------------------
+  ローカルナビ
+---------------------------------------- */
+.l-lnav {
+  margin-bottom: 50px;
+  width: 185px;
+  float: left;
+}
+.l-lnav-hdg {
+  margin-top: -1 * (4/20)#{em};
+  margin-bottom: -1 * (4/20)#{em};
+  padding-bottom: 15px;
+  border-bottom: solid 1px $color-05;
+  min-height: 62px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: $color-01;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: (56/40);
+}
+.l-lnav-list {
+  margin-top: 17px;
+  line-height: 1.2;
+}
+.l-lnav-list-year {
+  margin-top: 36px;
+  line-height: 1.2;
+}
+.l-lnav-list-item-target {
+  padding: 10px 5px;
+  display: block;
+  
+  &:hover,
+  &.is-active {
+    background-color: #e9f7f6;
+    color: $color-01;
+    text-decoration: none;
+  }
+  & > em {
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/* ----------------------------------------
+  ページトップへ戻る
+---------------------------------------- */
+.l-pagetop {
+  position: absolute;
+  top: -21px;
+  right: 61px;
+  z-index: 1000;
+}
+
+/* ----------------------------------------
+  グローバルフッタ
+---------------------------------------- */
+.l-footer-wrapper {
+  position: relative;
+  background-color: #f6f6f6;
+  color: $base-font-color;
+}
+.l-footer {
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 52px;
+  padding-bottom: 58px;
+  width: $content-width;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.l-footer-sitemap-wrapper {
+  width: 284px;
+}
+.l-footer-sitemap {
+  line-height: 1;
+}
+.l-footer-sitemap-item {
+  border-top: solid 1px #dbdbdb;
+  
+  &:last-child {
+    border-bottom: solid 1px #dbdbdb;
+  }
+}
+.l-footer-sitemap-item-target {
+  padding: 10px 12px 10px 31px;
+  display: block;
+  position: relative;
+  
+  &:before {
+    margin-top: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 0;
+    left: 12px;
+    bottom: 0;
+    @include icon-arrow($border-size: 4px);
+  }
+}
+.l-footer-sitemap-other-wrapper {
+  border-bottom: solid 1px #dbdbdb;
+  display: flex;
+}
+.l-footer-sitemap-other {
+  padding-top: 13px;
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+  
+  & + .l-footer-sitemap-other {
+    margin-left: 28px;
+  }
+}
+.l-footer-sitemap-other-item {
+  margin-bottom: 8px;
+}
+.l-footer-sitemap-other-item-target {
+  padding-left: 31px;
+  display: block;
+  position: relative;
+  
+  &:before {
+    margin-top: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: -0.1em;
+    left: 12px;
+    bottom: 0;
+    @include icon-arrow($border-size: 4px);
+  }
+}
+.l-footer-address {
+  width: 387px;
+}
+.l-footer-contact-hdg {
+  margin-bottom: 10px;
+  background-color: transparent;
+  color: $color-01;
+  font-weight: bold;
+  line-height: 1;
+}
+.l-footer-contact-address {
+  margin-bottom: 17px;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  border-top: solid 1px #dbdbdb;
+  border-bottom: solid 1px #dbdbdb;
+}
+.l-footer-contact-address-hdg {
+  margin-bottom: 7px;
+  font-weight: bold;
+  line-height: (48/28);
+}
+.l-footer-contact-address-body {
+  line-height: (48/28);
+}
+.l-footer-contact-item-mail {
+  // 英語
+  html[lang="en"] & {
+   clear: left;
+  }
+}
+.l-footer-contact-item-tel {
+  display: flex;
+  
+  // 英語
+  html[lang="en"] & {
+    float: left;
+    
+    & + .l-footer-contact-item-tel {
+      margin-left: 1em;
+    }
+  }
+}
+.l-footer-contact-item-tel-term {
+  &:after {
+    content: '：';
+  }
+}
+.l-footer-external {
+  display: flex;
+  justify-content: space-between;
+}
+.l-footer-copyright {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
