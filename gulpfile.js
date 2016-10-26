@@ -5,6 +5,7 @@ var $           = require('gulp-load-plugins')();
 var del         = require('del');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var concat      = require('gulp-concat');
 var reload      = browserSync.reload;
 var cachedFlg   = true;
 
@@ -20,8 +21,10 @@ var dest = './deploy'; // 出力先
 var config = {
   'path': {
     'sass'   : '/sass',           // SCSS
+    'scss'   : '/scss',           // SCSS
     'css'    : '/common/css',     // CSS
     'js'     : '/common/js',      // JS 
+    'js_dev' : '/js',      // JS 
     'jsLibs' : '/common/js/libs', // JS ライブラリ
     'pug'    : '/pug'            // pug
   },
@@ -77,22 +80,22 @@ gulp.task('serve', function() {
 // - `css:watch` - スタイルシート関連のタスクを監視
 // 
 gulp.task('css', function(cb) {
-  runSequence('css:sass', cb);
+  runSequence('css:scss', cb);
 });
 gulp.task('css:watch', ['serve'], function() {
   gulp.watch([
-    src + config.path.sass + '/**/*.scss'
+    src + config.path.scss + '/**/*.scss'
   ], ['css', reload]);
 });
 
 
 // 
-// css:sass
+// css:scss
 //
 // SCSSファイルを CSSファイルにコンパイル
 // 
-gulp.task('css:sass', function() {
-  return $.rubySass(src + config.path.sass + '/**/*.scss', {
+gulp.task('css:scss', function() {
+	return $.rubySass(src + config.path.scss + '/**/*.scss', {
       precision : 3,
       style     : 'expanded',
       sourcemap : false
@@ -103,10 +106,32 @@ gulp.task('css:sass', function() {
     }))
     .pipe($.rename(function(path) {
       // ディレクトリ名の置換 
-      path.dirname = path.dirname.replace('sass', 'css');
+      path.dirname = path.dirname.replace('scss', 'css');
     }))
     .pipe(gulp.dest(dest + config.path.css));
 });
+
+// 
+// css:sass
+//
+// SCSSファイルを CSSファイルにコンパイル
+// 
+//gulp.task('css:sass', function() {
+//	return $.rubySass(src + config.path.sass + '/**/*.scss', {
+//		precision : 3,
+//		style     : 'expanded',
+//		sourcemap : false
+//	})
+//		.on('error', $.rubySass.logError)
+//		.pipe($.autoprefixer({
+//		browsers: config.browsers
+//	}))
+//		.pipe($.rename(function(path) {
+//		// ディレクトリ名の置換 
+//		path.dirname = path.dirname.replace('sass', 'css');
+//	}))
+//		.pipe(gulp.dest(dest + config.path.css));
+//});
 
 
 // 
@@ -117,7 +142,8 @@ gulp.task('css:sass', function() {
 // 
 gulp.task('js', ['js:hint']);
 gulp.task('js:watch', ['serve'], function() {
-  gulp.watch([src + config.path.js + '/**/*.js'], ['js', reload]);
+ // gulp.watch([src + config.path.js + '/**/*.js'], ['js', reload]);
+  gulp.watch([src + config.path.js_dev + '/**/*.js'], ['js', reload]);
 });
 
 
@@ -126,7 +152,7 @@ gulp.task('js:watch', ['serve'], function() {
 // 
 // JavaScript の構文チェック（JSHint）
 // 
-gulp.task('js:hint', function(cb) {
+gulp.task('js:hint', function() {
   return gulp.src([
       src + config.path.js + '/**/*.js',
       '!' + src + config.path.jsLibs + '/**/*.js'
@@ -134,6 +160,21 @@ gulp.task('js:hint', function(cb) {
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe(gulp.dest(dest + config.path.js));
+});
+
+
+// 
+// js:hint
+// 
+// JavaScript の構文チェック（JSHint）
+// 
+gulp.task('moduleJs', function() {
+  return gulp.src([
+	  src + config.path.js_dev + "module/UserInfo.js",
+	  src + config.path.js_dev + "module/Utility.js"
+  ])
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./dist/'));
 });
 
 

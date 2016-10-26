@@ -1,28 +1,24 @@
 //- header
 header.header
+
 	.header__inner
 		//- ロゴ
 		if category === 'home'
 			- var logo = 'h1'
 		else
-			- var logo = 'div'
+			- var logo = 'p'
     
-	#{logo}.header-logo
-		a.header-logo-target(href=filepath+"/index.html")
-			span.header-logo-mark
-				if category === 'home'
-					img(src=filepath+"/common/images/logo_koushi_type.png", width="428", height="40", alt="安全な暮らしをつくる新しい公／私空間の構築")
-				else
-					img(src=filepath+"/common/images/logo_koushi_type_sub.png", width="317", height="30", alt="安全な暮らしをつくる新しい公／私空間の構築")
-					
-	//- global nav
-	nav.gnav
-		.gnav__inner
-			ul
-				li.gnav__btn.gnav__btn-cont_01: a(href=filepath + "") コンテンツ名1
-				li.gnav__btn.gnav__btn-cont_02: a(href=filepath + "") コンテンツ名2
-				li.gnav__btn.gnav__btn-cont_03: a(href=filepath + "") コンテンツ名3
-				li.gnav__btn.gnav__btn-cont_04: a(href=filepath + "") コンテンツ名4
-	///global-nav
+		#{logo}.header__ci
+			a(href=filepath+"/index.html") サイトタイトル
+
+		//- global nav
+		nav.gnav
+			.gnav__inner
+				ul
+					li.gnav__btn.gnav__btn-cont_01: a(href=filepath + "") コンテンツ名1
+					li.gnav__btn.gnav__btn-cont_02: a(href=filepath + "") コンテンツ名2
+					li.gnav__btn.gnav__btn-cont_03: a(href=filepath + "") コンテンツ名3
+					li.gnav__btn.gnav__btn-cont_04: a(href=filepath + "") コンテンツ名4
+		///global-nav
 	
 ///header

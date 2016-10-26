@@ -1,0 +1,116 @@
+@import "partials/_setting";
+@import "partials/_mixin";
+@import "partials/_function";
+@import "partials/_reset";
+
+
+//記述はレイアウトの構造優先
+//----------------------------------------------------------
+//１．ブロック要素のサイズ・属性：width,height,display,float...
+//２．ブロック要素の余白：margin,padding,overflow,box-sizing...
+//３．ポジション系：position,top,left...
+//４．背景、ボーダーなどのスタイル：background,border,box-shadow...
+//５．文字スタイル：font-size,letter-spacing,text-shadow...
+//６．変形：transform...
+//７．アニメーション：transition,animation...
+//８．その他
+//----------------------------------------------------------
+
+//指針とする記法
+//----------------------------------------------------------
+//MindBEMding(https://gist.github.com/juno/6182957)
+//・ブロック名はハイフン区切りを使用して表現してもよい（2つはだめ）
+//・柔軟でなくなる場合、厳格には準拠しない
+//
+//（例
+//.site-search{} /* Block */
+//.site-search__field{} /* Element */
+//.site-search--full{} /* Modifier */
+//----------------------------------------------------------
+
+
+//その他記述ルール
+//----------------------------------------------------------
+//ベンダープレフィックス：基本的にgrunt-autoprefixerで対応するので不要
+//フォントサイズ：rem単位指定（IE8対応はmixinでpxとrem同時対応）
+//状態の表現：出来る限り「is-」の接頭辞をつける（is-animating,is-current）
+//（なせBEMのModifierでないかというと、jsと親和性が高いから）
+//汎用クラス：接頭辞「u-」をつける（_helper.scssで管理）
+//----------------------------------------------------------
+
+
+
+
+
+
+
+/*====================================================================
+Layout　
+====================================================================*/
+
+/* default style
+--------------------------------------------------------------------*/
+a	{ @include link-set;}
+p   { @include text-base;}
+li  { @include text-base;}
+
+
+
+
+/* base
+--------------------------------------------------------------------*/
+html	{ height:100%; color: $color-txt; background:$color-bg; background: #000;}
+body	{ height:100%; text-align:left; @include select-color(#fff,$color-key);}
+body > #wrapper { height:auto;}
+#wrapper { min-width:$width; min-height:100%; height:auto !important; height:100%; position:relative;
+	@include mobile	{ -webkit-text-size-adjust: none;}
+}
+
+
+
+
+/* header
+--------------------------------------------------------------------*/
+.header	{
+	&__inner { width: $width; margin: 0 auto;}
+	&__ci{
+		a:hover img	{ opacity:0.6;}
+	}
+}
+
+
+
+
+/* global navigation
+--------------------------------------------------------------------*/
+#gnav 		{}
+.gnav__inner{ overflow: hidden;}
+.gnav__btn	{ float:left;
+	a 	{ display:block;
+		&:hover	{}
+	}
+	img	{ display:block;}
+}
+
+
+
+
+/*　contents block
+--------------------------------------------------------------------*/
+#contents	{ /*width:$width;*/ overflow:hidden; position:relative;}
+.contents__inner { width:$width; margin: 0 auto;}
+#pagetop	{ @include bottom-left(300,0); color:#fff;}
+
+
+
+
+/*footer
+--------------------------------------------------------------------*/
+.footer	{ width:100%; height:100px; background:black;
+	&__inner {}
+}
+.copyright	{}
+
+
+
+
