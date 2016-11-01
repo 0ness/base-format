@@ -1,77 +1,59 @@
 <!DOCTYPE html>
-<html lang="ja"><!-- InstanceBegin template="/Templates/base.dwt" codeOutsideHTMLIsLocked="true" -->
-<head>
-<!----------------------- meta ------------------------->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title> ｜ サイト名</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta property="og:site_name" content="">
-<meta property="og:title" content=" ｜ サイト名">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:image" content="">
-<meta name="viewport" content="width=1080px,user-scalable=yes">
-<!----------------------- /meta ------------------------->
-<!----------------------- css common ------------------------->
-<link rel="stylesheet" type="text/css" href="common/css/layout.css">
-<link rel="stylesheet" type="text/css" href="common/css/contents.css">
-<!----------------------- /css common ------------------------->
-<!-- InstanceBeginEditable name="head" -->
-<!--[if lt IE 9]><script src="common/js/ie/html5shiv.js"></script><![endif]-->
-<!-- InstanceEndEditable -->
-<!-- InstanceParam name="ページタイトル" type="text" value="" -->
-<!-- InstanceParam name="Keyword" type="text" value="" -->
-<!-- InstanceParam name="Description" type="text" value="" -->
-<!-- InstanceParam name="ページid" type="text" value="" -->
-<!-- InstanceParam name="ページclass" type="text" value="" -->
-<!-- InstanceParam name="viewport" type="text" value="width=1080px,user-scalable=yes" -->
-
-</head>
-<body id="">
-<div id="wrapper"> 
-	<!-- ============= header ============= -->
-	<header class="header">
-		<div class="header__inner">
-			<h1 class="header__ci">CI</h1>
-			<nav id="global-nav">
-				<ul class="gnav__inner">
-					<li class="gnav-btn"><a href="#header"></a></li>
-					<li class="gnav-btn"><a href="#header"></a></li>
-					<li class="gnav-btn"><a href="#header"></a></li>
-				</ul>
-			</nav>
-			<!-- /global-nav --> 
-		</div>
-		<!-- /.header__inner --> 
-	</header>
-	<!-- /============= header ============= --> 
-	
-	<!-- ============= contents ============= -->
-	<main id="contents"><!-- InstanceBeginEditable name="メイン部分" --> 
-	コンテンツ <!-- InstanceEndEditable --></main>
-	<!-- /============= contents ============= --> 
-	
-	<!-- ============= footer ============= -->
-	<footer class="footer">
-		<div class="footer__inner">
-		</div>
-		<!-- /.footer__inner -->
-		<p class="copyright">Copylight &copy;</p>
-	</footer>
-	<!-- /============= footer ============= --> 
-	
-	<!-- InstanceBeginEditable name="wrapper-last" --> <!-- InstanceEndEditable -->
-</div>
-<!----------------------- js -------------------------> 
-<script src="common/js/base.js"></script> 
-<script src="common/js/module.js"></script> 
-<!-- InstanceBeginEditable name="body-last" --> <!-- InstanceEndEditable --> 
-<script src="common/js/main.js"></script> 
-<!----------------------- /js ------------------------->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.13.0.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-</body>
-<!-- InstanceEnd --></html>
+<!--外部ファイル-->
+<html lang="ja">
+  <!--head elment-->
+  <head>
+    <meta charset="UTF-8">
+    <title>サイト名</title>
+    <meta name="viewport" content="width=width=1080px,user-scalable=yes">
+    <meta name="keyword" content="ダミーキーワードダミーキーワードダミーキーワードダミーキーワード">
+    <meta name="description" content="ダミーディスクリプションダミーディスクリプションダミーディスクリプション">
+    <meta property="og:description" content="ダミーディスクリプションダミーディスクリプションダミーディスクリプション">
+    <meta property="og:title" content="サイト名">
+    <link rel="stylesheet" href="./common/css/layout.css">
+    <link rel="stylesheet" href="./common/css/contents/top.css">
+  </head>
+  <!--body elment-->
+  <body class="top-category" id="top">
+    <div id="wrapper">
+      <header class="header">
+        <div class="header__inner">
+          <p class="header__ci"><a href="./index.html">サイトタイトル</a></p>
+          <nav class="gnav">
+            <div class="gnav__inner">
+              <ul>
+                <li class="gnav__btn gnav__btn-cont_01"><a href=".">コンテンツ名1</a></li>
+                <li class="gnav__btn gnav__btn-cont_02"><a href=".">コンテンツ名2</a></li>
+                <li class="gnav__btn gnav__btn-cont_03"><a href=".">コンテンツ名3</a></li>
+                <li class="gnav__btn gnav__btn-cont_04"><a href=".">コンテンツ名4</a></li>
+              </ul>
+            </div>
+          </nav>
+          <!--/global-nav-->
+        </div>
+      </header>
+      <!--/header-->
+      <div class="contents">
+        <div class="contents-body">
+          <main class="main-contents">
+          </main>
+        </div>
+      </div>
+      <!--/contents-->
+      <footer class="footer">
+        <div id="page-top-btn"><a href="#top">ページトップへ戻る</a></div>
+        <div class="footer__inner">
+          <div class="footer__contact"></div>
+          <p class="footer__copyright">Copyright &copy; All rights reserved.</p>
+        </div>
+      </footer>
+      <!--/footer-->
+    </div>
+    <!--/wrapper-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="./common/js//module.js"></script>
+    <script src="./common/js//main.js"></script>
+    <script src="./common/js/contents/top.js"></script>
+  </body>
+</html>

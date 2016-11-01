@@ -13,7 +13,7 @@ var gulp        = require('gulp'),
 
 
 var src  = './src';                  // ソースファイル
-var dest = './deploy'; // 出力先
+var dest = './htdocs'; // 出力先
 
 
 // 
@@ -71,7 +71,7 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
   browserSync({
     server : {
-		baseDir: ['deploy']
+		baseDir: ['htdocs']
     },
     startPath : '/',
   });

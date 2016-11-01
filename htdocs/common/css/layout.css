@@ -1,73 +1,271 @@
-/*
-Error: Undefined variable: "$yakuhanFont-s".
-        on line 15 of htdocs/src/scss/partials/_setting.scss
-        from line 1 of htdocs/src/scss/layout.scss
+@charset "UTF-8";
+/*====================================================================
+Reset　
+====================================================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  box-sizing: border-box;
+}
 
-10: //２．ブロック要素の余白：margin,padding,overflow,box-sizing...
-11: //３．ポジション系：position,top,left...
-12: //４．背景、ボーダーなどのスタイル：background,border,box-shadow...
-13: //５．文字スタイル：font-size,letter-spacing,text-shadow...
-14: //６．変形：transform...
-15: //７．アニメーション：transition,animation...
-16: //８．その他
-17: //----------------------------------------------------------
-18: 
-19: //指針とする記法
-20: //----------------------------------------------------------
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section, main {
+  display: block;
+}
 
-Backtrace:
-htdocs/src/scss/partials/_setting.scss:15
-htdocs/src/scss/layout.scss:1
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/list_literal.rb:63:in `_perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:471:in `visit_variable'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:391:in `run'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*====================================================================
+Base Font
+====================================================================*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font: 13px/1.231 arial,helvetica,clean,sans-serif;
+  *font-size: small;
+  /* for IE */
+  *font: x-small;
+  /* for IE in quirks mode */
+  font-family: "YakuHanJPs", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+select, input, button, textarea {
+  font: 99% arial, helvetica, clean, sans-serif;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
+pre, code, kbd, samp, tt {
   font-family: monospace;
-  content: "Error: Undefined variable: \"$yakuhanFont-s\".\A         on line 15 of htdocs/src/scss/partials/_setting.scss\A         from line 1 of htdocs/src/scss/layout.scss\A \A 10: //２．ブロック要素の余白：margin,padding,overflow,box-sizing...\A 11: //３．ポジション系：position,top,left...\A 12: //４．背景、ボーダーなどのスタイル：background,border,box-shadow...\A 13: //５．文字スタイル：font-size,letter-spacing,text-shadow...\A 14: //６．変形：transform...\A 15: //７．アニメーション：transition,animation...\A 16: //８．その他\A 17: //----------------------------------------------------------\A 18: \A 19: //指針とする記法\A 20: //----------------------------------------------------------"; }
+  *font-size: 108%;
+  line-height: 100%;
+}
+
+/*====================================================================
+Base Font
+====================================================================*/
+/* ===================================================
+*
+*  Webfonts Title: Yaku Han JP ver.Small Amount
+*  Author: Qrac
+*  URL: https://twitter.com/Qrac_jp
+*  "Noto Sans CJK JP" licensed under the SIL Open Font License
+*  https://www.google.com/get/noto/#/
+*
+=================================================== */
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 100;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 200;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.eot);
+}
+@font-face {
+  font-family: 'YakuHanJPs';
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.eot);
+}
+/*----------- icofont -----------*/
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/ico/icomoon.eot?1nzcnc");
+  src: url("../fonts/ico/icomoon.eot?1nzcnc#iefix") format("embedded-opentype"), url("../fonts/ico/icomoon.ttf?1nzcnc") format("truetype"), url("../fonts/ico/icomoon.woff?1nzcnc") format("woff"), url("../fonts/ico/icomoon.svg?1nzcnc#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*====================================================================
+Layout　
+====================================================================*/
+/* default style
+--------------------------------------------------------------------*/
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: underline;
+}
+
+p {
+  font-size: 100%;
+  line-height: 1.8;
+}
+
+li {
+  font-size: 100%;
+  line-height: 1.8;
+}
+
+/* base
+--------------------------------------------------------------------*/
+html {
+  height: 100%;
+  color: #555;
+  background: #fff;
+  background: #000;
+}
+
+body {
+  height: 100%;
+  text-align: left;
+}
+body p::-moz-selection, body h1::-moz-selection, body h2::-moz-selection, body h3::-moz-selection, body h4::-moz-selection, body a::-moz-selection, body img::-moz-selection, body em::-moz-selection, body strong::-moz-selection, body dd::-moz-selection, body dt::-moz-selection, body u::-moz-selection, body dfn::-moz-selection, body li::-moz-selection {
+  color: #fff;
+  background: #0797de;
+}
+body p::selection, body h1::selection, body h2::selection, body h3::selection, body h4::selection, body a::selection, body img::selection, body em::selection, body strong::selection, body dd::selection, body dt::selection, body u::selection, body dfn::selection, body li::selection {
+  color: #fff;
+  background: #0797de;
+}
+body *::-moz-selection {
+  color: #fff;
+  background: #0797de;
+}
+
+body > #wrapper {
+  height: auto;
+}
+
+#wrapper {
+  min-width: 1024px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  position: relative;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  #wrapper {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+/* header
+--------------------------------------------------------------------*/
+.header__inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+.header__ci a:hover img {
+  opacity: 0.6;
+}
+
+/* global navigation
+--------------------------------------------------------------------*/
+.gnav__inner {
+  overflow: hidden;
+}
+
+.gnav__btn {
+  float: left;
+}
+.gnav__btn a {
+  display: block;
+}
+.gnav__btn img {
+  display: block;
+}
+
+/*　contents block
+--------------------------------------------------------------------*/
+#contents {
+  /*width:$width;*/
+  overflow: hidden;
+  position: relative;
+}
+
+.contents__inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+#pagetop {
+  bottom: 300px;
+  left: 0px;
+  position: absolute;
+  z-index: auto;
+  color: #fff;
+}
+
+/*footer
+--------------------------------------------------------------------*/
+.footer {
+  width: 100%;
+  height: 100px;
+  background: black;
+}
