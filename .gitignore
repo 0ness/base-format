@@ -1,5 +1,6 @@
 .*
 !.gitignore
+.sass-cache/
 _notes/
 node_modules/
 htdocs/src/yuidocs

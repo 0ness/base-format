@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>htdocs/src/js/develop/Planet.js - js-document</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="js-document" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/BasicBreakPoint.html">BasicBreakPoint</a></li>
+                                <li><a href="../classes/FuncSet.html">FuncSet</a></li>
+                                <li><a href="../classes/INDEX.html">INDEX</a></li>
+                                <li><a href="../classes/Planet.html">Planet</a></li>
+                                <li><a href="../classes/ScrollFire.html">ScrollFire</a></li>
+                                <li><a href="../classes/ScrollFireDom.html">ScrollFireDom</a></li>
+                                <li><a href="../classes/SimpleBreakPoint.html">SimpleBreakPoint</a></li>
+                                <li><a href="../classes/UserInfo.html">UserInfo</a></li>
+                                <li><a href="../classes/Utility.html">Utility</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: htdocs/src/js/develop/Planet.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (window,document) {
+	&quot;use strict&quot;;
+
+	
+	
+	
+	/**
+	 * アニメーション・演算処理支援クラス  
+	 * ・インタラクティブコンテンツ開発用の色生成、座標取得、絶対値の算出などを行う  
+	 * ・インスタンスは即時関数内のローカル変数に格納して使用する  
+	 * ・動的な演出に必要な処理は、プライオリティが低くても追加していく
+	 * @class Planet
+	 * @constructor
+	 * @example var obj = new Planet():
+	 */	
+	var Planet = function(){},
+		Method = Planet.prototype;
+	
+	
+	
+	
+	/* Method
+	--------------------------------------------------------------------*/
+	/**
+	 * 色生成：hex値を与えてrgbのオブジェクトを返す
+	 * @param   {String} _hex webでの色番号
+	 * @returns {Object} rgbオブジェクト
+	 */
+	Method.convertHexToRgb = function (_hex) {
+		// source: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+		// Expand shorthand form (e.g.&quot;03F&quot;) to full form (e.g.&quot;0033FF&quot;)
+		var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+		_hex = _hex.replace(shorthandRegex, function (m, r, g, b) {
+			return r + r + g + g + b + b;
+		});
+		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
+		return {
+			red: parseInt(result[1], 16),
+			green: parseInt(result[2], 16),
+			blue: parseInt(result[3], 16)
+		};
+	};
+
+	/**
+	 * 色生成：rgb値を与えてHEX値を返す
+	 * @param   {Object} rgb rgb情報のオブジェクト
+	 * @returns {String} HEX値
+	 */
+	Method.convertRgbToHex = function (rgb) {
+		// source: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+		return &quot;#&quot; + ((1 &lt;&lt; 24) + (rgb.red &lt;&lt; 16) + (rgb.green &lt;&lt; 8) + rgb.blue).toString(16).slice(1);
+	};
+
+	/**
+	* 色生成：シード値を与えてRGB値を返す
+	* @method getRndRgb
+	* @param{Number} 256色
+	* @param{Number} 固定シード値
+	* @return{String} 色番号
+	*/
+	Method.getRndRgb = function(_rnd,_plus){
+		var rnd = _rnd || 255,
+			plus = _plus || 0,
+			r = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			g = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			b = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			rgb = &quot;rgb(&quot;+r+&quot;, &quot;+g+&quot;, &quot;+b+&quot;)&quot;;
+		return rgb;
+	};
+	
+	/**
+	* 色生成：シード値を与えてRGB値を返す
+	* @method getRndRgb_02
+	* @param{Number} 赤
+	* @param{Number} 青
+	* @param{Number} 緑
+	* @param{Number} 固定シード値
+	* @return{String} 色番号
+	*/
+	Method.getRndRgb_02 = function(_r,_g,_b,_plus){
+		var plus = _plus || 0,
+			r = ((Math.random()*_r)&gt;&gt;0) + plus,
+			g = ((Math.random()*_g)&gt;&gt;0) + plus,
+			b = ((Math.random()*_b)&gt;&gt;0) + plus,
+			rgb = &quot;rgb(&quot;+r+&quot;, &quot;+g+&quot;, &quot;+b+&quot;)&quot;;
+		return rgb;
+	};
+	
+	/**
+	* 色生成：シード値を与えてRGBA値を返す
+	* @method getRndRGBA
+	* @param{Number} 256色
+	* @param{Number} 透明度
+	* @param{Number} 固定シード値
+	* @return{String} 色番号
+	*/
+	Method.getRndRgba = function(_rnd,_alpha,_plus){
+		var rnd = _rnd || 255,
+			plus = _plus || 0,
+			r = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			g = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			b = ((Math.random()*rnd)&gt;&gt;0) + plus,
+			a = _alpha || 1,
+			rgba = &quot;rgba(&quot;+r+&quot;, &quot;+g+&quot;, &quot;+b+&quot;,&quot;+a+&quot;)&quot;;
+		return rgba;
+	};
+	
+	/**
+	* 色生成：シード値を与えてランダムなHEX値を返す
+	* @method getRndHEX
+	* @param{Number} 256色
+	* @return{String} 色番号
+	*/
+	Method.getRndHEX = function(_rnd){
+		var cseed = ( Math.random()*_rnd ) &gt;&gt; 0;
+		// 色の計算R ≒ 256 * n / 3, G ≒ 256 * n / 7, B ≒ 256 * n / 5
+		var cnum = ( cseed++ * 0x552433 ) % 0x1000000;
+		var hex = &quot;000000&quot; + cnum.toString(16);
+		return &quot;#&quot; + hex.substr( hex.length - 6, 6 );
+	};
+	
+	/**
+	* 演算：差の絶対値を計算する
+	* @method abs
+	* @param{Number} 絶対値にしたい数値
+	* @return{Number} 絶対値
+	*/
+	Method.abs = function(_baseNum){
+		var _absNum = _baseNum;
+		_absNum = _absNum&gt;0?_absNum:-_absNum;
+		return _absNum;
+	};
+	
+	/**
+	* 座標取得：ポイント01とポイント02の２点間の距離算出する
+	* @method getPointDistance
+	* @param{Object} ポイント01
+	* @param{Object} ポイント02
+	* @return{Number} 距離
+	*/
+	Method.getPointDistance = function(_p1,_p2){
+		var p1 = _p1,
+			p2 = _p2,
+			a = 0,
+			b = 0,
+			d = 0;
+		a = p1.x - p2.x;
+		b = p1.y - p2.y;
+		d = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+		return d;
+	};
+	
+	
+	
+	var instance = new Planet();
+	window.Planet = instance;
+}(window,document));
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,16 +1,20 @@
 'use strict';
 
-var gulp        = require('gulp');
-var $           = require('gulp-load-plugins')();
-var del         = require('del');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var concat      = require('gulp-concat');
-var reload      = browserSync.reload;
-var cachedFlg   = true;
+var gulp        = require('gulp'),
+	$           = require('gulp-load-plugins')(), 	//gulpプラグインをロードし一括管理
+	del         = require('del'), 					//ファイル削除用インスタンス
+	runSequence = require('run-sequence'), 			//並行処理をする
+	browserSync = require('browser-sync'), 			//ライブリロード
+	browserify	= require('browserify'),
+	source 		= require('vinyl-source-stream'),
+	buffer 		= require('vinyl-buffer'),
+	reload      = browserSync.reload,
+	cachedFlg   = true;
+
 
 var src  = './src';                  // ソースファイル
 var dest = './deploy'; // 出力先
+
 
 // 
 // config
@@ -24,6 +28,7 @@ var config = {
     'scss'   : '/scss',           // SCSS
     'css'    : '/common/css',     // CSS
     'js'     : '/common/js',      // JS 
+    'jsMin'  : '/common/js/minify',      // JS 
     'js_dev' : '/js',      // JS 
     'jsLibs' : '/common/js/libs', // JS ライブラリ
     'pug'    : '/pug'            // pug
@@ -44,7 +49,7 @@ var config = {
 // デフォルトタスク
 // 
 gulp.task('default', function() {
-  runSequence(['css', 'js', 'html']);
+	runSequence(['css', 'js', 'html']);
 });
 
 
@@ -54,7 +59,7 @@ gulp.task('default', function() {
 // ファイル監視タスク  
 // 
 gulp.task('watch', function() {
-  runSequence('default', ['css:watch', 'js:watch', 'html:watch']);
+	runSequence('default', ['css:watch', 'js:watch', 'html:watch']);
 });
 
 
@@ -111,28 +116,6 @@ gulp.task('css:scss', function() {
     .pipe(gulp.dest(dest + config.path.css));
 });
 
-// 
-// css:sass
-//
-// SCSSファイルを CSSファイルにコンパイル
-// 
-//gulp.task('css:sass', function() {
-//	return $.rubySass(src + config.path.sass + '/**/*.scss', {
-//		precision : 3,
-//		style     : 'expanded',
-//		sourcemap : false
-//	})
-//		.on('error', $.rubySass.logError)
-//		.pipe($.autoprefixer({
-//		browsers: config.browsers
-//	}))
-//		.pipe($.rename(function(path) {
-//		// ディレクトリ名の置換 
-//		path.dirname = path.dirname.replace('sass', 'css');
-//	}))
-//		.pipe(gulp.dest(dest + config.path.css));
-//});
-
 
 // 
 // js
@@ -140,9 +123,8 @@ gulp.task('css:scss', function() {
 // - `js`       - JavaScript 関連のタスク
 // - `js:watch` - JavaScript 関連のタスクを監視
 // 
-gulp.task('js', ['js:hint']);
+gulp.task('js', ['js:hint','js:moduleJs','js:mainJs']);
 gulp.task('js:watch', ['serve'], function() {
- // gulp.watch([src + config.path.js + '/**/*.js'], ['js', reload]);
   gulp.watch([src + config.path.js_dev + '/**/*.js'], ['js', reload]);
 });
 
@@ -164,17 +146,37 @@ gulp.task('js:hint', function() {
 
 
 // 
-// js:hint
+// js:moduleJs
 // 
-// JavaScript の構文チェック（JSHint）
+// JavaScript のモジュール化
 // 
-gulp.task('moduleJs', function() {
-  return gulp.src([
-	  src + config.path.js_dev + "module/UserInfo.js",
-	  src + config.path.js_dev + "module/Utility.js"
-  ])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('./dist/'));
+gulp.task('js:moduleJs', function() {
+	return gulp.src([
+		src + config.path.js_dev + "/module/UserInfo.js"
+	])
+		.pipe($.concat('module.js'))
+		.pipe(gulp.dest(dest + config.path.js))
+		.pipe(buffer())
+		.pipe($.uglify())
+		.pipe(gulp.dest(dest + config.path.jsMin));
+});
+
+// 
+// js:mainJs
+// 
+// JavaScript のモジュール化（JSHint）
+// 
+gulp.task('js:mainJs', function(){
+	var _name = 'main.js';
+	browserify({
+		entries: [src + config.path.js_dev + '/' + _name]
+	})
+		.bundle()
+		.pipe(source(_name))
+		.pipe(gulp.dest(dest + config.path.js))
+		.pipe(buffer())
+		.pipe($.uglify())
+		.pipe(gulp.dest(dest + config.path.jsMin));
 });
 
 

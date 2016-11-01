@@ -92,7 +92,7 @@ html(lang=lang)
 		include /_includes/_js
 		if contentsJs
 			- for (var i = 0; i < contentsJs.length; i++) {
-				-var src = setFilepath + contentsJs[i]
+				-var src = contentsJs[i]
 				script(src=src)
 			- }
 		else

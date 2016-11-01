@@ -1,37 +1,29 @@
-;(function(window, document) {
+(function(window,document) {
 	"use strict";
+	
 
-	
-	
-	
 	/*Constructor
 	--------------------------------------------------------------------*/
 	/**
 	 * @class INDEX
-     * @constructor
-     */
+	 * @constructor
+	*/
 	var Index = function(){
 		this.init();
 	},
 		Member = Index.prototype;
-	
-	
-	
-	
+
+
+
+
 	/*Private Static Property
 	--------------------------------------------------------------------*/
-	var INF0	= new UserInfo();
-	
-	
-	
-	
-	/*Public Static Property
-	--------------------------------------------------------------------*/
-	Member.contentsElm 		= document.getElementById("contents");
-	
-	
-	
-	
+	var INF0			= new UserInfo(),
+		contentsElm 	= document.getElementById("contents");
+
+
+
+
 	/*Public Static Method
 	--------------------------------------------------------------------*/
 	Member.init = function() {
@@ -42,26 +34,27 @@
 	};
 
 	/**
-	 * ページ共通処理
-	 */
+	* ページ共通処理
+	*/
 	Member.commonFunction = function(){
-		
+		console.log("common2");
 	};
-	
+
 	/**
-	 * トップページ処理
-	 */
+	* トップページ処理
+	*/
 	Member.topPageFunction = function(){
-		
+		console.log("top");
 	};
-	
-	
-	
-	
-	
+
+
+
+
+
 	window.Index = Index;
-})(window, document);
+
+	
+})(window,document);
 
 
-if (window.addEventListener) window.addEventListener('DOMContentLoaded', function(){ var INDEX = new Index(); });
-else window.attachEvent('onload', function() { var INDEX = new Index(); });
+window.addEventListener('DOMContentLoaded', function(){ var INDEX = new Index(); });

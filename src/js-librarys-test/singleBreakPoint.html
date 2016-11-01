@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>無題ドキュメント</title>
+<link rel="stylesheet" type="text/css" href="../../common/css/layout.css">
+</head>
+
+<body>
+<script src="../js/module/SimpleBreakPoint.js"></script>
+<script>
+	var SBP = new SimpleBreakPoint(768),
+		sf = function(){ 
+			document.getElementsByTagName("html")[0].style.background = "gray";
+			console.log("sp");
+		},
+		pf = function(){ 
+			document.getElementsByTagName("html")[0].style.background = "aqua";
+			console.log("pc");
+		};
+	SBP.addFuncSet(pf,sf);
+</script>
+</body>
+</html>

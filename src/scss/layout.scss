@@ -62,6 +62,7 @@ li  { @include text-base;}
 html	{ height:100%; color: $color-txt; background:$color-bg; background: #000;}
 body	{ height:100%; text-align:left; @include select-color(#fff,$color-key);}
 body > #wrapper { height:auto;}
+
 #wrapper { min-width:$width; min-height:100%; height:auto !important; height:100%; position:relative;
 	@include mobile	{ -webkit-text-size-adjust: none;}
 }
@@ -83,7 +84,7 @@ body > #wrapper { height:auto;}
 
 /* global navigation
 --------------------------------------------------------------------*/
-#gnav 		{}
+.gnav 		{}
 .gnav__inner{ overflow: hidden;}
 .gnav__btn	{ float:left;
 	a 	{ display:block;
