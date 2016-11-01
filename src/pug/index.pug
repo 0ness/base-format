@@ -2,7 +2,7 @@ extends /_templates/_layout
 
 block vars
 	//- ページタイトル
-	- var title    	= ''
+	- var title    	= 'トップページ'
 	
 	//- `body` に追加する class
 	- var category 	= 'top-category'
@@ -19,7 +19,8 @@ block vars
 	- var hreflang 	= 'ja'
 	- var dir     	= '/index.html'
 	
-	//外部ファイル
+	//- 外部ファイルパス
+	- var contentsCss 	= [filepath + '/common/css/contents/top.css']
 	- var contentsJs 	= [filepath + '/common/js/contents/top.js']
 
 

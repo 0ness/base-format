@@ -6,3 +6,4 @@ node_modules/
 htdocs/src/yuidocs
 htdocs/src/yui-themes
 htdocs/src/sassdocs
+package_grunt.json

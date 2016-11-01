@@ -3,13 +3,14 @@ if lang === 'en'
 else
 	- var setFilepath = filepath + "/common/css";
  
- 
 //- Layout for CSS
 link(rel="stylesheet", href=setFilepath + "/layout.css")
 
 
-//- Contents for CSS
-if category === 'top-category'
-	link(rel="stylesheet", href=setFilepath + "/contents/top.css")
-else if category === 'test-category'
-	link(rel="stylesheet", href=setFilepath + "/contents/about.css")
+//-ページ毎のファイルを読み込む
+if contentsCss
+	- for (var i = 0; i < contentsCss.length; i++) {
+		-var href = contentsCss[i]
+		link(rel="stylesheet", href=href)
+		- }
+else

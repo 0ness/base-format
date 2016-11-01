@@ -1,0 +1,31 @@
+meta(charset="UTF-8")
+
+//- タイトル
+if title
+	title #{title}　|　#{sitename}
+else
+	title #{sitename}
+
+//- viewport
+meta(name="viewport", content="width=width=1080px,user-scalable=yes")
+
+//- keyword
+if keyword
+	meta(name="keyword", content=keyword)
+
+//- description
+if description
+	meta(name="description", content=description)
+	meta(property="og:description",content=description)
+
+//- OGP
+if title
+	meta(property="og:title", content=title +"　|　"+ sitename)
+else
+	meta(property="og:title", content=sitename)
+
+
+if ogdir
+	-var dir = ogdir
+	meta(property="og:url", content=url + dir)
+	meta(property="og:image", content=url + "/common/images/og_image.png")
