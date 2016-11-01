@@ -5,88 +5,33 @@
 /*====================================================================
 Reset　
 ====================================================================*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  text-decoration: none;
-  box-sizing: border-box;
-}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; text-decoration: none; box-sizing: border-box; }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, menu, nav, section, main {
-  display: block;
-}
+article, aside, details, figcaption, figure, footer, header, menu, nav, section, main { display: block; }
 
-body {
-  line-height: 1;
-}
+body { line-height: 1; }
 
-ol, ul {
-  list-style: none;
-}
+ol, ul { list-style: none; }
 
-blockquote, q {
-  quotes: none;
-}
+blockquote, q { quotes: none; }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+table { border-collapse: collapse; border-spacing: 0; }
 
 /*====================================================================
 Base Font
 ====================================================================*/
-html {
-  font-size: 62.5%;
-}
+html { font-size: 62.5%; }
 
-body {
-  font: 13px/1.231 arial,helvetica,clean,sans-serif;
-  *font-size: small;
-  /* for IE */
-  *font: x-small;
-  /* for IE in quirks mode */
-  font-family: "YakuHanJPs", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
+body { font: 13px/1.231 arial,helvetica,clean,sans-serif; *font-size: small; /* for IE */ *font: x-small; /* for IE in quirks mode */ font-family: "YakuHanJPs", "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
-select, input, button, textarea {
-  font: 99% arial, helvetica, clean, sans-serif;
-}
+select, input, button, textarea { font: 99% arial, helvetica, clean, sans-serif; }
 
-table {
-  font-size: inherit;
-  font: 100%;
-}
+table { font-size: inherit; font: 100%; }
 
-pre, code, kbd, samp, tt {
-  font-family: monospace;
-  *font-size: 108%;
-  line-height: 100%;
-}
+pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
 
 /*====================================================================
 Base Font
@@ -100,56 +45,15 @@ Base Font
 *  https://www.google.com/get/noto/#/
 *
 =================================================== */
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 100;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 200;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 300;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 500;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 700;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.eot);
-}
-@font-face {
-  font-family: 'YakuHanJPs';
-  font-style: normal;
-  font-weight: 900;
-  src: url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.eot);
-}
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 100; src: url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Thin.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 200; src: url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Light.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 300; src: url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-DemiLight.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 400; src: url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Regular.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 500; src: url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Medium.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 700; src: url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Bold.eot); }
+@font-face { font-family: 'YakuHanJPs'; font-style: normal; font-weight: 900; src: url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff2) format("woff2"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.woff) format("woff"), url(../fonts/YakuHanJPs/YakuHanJPs-Black.eot); }
 /*----------- icofont -----------*/
-@font-face {
-  font-family: 'icomoon';
-  src: url("../fonts/ico/icomoon.eot?1nzcnc");
-  src: url("../fonts/ico/icomoon.eot?1nzcnc#iefix") format("embedded-opentype"), url("../fonts/ico/icomoon.ttf?1nzcnc") format("truetype"), url("../fonts/ico/icomoon.woff?1nzcnc") format("woff"), url("../fonts/ico/icomoon.svg?1nzcnc#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
+@font-face { font-family: 'icomoon'; src: url("../fonts/ico/icomoon.eot?1nzcnc"); src: url("../fonts/ico/icomoon.eot?1nzcnc#iefix") format("embedded-opentype"), url("../fonts/ico/icomoon.ttf?1nzcnc") format("truetype"), url("../fonts/ico/icomoon.woff?1nzcnc") format("woff"), url("../fonts/ico/icomoon.svg?1nzcnc#icomoon") format("svg"); font-weight: normal; font-style: normal; }
 /*
 ・基本のコンポーネント名とサブクラス名はキャメルケース
 ・あくまで拡張元のクラスでもキャメルケースで統一
@@ -157,14 +61,8 @@ Base Font
 ・ユニークなクラス内の子クラスは、汎用的なスタイルをデフォルトで指定してないクラス名を使用
 ・グローバルな拡張クラスは接頭辞に"ex-"を指定する
 */
-.blc,
-.section {
-  margin: 0 0 60px;
-}
-.blc:last-child,
-.section:last-child {
-  margin-bottom: 0;
-}
+.blc, .section { margin: 0 0 60px; }
+.blc:last-child, .section:last-child { margin-bottom: 0; }
 
 /* 
 
@@ -279,107 +177,25 @@ extend：同系統のオブジェクト
 /*  
 # Paragraph Compornets
 */
-p.prg-small + p,
-li.prg-small + p,
-span.prg-small + p,
-div.prg-small + p, .prgContainer + p, p.prg-small + .prgContainer,
-li.prg-small + .prgContainer,
-span.prg-small + .prgContainer,
-div.prg-small + .prgContainer, .prgContainer + .prgContainer, p.prg-small + .prg,
-li.prg-small + .prg,
-span.prg-small + .prg,
-div.prg-small + .prg, .prgContainer + .prg {
-  margin-top: 1.5em;
-}
+p.prg-small + p, li.prg-small + p, span.prg-small + p, div.prg-small + p, .prgContainer + p, p.prg-small + .prgContainer, li.prg-small + .prgContainer, span.prg-small + .prgContainer, div.prg-small + .prgContainer, .prgContainer + .prgContainer, p.prg-small + .prg, li.prg-small + .prg, span.prg-small + .prg, div.prg-small + .prg, .prgContainer + .prg { margin-top: 1.5em; }
 
-p > b,
-li > b,
-span > b,
-div > b {
-  font-weight: bold;
-}
-p > em,
-li > em,
-span > em,
-div > em {
-  color: #0797de;
-}
-p > strong,
-li > strong,
-span > strong,
-div > strong {
-  color: #0797de;
-  font-weight: bold;
-}
-p > small,
-li > small,
-span > small,
-div > small {
-  font-size: 93%;
-  padding: 5px 0 0;
-  line-height: 1.6;
-  display: inline-block;
-}
-p > .prg-bg,
-li > .prg-bg,
-span > .prg-bg,
-div > .prg-bg {
-  color: white;
-  background: #0797de;
-}
-p > .prg-bdrSolid,
-li > .prg-bdrSolid,
-span > .prg-bdrSolid,
-div > .prg-bdrSolid {
-  border-bottom: solid #555 1px;
-}
-p > .prg-bdrDotted,
-li > .prg-bdrDotted,
-span > .prg-bdrDotted,
-div > .prg-bdrDotted {
-  border-bottom: dotted #555 1px;
-}
-p.prg-small,
-li.prg-small,
-span.prg-small,
-div.prg-small {
-  display: block;
-  font-size: 93%;
-  padding: 5px 0 0;
-  line-height: 1.6;
-}
-p.prg-dropCaps,
-li.prg-dropCaps,
-span.prg-dropCaps,
-div.prg-dropCaps {
-  overflow: hidden;
-  zoom: 1;
-}
-p.prg-dropCaps:first-letter,
-li.prg-dropCaps:first-letter,
-span.prg-dropCaps:first-letter,
-div.prg-dropCaps:first-letter {
-  float: left;
-  line-height: 1;
-  font-size: 330%;
-  padding: 0.25em 0.05em 5px 0;
-}
+p > b, li > b, span > b, div > b { font-weight: bold; }
+p > em, li > em, span > em, div > em { color: #0797de; }
+p > strong, li > strong, span > strong, div > strong { color: #0797de; font-weight: bold; }
+p > small, li > small, span > small, div > small { font-size: 93%; padding: 5px 0 0; line-height: 1.6; display: inline-block; }
+p > .prg-bg, li > .prg-bg, span > .prg-bg, div > .prg-bg { color: white; background: #0797de; }
+p > .prg-bdrSolid, li > .prg-bdrSolid, span > .prg-bdrSolid, div > .prg-bdrSolid { border-bottom: solid #555 1px; }
+p > .prg-bdrDotted, li > .prg-bdrDotted, span > .prg-bdrDotted, div > .prg-bdrDotted { border-bottom: dotted #555 1px; }
+p.prg-small, li.prg-small, span.prg-small, div.prg-small { display: block; font-size: 93%; padding: 5px 0 0; line-height: 1.6; }
+p.prg-dropCaps, li.prg-dropCaps, span.prg-dropCaps, div.prg-dropCaps { overflow: hidden; zoom: 1; }
+p.prg-dropCaps:first-letter, li.prg-dropCaps:first-letter, span.prg-dropCaps:first-letter, div.prg-dropCaps:first-letter { float: left; line-height: 1; font-size: 330%; padding: 0.25em 0.05em 5px 0; }
 
 /*  
 # Paragraph Compornets
 */
-.prgContainer {
-  zoom: 1;
-}
-.prgContainer:before, .prgContainer:after {
-  display: block;
-  height: 0;
-  visibility: hidden;
-  content: "\0020";
-}
-.prgContainer:after {
-  clear: both;
-}
+.prgContainer { zoom: 1; }
+.prgContainer:before, .prgContainer:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.prgContainer:after { clear: both; }
 
 /*  
 # Heading Compornets
@@ -397,355 +213,101 @@ div.prg-dropCaps:first-letter {
 <p class="headMain head-subSet"><span class="body">.headMain + .head-subSet</span> <span class="sub"><a href="">.sub</a><a href="">.sub</a><a href="">.sub</a><a href="">.sub</a><a href="">.sub</a></span></p>
 ```
 */
-.heading, .headMain, .headSub, .headSub-02 {
-  line-height: 1.2;
-}
-.heading:last-child, .headMain:last-child, .headSub:last-child, .headSub-02:last-child {
-  margin-bottom: 0;
-}
-.heading b, .headMain b, .headSub b, .headSub-02 b {
-  font-weight: bold;
-}
-.heading > a, .headMain > a, .headSub > a, .headSub-02 > a {
-  text-decoration: none;
-}
-.heading.head-hLine, .head-hLine.headMain, .head-hLine.headSub, .head-hLine.headSub-02 {
-  padding: 0 0 5px;
-  border-bottom: 1px solid gray;
-}
-.heading.head-vLine, .head-vLine.headMain, .head-vLine.headSub, .head-vLine.headSub-02 {
-  padding: 0 0 0 10px;
-  margin-left: 2px;
-  border-left: 4px solid gray;
-}
-.heading.head-vLineRound, .head-vLineRound.headMain, .head-vLineRound.headSub, .head-vLineRound.headSub-02 {
-  padding: 0 0 0 10px;
-  margin-left: 2px;
-  position: relative;
-}
-.heading.head-vLineRound:before, .head-vLineRound.headMain:before, .head-vLineRound.headSub:before, .head-vLineRound.headSub-02:before {
-  content: "　";
-  width: 4px;
-  height: 100%;
-  display: block;
-  top: 0px;
-  left: 0px;
-  position: absolute;
-  z-index: auto;
-  background: gray;
-  border-radius: 4px;
-}
-.heading.head-bg, .head-bg.headMain, .head-bg.headSub, .head-bg.headSub-02 {
-  padding: 6px 8px 5px;
-  background: #eee;
-}
-.heading.head-subSet, .head-subSet.headMain, .head-subSet.headSub, .head-subSet.headSub-02 {
-  text-align: right;
-  zoom: 1;
-}
-.heading.head-subSet:before, .head-subSet.headMain:before, .head-subSet.headSub:before, .head-subSet.headSub-02:before, .heading.head-subSet:after, .head-subSet.headMain:after, .head-subSet.headSub:after, .head-subSet.headSub-02:after {
-  display: block;
-  height: 0;
-  visibility: hidden;
-  content: "\0020";
-}
-.heading.head-subSet:after, .head-subSet.headMain:after, .head-subSet.headSub:after, .head-subSet.headSub-02:after {
-  clear: both;
-}
-.heading.head-subSet .body, .head-subSet.headMain .body, .head-subSet.headSub .body, .head-subSet.headSub-02 .body {
-  float: left;
-  text-align: left;
-}
-.heading.head-subSet .sub, .head-subSet.headMain .sub, .head-subSet.headSub .sub, .head-subSet.headSub-02 .sub {
-  display: inline-block;
-  text-align: right;
-  vertical-align: middle;
-}
-.heading.head-subSet .sub a, .head-subSet.headMain .sub a, .head-subSet.headSub .sub a, .head-subSet.headSub-02 .sub a {
-  margin: 0 0 0 15px;
-}
+.heading, .headMain, .headSub, .headSub-02 { line-height: 1.2; }
+.heading:last-child, .headMain:last-child, .headSub:last-child, .headSub-02:last-child { margin-bottom: 0; }
+.heading b, .headMain b, .headSub b, .headSub-02 b { font-weight: bold; }
+.heading > a, .headMain > a, .headSub > a, .headSub-02 > a { text-decoration: none; }
+.heading.head-hLine, .head-hLine.headMain, .head-hLine.headSub, .head-hLine.headSub-02 { padding: 0 0 5px; border-bottom: 1px solid gray; }
+.heading.head-vLine, .head-vLine.headMain, .head-vLine.headSub, .head-vLine.headSub-02 { padding: 0 0 0 10px; margin-left: 2px; border-left: 4px solid gray; }
+.heading.head-vLineRound, .head-vLineRound.headMain, .head-vLineRound.headSub, .head-vLineRound.headSub-02 { padding: 0 0 0 10px; margin-left: 2px; position: relative; }
+.heading.head-vLineRound:before, .head-vLineRound.headMain:before, .head-vLineRound.headSub:before, .head-vLineRound.headSub-02:before { content: "　"; width: 4px; height: 100%; display: block; top: 0px; left: 0px; position: absolute; z-index: auto; background: gray; border-radius: 4px; }
+.heading.head-bg, .head-bg.headMain, .head-bg.headSub, .head-bg.headSub-02 { padding: 6px 8px 5px; background: #eee; }
+.heading.head-subSet, .head-subSet.headMain, .head-subSet.headSub, .head-subSet.headSub-02 { text-align: right; zoom: 1; }
+.heading.head-subSet:before, .head-subSet.headMain:before, .head-subSet.headSub:before, .head-subSet.headSub-02:before, .heading.head-subSet:after, .head-subSet.headMain:after, .head-subSet.headSub:after, .head-subSet.headSub-02:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.heading.head-subSet:after, .head-subSet.headMain:after, .head-subSet.headSub:after, .head-subSet.headSub-02:after { clear: both; }
+.heading.head-subSet .body, .head-subSet.headMain .body, .head-subSet.headSub .body, .head-subSet.headSub-02 .body { float: left; text-align: left; }
+.heading.head-subSet .sub, .head-subSet.headMain .sub, .head-subSet.headSub .sub, .head-subSet.headSub-02 .sub { display: inline-block; text-align: right; vertical-align: middle; }
+.heading.head-subSet .sub a, .head-subSet.headMain .sub a, .head-subSet.headSub .sub a, .head-subSet.headSub-02 .sub a { margin: 0 0 0 15px; }
 
-.headMain {
-  margin-bottom: 2em;
-  font-size: 200%;
-}
-.headMain.head-subSet .sub {
-  font-size: 62%;
-}
+.headMain { margin-bottom: 2em; font-size: 200%; }
+.headMain.head-subSet .sub { font-size: 62%; }
 
-.headSub {
-  margin-bottom: 1em;
-  font-size: 153.9%;
-  font-weight: bold;
-}
-.headSub.head-subSet .sub {
-  font-size: 70%;
-}
+.headSub { margin-bottom: 1em; font-size: 153.9%; font-weight: bold; }
+.headSub.head-subSet .sub { font-size: 70%; }
 
-.headSub-02 {
-  margin-bottom: 0.5em;
-  font-size: 131%;
-}
-.headSub-02.head-arrow {
-  padding-left: 20px;
-  position: relative;
-}
-.headSub-02.head-arrow:before {
-  content: "▶";
-  width: 4px;
-  height: 100%;
-  display: block;
-  top: 50%;
-  left: 0px;
-  position: absolute;
-  z-index: auto;
-  margin-top: -9px;
-  color: gray;
-  font-size: 93%;
-}
-.headSub-02.head-subSet .sub {
-  font-size: 85%;
-}
+.headSub-02 { margin-bottom: 0.5em; font-size: 131%; }
+.headSub-02.head-arrow { padding-left: 20px; position: relative; }
+.headSub-02.head-arrow:before { content: "▶"; width: 4px; height: 100%; display: block; top: 50%; left: 0px; position: absolute; z-index: auto; margin-top: -9px; color: gray; font-size: 93%; }
+.headSub-02.head-subSet .sub { font-size: 85%; }
 
 /*  
 # List Compornets
 */
-.listContainer, .listVertical, .listHorizon {
-  margin: 0 0 2em;
-}
-.listContainer:last-child, .listVertical:last-child, .listHorizon:last-child {
-  margin-bottom: 0;
-}
-.listContainer li, .listVertical li, .listHorizon li,
-.listContainer .listItem,
-.listVertical .listItem,
-.listHorizon .listItem {
-  line-height: 1.6;
-}
-.listContainer li .btn, .listVertical li .btn, .listHorizon li .btn,
-.listContainer .listItem .btn,
-.listVertical .listItem .btn,
-.listHorizon .listItem .btn {
-  display: block;
-  padding: 5px 8px;
-  color: white;
-  background: #0797de;
-  text-decoration: none;
-}
-.listContainer li .btn:hover, .listVertical li .btn:hover, .listHorizon li .btn:hover,
-.listContainer .listItem .btn:hover,
-.listVertical .listItem .btn:hover,
-.listHorizon .listItem .btn:hover {
-  background: #39b9f9;
-}
-.listContainer.list-outside li, .list-outside.listVertical li, .list-outside.listHorizon li,
-.listContainer.list-outside .listItem,
-.list-outside.listVertical .listItem,
-.list-outside.listHorizon .listItem {
-  padding-left: 1em;
-}
-.listContainer.list-outside li:first-letter, .list-outside.listVertical li:first-letter, .list-outside.listHorizon li:first-letter,
-.listContainer.list-outside .listItem:first-letter,
-.list-outside.listVertical .listItem:first-letter,
-.list-outside.listHorizon .listItem:first-letter {
-  margin-left: -1em;
-}
-.listContainer.list-marker li, .list-marker.listVertical li, .list-marker.listHorizon li,
-.listContainer.list-marker .listItem,
-.list-marker.listVertical .listItem,
-.list-marker.listHorizon .listItem {
-  list-style: inside disc;
-  zoom: 1;
-}
-.listContainer.list-figure li, .list-figure.listVertical li, .list-figure.listHorizon li,
-.listContainer.list-figure .listItem,
-.list-figure.listVertical .listItem,
-.list-figure.listHorizon .listItem {
-  margin: 0 10px 10px 0;
-}
-.listContainer.list-figure li:last-child, .list-figure.listVertical li:last-child, .list-figure.listHorizon li:last-child,
-.listContainer.list-figure .listItem:last-child,
-.list-figure.listVertical .listItem:last-child,
-.list-figure.listHorizon .listItem:last-child {
-  margin-right: 0;
-}
-.listContainer.list-figure img, .list-figure.listVertical img, .list-figure.listHorizon img {
-  display: block;
-}
+.listContainer, .listVertical, .listHorizon { margin: 0 0 2em; }
+.listContainer:last-child, .listVertical:last-child, .listHorizon:last-child { margin-bottom: 0; }
+.listContainer li, .listVertical li, .listHorizon li, .listContainer .listItem, .listVertical .listItem, .listHorizon .listItem { line-height: 1.6; }
+.listContainer li .btn, .listVertical li .btn, .listHorizon li .btn, .listContainer .listItem .btn, .listVertical .listItem .btn, .listHorizon .listItem .btn { display: block; padding: 5px 8px; color: white; background: #0797de; text-decoration: none; }
+.listContainer li .btn:hover, .listVertical li .btn:hover, .listHorizon li .btn:hover, .listContainer .listItem .btn:hover, .listVertical .listItem .btn:hover, .listHorizon .listItem .btn:hover { background: #39b9f9; }
+.listContainer.list-outside li, .list-outside.listVertical li, .list-outside.listHorizon li, .listContainer.list-outside .listItem, .list-outside.listVertical .listItem, .list-outside.listHorizon .listItem { padding-left: 1em; }
+.listContainer.list-outside li:first-letter, .list-outside.listVertical li:first-letter, .list-outside.listHorizon li:first-letter, .listContainer.list-outside .listItem:first-letter, .list-outside.listVertical .listItem:first-letter, .list-outside.listHorizon .listItem:first-letter { margin-left: -1em; }
+.listContainer.list-marker li, .list-marker.listVertical li, .list-marker.listHorizon li, .listContainer.list-marker .listItem, .list-marker.listVertical .listItem, .list-marker.listHorizon .listItem { list-style: inside disc; zoom: 1; }
+.listContainer.list-figure li, .list-figure.listVertical li, .list-figure.listHorizon li, .listContainer.list-figure .listItem, .list-figure.listVertical .listItem, .list-figure.listHorizon .listItem { margin: 0 10px 10px 0; }
+.listContainer.list-figure li:last-child, .list-figure.listVertical li:last-child, .list-figure.listHorizon li:last-child, .listContainer.list-figure .listItem:last-child, .list-figure.listVertical .listItem:last-child, .list-figure.listHorizon .listItem:last-child { margin-right: 0; }
+.listContainer.list-figure img, .list-figure.listVertical img, .list-figure.listHorizon img { display: block; }
 
-.listVertical li + .listItem, .listVertical li + li,
-.listVertical .listItem + .listItem,
-.listVertical .listItem + li {
-  margin-top: 0.4em;
-}
-.listVertical .listVertical {
-  margin-left: 2em;
-}
+.listVertical li + .listItem, .listVertical li + li, .listVertical .listItem + .listItem, .listVertical .listItem + li { margin-top: 0.4em; }
+.listVertical .listVertical { margin-left: 2em; }
 
-.listHorizon {
-  zoom: 1;
-}
-.listHorizon:before, .listHorizon:after {
-  display: block;
-  height: 0;
-  visibility: hidden;
-  content: "\0020";
-}
-.listHorizon:after {
-  clear: both;
-}
-.listHorizon li,
-.listHorizon .listItem {
-  display: block;
-  float: left;
-  margin-right: 15px;
-}
+.listHorizon { zoom: 1; }
+.listHorizon:before, .listHorizon:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.listHorizon:after { clear: both; }
+.listHorizon li, .listHorizon .listItem { display: block; float: left; margin-right: 15px; }
 
 /* 
 # Figure Compornets
 */
-.figContainer {
-  display: block;
-  padding: 4px 0 0 0;
-  margin: 0 12px 1em 0;
-}
-.figContainer img {
-  display: block;
-}
-.figContainer .cap {
-  display: block;
-  padding: 0.5em 0 0;
-  font-size: 93%;
-  line-height: 1.5;
-}
-.figContainer:last-child {
-  margin-bottom: 0;
-}
-.figContainer.fig-alignLeft {
-  float: left;
-}
-.figContainer.fig-alignRight {
-  float: right;
-  margin-right: 0;
-  margin-left: 12px;
-}
+.figContainer { display: block; padding: 4px 0 0 0; margin: 0 12px 1em 0; }
+.figContainer img { display: block; }
+.figContainer .cap { display: block; padding: 0.5em 0 0; font-size: 93%; line-height: 1.5; }
+.figContainer:last-child { margin-bottom: 0; }
+.figContainer.fig-alignLeft { float: left; }
+.figContainer.fig-alignRight { float: right; margin-right: 0; margin-left: 12px; }
 
-.fig-bdrSolid img {
-  border: 10px solid #f3f3f3;
-}
+.fig-bdrSolid img { border: 10px solid #f3f3f3; }
 
-.fig-bdrDashed img {
-  padding: 8px;
-  border: 2px dashed #ccc;
-}
+.fig-bdrDashed img { padding: 8px; border: 2px dashed #ccc; }
 
-.fig-shadow {
-  padding-right: 4px;
-  padding-left: 4px;
-}
-.fig-shadow img {
-  border: 10px solid #fff;
-  box-shadow: 0 2px 5px #ddd;
-}
+.fig-shadow { padding-right: 4px; padding-left: 4px; }
+.fig-shadow img { border: 10px solid #fff; box-shadow: 0 2px 5px #ddd; }
 
 /* 
 # UI compornents
 */
-.pagenation {
-  zoom: 1;
-}
-.pagenation:before, .pagenation:after {
-  display: block;
-  height: 0;
-  visibility: hidden;
-  content: "\0020";
-}
-.pagenation:after {
-  clear: both;
-}
-.pagenation .link {
-  display: inline-block;
-  margin: 0 10px 0 0;
-}
-.pagenation .link:last-child {
-  margin: 0;
-}
-.pagenation .linkPrev a,
-.pagenation .linkNext a {
-  padding: 2px 4px;
-  background: #0797de;
-  color: #fff;
-  text-decoration: none;
-}
+.pagenation { zoom: 1; }
+.pagenation:before, .pagenation:after { display: block; height: 0; visibility: hidden; content: "\0020"; }
+.pagenation:after { clear: both; }
+.pagenation .link { display: inline-block; margin: 0 10px 0 0; }
+.pagenation .link:last-child { margin: 0; }
+.pagenation .linkPrev a, .pagenation .linkNext a { padding: 2px 4px; background: #0797de; color: #fff; text-decoration: none; }
 
 /* 
 # Responsive Style compornents
 */
-.re-fluidElm {
-  width: 100%;
-  height: auto;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidElm { width: 100%; height: auto; display: block; box-sizing: border-box; }
 
-.re-fluidBlc img {
-  width: 100%;
-  height: auto;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidBlc img { width: 100%; height: auto; display: block; box-sizing: border-box; }
 
-.re-fluidBlc-2 {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.re-fluidBlc-2 img {
-  width: 50%;
-  height: auto;
-  float: left;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidBlc-2 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-2 img { width: 50%; height: auto; float: left; display: block; box-sizing: border-box; }
 
-.re-fluidBlc-3 {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.re-fluidBlc-3 img {
-  width: 33.333%;
-  height: auto;
-  float: left;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidBlc-3 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-3 img { width: 33.333%; height: auto; float: left; display: block; box-sizing: border-box; }
 
-.re-fluidBlc-4 {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.re-fluidBlc-4 img {
-  width: 25%;
-  height: auto;
-  float: left;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidBlc-4 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-4 img { width: 25%; height: auto; float: left; display: block; box-sizing: border-box; }
 
-.re-fluidBlc-5 {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.re-fluidBlc-5 img {
-  width: 20%;
-  height: auto;
-  float: left;
-  display: block;
-  box-sizing: border-box;
-}
+.re-fluidBlc-5 { width: 100%; overflow: hidden; box-sizing: border-box; }
+.re-fluidBlc-5 img { width: 20%; height: auto; float: left; display: block; box-sizing: border-box; }
 
 /*
 # Design Interface Compornets
@@ -754,27 +316,11 @@ div.prg-dropCaps:first-letter {
 <span class="lineBlc-01 linkSkin-01"></span>
 ```
 */
-.lineBlc-01 {
-  width: 100%;
-  height: 4px;
-  display: block;
-  background: #ccc;
-}
+.lineBlc-01 { width: 100%; height: 4px; display: block; background: #ccc; }
 
-.linkSkin-01 {
-  background: url(../images/pettern/dot_01.gif) left top red;
-}
+.linkSkin-01 { background: url(../images/pettern/dot_01.gif) left top red; }
 
-.themeCompornentList {
-  padding: 0 20px;
-}
-.themeCompornentList #contents {
-  padding-bottom: 100px;
-}
+.themeCompornentList { padding: 0 20px; }
+.themeCompornentList #contents { padding-bottom: 100px; }
 
-.headCompornet {
-  padding: 0 0 2px;
-  margin-bottom: 40px;
-  border-bottom: 2px dashed #ddd;
-  letter-spacing: 1px;
-}
+.headCompornet { padding: 0 0 2px; margin-bottom: 40px; border-bottom: 2px dashed #ddd; letter-spacing: 1px; }

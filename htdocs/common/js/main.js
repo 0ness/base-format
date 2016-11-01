@@ -38,7 +38,7 @@
 	* ページ共通処理
 	*/
 	Member.commonFunction = function(){
-		console.log("common2");
+		console.log("common3");
 	};
 
 	/**
