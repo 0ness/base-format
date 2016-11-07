@@ -5,7 +5,9 @@ _notes/
 .DS_Store
 .map
 node_modules/
-htdocs/src/yuidocs
-htdocs/src/yui-themes
-htdocs/src/sassdocs
+src/compornents
+src/yuidocs
+src/yui-themes
+src/sassdocs
+src/js-librarys-test
 package_grunt.json
