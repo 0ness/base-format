@@ -30,26 +30,20 @@ html(lang=lang)
 
 			//- コンテンツエリア
 			.contents
+				.contents-body
+					main.main-contents
+						block content
 
-				//- コンテンツの分岐
-				if category === 'top-category'
-					.contents-body
-						main.main-contents
-							block content
-
-				else
-					.contents-body
-						main.main-contents
-							block content
-
-					//- パンくず
-					block topicpath
-						ul.bread-nav
-							each val, key in topicpathObj
-								if val.link
-									li: a(href=val.link) #{val.name}
-								else
-									li #{val.name}
+			//- コンテンツの分岐
+			if category !== 'top-category'
+				//- パンくず
+				block topicpath
+					ul.bread-nav
+						each val, key in topicpathObj
+							if val.link
+								li: a(href=val.link) #{val.name}
+							else
+								li #{val.name}
 
 			///contents
 			

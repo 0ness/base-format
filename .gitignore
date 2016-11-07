@@ -2,6 +2,8 @@
 !.gitignore
 .sass-cache/
 _notes/
+.DS_Store
+.map
 node_modules/
 htdocs/src/yuidocs
 htdocs/src/yui-themes
