@@ -56,19 +56,14 @@ table {
 Base Font
 ====================================================================*/
 html { font-size: 62.5%;}
-body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$fontGothic;}
+body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE */*font:x-small; /* for IE in quirks mode */font-family:$font-gothic;}
 
 select,input,button,textarea { font: 99% arial, helvetica, clean, sans-serif }
 table { font-size: inherit; font: 100% }
 pre,code,kbd,samp,tt { font-family: monospace; *font-size:108%;line-height: 100% }
 
 
-
-
-
-/*====================================================================
-Base Font
-====================================================================*/
-@import "fonts/_path";
+//Base Font
+@import "../foundation/fonts/path";
 
 

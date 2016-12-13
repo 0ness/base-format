@@ -1,7 +1,3 @@
-@import "partials/_setting";
-@import "partials/_mixin";
-@import "partials/_function";
-@import "partials/_reset";
 
 
 //記述はレイアウトの構造優先
@@ -42,24 +38,17 @@
 
 
 
-
-
-/*====================================================================
-Layout　
-====================================================================*/
-
 /* default style
 --------------------------------------------------------------------*/
-a	{ @include link-set;}
-p   { @include text-base;}
-li  { @include text-base;}
-
+a	{ color:$color-link;}
+p,
+li  { font-size:$base-font-size; line-height: $base-line-height;}
 
 
 
 /* base
 --------------------------------------------------------------------*/
-html	{ height:100%; color: $color-txt; background:$color-bg; background: #000;}
+html	{ height:100%; color: $color-txt; background:$color-bg;}
 body	{ height:100%; text-align:left; @include select-color(#fff,$color-key);
 	& > #wrapper { height:auto;}
 }

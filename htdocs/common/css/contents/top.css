@@ -1,4 +1,29 @@
 @charset "UTF-8";
+.icofont-doc:before { content: ""; }
+
+.icofont-close:before { content: ""; }
+
+.icofont-window:before { content: ""; }
+
+.icofont-arw:before { content: ""; }
+
+.icofont-arw-thin:before { content: ""; }
+
+.icofont-instagram:before { content: ""; }
+
+.icofont-search:before { content: ""; }
+
+.icofont-folder:before { content: ""; }
+
+.icofont-tri:before { content: ""; }
+
+.icofont-twitter:before { content: ""; }
+
+.icofont-youtube:before { content: ""; }
+
+.icofont-mail:before { content: ""; }
+
+.icofont-doc:before, .icofont-close:before, .icofont-window:before, .icofont-arw:before, .icofont-arw-thin:before, .icofont-instagram:before, .icofont-search:before, .icofont-folder:before, .icofont-tri:before, .icofont-twitter:before, .icofont-youtube:before, .icofont-mail:before { font-family: 'icomoon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-decoration: none !important; }
+
 /*トップページ：index.html
 --------------------------------------------------------------------*/
-#top { background: #000; }

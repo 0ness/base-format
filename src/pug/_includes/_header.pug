@@ -3,22 +3,21 @@ header.header
 
 	.header__inner
 		//- ロゴ
-		if category === 'home'
-			- var logo = 'h1'
-		else
+		if category === 'top-category'
 			- var logo = 'p'
+		else
+			- var logo = 'h1'
     
 		#{logo}.header__ci
 			a(href=filepath+"/index.html") サイトタイトル
 
 		//- global nav
 		nav.gnav
-			.gnav__inner
-				ul
-					li.gnav__btn.gnav__btn-cont_01: a(href=filepath + "") コンテンツ名1
-					li.gnav__btn.gnav__btn-cont_02: a(href=filepath + "") コンテンツ名2
-					li.gnav__btn.gnav__btn-cont_03: a(href=filepath + "") コンテンツ名3
-					li.gnav__btn.gnav__btn-cont_04: a(href=filepath + "") コンテンツ名4
+			ul.gnav__inner
+				li.gnav__btn.gnav__btn-cont_01: a(href=filepath + "") コンテンツ名1
+				li.gnav__btn.gnav__btn-cont_02: a(href=filepath + "") コンテンツ名2
+				li.gnav__btn.gnav__btn-cont_03: a(href=filepath + "") コンテンツ名3
+				li.gnav__btn.gnav__btn-cont_04: a(href=filepath + "") コンテンツ名4
 		///global-nav
 	
 ///header

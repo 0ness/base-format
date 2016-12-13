@@ -23,16 +23,15 @@ html(lang=lang)
 	body(class=category, id=id)
 	
 		#wrapper
-
+		
 			//- ヘッダー
 			block header
 			include /_includes/_header
 
 			//- コンテンツエリア
 			.contents
-				.contents-body
-					main.main-contents
-						block content
+				main.main-contents
+					block content
 
 			//- コンテンツの分岐
 			if category !== 'top-category'
